@@ -1,0 +1,22 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# 深层次匹配所有目录 node_modules/ 进行忽略
+**/node_modules
+
+# production
+/dist
+/build
+
+# vscode
+.history
+
+# mac
+.DS_Store
+
+# misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,311 @@
+{
+  "files.autoSaveDelay": 100,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  // 窗口设置
+  // 设置窗口激活：多个窗口可合并,意味着你可以在一个vscode中打开多个项目
+  // "window.nativeTabs": true
+
+  // 工作区设置
+  // 文件图标样式
+  "workbench.iconTheme": "file-icons-colourless",
+  // "workbench.iconTheme": "vscode-great-icons",
+  // 主题样式
+  "workbench.colorTheme": "Vitesse Black",
+  "workbench.editor.closeOnFileDelete": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.tabCloseButton": "right",
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": true,
+  // 设置最大显示 tab-title 数量
+  "workbench.editor.limit.value": 5,
+  "workbench.fontAliasing": "antialiased",
+  "workbench.list.smoothScrolling": true,
+  "workbench.preferredDarkColorTheme": "Vitesse Dark",
+  "workbench.preferredLightColorTheme": "Vitesse Light",
+  "workbench.productIconTheme": "icons-carbon",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.tree.expandMode": "singleClick",
+  "workbench.tree.indent": 10,
+  "workbench.editor.wrapTabs": true,
+  "workbench.colorCustomizations": {},
+
+  // 编辑器设置
+  "editor.tabSize": 2,
+  "editor.fontSize": 14,
+  "editor.lineHeight": 22,
+  // "editor.fontWeight": "bold",
+  "editor.fontFamily": "Input Mono",
+  // "editor.fontFamily": "JetBrains Mono",
+  // "editor.fontFamily": "Input Mono, Fira Code, monospace",
+  // 编辑器格式保存
+  "editor.formatOnSave": true,
+  // 代码格式化指定
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 相对行号
+  "editor.lineNumbers": "on",
+  // "editor.lineNumbers": "interval",
+  "editor.detectIndentation": false,
+  "editor.accessibilitySupport": "off",
+  // 开启光标更加丝滑的移动动画
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.smoothScrolling": true,
+  "editor.find.addExtraSpaceOnTop": false,
+  // 挖槽，这个配置太帅了，我感觉字体直接变了样，antfu 大佬牛皮
+  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
+  "editor.glyphMargin": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.inlineSuggest.enabled": true,
+  // 测试了下貌似是将 command 与 option 按键功能互换
+  // "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderWhitespace": "boundary",
+  "editor.suggestSelection": "first",
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.renderLineHighlight": "none",
+  // 是否开启粘性滚动
+  "editor.stickyScroll.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.fixAll.eslint": true // this allows ESLint to auto fix on save
+  },
+  // 去除斜体注释
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "name": "Comments",
+        "scope": "comment, punctuation.definition.comment",
+        "settings": {
+          "fontStyle": ""
+        }
+      },
+      {
+        "name": "js/ts italic",
+        "scope": "entity.other.attribute-name.js,entity.other.attribute-name.ts,entity.other.attribute-name.jsx,entity.other.attribute-name.tsx,variable.parameter,variable.language.super",
+        "settings": {
+          "fontStyle": ""
+        }
+      },
+      {
+        "name": "js ts this",
+        "scope": "var.this,variable.language.this.js,variable.language.this.ts,variable.language.this.jsx,variable.language.this.tsx",
+        "settings": {
+          "fontStyle": ""
+        }
+      }
+    ]
+  },
+
+  // 终端字体配置
+  // 不设置的话默认使用编辑器字体
+  "terminal.integrated.fontFamily": "JetBrains Mono, monospace",
+  "terminal.integrated.lineHeight": 0,
+  "terminal.integrated.letterSpacing": 0,
+  "terminal.integrated.fontSize": 13.5,
+  "terminal.integrated.gpuAcceleration": "off",
+  "terminal.integrated.fontWeightBold": "normal",
+  // "terminal.integrated.defaultProfile.windows": "Powershell Core",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.fontWeight": "400",
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.tabs.location": "right",
+
+  // 其他设置
+  // 本地静态服务器
+  "liveServer.settings.donotShowInfoMsg": true,
+  // 错误提示
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  // todo 树
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.general.tags": [
+    "TIP",
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "DEBUG",
+    "ISSUES",
+    "[x]",
+    "todo",
+    "tip"
+  ],
+
+  // css 设置
+  // 设置 less 输出为指定格式
+  "less.compile": {
+    "outExt": ".css"
+  },
+  // 单位转换：px 转换为 vw
+  "px-to-vw.viewportWidth": 375,
+  "px-to-vw.unitPrecision": 2,
+
+  // js 设置
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // js/ts 语法校验检查
+  "js/ts.implicitProjectConfig.checkJs": true,
+
+  // git 设置
+  "git.confirmSync": false,
+  "gitlens.menus": {
+    "editor": {
+      "blame": false,
+      "clipboard": true,
+      "compare": true,
+      "history": false,
+      "remote": false
+    },
+    "editorGroup": {
+      "blame": true,
+      "compare": false
+    },
+    "editorTab": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true
+    },
+    "explorer": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true
+    },
+    "scm": {
+      "authors": true
+    },
+    "scmGroup": {
+      "compare": true,
+      "openClose": true,
+      "stash": true
+    },
+    "scmGroupInline": {
+      "stash": true
+    },
+    "scmItem": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": false,
+      "stash": true
+    }
+  },
+
+  // vim设置
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.sneak": true,
+  // 插入模式按键功能赋值，before 赋值 after
+  "vim.insertModeKeyBindings": [
+    // 先把这个配置项去掉了,我发现我现在过于依赖jj切换普通模式导致在其它地方写代码的时候也会有所影响,改一下
+    // 后续补充: 我放弃了,哈哈哈哈,我认为jj确实挺好用的
+    // 我又来了（220901）：希望这次我可以坚持久一点，不那么依赖于 jj
+    // {
+    //   "before": ["j", "j"],
+    //   "after": ["<Esc>"]
+    // }
+  ],
+  // 设置 <leader> 为空格
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // editor 更改一些变量名时使用，同步修改该文件内所有使用该变量名的地方
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["editor.action.rename"]
+    },
+    // 取消查找后的光标高亮
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": [";", "f"],
+      "commands": [":nohlsearch"]
+    },
+    // 光标由 editor 聚焦至 terminal
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.focus"]
+    },
+    // 返回
+    {
+      "before": ["g", "j"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    // 切换到上一个 tab
+    {
+      "before": ["E"],
+      "after": ["g", "T"]
+    },
+    // 切换到下一个 tab
+    {
+      "before": ["R"],
+      "after": ["g", "t"]
+    },
+    {
+      "before": ["<leader>", "s"],
+      "commands": [":w!"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":q"]
+    },
+    {
+      "before": ["<leader>", "sq"],
+      "commands": [":wq!"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    }
+  ],
+  "vim.handleKeys": {
+    // 取消掉一些与 vscode 快捷键冲突的 Ctrl + a...
+    "<C-a>": false,
+    "<C-f>": true,
+    "<C-b>": true,
+    "<C-w>": false,
+    "<C-d>": true,
+    "<C-c>": false,
+    "<C-v>": false
+  },
+
+  // prettier 配置
+  "prettier.printWidth": 100,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+
+  // ESLint 配置
+  // "eslint.validate": ["javascript"],
+  // "eslint.options": {
+  //   // tip: 指定全局配置文件，会覆盖优先于本地配置
+  //   "overrideConfigFile": "/Users/feng/.vscode/.eslintrc.js"
+  // },
+  // "eslint.format.enable": true,
+  // "eslint.quiet": true,
+  // "eslint.alwaysShowStatus": true,
+
+  "security.workspace.trust.untrustedFiles": "open",
+  "docker.images.label": "Tag",
+  "git.ignoreRebaseWarning": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "browser-preview.startUrl": "https://guide.aotu.io/",
+  "vetur.validation.template": false,
+  "bracketPairColorizer.depreciation-notice": false
+}
