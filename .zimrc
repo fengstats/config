@@ -1,0 +1,112 @@
+# Start configuration added by Zim install {{{
+
+#
+
+# This is not sourced during shell startup, and it's only used to configure the
+
+# zimfw plugin manager.
+
+#
+
+# Start configuration added by Zim install {{{
+
+# -------
+
+# Modules
+
+# -------
+
+# Sets sane Zsh built-in environment options.
+
+zmodule environment
+
+# Provides handy git aliases and functions.
+
+zmodule git
+
+# Applies correct bindkeys for input events.
+
+zmodule input
+
+# Sets a custom terminal title.
+
+zmodule termtitle
+
+# Utility aliases and functions. Adds colour to ls, grep and less.
+
+zmodule utility
+zmodule romkatv/powerlevel10k
+
+#
+
+#Prompt
+
+#
+
+# Exposes to prompts how long the last command took to execute, used by asciiship.
+
+zmodule duration-info
+
+# Exposes git repository status information to prompts, used by asciiship.
+
+zmodule git-info
+
+# A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
+
+# Additional completion definitions for Zsh.
+
+zmodule zsh-users/zsh-completions
+
+# Enables and configures smart and extensive tab completion.
+
+# completion must be sourced after zsh-users/zsh-completions
+
+zmodule completion
+
+# Fish-like autosuggestions for Zsh.
+
+zmodule zsh-users/zsh-autosuggestions
+
+# Fish-like syntax highlighting for Zsh.
+
+# zsh-users/zsh-syntax-highlighting must be sourced after completion
+
+zmodule zsh-users/zsh-syntax-highlighting
+
+# Fish-like history search (up arrow) for Zsh.
+
+# zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
+
+zmodule zsh-users/zsh-history-substring-search
+
+# }}} End configuration added by Zim install
+
+#
+
+zmodule DarrinTisdale/zsh-aliases-exa # 添加多个 alias, 使用 exa 代替 ls，要求有安装 exa
+
+# Custom 个人推荐的插件
+
+# zmodule directory
+
+# 将 zsh shell 补全的结果 pipe 入 fzf 中显示和选择
+
+# 注意：需要安装 fzf，否则无法正常使用
+
+zmodule Aloxaf/fzf-tab
+
+# 个人其他工具的选择
+
+zmodule wookayin/fzf-fasd
+zmodule zsh-users/zaw
+
+zmodule completion
+zmodule git-info
+zmodule prompt-pwd
+zmodule magicmace
+zmodule zdharma-continuum/fast-syntax-highlighting
+zmodule supercrabtree/k
+zmodule hlissner/zsh-autopair
+zmodule pabloariasal/zfm
+zmodule agkozak/zsh-z
+zmodule Aloxaf/fzf-tab
