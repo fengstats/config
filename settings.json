@@ -6,34 +6,37 @@
   // 窗口设置
   // 设置窗口激活：多个窗口可合并,意味着你可以在一个vscode中打开多个项目
   // "window.nativeTabs": true
+  // 设置整个窗口的缩放比例
+  "window.zoomLevel": 0.6,
 
   // 工作区设置
   // 文件图标样式
-  "workbench.iconTheme": "file-icons-colourless",
+  "workbench.iconTheme": "material-icon-theme",
   // "workbench.iconTheme": "vscode-great-icons",
   // 主题样式
   "workbench.colorTheme": "Vitesse Black",
+  "workbench.sideBar.location": "right",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.tabCloseButton": "right",
   "workbench.editor.limit.enabled": true,
+  "workbench.editor.wrapTabs": true,
   "workbench.editor.limit.perEditorGroup": true,
-  // 设置最大显示 tab-title 数量
+  // 设置最大显示 tab title 的个数
   "workbench.editor.limit.value": 5,
-  "workbench.fontAliasing": "antialiased",
-  "workbench.list.smoothScrolling": true,
-  "workbench.preferredDarkColorTheme": "Vitesse Dark",
-  "workbench.preferredLightColorTheme": "Vitesse Light",
-  "workbench.productIconTheme": "icons-carbon",
-  "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
-  "workbench.editor.wrapTabs": true,
+  "workbench.fontAliasing": "antialiased",
+  "workbench.list.smoothScrolling": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.productIconTheme": "icons-carbon",
+  "workbench.preferredDarkColorTheme": "Vitesse Dark",
+  "workbench.preferredLightColorTheme": "Vitesse Light",
   "workbench.colorCustomizations": {},
 
   // 编辑器设置
   "editor.tabSize": 2,
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.lineHeight": 22,
   // "editor.fontWeight": "bold",
   "editor.fontFamily": "Input Mono",
@@ -53,7 +56,7 @@
   "editor.cursorBlinking": "smooth",
   "editor.smoothScrolling": true,
   "editor.find.addExtraSpaceOnTop": false,
-  // 挖槽，这个配置太帅了，我感觉字体直接变了样，antfu 大佬牛皮
+  // 挖槽，这个配置太帅了，我感觉字体细节直接拿捏了，antfu 大佬牛皮
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": "active",
@@ -102,7 +105,7 @@
   "terminal.integrated.fontFamily": "JetBrains Mono, monospace",
   "terminal.integrated.lineHeight": 0,
   "terminal.integrated.letterSpacing": 0,
-  "terminal.integrated.fontSize": 13.5,
+  "terminal.integrated.fontSize": 12,
   "terminal.integrated.gpuAcceleration": "off",
   "terminal.integrated.fontWeightBold": "normal",
   // "terminal.integrated.defaultProfile.windows": "Powershell Core",
@@ -282,7 +285,9 @@
     "<C-w>": false,
     "<C-d>": true,
     "<C-c>": false,
-    "<C-v>": false
+    "<C-v>": false,
+    // 这个键被我用来替换 selectPrevSuggestion 了（输入几个单词后的 api 的智能提示向上走）
+    "<C-k>": false
   },
 
   // prettier 配置
