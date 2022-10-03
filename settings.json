@@ -2,71 +2,149 @@
   "files.autoSaveDelay": 100,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  // this is great, macOS only
+  // "window.nativeTabs": true,
+  "window.titleBarStyle": "custom",
+  // 设置窗口整体缩放大小
+  "window.zoomLevel": 0.14,
+  "window.commandCenter": true,
+  "window.dialogStyle": "custom",
+  // "window.experimental.useSandbox": true,
+  "window.newWindowDimensions": "offset",
 
-  // 窗口设置
-  // 设置窗口激活：多个窗口可合并,意味着你可以在一个vscode中打开多个项目
-  // "window.nativeTabs": true
-  // 设置整个窗口的缩放比例
-  "window.zoomLevel": 0.6,
+  // 文件设置
+  // 文件内容以什么结尾
+  "files.eol": "\n",
 
   // 工作区设置
-  // 文件图标样式
-  "workbench.iconTheme": "material-icon-theme",
-  // "workbench.iconTheme": "vscode-great-icons",
   // 主题样式
-  "workbench.colorTheme": "Vitesse Black",
-  "workbench.sideBar.location": "right",
+  "workbench.colorTheme": "Vitesse Dark",
+  // 文件图标样式
+  "workbench.iconTheme": "file-icons",
+  // "workbench.iconTheme": "material-icon-theme",
+  // "workbench.iconTheme": "vscode-great-icons",
+  "workbench.productIconTheme": "icons-carbon",
+  "workbench.preferredDarkColorTheme": "Vitesse Dark",
+  "workbench.preferredLightColorTheme": "Vitesse Light",
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.tabCloseButton": "right",
   "workbench.editor.limit.enabled": true,
   "workbench.editor.wrapTabs": true,
   "workbench.editor.limit.perEditorGroup": true,
   // 设置最大显示 tab title 的个数
-  "workbench.editor.limit.value": 5,
+  // "workbench.editor.limit.value": 5,
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
-  "workbench.fontAliasing": "antialiased",
   "workbench.list.smoothScrolling": true,
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.productIconTheme": "icons-carbon",
-  "workbench.preferredDarkColorTheme": "Vitesse Dark",
-  "workbench.preferredLightColorTheme": "Vitesse Light",
-  "workbench.colorCustomizations": {},
+  // 自定义主题样式
+  "workbench.colorCustomizations": {
+    // tip: 注释是直接通过原 json 文件修改，暂时没找到参数暴露项
+    "[Vitesse Dark]": {
+      // git 忽略文件字体颜色
+      "gitDecoration.ignoredResourceForeground": "#dedcd558",
+
+      // 活动栏：
+      // 背景颜色（显示图标的侧边栏）
+      "activityBar.background": "#111318",
+      // 图标激活颜色
+      "activityBar.foreground": "#abbcab",
+      // 图标默认颜色
+      "activityBar.inactiveForeground": "#abbcab65",
+
+      // 侧边栏：
+      // 背景颜色
+      "sideBar.background": "#0f0f0f",
+      // 一级菜单背景颜色
+      "sideBarSectionHeader.background": "#111318",
+      // 鼠标悬浮背景颜色
+      "list.hoverBackground": "#abbcab35",
+      // "list.inactiveSelectionBackground": "",
+      // 当前选中的列表背景颜色
+      "list.activeSelectionBackground": "#abbcab35",
+      // 当前键盘聚焦所在列表背景颜色
+      "list.focusBackground": "#abbcab45",
+
+      // 顶部导航条:
+      // 字体颜色（激活/未激活）
+      "titleBar.activeForeground": "#c1c1c1",
+      "titleBar.inactiveForeground": "#c1c1c1",
+      // 背景颜色（激活/未激活）
+      "titleBar.activeBackground": "#111318",
+      "titleBar.inactiveBackground": "#111318",
+      // 底部边框
+      "titleBar.border": "#abbcab50",
+
+      // 标签：
+      // 未激活选项卡背景颜色
+      "tab.inactiveBackground": "#000",
+      // 激活选项卡背景颜色
+      "tab.activeBackground": "#202020",
+      // 激活选项卡底部边框
+      "tab.activeBorder": "#abbcab",
+      // 选项卡时编辑器组标题的背景颜色
+      "editorGroupHeader.tabsBackground": "#111318",
+
+      // 编辑器：
+      // 背景颜色
+      "editor.background": "#111318",
+      // 选中片段背景
+      "editor.selectionBackground": "#abbcab65",
+      // 选中片段对应该文中一致的内容高亮背景
+      "editor.selectionHighlightBackground": "#abbcab35",
+      "editor.foldBackground": "#eeeeee10",
+      // 小组件背景颜色（查找、替换、提示）
+      "editorWidget.background": "#121212",
+      // 编辑器行号（当前行、其他行）
+      "editorLineNumber.foreground": "#bfbaaa90",
+      "editorLineNumber.activeForeground": "#dedcd5",
+
+      // 面板（测试了下貌似会影响到终端颜色，终端不设置的前提下）：
+      "panel.background": "#111318",
+      "panel.border": "#abbcab50",
+
+      // 终端
+      "terminal.selectionBackground": "#d1d1d130"
+    }
+  },
 
   // 编辑器设置
   "editor.tabSize": 2,
   "editor.fontSize": 13,
-  "editor.lineHeight": 22,
-  // "editor.fontWeight": "bold",
   "editor.fontFamily": "Input Mono",
   // "editor.fontFamily": "JetBrains Mono",
   // "editor.fontFamily": "Input Mono, Fira Code, monospace",
+  // "editor.fontWeight": 400,
+  // 小地图显示大小设置
+  "editor.minimap.size": "proportional",
   // 编辑器格式保存
   "editor.formatOnSave": true,
   // 代码格式化指定
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  // 相对行号
-  "editor.lineNumbers": "on",
-  // "editor.lineNumbers": "interval",
+  // 行号显示设置
+  "editor.lineNumbers": "relative",
   "editor.detectIndentation": false,
   "editor.accessibilitySupport": "off",
   // 开启光标更加丝滑的移动动画
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.cursorBlinking": "smooth",
+  "editor.cursorBlinking": "expand",
   "editor.smoothScrolling": true,
   "editor.find.addExtraSpaceOnTop": false,
   // 挖槽，这个配置太帅了，我感觉字体细节直接拿捏了，antfu 大佬牛皮
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
+  // "editor.fontLigatures": true,
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
-  // 测试了下貌似是将 command 与 option 按键功能互换
-  // "editor.multiCursorModifier": "ctrlCmd",
+  // 使用 command 替换 alt/option 的多光标模式
+  "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "boundary",
   "editor.suggestSelection": "first",
   "editor.unicodeHighlight.invisibleCharacters": false,
   "editor.renderLineHighlight": "none",
+  // 括号着色
+  "editor.bracketPairColorization.enabled": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   // 是否开启粘性滚动
   "editor.stickyScroll.enabled": true,
   "editor.codeActionsOnSave": {
@@ -100,28 +178,62 @@
     ]
   },
 
+  // 搜索时排除一些指定目录
+  "search.exclude": {
+    "**/.git": true,
+    "**/.github": true,
+    "**/.nuxt": true,
+    "**/.output": true,
+    "**/.pnpm": true,
+    "**/.vscode": true,
+    "**/.yarn": true,
+    "**/bower_components": true,
+    "**/dist/**": true,
+    "**/logs": true,
+    "**/node_modules": true,
+    "**/out/**": true,
+    "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true,
+    "**/tmp": true,
+    "**/yarn.lock": true
+  },
+
+  // errorLens 配置
+  "errorLens.fontFamily": "JetBrains Mono",
+  // "errorLens.borderRadius": "100px",
+  // 是否使用斜体
+  // "errorLens.fontStyleItalic": true,
+  "errorLens.fontWeight": "500",
+  "errorLens.margin": "20px",
+  // "errorLens.messageBackgroundMode": "message",
+  "errorLens.messageTemplate": "$severity：$message ($source) $count",
+  // "errorLens.padding": "2px 10px",
+  // "errorLens.statusBarMessageAlignment": "right",
+  "errorLens.removeLinebreaks": false,
+  "errorLens.gutterIconsFollowCursorOverride": false,
+
   // 终端字体配置
   // 不设置的话默认使用编辑器字体
-  "terminal.integrated.fontFamily": "JetBrains Mono, monospace",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "Hack Nerd Font Mono, monospace",
+  // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
   "terminal.integrated.lineHeight": 0,
   "terminal.integrated.letterSpacing": 0,
-  "terminal.integrated.fontSize": 12,
   "terminal.integrated.gpuAcceleration": "off",
   "terminal.integrated.fontWeightBold": "normal",
-  // "terminal.integrated.defaultProfile.windows": "Powershell Core",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
-  "terminal.integrated.fontWeight": "400",
+  "terminal.integrated.fontWeight": "300",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.tabs.location": "right",
 
   // 其他设置
   // 本地静态服务器
-  "liveServer.settings.donotShowInfoMsg": true,
+  // "liveServer.settings.donotShowInfoMsg": true,
   // 错误提示
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
-  // todo 树
+  // todo tree
   "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "todo-tree.general.tags": [
     "TIP",
@@ -198,10 +310,15 @@
     }
   },
 
-  // vim设置
+  // vim 设置
+  // 设置 <leader> 为空格
+  "vim.leader": "<space>",
   "vim.easymotion": true,
-  "vim.incsearch": true,
+  // easymotion（这里的 <leader> 就是 空格）
+  // <leader><leader> s <char>：全文搜索字符
+  // <leader><leader> f <char>：当前光标往下搜索
   "vim.useSystemClipboard": true,
+  "vim.incsearch": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
   "vim.sneak": true,
@@ -215,8 +332,6 @@
     //   "after": ["<Esc>"]
     // }
   ],
-  // 设置 <leader> 为空格
-  "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     // editor 更改一些变量名时使用，同步修改该文件内所有使用该变量名的地方
     {
@@ -224,10 +339,10 @@
       "commands": ["editor.action.rename"]
     },
     // 取消查找后的光标高亮
-    {
-      "before": ["<C-n>"],
-      "commands": [":nohl"]
-    },
+    // {
+    //   "before": ["<C-n>"],
+    //   "commands": [":nohl"]
+    // },
     {
       "before": [";", "f"],
       "commands": [":nohlsearch"]
@@ -237,7 +352,7 @@
       "before": ["<leader>", "t"],
       "commands": ["workbench.action.terminal.focus"]
     },
-    // 返回
+    // 返回上一次操作的位置
     {
       "before": ["g", "j"],
       "commands": ["workbench.action.navigateBack"]
@@ -256,22 +371,24 @@
       "before": ["<leader>", "s"],
       "commands": [":w!"]
     },
-    {
-      "before": ["<leader>", "q"],
-      "commands": [":q"]
-    },
-    {
-      "before": ["<leader>", "sq"],
-      "commands": [":wq!"]
-    },
-    {
-      "before": ["<leader>", "d"],
-      "after": ["d", "d"]
-    },
+    // {
+    //   "before": ["<leader>", "q"],
+    //   "commands": [":q"]
+    // },
+    // {
+    //   "before": ["<leader>", "sq"],
+    //   "commands": [":wq!"]
+    // },
+    // {
+    //   "before": ["<leader>", "d"],
+    //   "after": ["d", "d"]
+    // },
+    // 行首
     {
       "before": ["H"],
       "after": ["^"]
     },
+    // 行尾
     {
       "before": ["L"],
       "after": ["g", "_"]
@@ -310,7 +427,8 @@
   "docker.images.label": "Tag",
   "git.ignoreRebaseWarning": true,
   "diffEditor.ignoreTrimWhitespace": false,
-  "browser-preview.startUrl": "https://guide.aotu.io/",
   "vetur.validation.template": false,
-  "bracketPairColorizer.depreciation-notice": false
+  "vsicons.dontShowNewVersionMessage": false,
+  "search.smartCase": true,
+  "window.autoDetectHighContrast": false
 }

@@ -1,21 +1,30 @@
 // 将键绑定放在此文件中以覆盖默认值auto[]
 [
   // my config
+  // editor：选中当前词并跳到下一个当前词
+  // {
+  //   "key": "cmd+k cmd+d",
+  //   "command": "editor.action.moveSelectionToNextFindMatch",
+  //   "when": "editorFocus"
+  // },
+  // editor：替换当前行和上一行
   {
     "key": "alt+k",
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
   },
+  // editor：替换当前行和下一行
   {
     "key": "alt+j",
     "command": "editor.action.moveLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
   },
-  // 将当前 editor 移动到另一组 editor
+  // editor：将当前标签移动到左边一组标签
   {
     "key": "shift+cmd+h",
     "command": "workbench.action.moveEditorToPreviousGroup"
   },
+  // editor：将当前标签移动到右边一组标签
   {
     "key": "shift+cmd+l",
     "command": "workbench.action.moveEditorToNextGroup"
@@ -26,79 +35,86 @@
     "command": "workbench.action.terminal.new",
     "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   },
-  // 终端聚焦
-  // {
-  //   "key": "shift+cmd+k",
-  //   "command": "workbench.action.terminal.focusPreviousPane",
-  //   "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-  // },
-  // {
-  //   "key": "shift+cmd+j",
-  //   "command": "workbench.action.terminal.focusNextPane",
-  //   "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-  // },
+  // 终端：垂直方向聚焦到上一组
+  {
+    "key": "shift+cmd+k",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  // 终端：垂直方向聚焦到下一组
+  {
+    "key": "shift+cmd+j",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  // 终端：水平方向聚焦到上一个终端
   {
     "key": "shift+cmd+h",
     "command": "workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
+  // 终端：水平方向聚焦到下一个终端
   {
     "key": "shift+cmd+l",
     "command": "workbench.action.terminal.focusNextPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // 通过 ctrl + command 搭配 hjkl 来控制终端重塑大小
-  {
-    "key": "ctrl+cmd+k",
-    "command": "workbench.action.terminal.resizePaneUp",
-    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
-  },
+  // 终端：大小往下拉伸
   {
     "key": "ctrl+cmd+j",
     "command": "workbench.action.terminal.resizePaneDown",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
+  // 终端：大小往上拉伸
   {
-    "key": "ctrl+cmd+l",
-    "command": "workbench.action.terminal.resizePaneRight",
+    "key": "ctrl+cmd+k",
+    "command": "workbench.action.terminal.resizePaneUp",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
+  // 终端：大小往左拉伸
   {
     "key": "ctrl+cmd+h",
     "command": "workbench.action.terminal.resizePaneLeft",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // 文件重命名
+  // 终端：大小往右拉伸
+  {
+    "key": "ctrl+cmd+l",
+    "command": "workbench.action.terminal.resizePaneRight",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+  },
+  // 文件：新建
+  {
+    "key": "cmd+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  // 文件：重命名
   {
     "key": "r",
     "command": "renameFile",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
-  // 文件删除
+  // 文件：删除
   {
     "key": "d",
     "command": "deleteFile",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
   {
-    "key": "shift+cmd+e",
-    "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled"
-  },
-  {
     "key": "ctrl+;",
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
-  {
-    "key": "shift+cmd+e",
-    "command": "-workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled"
-  },
-  {
-    "key": "cmd+n",
-    "command": "-workbench.action.files.newUntitledFile"
-  },
+  // {
+  //   "key": "shift+cmd+e",
+  //   "command": "workbench.view.explorer",
+  //   "when": "viewContainer.workbench.view.explorer.enabled"
+  // },
+  // {
+  //   "key": "shift+cmd+e",
+  //   "command": "-workbench.view.explorer",
+  //   "when": "viewContainer.workbench.view.explorer.enabled"
+  // },
 
   // setting default
   {
