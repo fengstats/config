@@ -1,31 +1,44 @@
 {
+  // file begin
   "files.autoSaveDelay": 100,
+  // 文件内容以什么结尾
+  "files.eol": "\n",
+  // file end
+
+  // explorer begin（资源管理器）
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
-  // this is great, macOS only
-  // "window.nativeTabs": true,
+  // explorer end
+
+  // window begin（窗口）
+  // todo：没体会到作用在哪
+  "window.nativeTabs": false,
   "window.titleBarStyle": "custom",
   // 设置窗口整体缩放大小
   "window.zoomLevel": 0.14,
+  // 搜索项居中
   "window.commandCenter": true,
+  // 对话框外观
   "window.dialogStyle": "custom",
   // "window.experimental.useSandbox": true,
   "window.newWindowDimensions": "offset",
+  // 是否开启主题自动切换（白天/黑夜）
+  "window.autoDetectColorScheme": true,
+  "window.autoDetectHighContrast": false,
+  // window end
 
-  // 文件设置
-  // 文件内容以什么结尾
-  "files.eol": "\n",
-
-  // 工作区设置
+  // workbench begin（工作区）
   // 主题样式
   "workbench.colorTheme": "Vitesse Dark",
   // 文件图标样式
-  "workbench.iconTheme": "file-icons",
-  // "workbench.iconTheme": "material-icon-theme",
-  // "workbench.iconTheme": "vscode-great-icons",
+  "workbench.iconTheme": "field-lights-monochrome",
+  // "workbench.iconTheme": "file-icons",
+  // 活动栏的图标
   "workbench.productIconTheme": "icons-carbon",
+  // 夜晚使用的主题
   "workbench.preferredDarkColorTheme": "Vitesse Dark",
-  "workbench.preferredLightColorTheme": "Vitesse Light",
+  // 白天使用的主题
+  "workbench.preferredLightColorTheme": "One Dark Pro Darker",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "right",
   "workbench.editor.limit.enabled": true,
@@ -39,12 +52,11 @@
   "workbench.startupEditor": "newUntitledFile",
   // 自定义主题样式
   "workbench.colorCustomizations": {
-    // tip: 注释是直接通过原 json 文件修改，暂时没找到参数暴露项
     "[Vitesse Dark]": {
       // git 忽略文件字体颜色
       "gitDecoration.ignoredResourceForeground": "#dedcd558",
 
-      // 活动栏：
+      // 活动栏
       // 背景颜色（显示图标的侧边栏）
       "activityBar.background": "#111318",
       // 图标激活颜色
@@ -52,7 +64,7 @@
       // 图标默认颜色
       "activityBar.inactiveForeground": "#abbcab65",
 
-      // 侧边栏：
+      // 侧边栏
       // 背景颜色
       "sideBar.background": "#0f0f0f",
       // 一级菜单背景颜色
@@ -65,7 +77,7 @@
       // 当前键盘聚焦所在列表背景颜色
       "list.focusBackground": "#abbcab45",
 
-      // 顶部导航条:
+      // 顶部导航条
       // 字体颜色（激活/未激活）
       "titleBar.activeForeground": "#c1c1c1",
       "titleBar.inactiveForeground": "#c1c1c1",
@@ -75,17 +87,17 @@
       // 底部边框
       "titleBar.border": "#abbcab50",
 
-      // 标签：
+      // 标签
       // 未激活选项卡背景颜色
-      "tab.inactiveBackground": "#000",
+      "tab.inactiveBackground": "#202020",
       // 激活选项卡背景颜色
-      "tab.activeBackground": "#202020",
+      "tab.activeBackground": "#111111",
       // 激活选项卡底部边框
       "tab.activeBorder": "#abbcab",
       // 选项卡时编辑器组标题的背景颜色
       "editorGroupHeader.tabsBackground": "#111318",
 
-      // 编辑器：
+      // 编辑器
       // 背景颜色
       "editor.background": "#111318",
       // 选中片段背景
@@ -107,8 +119,9 @@
       "terminal.selectionBackground": "#d1d1d130"
     }
   },
+  // workbench end
 
-  // 编辑器设置
+  // editor begin（代码编辑区）
   "editor.tabSize": 2,
   "editor.fontSize": 13,
   "editor.fontFamily": "Input Mono",
@@ -121,12 +134,13 @@
   "editor.formatOnSave": true,
   // 代码格式化指定
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  // 行号显示设置
+  // 行号显示
   "editor.lineNumbers": "relative",
   "editor.detectIndentation": false,
   "editor.accessibilitySupport": "off",
-  // 开启光标更加丝滑的移动动画
+  // 使光标更加丝滑的移动
   "editor.cursorSmoothCaretAnimation": true,
+  // 光标闪烁动画
   "editor.cursorBlinking": "expand",
   "editor.smoothScrolling": true,
   "editor.find.addExtraSpaceOnTop": false,
@@ -149,10 +163,16 @@
   "editor.stickyScroll.enabled": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
-    "source.fixAll.eslint": true // this allows ESLint to auto fix on save
+    // this allows ESLint to auto fix on save
+    "source.fixAll.eslint": true
   },
-  // 去除斜体注释
+  // 自定义代码编辑区内容
   "editor.tokenColorCustomizations": {
+    "[Vitesse Dark]": {
+      // 注释颜色更改
+      "comments": "#9eaa9e"
+    },
+    // 斜体注释矫正
     "textMateRules": [
       {
         "name": "Comments",
@@ -177,44 +197,12 @@
       }
     ]
   },
+  "diffEditor.ignoreTrimWhitespace": false,
+  // editor end
 
-  // 搜索时排除一些指定目录
-  "search.exclude": {
-    "**/.git": true,
-    "**/.github": true,
-    "**/.nuxt": true,
-    "**/.output": true,
-    "**/.pnpm": true,
-    "**/.vscode": true,
-    "**/.yarn": true,
-    "**/bower_components": true,
-    "**/dist/**": true,
-    "**/logs": true,
-    "**/node_modules": true,
-    "**/out/**": true,
-    "**/package-lock.json": true,
-    "**/pnpm-lock.yaml": true,
-    "**/tmp": true,
-    "**/yarn.lock": true
-  },
-
-  // errorLens 配置
-  "errorLens.fontFamily": "JetBrains Mono",
-  // "errorLens.borderRadius": "100px",
-  // 是否使用斜体
-  // "errorLens.fontStyleItalic": true,
-  "errorLens.fontWeight": "500",
-  "errorLens.margin": "20px",
-  // "errorLens.messageBackgroundMode": "message",
-  "errorLens.messageTemplate": "$severity：$message ($source) $count",
-  // "errorLens.padding": "2px 10px",
-  // "errorLens.statusBarMessageAlignment": "right",
-  "errorLens.removeLinebreaks": false,
-  "errorLens.gutterIconsFollowCursorOverride": false,
-
-  // 终端字体配置
-  // 不设置的话默认使用编辑器字体
+  // terminal begin（终端）
   "terminal.integrated.fontSize": 13,
+  // 终端字体，不设置的话默认使用编辑器字体
   "terminal.integrated.fontFamily": "Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
   "terminal.integrated.lineHeight": 0,
@@ -227,45 +215,140 @@
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.tabs.location": "right",
+  // terminal end
 
-  // 其他设置
-  // 本地静态服务器
-  // "liveServer.settings.donotShowInfoMsg": true,
-  // 错误提示
-  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
-  // todo tree
-  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
-  "todo-tree.general.tags": [
-    "TIP",
-    "BUG",
-    "HACK",
-    "FIXME",
-    "TODO",
-    "DEBUG",
-    "ISSUES",
-    "[x]",
-    "todo",
-    "tip"
+  // vim begin
+  // 设置 <leader> 为空格
+  "vim.leader": "<space>",
+  "vim.easymotion": true,
+  // easymotion（这里的 <leader> 就是 空格）
+  // <leader><leader> s <char>：全文搜索字符
+  // <leader><leader> f <char>：当前光标往下搜索
+  "vim.useSystemClipboard": true,
+  "vim.incsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.sneak": true,
+  // 插入模式按键功能赋值，before 赋值 after
+  "vim.insertModeKeyBindings": [
+    // 先把这个配置项去掉了,我发现我现在过于依赖jj切换普通模式导致在其它地方写代码的时候也会有所影响,改一下
+    // 后续补充: 我放弃了,哈哈哈哈,我认为jj确实挺好用的
+    // 我又来了（220901）：希望这次我可以坚持久一点，不那么依赖于 jj
+    // {
+    //   "before": ["j", "j"],
+    //   "after": ["<Esc>"]
+    // }
   ],
-
-  // css 设置
-  // 设置 less 输出为指定格式
-  "less.compile": {
-    "outExt": ".css"
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // editor 更改一些变量名时使用，同步修改该文件内所有使用该变量名的地方
+    // todo：上面是我之前写的注释，测试了一下貌似好像也改不了全局的配置...后面有空在研究看看
+    // {
+    //   "before": ["<leader>", "r"],
+    //   "commands": ["editor.action.rename"]
+    // },
+    // 取消查找后的光标高亮
+    // {
+    //   "before": ["<C-n>"],
+    //   "commands": [":nohl"]
+    // },
+    // {
+    //   "before": [";", "f"],
+    //   "commands": [":nohlsearch"]
+    // },
+    // 光标由 editor 聚焦至 terminal
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.focus"]
+    },
+    // 返回上一次操作的位置
+    {
+      "before": ["g", "j"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    // 切换到上一个 tab
+    {
+      "before": ["E"],
+      "after": ["g", "T"]
+    },
+    // 切换到下一个 tab
+    {
+      "before": ["R"],
+      "after": ["g", "t"]
+    },
+    // 保存
+    {
+      "before": ["S"],
+      "commands": [":w!"]
+    },
+    {
+      "before": ["<leader>", "s"],
+      "commands": [":w!"]
+    },
+    // 退出
+    {
+      "before": ["Q"],
+      "commands": [":q"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":q"]
+    },
+    // {
+    //   "before": ["<leader>", "sq"],
+    //   "commands": [":wq!"]
+    // },
+    // {
+    //   "before": ["<leader>", "d"],
+    //   "after": ["d", "d"]
+    // },
+    // 行首
+    // todo：貌似配合操作符会有点问题
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    // 行尾
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    },
+    // 屏幕向下滚动半屏
+    {
+      "before": ["J"],
+      "after": ["<C-d>"]
+    },
+    // 屏幕向上滚动半屏
+    {
+      "before": ["K"],
+      "after": ["<C-u>"]
+    }
+  ],
+  "vim.handleKeys": {
+    // 取消掉一些与 vscode 快捷键冲突的 Ctrl + a...
+    "<C-a>": false,
+    "<C-f>": true,
+    "<C-b>": true,
+    "<C-w>": false,
+    "<C-d>": true,
+    "<C-c>": false,
+    "<C-v>": false,
+    // 这个键被我用来替换 selectPrevSuggestion 了（输入几个单词后的 api 的智能提示向上走）
+    "<C-k>": false
   },
-  // 单位转换：px 转换为 vw
-  "px-to-vw.viewportWidth": 375,
-  "px-to-vw.unitPrecision": 2,
+  // vim keep english in normal（中文切换到普通模式时自动变成英文输入）
+  // 是否启用自动切换
+  "vim.autoSwitchInputMethod.enable": true,
+  // normal 模式下需要切换的输入法
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+  // 获取当前输入法的命令
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+  // 切换输入法的命令，{im} 代表要切换的输入法名称（其实就是设置的 defaultIM）
+  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
+  // vim end
 
-  // js 设置
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  // js/ts 语法校验检查
-  "js/ts.implicitProjectConfig.checkJs": true,
-
-  // git 设置
+  // git begin
   "git.confirmSync": false,
+  "git.ignoreRebaseWarning": true,
   "gitlens.menus": {
     "editor": {
       "blame": false,
@@ -309,111 +392,52 @@
       "stash": true
     }
   },
+  // git end
 
-  // vim 设置
-  // 设置 <leader> 为空格
-  "vim.leader": "<space>",
-  "vim.easymotion": true,
-  // easymotion（这里的 <leader> 就是 空格）
-  // <leader><leader> s <char>：全文搜索字符
-  // <leader><leader> f <char>：当前光标往下搜索
-  "vim.useSystemClipboard": true,
-  "vim.incsearch": true,
-  "vim.useCtrlKeys": true,
-  "vim.hlsearch": true,
-  "vim.sneak": true,
-  // 插入模式按键功能赋值，before 赋值 after
-  "vim.insertModeKeyBindings": [
-    // 先把这个配置项去掉了,我发现我现在过于依赖jj切换普通模式导致在其它地方写代码的时候也会有所影响,改一下
-    // 后续补充: 我放弃了,哈哈哈哈,我认为jj确实挺好用的
-    // 我又来了（220901）：希望这次我可以坚持久一点，不那么依赖于 jj
-    // {
-    //   "before": ["j", "j"],
-    //   "after": ["<Esc>"]
-    // }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    // editor 更改一些变量名时使用，同步修改该文件内所有使用该变量名的地方
-    {
-      "before": ["<leader>", "r"],
-      "commands": ["editor.action.rename"]
+  // todo tree begin
+  "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "XXX", "[ ]", "[x]", "todo", "tip"],
+  // 设置 tag 对应标识信息
+  "todo-tree.highlights.customHighlight": {
+    "BUG": {
+      "icon": "bug"
     },
-    // 取消查找后的光标高亮
-    // {
-    //   "before": ["<C-n>"],
-    //   "commands": [":nohl"]
-    // },
-    {
-      "before": [";", "f"],
-      "commands": [":nohlsearch"]
+    "HACK": {
+      "icon": "tools"
     },
-    // 光标由 editor 聚焦至 terminal
-    {
-      "before": ["<leader>", "t"],
-      "commands": ["workbench.action.terminal.focus"]
+    "FIXME": {
+      "icon": "flame"
     },
-    // 返回上一次操作的位置
-    {
-      "before": ["g", "j"],
-      "commands": ["workbench.action.navigateBack"]
-    },
-    // 切换到上一个 tab
-    {
-      "before": ["E"],
-      "after": ["g", "T"]
-    },
-    // 切换到下一个 tab
-    {
-      "before": ["R"],
-      "after": ["g", "t"]
-    },
-    {
-      "before": ["<leader>", "s"],
-      "commands": [":w!"]
-    },
-    // {
-    //   "before": ["<leader>", "q"],
-    //   "commands": [":q"]
-    // },
-    // {
-    //   "before": ["<leader>", "sq"],
-    //   "commands": [":wq!"]
-    // },
-    // {
-    //   "before": ["<leader>", "d"],
-    //   "after": ["d", "d"]
-    // },
-    // 行首
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
-    // 行尾
-    {
-      "before": ["L"],
-      "after": ["g", "_"]
+    "XXX": {
+      "icon": "$(close)"
     }
-  ],
-  "vim.handleKeys": {
-    // 取消掉一些与 vscode 快捷键冲突的 Ctrl + a...
-    "<C-a>": false,
-    "<C-f>": true,
-    "<C-b>": true,
-    "<C-w>": false,
-    "<C-d>": true,
-    "<C-c>": false,
-    "<C-v>": false,
-    // 这个键被我用来替换 selectPrevSuggestion 了（输入几个单词后的 api 的智能提示向上走）
-    "<C-k>": false
   },
+  // todo tree end
 
-  // prettier 配置
+  // errorLens begin
+  "errorLens.fontFamily": "JetBrains Mono",
+  // "errorLens.borderRadius": "100px",
+  // 是否使用斜体
+  // "errorLens.fontStyleItalic": true,
+  "errorLens.fontWeight": "500",
+  "errorLens.margin": "20px",
+  // "errorLens.messageBackgroundMode": "message",
+  "errorLens.messageTemplate": "$severity：$message ($source) $count",
+  // "errorLens.padding": "2px 10px",
+  // "errorLens.statusBarMessageAlignment": "right",
+  "errorLens.removeLinebreaks": false,
+  "errorLens.gutterIconsFollowCursorOverride": false,
+  // 启用的错误提示等级
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  // errorLens end
+
+  // prettier begin
   "prettier.printWidth": 100,
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
+  // prettier end
 
-  // ESLint 配置
+  // eslint begin
   // "eslint.validate": ["javascript"],
   // "eslint.options": {
   //   // tip: 指定全局配置文件，会覆盖优先于本地配置
@@ -422,13 +446,50 @@
   // "eslint.format.enable": true,
   // "eslint.quiet": true,
   // "eslint.alwaysShowStatus": true,
+  // eslint end
 
-  "security.workspace.trust.untrustedFiles": "open",
-  "docker.images.label": "Tag",
-  "git.ignoreRebaseWarning": true,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "vetur.validation.template": false,
-  "vsicons.dontShowNewVersionMessage": false,
+  // js begin
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // 是否开启语法校验检查
+  "js/ts.implicitProjectConfig.checkJs": true,
+  // js end
+
+  // css begin
+  // less 转换为 css
+  "less.compile": {
+    "outExt": ".css"
+  },
+  // px 转换为 vw 单位
+  "px-to-vw.viewportWidth": 375,
+  "px-to-vw.unitPrecision": 2,
+  // css end
+
+  // other begin
   "search.smartCase": true,
-  "window.autoDetectHighContrast": false
+  // 全局搜索时排除掉一些指定目录
+  "search.exclude": {
+    "**/.git": true,
+    "**/.github": true,
+    "**/.nuxt": true,
+    "**/.output": true,
+    "**/.pnpm": true,
+    "**/.vscode": true,
+    "**/.yarn": true,
+    "**/bower_components": true,
+    "**/dist/**": true,
+    "**/logs": true,
+    "**/node_modules": true,
+    "**/out/**": true,
+    "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true,
+    "**/tmp": true,
+    "**/yarn.lock": true
+  },
+  "docker.images.label": "Tag",
+  "vsicons.dontShowNewVersionMessage": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "vetur.validation.template": false
+  // other end
 }
