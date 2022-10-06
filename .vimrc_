@@ -1,0 +1,79 @@
+# 配置 leader 键映射
+let mapleader = " "
+
+# 配置 vim 编辑文件时 normal 与 insert 模式下光标显示情况
+if $TERM_PROGRAM =~ "iTerm"
+let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
+# 代码的语法高亮
+syntax on
+# 显示行号
+set number
+# 显示搜索高亮
+set hlsearch
+# 边搜索边高亮
+set incsearch
+# 显示相对行号
+set relativenumber
+# 显示当前光标底部线条
+set cursorline
+# 当某行内容超过显示窗口时自动换行显示
+set wrap
+# 右下角显示一些当前敲击的命令
+set showcmd
+# 底部 : 模式下按 tab 智能提示补全
+set wildmenu
+# 忽略大小写
+set ignorecase
+# 智能大小写搜索
+set smartcase
+# 解决在 insert mode 下不能按 backspace（退格键）的问题
+set backspace=indent,eol,start
+
+# 使用 vim 进入文件前先执行取消高亮命令（防止出现上次高亮搜索结果）
+exec "nohl"
+
+# 非递归映射键
+nmap J 5j
+noremap K 5k
+# zz 代表的是将当前光标移动到文件的中心位置
+noremap - nzz
+noremap = Nzz
+# leader + 回车：取消搜索高亮
+noremap <leader><CR> :nohl<CR>
+# leader + s：保存文件
+noremap <leader>s :w<CR>
+# leader + q：退出文件（前提文件已保存）
+noremap <leader>q :q<CR>
+
+# 将 s 键的功能取消
+map s <nop>
+map S :w<CR>
+map Q :q<CR>
+# 将 R 键设置为重新加载 vimrc 配置
+map R :source $MYVIMRC<CR>
+
+# 上下左右分屏
+map sk :set nosplitbelow<CR>:split<CR>
+map sj :set splitbelow<CR>:split<CR>
+map sh :set nosplitright<CR>:vsplit<CR>
+map sl :set splitright<CR>:vsplit<CR>
+
+# 聚焦上下左右的分屏
+map <leader>l <C-w>l
+map <leader>h <C-w>h
+map <leader>j <C-w>j
+map <leader>k <C-w>k
+
+# 插件下载
+call plug#begin('~/.vim/plugged')
+
+# vim 底部提示条
+Plug 'vim-airline/vim-airline'
+# 一个颜色主题方案
+Plug 'connorholyday/vim-snazzy'
+
+call plug#end()
+
