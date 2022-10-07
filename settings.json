@@ -14,9 +14,8 @@
   // todo：没体会到作用在哪
   "window.nativeTabs": false,
   "window.titleBarStyle": "custom",
-  // 设置窗口整体缩放大小
-  "window.zoomLevel": 0.14,
   // 搜索项居中
+  "window.zoomLevel": 0.14,
   "window.commandCenter": true,
   // 对话框外观
   "window.dialogStyle": "custom",
@@ -24,12 +23,11 @@
   "window.newWindowDimensions": "offset",
   // 是否开启主题自动切换（白天/黑夜）
   "window.autoDetectColorScheme": true,
-  "window.autoDetectHighContrast": false,
   // window end
 
   // workbench begin（工作区）
   // 主题样式
-  "workbench.colorTheme": "Vitesse Dark",
+  "workbench.colorTheme": "Ayu Mojave",
   // 文件图标样式
   "workbench.iconTheme": "field-lights-monochrome",
   // "workbench.iconTheme": "file-icons",
@@ -38,7 +36,8 @@
   // 夜晚使用的主题
   "workbench.preferredDarkColorTheme": "Vitesse Dark",
   // 白天使用的主题
-  "workbench.preferredLightColorTheme": "One Dark Pro Darker",
+  // "workbench.preferredLightColorTheme": "One Dark Pro Darker",
+  "workbench.preferredLightColorTheme": "Ayu Mojave",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "right",
   "workbench.editor.limit.enabled": true,
@@ -58,7 +57,9 @@
 
       // 活动栏
       // 背景颜色（显示图标的侧边栏）
-      "activityBar.background": "#111318",
+      // "activityBar.background": "#111318",
+      "activityBar.background": "#1a1d22",
+
       // 图标激活颜色
       "activityBar.foreground": "#abbcab",
       // 图标默认颜色
@@ -66,7 +67,7 @@
 
       // 侧边栏
       // 背景颜色
-      "sideBar.background": "#0f0f0f",
+      "sideBar.background": "#111318",
       // 一级菜单背景颜色
       "sideBarSectionHeader.background": "#111318",
       // 鼠标悬浮背景颜色
@@ -82,8 +83,8 @@
       "titleBar.activeForeground": "#c1c1c1",
       "titleBar.inactiveForeground": "#c1c1c1",
       // 背景颜色（激活/未激活）
-      "titleBar.activeBackground": "#111318",
-      "titleBar.inactiveBackground": "#111318",
+      "titleBar.activeBackground": "#1a1d22",
+      "titleBar.inactiveBackground": "#1a1d22",
       // 底部边框
       "titleBar.border": "#abbcab50",
 
@@ -95,11 +96,11 @@
       // 激活选项卡底部边框
       "tab.activeBorder": "#abbcab",
       // 选项卡时编辑器组标题的背景颜色
-      "editorGroupHeader.tabsBackground": "#111318",
+      "editorGroupHeader.tabsBackground": "#1a1d22",
 
       // 编辑器
       // 背景颜色
-      "editor.background": "#111318",
+      "editor.background": "#1a1d22",
       // 选中片段背景
       "editor.selectionBackground": "#abbcab65",
       // 选中片段对应该文中一致的内容高亮背景
@@ -112,7 +113,7 @@
       "editorLineNumber.activeForeground": "#dedcd5",
 
       // 面板（测试了下貌似会影响到终端颜色，终端不设置的前提下）：
-      "panel.background": "#111318",
+      "panel.background": "#1a1d22",
       "panel.border": "#abbcab50",
 
       // 终端
@@ -172,6 +173,9 @@
       // 注释颜色更改
       "comments": "#9eaa9e"
     },
+    "[Ayu Mojave]": {
+      "comments": "#a2aaa2"
+    },
     // 斜体注释矫正
     "textMateRules": [
       {
@@ -209,8 +213,11 @@
   "terminal.integrated.letterSpacing": 0,
   "terminal.integrated.gpuAcceleration": "off",
   "terminal.integrated.fontWeightBold": "normal",
-  "terminal.integrated.cursorBlinking": true,
+  // 光标宽度设置
+  // "terminal.integrated.cursorWidth": 1,
   "terminal.integrated.cursorStyle": "line",
+  // 控制光标是否闪烁（todo：不知道为啥设置了开启，我的终端仍然是不闪烁状态）
+  "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.fontWeight": "300",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.tabs.enabled": true,
@@ -247,6 +254,11 @@
     //   "commands": ["editor.action.rename"]
     // },
     // 取消查找后的光标高亮
+    // tip: <CR> 是回车键
+    {
+      "before": ["<leader>", "<CR>"],
+      "commands": [":nohl"]
+    },
     // {
     //   "before": ["<C-n>"],
     //   "commands": [":nohl"]
@@ -260,10 +272,75 @@
       "before": ["<leader>", "t"],
       "commands": ["workbench.action.terminal.focus"]
     },
+    // 聚焦上一个/下一个编辑组
+    {
+      "before": ["<leader>", "N"],
+      "commands": ["workbench.action.focusPreviousGroup"]
+    },
+    {
+      "before": ["<leader>", "n"],
+      "commands": ["workbench.action.focusNextGroup"]
+    },
+    // 聚焦左/右编辑组
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    // 新建文件
+    {
+      "before": ["t", "u"],
+      "commands": [":tabe"]
+    },
+
+    // 右下分屏
+    {
+      "before": ["s", "l", "<leader>"],
+      "commands": [":vsplit"]
+    },
+    {
+      "before": ["s", "j", "<leader>"],
+      "commands": [":split"]
+    },
+    // 保存
+    {
+      "before": ["S"],
+      // "commands": [":w!"]
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "s"],
+      // "commands": [":w!"]
+      "commands": ["workbench.action.files.save"]
+    },
+    // 退出
+    {
+      "before": ["Q"],
+      "commands": [":q"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":q"]
+    },
     // 返回上一次操作的位置
     {
+      "before": ["g", "k"],
+      // "commands": ["workbench.action.navigateBack"]
+      "after": ["<C-o>"]
+    },
+    // 返回上一次操作的位置之后再返回原位置
+    {
       "before": ["g", "j"],
-      "commands": ["workbench.action.navigateBack"]
+      // "commands": ["workbench.action.navigateBack"]
+      "after": ["<C-i>"]
+    },
+    // 进入文件定义处
+    {
+      "before": ["<leader>", "f"],
+      "after": ["g", "f"]
     },
     // 切换到上一个 tab
     {
@@ -274,24 +351,6 @@
     {
       "before": ["R"],
       "after": ["g", "t"]
-    },
-    // 保存
-    {
-      "before": ["S"],
-      "commands": [":w!"]
-    },
-    {
-      "before": ["<leader>", "s"],
-      "commands": [":w!"]
-    },
-    // 退出
-    {
-      "before": ["Q"],
-      "commands": [":q"]
-    },
-    {
-      "before": ["<leader>", "q"],
-      "commands": [":q"]
     },
     // {
     //   "before": ["<leader>", "sq"],
@@ -312,15 +371,19 @@
       "before": ["L"],
       "after": ["g", "_"]
     },
-    // 屏幕向下滚动半屏
+    // 屏幕向下滚动 12 行
     {
       "before": ["J"],
-      "after": ["<C-d>"]
+      // 屏幕向下滚动半屏
+      // "after": ["<C-d>"]
+      "after": ["1", "2", "j"]
     },
-    // 屏幕向上滚动半屏
+    // 屏幕向上滚动 12 行
     {
       "before": ["K"],
-      "after": ["<C-u>"]
+      // 屏幕向上滚动半屏
+      // "after": ["<C-u>"]
+      "after": ["1", "2", "k"]
     }
   ],
   "vim.handleKeys": {

@@ -1,6 +1,13 @@
 // 将键绑定放在此文件中以覆盖默认值auto[]
 [
   // my config
+  // gitlens begin
+  {
+    "key": "ctrl+g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  // gitlens end
   // editor：选中当前词并跳到下一个当前词
   // {
   //   "key": "cmd+k cmd+d",
@@ -21,12 +28,12 @@
   },
   // editor：将当前标签移动到左边一组标签
   {
-    "key": "shift+cmd+h",
+    "key": "cmd+shift+, cmd+shift+,",
     "command": "workbench.action.moveEditorToPreviousGroup"
   },
   // editor：将当前标签移动到右边一组标签
   {
-    "key": "shift+cmd+l",
+    "key": "cmd+shift+. cmd+shift+.",
     "command": "workbench.action.moveEditorToNextGroup"
   },
   // 创建新终端
