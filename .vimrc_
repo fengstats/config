@@ -2,10 +2,9 @@
 let mapleader = " "
 
 # 配置 vim 编辑文件时 normal 与 insert 模式下光标显示情况
-if $TERM_PROGRAM =~ "iTerm"
-let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 # 代码的语法高亮
 syntax on
@@ -31,6 +30,40 @@ set ignorecase
 set smartcase
 # 解决在 insert mode 下不能按 backspace（退格键）的问题
 set backspace=indent,eol,start
+
+# 保存旧版差异化
+set nocompatible
+# 文件类型识别
+filetype on
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+# 能让你在 vim 中使用鼠标进行操作
+set mouse=a
+set encoding=utf-8
+# 部分终端使用 vim 配色不对，用于矫正
+let &t_ut=''
+set expandtab
+# 文件 tab 缩进字符设置 
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set tw=0
+set indentexpr=
+# todo：显示每一行结束标志位，貌似是用于查看是否行尾有多余空格？
+set list
+
+# todo：应该是折叠代码相关的
+set foldmethod=indent
+set foldlevel=99
+# 命令行状态栏显示在底部倒数第二行，设置 0 关闭 
+set laststatus=2
+# todo：在当前目录下执行命令，不知道效果
+set autochdir
+# 你移动光标时保证上下有五行内容是永远保持在你的可视区域的
+set scrolloff=5
+# 一个很好用的功能，其中一个是你关闭文件后再次打开时，光标回到你上一次离开时的位置
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 # 使用 vim 进入文件前先执行取消高亮命令（防止出现上次高亮搜索结果）
 exec "nohl"
@@ -61,11 +94,32 @@ map sj :set splitbelow<CR>:split<CR>
 map sh :set nosplitright<CR>:vsplit<CR>
 map sl :set splitright<CR>:vsplit<CR>
 
+# 切换成左右分屏
+map sv <C-w>t<C-w>H
+# 切换成上下分屏
+map sh <C-w>t<C-w>K
+
+# 打开一个新的标签页
+map tu :tabe<CR>
+# 左右浏览标签页
+map th :-tabnext<CR>
+map tl :+tabnext<CR>
+
+# 设置上下左右键位更改分屏大小 
+map <up> :res +5<CR>
+map <down> :res -5<CR>
+map <left> :vertical resize-5<CR>
+map <right> :vertical resize+5<CR>
+
 # 聚焦上下左右的分屏
 map <leader>l <C-w>l
 map <leader>h <C-w>h
 map <leader>j <C-w>j
 map <leader>k <C-w>k
+# 开启/关闭单词拼写检查
+map <leader>sc :set spell!<CR>
+# 使用 <+> 字符做占位符（placeholder）通过 leader * 2 来找到并清除这个占位符
+map <leader><leader> <Esc>/<+><CR>:nohlsearch<CR>c3l
 
 # 插件下载
 call plug#begin('~/.vim/plugged')
