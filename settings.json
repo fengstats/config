@@ -14,8 +14,6 @@
   // todo：没体会到作用在哪
   "window.nativeTabs": false,
   "window.titleBarStyle": "custom",
-  // 搜索项居中
-  "window.zoomLevel": 0.14,
   "window.commandCenter": true,
   // 对话框外观
   "window.dialogStyle": "custom",
@@ -27,17 +25,18 @@
 
   // workbench begin（工作区）
   // 主题样式
-  "workbench.colorTheme": "Ayu Mojave",
+  "workbench.colorTheme": "Vitesse Dark",
   // 文件图标样式
-  "workbench.iconTheme": "field-lights-monochrome",
+  "workbench.iconTheme": "file-icons",
   // "workbench.iconTheme": "file-icons",
   // 活动栏的图标
   "workbench.productIconTheme": "icons-carbon",
   // 夜晚使用的主题
   "workbench.preferredDarkColorTheme": "Vitesse Dark",
   // 白天使用的主题
+  "workbench.preferredLightColorTheme": "Vitesse Dark",
   // "workbench.preferredLightColorTheme": "One Dark Pro Darker",
-  "workbench.preferredLightColorTheme": "Ayu Mojave",
+  // "workbench.preferredLightColorTheme": "Ayu Mojave",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.tabCloseButton": "right",
   "workbench.editor.limit.enabled": true,
@@ -113,7 +112,8 @@
       "editorLineNumber.activeForeground": "#dedcd5",
 
       // 面板（测试了下貌似会影响到终端颜色，终端不设置的前提下）：
-      "panel.background": "#1a1d22",
+      // "panel.background": "#1a1d22",
+      "panel.background": "#13151b",
       "panel.border": "#abbcab50",
 
       // 终端
@@ -176,6 +176,9 @@
     "[Ayu Mojave]": {
       "comments": "#a2aaa2"
     },
+    "[One Dark Pro Darker]": {
+      "comments": "#a2aaa2"
+    },
     // 斜体注释矫正
     "textMateRules": [
       {
@@ -207,7 +210,7 @@
   // terminal begin（终端）
   "terminal.integrated.fontSize": 13,
   // 终端字体，不设置的话默认使用编辑器字体
-  "terminal.integrated.fontFamily": "Hack Nerd Font Mono, monospace",
+  "terminal.integrated.fontFamily": "Hack Nerd Font Mono,monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
   "terminal.integrated.lineHeight": 0,
   "terminal.integrated.letterSpacing": 0,
@@ -306,11 +309,12 @@
       "commands": [":split"]
     },
     // 保存
-    {
-      "before": ["S"],
-      // "commands": [":w!"]
-      "commands": ["workbench.action.files.save"]
-    },
+    // tip: S 与 vim-surround 触发按键冲突，先选择其他方案吧（或许直接 cmd+s 也挺好？）
+    // {
+    //   "before": ["S"],
+    //   // "commands": [":w!"]
+    //   "commands": ["workbench.action.files.save"]
+    // },
     {
       "before": ["<leader>", "s"],
       // "commands": [":w!"]
@@ -371,19 +375,19 @@
       "before": ["L"],
       "after": ["g", "_"]
     },
-    // 屏幕向下滚动 12 行
+    // 屏幕向下滚动指定行
     {
       "before": ["J"],
       // 屏幕向下滚动半屏
       // "after": ["<C-d>"]
-      "after": ["1", "2", "j"]
+      "after": ["8", "j"]
     },
-    // 屏幕向上滚动 12 行
+    // 屏幕向上滚动指定行
     {
       "before": ["K"],
       // 屏幕向上滚动半屏
       // "after": ["<C-u>"]
-      "after": ["1", "2", "k"]
+      "after": ["8", "k"]
     }
   ],
   "vim.handleKeys": {

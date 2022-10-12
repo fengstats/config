@@ -1,5 +1,3 @@
-let mapleader = " "
-
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -9,7 +7,7 @@ set number
 set hlsearch
 set incsearch
 set relativenumber
-set cursorline
+" set cursorline
 set wrap
 set showcmd
 set wildmenu
@@ -36,12 +34,27 @@ set foldlevel=99
 set laststatus=2
 set autochdir
 set scrolloff=5
+" 系统剪切板 -> vim
+set clipboard=unnamedplus
+" vim -> 系统剪切板
+set clipboard=unnamed
+" 解决 insert-mode -> normal-mode 各种延迟显示的问题
+set ttimeout ttimeoutlen=10
+" 当你退出文件后依旧会记录 500 次的操作让你回退
+set undofile
+set history=500
+set undodir=~/.vim/undodir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 exec "nohl"
 
-nmap J 5j
-noremap K 5k
+let mapleader = " "
+" 使用 <leader><leader>c 注释时添加的分隔符
+let NERDSpaceDelims = 1 
+
+nmap J <C-d>
+nmap K <C-u> 
+
 noremap - nzz
 noremap = Nzz
 noremap <leader><CR> :nohl<CR>
@@ -60,6 +73,12 @@ map sl :set splitright<CR>:vsplit<CR>
 map sv <C-w>t<C-w>H
 map sh <C-w>t<C-w>K
 
+map gk <C-o>
+map gj <C-i>
+
+map H ^
+map L $
+
 map tu :tabe<CR>
 map th :-tabnext<CR>
 map tl :+tabnext<CR>
@@ -69,13 +88,25 @@ map <leader>l <C-w>l
 map <leader>h <C-w>h
 map <leader>j <C-w>j
 map <leader>k <C-w>k
+" map <leader>r :source $MYVIMRC<CR>
 map <leader>sc :set spell!<CR>
-map <leader>u :!cat vimrc > ~/code/mine/vscode-settings/.vimrc<CR>q
 map <leader><leader> <Esc>/<+><CR>:nohlsearch<CR>c3l
+
+" 自动保存文件视图状态
+autocmd BufWrite * mkview
+autocmd BufWinLeave * mkview
+autocmd BufRead * silent loadview
+
+" temp
+map <leader>u :!cat vimrc > /Users/feng/Github/vscode-settings/.vimrc<CR>q
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-airline/vim-airline'
+" smooth
+Plug 'psliwka/vim-smoothie'
+
+" Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'connorholyday/vim-snazzy'
 
 " File navigation
@@ -113,19 +144,20 @@ Plug 'fadein/vim-FIGlet'
 call plug#end()
 
 " ===
+" === lightline.vim
+" ===
+set laststatus=2
+let lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
+" ===
 " === NERDTree
 " ===
-map tt :NERDTreeToggle<CR>
-let NERDTreeMapOpenExpl = ""
-let NERDTreeMapUpdir = ""
-let NERDTreeMapUpdirKeepOpen = "l"
-let NERDTreeMapOpenSplit = ""
-let NERDTreeOpenVSplit = ""
-let NERDTreeMapActivateNode = "i"
-let NERDTreeMapOpenInTab = "o"
-let NERDTreeMapPreview = ""
-let NERDTreeMapCloseDir = "n"
-let NERDTreeMapChangeRoot = "y"  
+map <leader>g :NERDTreeToggle<CR>
+map <leader>f :NERDTreeFind<CR>
+" let NERDTreeMapOpenExpl = "l"
+let NERDTreeMapOpenSplit = "l"
 
 " ===
 " === ale
@@ -136,6 +168,6 @@ let b:ale_fixers = ['autopep8', 'yapf']
 " ===
 " === Undotree
 " ===
-let g:undotree_DiffAutoOpen = 0
-map L :UndotreeToggle<CR>
+" let g:undotree_DiffAutoOpen = 0
+" map L :UndotreeToggle<CR>
 
