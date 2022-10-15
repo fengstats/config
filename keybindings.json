@@ -1,6 +1,7 @@
 // 将键绑定放在此文件中以覆盖默认值auto[]
 [
   // my config
+
   // gitlens begin
   {
     "key": "ctrl+g",
@@ -8,100 +9,113 @@
     "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
   },
   // gitlens end
-  // editor：选中当前词并跳到下一个当前词
+
+  // editor begin
+  // 选中当前词并跳到下一个当前词
   // {
   //   "key": "cmd+k cmd+d",
   //   "command": "editor.action.moveSelectionToNextFindMatch",
   //   "when": "editorFocus"
   // },
-  // editor：替换当前行和上一行
+  // 替换当前行和上一行
   {
     "key": "alt+k",
     "command": "editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
   },
-  // editor：替换当前行和下一行
+  // 替换当前行和下一行
   {
     "key": "alt+j",
     "command": "editor.action.moveLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
   },
-  // editor：将当前标签移动到左边一组标签
+  // 将当前标签移动到左边一组标签
   {
     "key": "cmd+shift+, cmd+shift+,",
     "command": "workbench.action.moveEditorToPreviousGroup"
   },
-  // editor：将当前标签移动到右边一组标签
+  // 将当前标签移动到右边一组标签
   {
     "key": "cmd+shift+. cmd+shift+.",
     "command": "workbench.action.moveEditorToNextGroup"
   },
+  // editor end
+
+  // terminal begin
   // 创建新终端
   {
     "key": "shift+cmd+n",
     "command": "workbench.action.terminal.new",
     "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   },
-  // 终端：垂直方向聚焦到上一组
+  // 垂直方向聚焦到上一组
   {
     "key": "shift+cmd+k",
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
   },
-  // 终端：垂直方向聚焦到下一组
+  // 垂直方向聚焦到下一组
   {
     "key": "shift+cmd+j",
     "command": "workbench.action.terminal.focusNext",
     "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
   },
-  // 终端：水平方向聚焦到上一个终端
+  // 水平方向聚焦到上一个终端
   {
     "key": "shift+cmd+h",
     "command": "workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // 终端：水平方向聚焦到下一个终端
+  // 水平方向聚焦到下一个终端
   {
     "key": "shift+cmd+l",
     "command": "workbench.action.terminal.focusNextPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // 终端：大小往下拉伸
+  // 大小往下拉伸
   {
     "key": "ctrl+cmd+j",
     "command": "workbench.action.terminal.resizePaneDown",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // 终端：大小往上拉伸
+  // 大小往上拉伸
   {
     "key": "ctrl+cmd+k",
     "command": "workbench.action.terminal.resizePaneUp",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // 终端：大小往左拉伸
+  // 大小往左拉伸
   {
     "key": "ctrl+cmd+h",
     "command": "workbench.action.terminal.resizePaneLeft",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // 终端：大小往右拉伸
+  // 大小往右拉伸
   {
     "key": "ctrl+cmd+l",
     "command": "workbench.action.terminal.resizePaneRight",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // 文件：新建
+  // terminal end
+
+  // file begin
+  // 新建文件
   {
     "key": "cmd+n",
-    "command": "-workbench.action.files.newUntitledFile"
+    "command": "explorer.newFile"
   },
-  // 文件：重命名
+  // 新建目录
+  {
+    "key": "ctrl+cmd+n",
+    "command": "explorer.newFolder"
+  },
+  // 重命名
   {
     "key": "r",
     "command": "renameFile",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
-  // 文件：删除
+  // 删除
   {
     "key": "d",
     "command": "deleteFile",
@@ -122,15 +136,12 @@
   //   "command": "-workbench.view.explorer",
   //   "when": "viewContainer.workbench.view.explorer.enabled"
   // },
+  // file end
 
   // setting default
   {
     "key": "cmd+r",
     "command": "vite.open"
-  },
-  {
-    "key": "cmd+n",
-    "command": "explorer.newFile"
   },
   {
     "key": "cmd+j",
