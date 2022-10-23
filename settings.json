@@ -110,6 +110,7 @@
       "editor.foldBackground": "#eeeeee10",
       // 小组件背景颜色（查找、替换、提示）
       "editorWidget.background": "#121212",
+
       // 编辑器行号（当前行、其他行）
       "editorLineNumber.foreground": "#bfbaaa90",
       "editorLineNumber.activeForeground": "#dedcd5",
@@ -128,8 +129,8 @@
   // editor begin（代码编辑区）
   "editor.tabSize": 2,
   "editor.fontSize": 13,
-  "editor.fontFamily": "Input Mono",
-  // "editor.fontFamily": "JetBrains Mono",
+  // "editor.fontFamily": "Input Mono",
+  "editor.fontFamily": "JetBrains Mono",
   // "editor.fontFamily": "Input Mono, Fira Code, monospace",
   // "editor.fontWeight": 400,
   // 小地图显示大小设置
@@ -155,7 +156,7 @@
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
   // 使用 command 替换 alt/option 的多光标模式
-  "editor.multiCursorModifier": "ctrlCmd",
+  // "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "boundary",
   "editor.suggestSelection": "first",
   "editor.unicodeHighlight.invisibleCharacters": false,
@@ -279,26 +280,36 @@
     //   "commands": [":nohlsearch"]
     // },
     // 光标由 editor 聚焦至 terminal
+    // {
+    //   "before": ["<leader>", "t"],
+    //   "commands": ["workbench.action.terminal.focus"]
+    // },
+    // 右下分屏
     {
-      "before": ["<leader>", "t"],
-      "commands": ["workbench.action.terminal.focus"]
+      "before": ["s", "l", "<cr>"],
+      "commands": [":vsplit"]
     },
-    // 聚焦上一个/下一个编辑组
     {
-      "before": ["<leader>", "N"],
+      "before": ["s", "j", "<cr>"],
+      "commands": [":split"]
+    },
+    // 聚焦上/下一个编辑组
+    {
+      // "before": ["<leader>", "k"],
+      "before": ["<C-k>"],
       "commands": ["workbench.action.focusPreviousGroup"]
     },
     {
-      "before": ["<leader>", "n"],
+      "before": ["<C-j>"],
       "commands": ["workbench.action.focusNextGroup"]
     },
     // 聚焦左/右编辑组
     {
-      "before": ["<leader>", "h"],
+      "before": ["<C-h>"],
       "commands": ["workbench.action.focusLeftGroup"]
     },
     {
-      "before": ["<leader>", "l"],
+      "before": ["<C-l>"],
       "commands": ["workbench.action.focusRightGroup"]
     },
     // 新建文件
@@ -306,17 +317,8 @@
       "before": ["t", "u"],
       "commands": [":tabe"]
     },
-    // 右下分屏
-    {
-      "before": ["s", "l", "<leader>"],
-      "commands": [":vsplit"]
-    },
-    {
-      "before": ["s", "j", "<leader>"],
-      "commands": [":split"]
-    },
-    // 保存
-    // tip: S 与 vim-surround 触发按键冲突，先选择其他方案吧（或许直接 cmd+s 也挺好？）
+    // 保存文件
+    // todo: S 与 vim-surround 触发按键冲突，先选择其他方案吧（或许直接 cmd+s 也挺好？）
     // {
     //   "before": ["S"],
     //   // "commands": [":w!"]
@@ -327,7 +329,7 @@
       // "commands": [":w!"]
       "commands": ["workbench.action.files.save"]
     },
-    // 退出
+    // 退出文件
     {
       "before": ["Q"],
       "commands": [":q"]
@@ -372,7 +374,7 @@
     //   "after": ["d", "d"]
     // },
     // 行首
-    // todo：貌似配合操作符会有点问题
+    // tip：貌似配合操作符会有点问题
     {
       "before": ["H"],
       "after": ["^"]
@@ -405,13 +407,14 @@
     "<C-w>": false,
     "<C-d>": true,
     "<C-c>": false,
-    "<C-v>": false,
-    // 这个键被我用来替换 selectPrevSuggestion 了（输入几个单词后的 api 的智能提示向上走）
-    "<C-k>": false
+    "<C-v>": false
+    // tip: 这个键被我用来替换 selectPrevSuggestion 了（输入几个单词后的 api 的智能提示向上走）
+    // tip: 现在又用来聚焦上一个编辑组了hhh
+    // "<C-k>": false
   },
   // vim keep english in normal（中文切换到普通模式时自动变成英文输入）
   // 是否启用自动切换
-  // todo：目前发现了个小 bug，某个文件打开一段时间后使用 ciw 命令时，normal 的光标状态会带到 insert
+  // todo：目前发现了个小 bug，某个文件打开一段时间后使用 ciw 命令时，normal 模式的光标状态会带到 insert 模式下
   "vim.autoSwitchInputMethod.enable": false,
   // normal 模式下需要切换的输入法
   "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
@@ -542,10 +545,10 @@
   // css end
 
   // paramHints begin
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterNames.enabled": "none",
+  "javascript.inlayHints.parameterTypes.enabled": false,
+  "typescript.inlayHints.parameterTypes.enabled": false,
+  "typescript.inlayHints.parameterNames.enabled": "none",
   "editor.inlayHints.enabled": "onUnlessPressed",
   // paramHint end
 
@@ -577,7 +580,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "//": "Last update at 10/18/2022, 11:59:35 PM",
+    "//": "Last update at 10/24/2022, 1:57:27 AM",
     "*.asax": "$(capture).*.cs, $(capture).*.vb",
     "*.ascx": "$(capture).*.cs, $(capture).*.vb",
     "*.ashx": "$(capture).*.cs, $(capture).*.vb",

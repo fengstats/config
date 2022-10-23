@@ -2,13 +2,34 @@
 [
   // my config
 
-  // gitlens begin
+  // other
+  // 新建终端并进入当前文件所在位置
+  {
+    "key": "ctrl+`",
+    "command": "openInTerminal"
+  },
+
+  // activityBar begin（活动栏）
+  {
+    "key": "ctrl+;",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
   {
     "key": "ctrl+g",
     "command": "workbench.view.scm",
     "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
   },
-  // gitlens end
+  {
+    "key": "ctrl+f",
+    "command": "workbench.action.findInFiles"
+  },
+  // project-manager
+  {
+    "key": "ctrl+alt+p",
+    "command": "workbench.view.extension.project-manager"
+  },
+  // activityBar end
 
   // editor begin
   // 选中当前词并跳到下一个当前词
@@ -121,11 +142,6 @@
     "command": "deleteFile",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
-  {
-    "key": "ctrl+;",
-    "command": "workbench.view.explorer",
-    "when": "viewContainer.workbench.view.explorer.enabled"
-  },
   // {
   //   "key": "shift+cmd+e",
   //   "command": "workbench.view.explorer",
@@ -137,6 +153,38 @@
   //   "when": "viewContainer.workbench.view.explorer.enabled"
   // },
   // file end
+
+  // other begin
+  // 从代码提示块选择上一个
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  // 列表选项中选择上一个/下一个
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  // tip: editor 中的向上/下移动一行
+  // {
+  //   "key": "ctrl+k",
+  //   "command": "cursorUp",
+  //   "when": "textInputFocus"
+  // },
+  // {
+  //   "key": "ctrl+j",
+  //   "command": "cursorDown",
+  //   "when": "textInputFocus"
+  // },
+  // 列表聚焦向上/下选择
+  // other end
 
   // setting default
   {
@@ -155,16 +203,6 @@
     "key": "shift+cmd+j",
     "command": "-workbench.action.search.toggleQueryDetails",
     "when": "inSearchEditor || searchViewletFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "-deleteAllRight",
-    "when": "textInputFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
   {
     "key": "ctrl+p",
@@ -211,15 +249,21 @@
     "when": "terminalFocus && terminalProcessSupported && terminalTextSelected"
   },
   {
-    "key": "ctrl+f",
-    "command": "workbench.action.findInFiles"
-  },
-  {
     "key": "shift+cmd+f",
     "command": "-workbench.action.findInFiles"
   },
   {
     "key": "shift+cmd+h",
     "command": "-workbench.action.replaceInFiles"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "-deleteAllRight",
+    "when": "textInputFocus && !editorReadonly"
   }
 ]
