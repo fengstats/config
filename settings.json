@@ -145,7 +145,7 @@
   // 使光标更加丝滑的移动
   "editor.cursorSmoothCaretAnimation": true,
   // 光标闪烁动画
-  "editor.cursorBlinking": "expand",
+  "editor.cursorBlinking": "blink",
   "editor.smoothScrolling": true,
   "editor.find.addExtraSpaceOnTop": false,
   // 挖槽，这个配置太帅了，我感觉字体细节直接拿捏了，antfu 大佬牛皮
@@ -306,7 +306,6 @@
       "before": ["t", "u"],
       "commands": [":tabe"]
     },
-
     // 右下分屏
     {
       "before": ["s", "l", "<leader>"],
@@ -388,14 +387,14 @@
       "before": ["J"],
       // 屏幕向下滚动半屏
       // "after": ["<C-d>"]
-      "after": ["8", "j"]
+      "after": ["5", "j"]
     },
     // 屏幕向上滚动指定行
     {
       "before": ["K"],
       // 屏幕向上滚动半屏
       // "after": ["<C-u>"]
-      "after": ["8", "k"]
+      "after": ["5", "k"]
     }
   ],
   "vim.handleKeys": {
@@ -412,7 +411,8 @@
   },
   // vim keep english in normal（中文切换到普通模式时自动变成英文输入）
   // 是否启用自动切换
-  "vim.autoSwitchInputMethod.enable": true,
+  // todo：目前发现了个小 bug，某个文件打开一段时间后使用 ciw 命令时，normal 的光标状态会带到 insert
+  "vim.autoSwitchInputMethod.enable": false,
   // normal 模式下需要切换的输入法
   "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
   // 获取当前输入法的命令
@@ -540,6 +540,14 @@
   "px-to-vw.viewportWidth": 375,
   "px-to-vw.unitPrecision": 2,
   // css end
+
+  // paramHints begin
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "editor.inlayHints.enabled": "onUnlessPressed",
+  // paramHint end
 
   // other begin
   "search.smartCase": true,
