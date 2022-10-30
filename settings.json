@@ -28,7 +28,7 @@
 
   // workbench begin（工作区）
   // 主题样式
-  "workbench.colorTheme": "Vitesse Dark",
+  "workbench.colorTheme": "Moegi Dark",
   // 文件图标样式
   "workbench.iconTheme": "file-icons",
   // "workbench.iconTheme": "file-icons",
@@ -129,8 +129,10 @@
   // editor begin（代码编辑区）
   "editor.tabSize": 2,
   "editor.fontSize": 13,
-  // "editor.fontFamily": "Input Mono",
-  "editor.fontFamily": "JetBrains Mono",
+  // 行高
+  "editor.lineHeight": 0,
+  "editor.fontFamily": "Input Mono",
+  // "editor.fontFamily": "JetBrains Mono",
   // "editor.fontFamily": "Input Mono, Fira Code, monospace",
   // "editor.fontWeight": 400,
   // 小地图显示大小设置
@@ -182,6 +184,9 @@
     },
     "[One Dark Pro Darker]": {
       "comments": "#a2aaa2"
+    },
+    "[Moegi Dark]": {
+      "comments": "#9cad9c"
     },
     // 斜体注释矫正
     "textMateRules": [
@@ -580,7 +585,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "//": "Last update at 10/24/2022, 1:57:27 AM",
+    "//": "Last update at 10/29/2022, 2:15:16 AM",
     "*.asax": "$(capture).*.cs, $(capture).*.vb",
     "*.ascx": "$(capture).*.cs, $(capture).*.vb",
     "*.ashx": "$(capture).*.cs, $(capture).*.vb",
