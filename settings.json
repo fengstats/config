@@ -131,7 +131,8 @@
   "editor.fontSize": 13,
   // 行高
   "editor.lineHeight": 0,
-  "editor.fontFamily": "Input Mono",
+  // 不设置字体的话貌似用的是系统默认字体捏
+  // "editor.fontFamily": "Input Mono",
   // "editor.fontFamily": "JetBrains Mono",
   // "editor.fontFamily": "Input Mono, Fira Code, monospace",
   // "editor.fontWeight": 400,
@@ -186,7 +187,7 @@
       "comments": "#a2aaa2"
     },
     "[Moegi Dark]": {
-      "comments": "#9cad9c"
+      "comments": "#a0ada0"
     },
     // 斜体注释矫正
     "textMateRules": [
@@ -219,8 +220,8 @@
   // terminal begin（终端）
   "terminal.integrated.fontSize": 13,
   // 终端字体，不设置的话默认使用编辑器字体
-  "terminal.integrated.fontFamily": "Hack Nerd Font Mono,monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
+  "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
   "terminal.integrated.lineHeight": 0,
   "terminal.integrated.letterSpacing": 0,
   "terminal.integrated.gpuAcceleration": "off",
