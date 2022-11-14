@@ -57,6 +57,16 @@
       // git 忽略文件字体颜色
       "gitDecoration.ignoredResourceForeground": "#dedcd558",
 
+      // 顶部导航条
+      // 字体颜色（激活/未激活）
+      "titleBar.activeForeground": "#c1c1c1",
+      "titleBar.inactiveForeground": "#c1c1c1",
+      // 背景颜色（激活/未激活）
+      "titleBar.activeBackground": "#1a1d22",
+      "titleBar.inactiveBackground": "#1a1d22",
+      // 底部边框
+      "titleBar.border": "#abbcab50",
+
       // 活动栏
       // 背景颜色（显示图标的侧边栏）
       // "activityBar.background": "#111318",
@@ -79,16 +89,6 @@
       "list.activeSelectionBackground": "#abbcab35",
       // 当前键盘聚焦所在列表背景颜色
       "list.focusBackground": "#abbcab45",
-
-      // 顶部导航条
-      // 字体颜色（激活/未激活）
-      "titleBar.activeForeground": "#c1c1c1",
-      "titleBar.inactiveForeground": "#c1c1c1",
-      // 背景颜色（激活/未激活）
-      "titleBar.activeBackground": "#1a1d22",
-      "titleBar.inactiveBackground": "#1a1d22",
-      // 底部边框
-      "titleBar.border": "#abbcab50",
 
       // 标签
       // 未激活选项卡背景颜色
@@ -122,6 +122,11 @@
 
       // 终端
       "terminal.selectionBackground": "#d1d1d130"
+    },
+    "[Moegi Dark]": {
+      "titleBar.activeBackground": "#222222",
+      "titleBar.inactiveBackground": "#222222",
+      "activityBar.background": "#222222"
     }
   },
   // workbench end
@@ -188,6 +193,19 @@
     },
     "[Moegi Dark]": {
       "comments": "#a0ada0"
+      // 设置关键字样式
+      // "textMateRules": [
+      //   {
+      //     "name": "Keyword Bold",
+      //     "scope": ["keyword", "storage.type", "storage.modifier"],
+      //     "settings": {
+      //       "fontStyle": "bold"
+      //     }
+      //   }
+      // ]
+    },
+    "[GitHub Dark Dimmed]": {
+      "comments": "#adb5ad"
     },
     // 斜体注释矫正
     "textMateRules": [
@@ -286,10 +304,10 @@
     //   "commands": [":nohlsearch"]
     // },
     // 光标由 editor 聚焦至 terminal
-    // {
-    //   "before": ["<leader>", "t"],
-    //   "commands": ["workbench.action.terminal.focus"]
-    // },
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.focus"]
+    },
     // 右下分屏
     {
       "before": ["s", "l", "<cr>"],
@@ -652,6 +670,10 @@
     "vue.config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*"
   },
   "powermode.enabled": false,
-  "powermode.shake.intensity": 0
+  "powermode.shake.intensity": 0,
+  "commentTranslate.hover.string": true,
+  "commentTranslate.hover.variable": true,
+  "commentTranslate.hover.enabled": false,
+  "commentTranslate.hover.content": false
   // other end
 }
