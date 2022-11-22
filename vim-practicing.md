@@ -11,6 +11,7 @@ def main() {
   } else {
     print("Goodby, world!")
   }
+  print('null')
 }
 ```
 

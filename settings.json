@@ -121,12 +121,25 @@
       "panel.border": "#abbcab50",
 
       // 终端
+      // 选择背景色
       "terminal.selectionBackground": "#d1d1d130"
     },
-    "[Moegi Dark]": {
+    "[Moegi Dark1]": {
+      // 顶部
       "titleBar.activeBackground": "#222222",
       "titleBar.inactiveBackground": "#222222",
-      "activityBar.background": "#222222"
+      // 活动栏
+      "activityBar.background": "#222222",
+      // 侧边栏
+      "sideBar.background": "#242526",
+      // 标签
+      "editorGroupHeader.tabsBackground": "#252525",
+      // 编辑器
+      "editor.background": "#292a2c",
+      // 面板
+      "panel.background": "#292a2c",
+      // 终端
+      "terminal.background": "#292a2c"
     }
   },
   // workbench end
@@ -137,6 +150,7 @@
   // 行高
   "editor.lineHeight": 0,
   // 不设置字体的话貌似用的是系统默认字体捏
+  // "editor.fontFamily": "Smiley Sans",
   // "editor.fontFamily": "Input Mono",
   // "editor.fontFamily": "JetBrains Mono",
   // "editor.fontFamily": "Input Mono, Fira Code, monospace",
@@ -148,7 +162,8 @@
   // 代码格式化指定
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // 行号显示
-  "editor.lineNumbers": "relative",
+  // "editor.lineNumbers": "relative",
+  "editor.lineNumbers": "on",
   "editor.detectIndentation": false,
   "editor.accessibilitySupport": "off",
   // 使光标更加丝滑的移动
@@ -192,7 +207,8 @@
       "comments": "#a2aaa2"
     },
     "[Moegi Dark]": {
-      "comments": "#a0ada0"
+      // "comments": "#a0ada0"
+      "comments": "#adb5ad"
       // 设置关键字样式
       // "textMateRules": [
       //   {
@@ -205,6 +221,9 @@
       // ]
     },
     "[GitHub Dark Dimmed]": {
+      "comments": "#adb5ad"
+    },
+    "[Panda Syntax]": {
       "comments": "#adb5ad"
     },
     // 斜体注释矫正
@@ -439,7 +458,7 @@
   // vim keep english in normal（中文切换到普通模式时自动变成英文输入）
   // 是否启用自动切换
   // todo：目前发现了个小 bug，某个文件打开一段时间后使用 ciw 命令时，normal 模式的光标状态会带到 insert 模式下
-  "vim.autoSwitchInputMethod.enable": false,
+  "vim.autoSwitchInputMethod.enable": true,
   // normal 模式下需要切换的输入法
   "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
   // 获取当前输入法的命令
@@ -497,7 +516,17 @@
   // git end
 
   // todo tree begin
-  "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "XXX", "[ ]", "[x]", "todo", "tip"],
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]",
+    "// todo",
+    "// tip"
+  ],
   // 设置 tag 对应标识信息
   "todo-tree.highlights.customHighlight": {
     "BUG": {
