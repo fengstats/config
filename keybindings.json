@@ -38,6 +38,23 @@
   //   "command": "editor.action.moveSelectionToNextFindMatch",
   //   "when": "editorFocus"
   // },
+  // 聚焦上/下/左/右分屏
+  {
+    "key": "cmd+shift+k",
+    "command": "workbench.action.focusPreviousGroup"
+  },
+  {
+    "key": "cmd+shift+j",
+    "command": "workbench.action.focusNextGroup"
+  },
+  {
+    "key": "cmd+shift+h",
+    "command": "workbench.action.focusLeftGroup"
+  },
+  {
+    "key": "cmd+shift+l",
+    "command": "workbench.action.focusRightGroup"
+  },
   // 替换当前行和上一行
   {
     "key": "alt+k",
@@ -65,7 +82,7 @@
   // terminal begin
   // 创建新终端
   {
-    "key": "shift+cmd+n",
+    "key": "ctrl+cmd+n",
     "command": "workbench.action.terminal.new",
     "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   },
@@ -127,7 +144,7 @@
   },
   // 新建目录
   {
-    "key": "ctrl+cmd+n",
+    "key": "shift+cmd+n",
     "command": "explorer.newFolder"
   },
   // 重命名
