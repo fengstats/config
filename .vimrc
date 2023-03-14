@@ -1,214 +1,264 @@
-" 设置 vim 在编辑文件时，normal/insert 模式下光标的显示情况
+" ================================================================
+" 基本设置
+" ================================================================
+" vim 时，normal/insert 模式下光标的显示状态
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-" 代码语法高亮
-syntax on
-" 显示行号
-set number
-" 显示搜索高亮
-set hlsearch
-" 显示边搜索边高亮
-set incsearch
-" 显示相对行号
-" set relativenumber
-" 显示当前光标底部线条
-" set cursorline
-" 显示单行内容超出显示窗口时自动换行
-set wrap
-" 显示在右下角的一些命令（已按下的）
-set showcmd
-" `:` 模式，内部有的命令可以用 tab 进行智能补全
-set wildmenu
-" 忽略大小写查找
-set ignorecase
-" 智能大小写查找
-set smartcase
-" 解决 insert 模式下不能按 backspace(退格键) 的问题
-set backspace=indent,eol,start
-
-" 保存旧版本差异化
-set nocompatible
-" 文件类型自动识别
-filetype on
-filetype indent on
-filetype plugin on
-filetype plugin indent on
 " 可以让你在 vim 编辑时使用鼠标进行操作
 set mouse=a
-set encoding=utf-8
-" 部分终端使用 vim 配色矫正
-let &t_ut=''
-set expandtab
-" tab 缩进符设置
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set tw=0
-set indentexpr=
-set foldmethod=indent
-set foldlevel=99
-" 底部命令行状态栏显示在底部倒数第二行位置（设置 0 关闭）
-set laststatus=2
-" todo：在当前目录下执行命令，效果暂时未知
-set autochdir
-" 移动光标时上下会有 5 行内容保持在你的可视区域
-set scrolloff=5
+" 显示普通模式未完成的指令 | 一般在右下角
+set showcmd
+" 解决插入模式下删除键不能删除的问题
+set backspace=indent,eol,start
+" 命令模式按下 Tab 键，展示候选词
+set wildmenu
+" 打通系统 cv 和 vim
 " 系统剪切板 -> vim
 set clipboard=unnamedplus
 " vim -> 系统剪切板
 set clipboard=unnamed
-" 解决 insert-mode -> normal-mode 各种延迟显示的问题
+" 解决插入模式 -> 普通模式延迟显示的问题
 set ttimeout ttimeoutlen=10
-" 当你退出文件后依旧会记录 500 次的操作让你回退
-set undofile
-set history=500
-" 设置缓存文件目录
-set undodir=~/.vim/undodir
-" 位置标识记录，你关闭文件后再次打开，光标回到你上一次离开的位置
+" 位置标识记录 | 关闭文件后再次打开，光标会回到你上一次离开的位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" 保留文件视图更改的状态
+" autocmd BufWrite * mkview
+" autocmd BufWinLeave * mkview
+" autocmd BufRead * silent loadview
 
+
+" ================================================================
+" 编辑器设置 | editor
+" ================================================================
+" 显示行号
+set number
+" 显示光标行和列信息
+" set ruler
+" 显示相对行号
+" set relativenumber
+" 突出当前行显示
+set cursorline
+" 底部命令行状态栏显示在底部倒数第二行位置 | 设置 0 关闭
+set laststatus=2
+" 显示语法高亮
+syntax enable
+syntax on
+" 显示多余的符号替换 Tab(>---), 空格(^), 换行(¬)
+" set list
+" set listchars=tab:>-,trail:^ ",eol:¬
+" 开启自动缩进
+set autoindent
+" 智能缩进
+set smartindent
+" 发生错误时不要响铃，也不要闪烁
+set noerrorbells
+set belloff=all
+" 单行内容超出窗口时自动换行显示
+set wrap
+" 编辑模式下时按一个 Tab 键相当于输入 2 个空格
+set tabstop=2
+" 格式化时缩进尺寸为 2 个空格，即 >>、<< 、==（取消全部缩进）时，每一级的字符数
+set shiftwidth=2
+" 让 vim 把连续的空格视为一个 Tab, 删除时可以一次删掉一个 Tab 的空格数量
+set softtabstop=2
+" 把制表符转换为多个空格, 具体空格数量参考 tabstop 和 shiftwidth
+set expandtab
+" 垂直滚动时，光标距离顶部/底部的行数 | 保持在你的可视区域的行数
+set scrolloff=5
+" 在行和段的开始处智能使用 Tab
+set smarttab
+" 命令行历史记录数量
+set history=200
+" 自动切换工作目录
+" set autochdir
+" 合并两行中文时, 不在中间加空格
+" set formatoptions+=B
+" 合并行时不添加多余空格
+" set nojoinspaces
+
+
+" ================================================================
+" 编码设置
+" ================================================================
+" 设置 vim 内部默认编码
+set encoding=utf-8
+" 设置编辑文件时的编码
+set fileencoding=utf-8
+" 设置 vim 能识别的编码
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,big5,cuc-jp,cuc-kr,latin
+" 设置终端模式（非 GUI 模式）下的编码
+set termencoding=utf-8
+" 防止特殊符号无法显示
+set ambiwidth=double
+
+
+" ================================================================
+" 文件设置
+" ================================================================
+" 自动检测文件类型和缩进格式, 并根据文件类型加载插件
+filetype plugin indent on
+" 文件被外部改动后, 自动加载
+set autoread
+" 不生成备份文件
+" set nobackup
+" 不生成临时文件
+" set noswapfile
+" 不生成 undo 文件
+" set noundofile
+" 生成 undo (缓存) 文件，设置目录位置 | 退出文件后还能记忆之前的操作，比如 u
+" 还原上次的操作更改项，坏处是会生成很多缓存文件
+set undofile
+set undodir=~/.vim/undodir
+
+
+" ================================================================
+" 搜索匹配
+" ================================================================
+" 高亮显示匹配到的括号
+set showmatch
+" 高亮显示搜索到的关键字
+set hlsearch
+" 即时搜索 | 即边搜边高亮
+set incsearch
+" 智能大小敏感，若有字母大写，敏感，否则不敏感
+set ignorecase smartcase
+
+
+" ================================================================
+" 操作习惯 | 快捷键
+" ================================================================
+" 将 <leader> 键配置为 space | 空格
 let mapleader = " "
-" 使用 <leader><leader>c 注释时添加的分隔符
-let NERDSpaceDelims = 1 
-
-" 非递归映射按键
-nmap J <C-d>
-nmap K <C-u> 
-noremap - nzz
-noremap = Nzz
-" 空格+回车：取消搜索高亮
-noremap <leader><CR> :nohl<CR>
-" 空格+s：保存文件
-noremap <leader>s :w<CR>
-" 空格+q：退出文件
-noremap <leader>q :q<CR>
-
-" 递归映射按键
-map S :w<CR>
-map Q :q<CR>
-" 刷新全局 vimrc 配置（当前文件）
-map R :source $MYVIMRC<CR>
-
-" 上下左右分屏显示
-map sk :set nosplitbelow<CR>:split<CR>
-map sj :set splitbelow<CR>:split<CR>
-map sh :set nosplitright<CR>:vsplit<CR>
-map sl :set splitright<CR>:vsplit<CR>
-
-" 切换左右分屏
-map sv <C-w>t<C-w>H
-" 切换上下分屏
-map sh <C-w>t<C-w>K
-
-" 返回上次光标所在位置（可跨文件）
-map gk <C-o>
+" 快速上下移动 | 这里使用递归因为 jk 都被我改了
+nmap J 5j
+nmap K 5k
+" 对于很长的行，vim 会自动换行，此时 j 或者 k 就会一下跳很多行
+" 使用 gk/gj 可以避免跳过多行，但是不方便， 所以做了如下映射：
+nnoremap k gk
+nnoremap j gj
+vnoremap k gk
+vnoremap j gj
+" 光标移动到所在行开头/结尾
+nnoremap H ^
+nnoremap L $
+" 返回上次光标所在位置 | 可跨文件
+nnoremap gk <c-o>
 " 与 gk 相反
-map gj <C-i>
-
-" 光标移动到所在行开头
-map H ^
-" 光标移动到所在行结尾
-map L $
-
+nnoremap gj <c-i>
+" 将查找所在行内容居中显示 | 目前通过 easymotion 替代了
+" nnoremap n nzz
+" nnoremap N Nzz
+" 按 U 执行 redo
+nnoremap U <c-r>
+" 在可视模式下使用 p 粘贴时不替换寄存器内容, 这里是利用了黑洞寄存器，
+" 将选中内容删除到黑洞寄存器，然后再执行大写P，在行尾时会有点bug，但基本满足需求
+vnoremap p "_dP
+" 取消搜索高亮
+nnoremap <leader><cr> :nohl<cr>
+" 可视模式下按 <leader>y 将内容写入系统寄存器
+" vnoremap <leader>y "+y
+" 可视模式下按 <leader>x 将内容写入（剪切到）系统寄存器
+" vnoremap <leader>x "+x
+" 按 <leader>p 将系统寄存器中的内容粘贴出来
+" nnoremap <leader>p "+p
 " 打开一个新的标签页
-map tu :tabe<CR>
+" map tu :tabe<CR>
 " 切换左右标签页
-map th :-tabnext<CR>
-map tl :+tabnext<CR>
-map tx :r !figlet 
-
-" 上下左右分屏聚焦
-map <leader>l <C-w>l
-map <leader>h <C-w>h
-map <leader>j <C-w>j
-map <leader>k <C-w>k
-" map <leader>r :source $MYVIMRC<CR>
+" map th :-tabnext<CR>
+" map tl :+tabnext<CR>
+" map tx :r !figlet 
+" 保存
+nnoremap <leader>s :w<cr>
+" nnoremap S :w<cr>
+" 退出
+nnoremap <leader>q :q<cr>
+nnoremap Q :q<cr>
+" 上下左右分屏
+nnoremap sk<cr> :set nosplitbelow<cr>:split<cr>
+nnoremap sj<cr> :set splitbelow<cr>:split<cr>
+nnoremap sh<cr> :set nosplitright<cr>:vsplit<cr>
+nnoremap sl<cr> :set splitright<cr>:vsplit<cr>
+" 聚焦上下左右分屏
+nnoremap <leader>l <C-w>l
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+" 上下 -> 左右分屏
+" nnoremap sv <c-w>t<c-w>H
+" 上下 -> 上下分屏
+" nnoremap sh <c-w>t<c-w>K
 " 开启/关闭 单词拼写检查
-map <leader>sc :set spell!<CR>
-" 通过 <+> 占位符，然后使用 空格x2 来找到并清除
-map <leader><leader> <Esc>/<+><CR>:nohlsearch<CR>c3l
-
-" 自动保存文件视图状态
-autocmd BufWrite * mkview
-autocmd BufWinLeave * mkview
-autocmd BufRead * silent loadview
-
-" vim 每次进入一个新文件时先执行取消高亮命令（防止上次在此文件的高亮结果再次显示造成视觉干扰）
+" nnoremap <leader>sc :set spell!<cr>
+" 通过 <+> 占位符，然后按两次 <leader> 来找到并清除 | 用于快速定位更改
+map <leader><leader> <esc>/<+><cr>:nohlsearch<cr>c3l
+" 刷新全局 vimrc 配置 | 系统会根据文件等级依次往下找
+nnoremap R :source $MYVIMRC<cr>
+" temp：同步内容给我自己仓库的文件
+nnoremap <leader>u :!cat vimrc > /Users/feng/Github/vscode-settings/.vimrc<CR>q
+" 每次进入一个新文件时先执行取消高亮命令 | 防止上次在此文件的高亮结果再次显示造成视觉干扰
 exec "nohl"
 
-" temp
-map <leader>u :!cat vimrc > /Users/feng/Github/vscode-settings/.vimrc<CR>q
 
+" ================================================================
+" 插件引入 | vim-plug
+" ================================================================
 call plug#begin('~/.vim/plugged')
-
-" smooth
-Plug 'psliwka/vim-smoothie'
-
-" Plug 'vim-airline/vim-airline'
+" 底部状态栏增强
 Plug 'itchyny/lightline.vim'
-Plug 'connorholyday/vim-snazzy'
-
-" File navigation
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" Error checking
-Plug 'w0rp/ale'
-
-" Undo Tree
-Plug 'mbbill/undotree/'
-
-" Auto Complete
-
-" HTML, CSS, JavaScript, JSON, etc.
-Plug 'elzr/vim-json'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
-Plug 'mattn/emmet-vim'
-
-" Other useful utilities
+" PaperColor 主题 (亮/暗)
+Plug 'nlknguyen/papercolor-theme'
+" Molokai 主题（暗色）
+Plug 'tomasr/molokai'
+" Dracula 主题(暗色), 后面的配置表示将主题装在 dracula 文件夹下
+Plug 'dracula/vim', { 'as': 'dracula' }
+" 扩展多光标功能
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/goyo.vim' " distraction free writing mode
-Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
-Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
-Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
-
-" Dependencies
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'kana/vim-textobj-user'
-Plug 'fadein/vim-FIGlet'
-
+" 扩展 . 的功能
+" Plug 'tpope/vim-repeat'
+" easymotion | 移动指令增强
+Plug 'easymotion/vim-easymotion'
+" surround, 快速添加成对符号
+Plug 'tpope/vim-surround'
+" TIP: 这个 plug#end() 一定要记得写啊！！！坑死我啦！！！找了好久bug
 call plug#end()
 
-" ===
-" === lightline.vim
-" ===
-set laststatus=2
+" ================================================================
+" 插件相关设置
+" ================================================================
+"
+" lightline.vim
 let lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'PaperColor',
       \ }
 
-" ===
-" === NERDTree
-" ===
-map <leader>g :NERDTreeToggle<CR>
-map <leader>f :NERDTreeFind<CR>
-" let NERDTreeMapOpenExpl = "l"
-let NERDTreeMapOpenSplit = "l"
+" PaperColor.vim
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
 
-" ===
-" === ale
-" ===
-let b:ale_linters = ['pylint']
-let b:ale_fixers = ['autopep8', 'yapf']
+" theme
+set background=dark
+" colorscheme molokai
+" colorscheme dracula
+colorscheme PaperColor
 
-" ===
-" === Undotree
-" ===
-" let g:undotree_DiffAutoOpen = 0
-" map L :UndotreeToggle<CR>
+" easymotion
+" 替换原生 / 查找
+map / <Plug>(easymotion-sn)
+" 替换原生 n/N 查找
+map n <Plug>(easymotion-next)zz
+map N <Plug>(easymotion-prev)zz
+" 实现类似 vim-sneak 的双字符查找快速移动
+nmap s <Plug>(easymotion-s2)
+" 上下方向行首字母快速移动
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
 
+" ================================================================
+" <+>
+" ================================================================
