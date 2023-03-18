@@ -8,6 +8,7 @@
   // explorer begin（资源管理器）
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "diffEditor.ignoreTrimWhitespace": false,
   // explorer end
 
   // window begin（窗口）
@@ -52,99 +53,6 @@
   "workbench.tree.indent": 10,
   "workbench.list.smoothScrolling": true,
   "workbench.startupEditor": "newUntitledFile",
-  // 自定义主题样式
-  "workbench.colorCustomizations": {
-    "[Vitesse Dark]": {
-      // active: 活动状态 | inactive 非活动状态
-      // 顶部窗口
-      // 字体颜色
-      "titleBar.activeForeground": "#c1c1c1",
-      "titleBar.inactiveForeground": "#c1c1c1",
-      // 背景颜色
-      "titleBar.activeBackground": "#1a1d22",
-      "titleBar.inactiveBackground": "#1a1d22",
-      // 底部边框
-      "titleBar.border": "#abbcab5f",
-
-      // 活动栏
-      // 背景颜色（显示图标的侧边栏）
-      // "activityBar.background": "#111318",
-      "activityBar.background": "#1a1d22",
-
-      // 图标激活颜色
-      "activityBar.foreground": "#abbcab",
-      // 图标默认颜色
-      "activityBar.inactiveForeground": "#abbcab65",
-
-      // 侧边栏
-      // 背景颜色
-      "sideBar.background": "#111318",
-      // 一级菜单背景颜色
-      "sideBarSectionHeader.background": "#111318",
-      // 鼠标悬浮背景颜色
-      "list.hoverBackground": "#abbcab35",
-      // "list.inactiveSelectionBackground": "",
-      // 当前选中的列表背景颜色
-      "list.activeSelectionBackground": "#abbcab35",
-      // 当前键盘聚焦所在列表背景颜色
-      "list.focusBackground": "#abbcab45",
-
-      // 标签
-      // 未激活选项卡背景颜色
-      "tab.inactiveBackground": "#202020",
-      // 激活选项卡背景颜色
-      "tab.activeBackground": "#111111",
-      // 激活选项卡底部边框
-      "tab.activeBorder": "#abbcab",
-      // 选项卡时编辑器组标题的背景颜色
-      "editorGroupHeader.tabsBackground": "#1a1d22",
-
-      // 编辑器
-      // 背景颜色
-      "editor.background": "#1a1d22",
-      // 选中片段背景
-      "editor.selectionBackground": "#abbcab65",
-      // 选中片段对应该文中一致的内容高亮背景
-      "editor.selectionHighlightBackground": "#abbcab35",
-      "editor.foldBackground": "#eeeeee10",
-      // 小组件背景颜色（查找、替换、提示）
-      "editorWidget.background": "#121212",
-
-      // 编辑器行号（当前行、其他 行）
-      "editorLineNumber.foreground": "#bfbaaa90",
-      "editorLineNumber.activeForeground": "#dedcd5",
-
-      // 面板（测试了下貌似会影响到终端颜色, 终端不设置的前提下）:
-      // "panel.background": "#1a1d22",
-      "panel.background": "#13151b",
-      "panel.border": "#abbcab50",
-
-      // 终端
-      // 选择背景色
-      "terminal.selectionBackground": "#d1d1d130",
-
-      // 其他
-      // git 忽略文件字体颜色
-      "gitDecoration.ignoredResourceForeground": "#dedcd558"
-    }
-    // "[-Moegi Dark]": {
-    //   // 顶部
-    //   "titleBar.activeBackground": "#222222",
-    //   "titleBar.inactiveBackground": "#222222",
-    //   // 活动栏
-    //   "activityBar.background": "#222222",
-    //   // 侧边栏
-    //   "sideBar.background": "#242526",
-    //   // 标签
-    //   "editorGroupHeader.tabsBackground": "#252525",
-    //   // 编辑器
-    //   "editor.background": "#292a2c",
-    //   // 面板
-    //   "panel.background": "#292a2c",
-    //   // 终端
-    //   "terminal.background": "#292a2c"
-    // }
-  },
   // workbench end
 
   // editor begin（代码编辑区）
@@ -201,7 +109,7 @@
   "editor.tokenColorCustomizations": {
     "[Vitesse Dark]": {
       // 注释颜色更改
-      "comments": "#9eaa9e"
+      "comments": "#909090"
     },
     "[Ayu Mojave]": {
       "comments": "#a2aaa2"
@@ -257,7 +165,110 @@
       }
     ]
   },
-  "diffEditor.ignoreTrimWhitespace": false,
+  // 自定义主题样式
+  "workbench.colorCustomizations": {
+    // note: active: 活动状态 | inactive: 非活动状态 | foreground: 前景色 | background: 背景色 | border: 边框
+    "[Vitesse Dark]": {
+      // 基础 | Basic
+      // 调整组件之间间距大小的边框
+      "sash.hoverBorder": "#4d9375",
+      // 输入框
+      "input.background": "#1a1d22",
+      // ctrl+p 调出来的面板容器
+      "quickInput.background": "#12151aaf",
+      // 焦点元素整体边框颜色 | 大部分组件窗口都适用
+      "focusBorder": "#aaaaaa5f",
+      // git 忽略文件字体颜色
+      "gitDecoration.ignoredResourceForeground": "#aaaaaa5f",
+      // 文本中代码块的颜色
+      "textCodeBlock.background": "#aaaaaa3f",
+      // Badge
+      "badge.background": "#aaaaaa1f",
+      "badge.foreground": "#cccccc",
+      // 面板 | Panel | 测试了下貌似会影响到终端颜色, 终端未设置的前提下
+      "panel.background": "#13151b",
+      "panel.border": "#abbcab50",
+      // 文件链接
+      // "textLink.activeForeground": "#ff8787",
+      // "textLink.foreground": "#ff8787cc",
+
+      // 顶部 | 窗口
+      "titleBar.activeForeground": "#cccccc",
+      "titleBar.inactiveForeground": "#cccccc",
+      "titleBar.activeBackground": "#12151a",
+      "titleBar.inactiveBackground": "#12151a",
+      "titleBar.border": "#aaaaaa5f",
+
+      // 左侧 | 活动栏 | 最左侧的那一列
+      "activityBar.background": "#12151a",
+      "activityBar.border": "#aaaaaa5f",
+      // 活动中的图标前景色
+      "activityBar.foreground": "#dddddd",
+      "activityBar.inactiveForeground": "#dddddd5f",
+      "activityBar.activeBorder": "#4d9375",
+
+      // 左侧 | 侧边栏 (文件/资源管理器)
+      "sideBar.background": "#12151a",
+      "sideBar.border": "#aaaaaa5f",
+      "sideBarSectionHeader.border": "#aaaaaa5f",
+      // 第一级菜单背景色
+      "sideBarSectionHeader.background": "#12151a",
+      "list.activeSelectionForeground": "#ffffff",
+      "list.hoverBackground": "#6666661f",
+      "list.focusBackground": "#6666661f",
+      "list.activeSelectionBackground": "#aaaaaa1f",
+      "list.inactiveSelectionBackground": "#aaaaaa1f",
+      "list.inactiveFocusBackground": "#00000000",
+
+      // 顶部 | 标签 | Tab
+      "tab.activeBackground": "#1a1d22",
+      "tab.inactiveBackground": "#12151a",
+      "tab.activeBorderTop": "#4d9375",
+      // "tab.activeBorder": "#4d9375",
+      "tab.hoverBackground": "#1a1d22",
+      "tab.border": "#aaaaaa5f",
+      // tab 背后整个 tab 条的背景色
+      "editorGroupHeader.tabsBackground": "#12151a",
+
+      // 顶部 | 面包屑 | Breadcrumb
+      "breadcrumb.background": "#1a1d22",
+      "breadcrumb.activeSelectionForeground": "#4d9375",
+      "breadcrumbPicker.background": "#12151abf",
+      "widget.shadow": "#00000033",
+
+      // 中间 | 编辑器 | Editor
+      "editor.background": "#1a1d22",
+      "editorGroup.border": "#abbcab2f",
+      "editorLineNumber.foreground": "#cccccc5f",
+      "editorLineNumber.activeForeground": "#cccccc",
+      "editor.selectionBackground": "#aaaaaa4f",
+      "editor.selectionHighlightBackground": "#aaaaaa1f",
+      "editor.wordHighlightBackground": "#aaaaaa1f",
+      // 与选中内容一致的, 高亮其边框
+      // "editor.selectionHighlightBorder": "#ffffff3f",
+      // 小组件背景颜色 | 提示/查找/替换
+      "editorWidget.background": "#12151aef",
+      // 智能提示面板 | 如果未设置就使用上面小组件的
+      // "editorSuggestWidget.background": "#0a0a0a",
+      // "editorSuggestWidget.selectedBackground": "#ff0000",
+      "editor.lineHighlightBackground": "#aaaaaa1f",
+      // 粘性滚动代码背景色设置
+      "editorStickyScroll.background": "#1a1d22",
+      "editorStickyScrollHover.background": "#aaaaaa1f",
+      // 与滚动条相关的边框阴影设置
+      "scrollbar.shadow": "#050505",
+      "scrollbarSlider.activeBackground": "#aaaaaa2f",
+      "scrollbarSlider.background": "#aaaaaa2f",
+      "scrollbarSlider.hoverBackground": "#aaaaaa2f",
+      // 代码参数提示
+      // "editorInlayHint.background": "#ffffff10",
+      // "editorInlayHint.foreground": "#ffffff6f",
+
+      // 中间底部 | 终端 | Terminal
+      // 选择背景色
+      "terminal.selectionBackground": "#d1d1d130"
+    }
+  },
   // editor end
 
   // terminal begin（终端）
@@ -292,7 +303,7 @@
   // 使用系统剪切板 cv -> yp
   "vim.useSystemClipboard": true,
   "vim.incsearch": true,
-  "vim.useCtrlKeys": true,
+  "vim.useCtrlKeys": false,
   "vim.hlsearch": true,
   "vim.surround": true,
   "vim.sneak": true,
@@ -467,7 +478,7 @@
   ],
   // vim keep english in normal（中文切换到普通/NORMAL模式时自动变成英文输入）
   // 是否启用自动切换
-  // tip: 目前通过 Rime 的配置方案解决了
+  // hint: 目前通过 Rime 的配置方案解决了
   // bug: 使用操作符 (如：ciw），删除当前光标所在单词并进入 INSERT 模式, 此时光标应该从方块变成细条光束, 但结果仍然保持方块, 直到再次输入字符时光标才会切换为细条光束
   // 对于我来说, 光标状态的显示是我判断模式的根本, 如果光标状态与模式不同时, 可能会产生一些错误的命令输入, 体验上来说就很不友好
   "vim.autoSwitchInputMethod.enable": false,
@@ -533,7 +544,8 @@
     {
       "tag": "todo",
       "color": "#000",
-      "backgroundColor": "#dfe6e9"
+      // "backgroundColor": "#dfe6e9"
+      "backgroundColor": "#fa973a"
     },
     // fixme: 修复我, 表示已经实现但不完美的功能/需要修复
     {
@@ -541,9 +553,9 @@
       "color": "#fff",
       "backgroundColor": "#ff4757"
     },
-    // tip: 功能提示
+    // hint: 功能提示
     {
-      "tag": "tip",
+      "tag": "hint",
       "color": "#000",
       "backgroundColor": "#2faf64"
     },
@@ -617,10 +629,10 @@
   // css end
 
   // paramHints begin
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.parameterNames.enabled": "all",
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "none",
+  "typescript.inlayHints.parameterNames.enabled": "none",
+  "javascript.inlayHints.parameterTypes.enabled": false,
+  "typescript.inlayHints.parameterTypes.enabled": false,
   "editor.inlayHints.enabled": "onUnlessPressed",
   // paramHint end
 
