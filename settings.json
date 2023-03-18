@@ -11,10 +11,10 @@
   // explorer end
 
   // window begin（窗口）
-  // todo：没体会到作用在哪
+  // 是否使用原生标签页
   "window.nativeTabs": false,
-  // 缩放比例
-  "window.zoomLevel": 0.4,
+  // 整体编辑器缩放比例
+  "window.zoomLevel": 0.5,
   "window.titleBarStyle": "custom",
   // 搜索项居中
   "window.commandCenter": true,
@@ -28,7 +28,7 @@
 
   // workbench begin（工作区）
   // 主题样式
-  "workbench.colorTheme": "Moegi Dark",
+  "workbench.colorTheme": "Vitesse Dark",
   // 文件图标样式
   "workbench.iconTheme": "vscode-icons",
   // "workbench.iconTheme": "file-icons",
@@ -41,7 +41,8 @@
   // "workbench.preferredLightColorTheme": "One Dark Pro Darker",
   // "workbench.preferredLightColorTheme": "Ayu Mojave",
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.editor.tabCloseButton": "right",
+  // tab 的 x 按钮
+  "workbench.editor.tabCloseButton": "off",
   "workbench.editor.limit.enabled": true,
   "workbench.editor.wrapTabs": true,
   "workbench.editor.limit.perEditorGroup": true,
@@ -54,18 +55,16 @@
   // 自定义主题样式
   "workbench.colorCustomizations": {
     "[Vitesse Dark]": {
-      // git 忽略文件字体颜色
-      "gitDecoration.ignoredResourceForeground": "#dedcd558",
-
-      // 顶部导航条
-      // 字体颜色（激活/未激活）
+      // active: 活动状态 | inactive 非活动状态
+      // 顶部窗口
+      // 字体颜色
       "titleBar.activeForeground": "#c1c1c1",
       "titleBar.inactiveForeground": "#c1c1c1",
-      // 背景颜色（激活/未激活）
+      // 背景颜色
       "titleBar.activeBackground": "#1a1d22",
       "titleBar.inactiveBackground": "#1a1d22",
       // 底部边框
-      "titleBar.border": "#abbcab50",
+      "titleBar.border": "#abbcab5f",
 
       // 活动栏
       // 背景颜色（显示图标的侧边栏）
@@ -111,44 +110,48 @@
       // 小组件背景颜色（查找、替换、提示）
       "editorWidget.background": "#121212",
 
-      // 编辑器行号（当前行、其他行）
+      // 编辑器行号（当前行、其他 行）
       "editorLineNumber.foreground": "#bfbaaa90",
       "editorLineNumber.activeForeground": "#dedcd5",
 
-      // 面板（测试了下貌似会影响到终端颜色，终端不设置的前提下）：
+      // 面板（测试了下貌似会影响到终端颜色, 终端不设置的前提下）:
       // "panel.background": "#1a1d22",
       "panel.background": "#13151b",
       "panel.border": "#abbcab50",
 
       // 终端
       // 选择背景色
-      "terminal.selectionBackground": "#d1d1d130"
-    },
-    "[Moegi Dark1]": {
-      // 顶部
-      "titleBar.activeBackground": "#222222",
-      "titleBar.inactiveBackground": "#222222",
-      // 活动栏
-      "activityBar.background": "#222222",
-      // 侧边栏
-      "sideBar.background": "#242526",
-      // 标签
-      "editorGroupHeader.tabsBackground": "#252525",
-      // 编辑器
-      "editor.background": "#292a2c",
-      // 面板
-      "panel.background": "#292a2c",
-      // 终端
-      "terminal.background": "#292a2c"
+      "terminal.selectionBackground": "#d1d1d130",
+
+      // 其他
+      // git 忽略文件字体颜色
+      "gitDecoration.ignoredResourceForeground": "#dedcd558"
     }
+    // "[-Moegi Dark]": {
+    //   // 顶部
+    //   "titleBar.activeBackground": "#222222",
+    //   "titleBar.inactiveBackground": "#222222",
+    //   // 活动栏
+    //   "activityBar.background": "#222222",
+    //   // 侧边栏
+    //   "sideBar.background": "#242526",
+    //   // 标签
+    //   "editorGroupHeader.tabsBackground": "#252525",
+    //   // 编辑器
+    //   "editor.background": "#292a2c",
+    //   // 面板
+    //   "panel.background": "#292a2c",
+    //   // 终端
+    //   "terminal.background": "#292a2c"
+    // }
   },
   // workbench end
 
   // editor begin（代码编辑区）
   "editor.tabSize": 2,
-  "editor.fontSize": 13.5,
+  "editor.fontSize": 13,
   // 行高
-  "editor.lineHeight": 21,
+  "editor.lineHeight": 1.6,
   // 不设置字体的话貌似用的是系统默认字体捏
   // "editor.fontFamily": "Smiley Sans",
   // "editor.fontFamily": "Input Mono",
@@ -166,24 +169,24 @@
   "editor.lineNumbers": "on",
   "editor.detectIndentation": false,
   "editor.accessibilitySupport": "off",
+  // 突出当前行高亮方式
+  "editor.renderLineHighlight": "all",
   // 使光标更加丝滑的移动
   "editor.cursorSmoothCaretAnimation": "on",
   // 光标闪烁动画
   "editor.cursorBlinking": "blink",
   "editor.smoothScrolling": true,
   "editor.find.addExtraSpaceOnTop": false,
-  // 挖槽，这个配置太帅了，我感觉字体细节直接拿捏了，antfu 大佬牛皮
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
   // "editor.fontLigatures": true,
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
   // 使用 command 替换 alt/option 的多光标模式
-  // "editor.multiCursorModifier": "ctrlCmd",
+  "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "all",
   "editor.suggestSelection": "first",
   "editor.unicodeHighlight.invisibleCharacters": false,
-  "editor.renderLineHighlight": "none",
   // 括号着色
   "editor.bracketPairColorization.enabled": true,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
@@ -191,7 +194,7 @@
   "editor.stickyScroll.enabled": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
-    // this allows ESLint to auto fix on save
+    // 允许 ESlint 在保存时自动修复
     "source.fixAll.eslint": true
   },
   // 自定义代码编辑区内容
@@ -206,10 +209,19 @@
     "[One Dark Pro Darker]": {
       "comments": "#a2aaa2"
     },
+    "[Moegi Dark Vitesse]": {
+      "comments": "#a1a7a1"
+    },
+    "[GitHub Dark Dimmed]": {
+      "comments": "#adb5ad"
+    },
+    "[Panda Syntax]": {
+      "comments": "#adb5ad"
+    },
     "[Moegi Dark]": {
       // "comments": "#a0ada0"
       "comments": "#adb5ad"
-      // 设置关键字样式
+      // 调整关键字样式
       // "textMateRules": [
       //   {
       //     "name": "Keyword Bold",
@@ -219,15 +231,6 @@
       //     }
       //   }
       // ]
-    },
-    "[Moegi Dark Vitesse]": {
-      "comments": "#a1a7a1"
-    },
-    "[GitHub Dark Dimmed]": {
-      "comments": "#adb5ad"
-    },
-    "[Panda Syntax]": {
-      "comments": "#adb5ad"
     },
     // 斜体注释矫正
     "textMateRules": [
@@ -258,8 +261,10 @@
   // editor end
 
   // terminal begin（终端）
-  "terminal.integrated.fontSize": 13.5,
-  // 终端字体，不设置的话默认使用编辑器字体
+  // 定义在 macOS 上运行的终端应用程序
+  // "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.fontSize": 13,
+  // 终端字体, 不设置的话默认使用编辑器字体
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
   "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
   "terminal.integrated.lineHeight": 0,
@@ -269,7 +274,8 @@
   // 光标宽度设置
   // "terminal.integrated.cursorWidth": 1,
   "terminal.integrated.cursorStyle": "line",
-  // 控制光标是否闪烁（todo：不知道为啥设置了开启，我的终端仍然是不闪烁状态）
+  // 控制光标是否闪烁
+  // fixme: 我的终端仍然是不闪烁状态 | 排查后发现是 zsh-vi-mode 的问题
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.fontWeight": "300",
   "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -280,189 +286,191 @@
   // vim begin
   // 设置 <leader> 为空格
   "vim.leader": "<space>",
-  "vim.easymotion": true,
-  // easymotion（这里的 <leader> 就是 空格）
-  // <leader><leader> s <char>：全文搜索字符
-  // <leader><leader> f <char>：当前光标往下搜索
+  // <leader><leader> s <char>: 全文搜索字符
+  // <leader><leader> f <char>: 当前光标往下搜索
+  "vim.easymotion": false,
+  // 使用系统剪切板 cv -> yp
   "vim.useSystemClipboard": true,
   "vim.incsearch": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
+  "vim.surround": true,
   "vim.sneak": true,
-  // 插入模式按键功能赋值，before 赋值 after
-  "vim.insertModeKeyBindings": [
-    // 先把这个配置项去掉了,我发现我现在过于依赖jj切换普通模式导致在其它地方写代码的时候也会有所影响,改一下
-    // 后续补充: 我放弃了,哈哈哈哈,我认为jj确实挺好用的
-    // 我又来了（220901）：希望这次我可以坚持久一点，不那么依赖于 jj
-    // {
-    //   "before": ["j", "j"],
-    //   "after": ["<Esc>"]
-    // }
+  // 设置 vim 不接管某些快捷键
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    // 作为以为合格的 cv 工程师的, 主力按键怎么能被 vim 接管, 达咩！
+    "<C-c>": false,
+    "<C-v>": false
+  },
+  // 插入模式下按键功能映射
+  "vim.insertModeKeyBindings": [],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // 其实就是用了个小技巧让我们在可视模式下粘贴时寄存器内数据保持一致:
+    // 一般来说如果在可视模式选中后 p 操作会将 p 所覆盖的东西复制到寄存器中, 导致后续再 p 就不是我们想粘贴的内容了
+    // 这里在 p 后执行 gv（选中粘贴的数据）并 y（复制）
+    {
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"]
+    },
+    {
+      "before": ["K"],
+      "after": ["5", "k"]
+    },
+    {
+      "before": ["J"],
+      "after": ["5", "j"]
+    },
+    // 行首/行尾移动
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
-    // 光标跳转到前面的函数开始处（如果光标在函数体内，那就是该函数的开始处）
+    // 标签区 | Tab
+
+    // 编辑区 | Editor
+
+    // 终端区 | Terminal
+
+    // 解决自动换行后进行光标移动一次跳过多行的问题
     {
-      "before": ["<leader>", "["],
-      "after": ["[", "{"]
+      "before": ["j"],
+      "after": ["g", "j"]
     },
-    // editor 更改一些变量名时使用，同步修改该文件内所有使用该变量名的地方
-    // todo：上面是我之前写的注释，测试了一下貌似好像也改不了全局的配置...后面有空在研究看看
-    // {
-    //   "before": ["<leader>", "r"],
-    //   "commands": ["editor.action.rename"]
-    // },
-    // 取消查找后的光标高亮
-    // tip: <CR> 是回车键
     {
-      "before": ["<leader>", "<CR>"],
-      "commands": [":nohl"]
+      "before": ["k"],
+      "after": ["g", "k"]
     },
-    // {
-    //   "before": ["<C-n>"],
-    //   "commands": [":nohl"]
-    // },
-    // {
-    //   "before": [";", "f"],
-    //   "commands": [":nohlsearch"]
-    // },
-    // 光标由 editor 聚焦至 terminal
+    // 控制光标向上/下滚动指定行 | 并顺便调整到屏幕中间
     {
-      "before": ["<leader>", "t"],
-      "commands": ["workbench.action.terminal.focus"]
+      "before": ["K"],
+      "after": ["8", "g", "k", "z", "z"]
     },
-    // 右下分屏
     {
-      "before": ["s", "l", "<CR>"],
+      "before": ["J"],
+      "after": ["8", "g", "j", "z", "z"]
+    },
+    // n/N vim 查找后上下匹配项切换 | 并调整显示行为屏幕中心
+    {
+      "before": ["n"],
+      "after": ["n", "z", "z"]
+    },
+    {
+      "before": ["N"],
+      "after": ["N", "z", "z"]
+    },
+    // u 的 redo 操作
+    {
+      "before": ["U"],
+      "after": ["<c-r>"]
+    },
+    // 右/下分屏
+    {
+      "before": ["s", "l", ";"],
       "commands": [":vsplit"]
     },
     {
-      "before": ["s", "j", "<CR>"],
+      "before": ["s", "j", ";"],
       "commands": [":split"]
-    },
-    // tip: 这里的聚焦移动到了 keybindings.json 中了
-    // 聚焦上/下一个编辑组
-    // {
-    //   // "before": ["<leader>", "k"],
-    //   "before": ["<C-k>"],
-    //   "commands": ["workbench.action.focusPreviousGroup"]
-    // },
-    // {
-    //   "before": ["<C-j>"],
-    //   "commands": ["workbench.action.focusNextGroup"]
-    // },
-    // 聚焦左/右编辑组
-    // {
-    //   "before": ["<C-h>"],
-    //   "commands": ["workbench.action.focusLeftGroup"]
-    // },
-    // {
-    //   "before": ["<C-l>"],
-    //   "commands": ["workbench.action.focusRightGroup"]
-    // },
-    // 新建文件
-    {
-      "before": ["t", "u"],
-      "commands": [":tabe"]
-    },
-    // 保存文件
-    // todo: S 与 vim-surround 触发按键冲突，先选择其他方案吧（或许直接 cmd+s 也挺好？）
-    // {
-    //   "before": ["S"],
-    //   // "commands": [":w!"]
-    //   "commands": ["workbench.action.files.save"]
-    // },
-    {
-      "before": ["<leader>", "s"],
-      // "commands": [":w!"]
-      "commands": ["workbench.action.files.save"]
-    },
-    // 退出文件
-    {
-      "before": ["Q"],
-      "commands": [":q"]
-    },
-    {
-      "before": ["<leader>", "q"],
-      "commands": [":q"]
     },
     // 返回上一次操作的位置
     {
       "before": ["g", "k"],
       // "commands": ["workbench.action.navigateBack"]
-      "after": ["<C-o>"]
+      "after": ["<c-o>"]
     },
-    // 返回上一次操作的位置之后再返回原位置
+    // gk 的 redo
     {
       "before": ["g", "j"],
       // "commands": ["workbench.action.navigateBack"]
-      "after": ["<C-i>"]
+      "after": ["<c-i>"]
     },
-    // 进入定义文件位置中
-    {
-      "before": ["<leader>", "f"],
-      "after": ["g", "f"]
-    },
-    // 切换到上一个 tab
-    {
-      "before": ["E"],
-      "after": ["g", "T"]
-    },
-    // 切换到下一个 tab
-    {
-      "before": ["R"],
-      "after": ["g", "t"]
-    },
-    // {
-    //   "before": ["<leader>", "sq"],
-    //   "commands": [":wq!"]
-    // },
-    // {
-    //   "before": ["<leader>", "d"],
-    //   "after": ["d", "d"]
-    // },
-    // 行首
-    // tip：貌似配合操作符会有点问题
+    // 行首/行尾移动
     {
       "before": ["H"],
       "after": ["^"]
     },
-    // 行尾
     {
       "before": ["L"],
       "after": ["g", "_"]
     },
-    // 屏幕向下滚动指定行
+    // tab 标签左右切换: 注意若遇到软件设置/插件说明等 tab 标签时, 无效, 可用系统快捷键 cmd + shift + [] 切换
+    // {
+    //   "before": ["H"],
+    //   "commands": ["workbench.action.previousEditor"]
+    // },
+    // {
+    //   "before": ["L"],
+    //   "commands": ["workbench.action.nextEditor"]
+    // },
+    // 侧边栏的显示和隐藏的快捷键 | explorer
     {
-      "before": ["J"],
-      // 屏幕向下滚动半屏
-      // "after": ["<C-d>"]
-      "after": ["5", "j"]
+      "before": ["leader", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
     },
-    // 屏幕向上滚动指定行
+    // 创建文件
     {
-      "before": ["K"],
-      // 屏幕向上滚动半屏
-      // "after": ["<C-u>"]
-      "after": ["5", "k"]
+      "before": ["leader", "a"],
+      "commands": ["explorer.newFile"]
+    },
+    // 创建文件夹
+    {
+      "before": ["leader", "A"],
+      "commands": ["explorer.newFolder"]
+    },
+    // 保存但不格式化
+    {
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.files.saveWithoutFormatting"]
+    },
+    // 取消查找后的光标高亮
+    {
+      "before": ["leader", ";"],
+      "commands": [":noh"]
+    },
+    // 光标由 editor 聚焦至 terminal
+    {
+      "before": ["leader", "t"],
+      "commands": ["workbench.action.terminal.focus"]
+    },
+    // 保存文件
+    {
+      "before": ["leader", "s"],
+      "commands": [":w"]
+    },
+    // 退出文件
+    {
+      "before": ["leader", "q"],
+      "commands": [":q"]
+    },
+    {
+      "before": ["Q"],
+      "commands": [":q"]
+    },
+    // 进入定义文件位置中
+    {
+      "before": ["leader", "f"],
+      "after": ["g", "f"]
     }
+    // 光标跳转到前面的函数开始处 | 如果光标在函数体内, 那就是该函数的开始处
+    // {
+    //   "before": ["leader", "["],
+    //   "after": ["[", "{"]
+    // },
   ],
-  "vim.handleKeys": {
-    // 取消掉一些与 vscode 快捷键冲突的 Ctrl + a...
-    "<C-a>": false,
-    "<C-f>": true,
-    "<C-b>": true,
-    "<C-w>": false,
-    "<C-d>": true,
-    "<C-c>": false,
-    "<C-v>": false
-    // tip: 这个键被我用来替换 selectPrevSuggestion 了（输入几个单词后的 api 的智能提示向上走）
-    // tip: 现在又用来聚焦上一个编辑组了hhh
-    // "<C-k>": false
-  },
-  // vim keep english in normal（中文切换到普通模式时自动变成英文输入）
+  // vim keep english in normal（中文切换到普通/NORMAL模式时自动变成英文输入）
   // 是否启用自动切换
-  // todo：目前发现了个小 bug，某个文件打开一段时间后使用 ciw 命令时，normal 模式的光标状态会带到 insert 模式下
-  "vim.autoSwitchInputMethod.enable": true,
+  // tip: 目前通过 Rime 的配置方案解决了
+  // bug: 使用操作符 (如：ciw），删除当前光标所在单词并进入 INSERT 模式, 此时光标应该从方块变成细条光束, 但结果仍然保持方块, 直到再次输入字符时光标才会切换为细条光束
+  // 对于我来说, 光标状态的显示是我判断模式的根本, 如果光标状态与模式不同时, 可能会产生一些错误的命令输入, 体验上来说就很不友好
+  "vim.autoSwitchInputMethod.enable": false,
   // normal 模式下需要切换的输入法
   "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
   // 获取当前输入法的命令
@@ -519,46 +527,53 @@
   },
   // git end
 
-  // todo tree begin
-  "todo-tree.general.tags": [
-    "BUG",
-    "HACK",
-    "FIXME",
-    "TODO",
-    "XXX",
-    "[ ]",
-    "[x]",
-    "// todo",
-    "// tip"
-  ],
-  // 设置 tag 对应标识信息
-  "todo-tree.highlights.customHighlight": {
-    "BUG": {
-      "icon": "bug"
+  // better comments
+  "better-comments.tags": [
+    // todo: 表示一些未完成的功能/事情
+    {
+      "tag": "todo",
+      "color": "#000",
+      "backgroundColor": "#dfe6e9"
     },
-    "HACK": {
-      "icon": "tools"
+    // fixme: 修复我, 表示已经实现但不完美的功能/需要修复
+    {
+      "tag": "fixme",
+      "color": "#fff",
+      "backgroundColor": "#ff4757"
     },
-    "FIXME": {
-      "icon": "flame"
+    // tip: 功能提示
+    {
+      "tag": "tip",
+      "color": "#000",
+      "backgroundColor": "#2faf64"
     },
-    "XXX": {
-      "icon": "$(close)"
+    // note: 一般用于比较难理解的代码/功能, 添加描述
+    {
+      "tag": "note",
+      "color": "#000",
+      "backgroundColor": "#3498db"
+    },
+    // hack: 表示一个功能虽然实现, 但是后续可能会存在问题
+    {
+      "tag": "hack",
+      "color": "#000",
+      "backgroundColor": "#fa973a"
+    },
+    // bug: 表示一个功能存在问题
+    {
+      "tag": "bug",
+      "color": "#fff",
+      "backgroundColor": "#ff4757"
     }
-  },
-  // todo tree end
+  ],
 
   // errorLens begin
   "errorLens.fontFamily": "JetBrains Mono",
-  // "errorLens.borderRadius": "100px",
   // 是否使用斜体
   // "errorLens.fontStyleItalic": true,
   "errorLens.fontWeight": "500",
   "errorLens.margin": "20px",
-  // "errorLens.messageBackgroundMode": "message",
   "errorLens.messageTemplate": "$severity：$message ($source) $count",
-  // "errorLens.padding": "2px 10px",
-  // "errorLens.statusBarMessageAlignment": "right",
   "errorLens.removeLinebreaks": false,
   "errorLens.gutterIconsFollowCursorOverride": false,
   // 启用的错误提示等级
@@ -575,7 +590,7 @@
   // eslint begin
   // "eslint.validate": ["javascript"],
   // "eslint.options": {
-  //   // tip: 指定全局配置文件，会覆盖优先于本地配置
+  //   // 指定全局配置文件, 会覆盖优先于本地配置
   //   "overrideConfigFile": "/Users/feng/.vscode/.eslintrc.js"
   // },
   // "eslint.format.enable": true,
@@ -611,7 +626,7 @@
 
   // other begin
   "search.smartCase": true,
-  // 全局搜索时排除掉一些指定目录
+  // 全局搜索时排除掉一些指定目录 | 提升检索速度
   "search.exclude": {
     "**/.git": true,
     "**/.github": true,
@@ -713,6 +728,6 @@
   "commentTranslate.hover.enabled": false,
   "commentTranslate.hover.content": false,
   "tabnine.experimentalAutoImports": true,
-  "cSpell.userWords": ["colour", "peachpuff"]
+  "cSpell.userWords": ["colour", "easymotion", "peachpuff", "Vitesse", "zimfw", "zmodule"]
   // other end
 }
