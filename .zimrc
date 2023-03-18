@@ -1,112 +1,44 @@
-# Start configuration added by Zim install {{{
-
-#
-
-# This is not sourced during shell startup, and it's only used to configure the
-
-# zimfw plugin manager.
-
-#
-
-# Start configuration added by Zim install {{{
-
-# -------
-
-# Modules
-
-# -------
-
-# Sets sane Zsh built-in environment options.
-
+# 通用的内置环境
 zmodule environment
-
-# Provides handy git aliases and functions.
-
+# 提供了不错的 git 别名和函数
 zmodule git
-
-# Applies correct bindkeys for input events.
-
+# 为输入事件绑定正确的按键
 zmodule input
-
-# Sets a custom terminal title.
-
+# 提供自定义终端标题
 zmodule termtitle
-
-# Utility aliases and functions. Adds colour to ls, grep and less.
-
+# 添加实用别名和函数: 为 ls、grep 和 less 添加颜色
 zmodule utility
-zmodule romkatv/powerlevel10k
-
-#
-
-#Prompt
-
-#
-
-# Exposes to prompts how long the last command took to execute, used by asciiship.
-
+# 启用并配置智能和全面的选项卡补全
+zmodule completion
+# 将 git 仓库的状态信息暴露给提示符
+zmodule git-info
+# 显示提示: 上一个命令执行的时间
 zmodule duration-info
-
-# Exposes git repository status information to prompts, used by asciiship.
-
-zmodule git-info
-
-# A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
-
-# Additional completion definitions for Zsh.
-
-zmodule zsh-users/zsh-completions
-
-# Enables and configures smart and extensive tab completion.
-
-# completion must be sourced after zsh-users/zsh-completions
-
-zmodule completion
-
-# Fish-like autosuggestions for Zsh.
-
-zmodule zsh-users/zsh-autosuggestions
-
-# Fish-like syntax highlighting for Zsh.
-
-# zsh-users/zsh-syntax-highlighting must be sourced after completion
-
-zmodule zsh-users/zsh-syntax-highlighting
-
-# Fish-like history search (up arrow) for Zsh.
-
-# zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
-
-zmodule zsh-users/zsh-history-substring-search
-
-# }}} End configuration added by Zim install
-
-#
-
-zmodule DarrinTisdale/zsh-aliases-exa # 添加多个 alias, 使用 exa 代替 ls，要求有安装 exa
-
-# Custom 个人推荐的插件
-
-# zmodule directory
-
-# 将 zsh shell 补全的结果 pipe 入 fzf 中显示和选择
-
-# 注意：需要安装 fzf，否则无法正常使用
-
-zmodule Aloxaf/fzf-tab
-
-# 个人其他工具的选择
-
-zmodule wookayin/fzf-fasd
-zmodule zsh-users/zaw
-
-zmodule completion
-zmodule git-info
+# 将当前工作目录格式化以供提示使用
 zmodule prompt-pwd
+# 错误状态显示
 zmodule magicmace
+# 自动完成插件
+zmodule zsh-users/zsh-completions
+# 根据历史输入指令的记录即时的提示
+zmodule zsh-users/zsh-autosuggestions
+# 输入部分字符, 按上下键在历史记录中匹配包含的命令
+zmodule zsh-users/zsh-history-substring-search
+# 为 zsh 提供丰富的语法高亮功能
 zmodule zdharma-continuum/fast-syntax-highlighting
+# 可以使目录列表更易读, 为文件和目录添加一些颜色和一些 git 状态信息
 zmodule supercrabtree/k
+# 一个简单的插件, 可以智能的自动关闭, 删除和跳过匹配的分隔符
 zmodule hlissner/zsh-autopair
-zmodule pabloariasal/zfm
-zmodule agkozak/zsh-z
+# 书签类, 打标记, 快速访问的
+# zmodule pabloariasal/zfm
+# 感觉和 zfm 有点像, 不过貌似我用不到
+# zmodule agkozak/zsh-z
+# 和 z 搭配使用的插件, 使用 fzf 的模糊搜索来完成 z 的 tab 补全
+zmodule wookayin/fzf-fasd
+# 非常强大的智能补全插件, 接管你的 Tab
 zmodule Aloxaf/fzf-tab
+# 一个主题丰富的插件
+zmodule romkatv/powerlevel10k
+# 这个 zsh 插件可以启用一些别名, 扩展 exa 的功能, exa 是 ls 命令的现代替代品
+zmodule DarrinTisdale/zsh-aliases-exa
