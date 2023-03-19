@@ -1,7 +1,8 @@
 " ================================================================
 " 基本设置
 " ================================================================
-" vim 时，normal/insert 模式下光标的显示状态
+" vim 时, normal/insert 模式下光标的显示状态
+let &t_ut=''
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -11,7 +12,7 @@ set mouse=a
 set showcmd
 " 解决插入模式下删除键不能删除的问题
 set backspace=indent,eol,start
-" 命令模式按下 Tab 键，展示候选词
+" 命令模式按下 Tab 键, 展示候选词
 set wildmenu
 " 打通系统 cv 和 vim
 " 系统剪切板 -> vim
@@ -20,7 +21,7 @@ set clipboard=unnamedplus
 set clipboard=unnamed
 " 解决插入模式 -> 普通模式延迟显示的问题
 set ttimeout ttimeoutlen=10
-" 位置标识记录 | 关闭文件后再次打开，光标会回到你上一次离开的位置
+" 位置标识记录 | 关闭文件后再次打开, 光标会回到你上一次离开的位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " 保留文件视图更改的状态
 " autocmd BufWrite * mkview
@@ -51,20 +52,20 @@ syntax on
 set autoindent
 " 智能缩进
 set smartindent
-" 发生错误时不要响铃，也不要闪烁
+" 发生错误时不要响铃, 也不要闪烁
 set noerrorbells
 set belloff=all
 " 单行内容超出窗口时自动换行显示
 set wrap
 " 编辑模式下时按一个 Tab 键相当于输入 2 个空格
 set tabstop=2
-" 格式化时缩进尺寸为 2 个空格，即 >>、<< 、==（取消全部缩进）时，每一级的字符数
+" 格式化时缩进尺寸为 2 个空格, 即 >>、<< 、==（取消全部缩进）时, 每一级的字符数
 set shiftwidth=2
 " 让 vim 把连续的空格视为一个 Tab, 删除时可以一次删掉一个 Tab 的空格数量
 set softtabstop=2
 " 把制表符转换为多个空格, 具体空格数量参考 tabstop 和 shiftwidth
 set expandtab
-" 垂直滚动时，光标距离顶部/底部的行数 | 保持在你的可视区域的行数
+" 垂直滚动时, 光标距离顶部/底部的行数 | 保持在你的可视区域的行数
 set scrolloff=5
 " 在行和段的开始处智能使用 Tab
 set smarttab
@@ -106,8 +107,8 @@ set autoread
 " set noswapfile
 " 不生成 undo 文件
 " set noundofile
-" 生成 undo (缓存) 文件，设置目录位置 | 退出文件后还能记忆之前的操作，比如 u
-" 还原上次的操作更改项，坏处是会生成很多缓存文件
+" 生成 undo (缓存) 文件, 设置目录位置 | 退出文件后还能记忆之前的操作, 比如 u
+" 还原上次的操作更改项, 坏处是会生成很多缓存文件
 set undofile
 set undodir=~/.vim/undodir
 
@@ -121,7 +122,7 @@ set showmatch
 set hlsearch
 " 即时搜索 | 即边搜边高亮
 set incsearch
-" 智能大小敏感，若有字母大写，敏感，否则不敏感
+" 智能大小敏感, 若有字母大写, 敏感, 否则不敏感
 set ignorecase smartcase
 
 
@@ -131,17 +132,15 @@ set ignorecase smartcase
 " 将 <leader> 键配置为 space | 空格
 let mapleader = " "
 " 快速上下移动 | 这里使用递归因为 jk 都被我改了
-nmap J 5j
-nmap K 5k
-" 对于很长的行，vim 会自动换行，此时 j 或者 k 就会一下跳很多行
-" 使用 gk/gj 可以避免跳过多行，但是不方便， 所以做了如下映射：
-nnoremap k gk
-nnoremap j gj
-vnoremap k gk
-vnoremap j gj
+map J 5jzz
+map K 5kzz
+" 对于很长的行, vim 会自动换行, 此时 j 或者 k 就会一下跳很多行
+" 使用 gk/gj 可以避免跳过多行, 但是不方便, 所以做了如下映射: 
+noremap k gk
+noremap j gj
 " 光标移动到所在行开头/结尾
-nnoremap H ^
-nnoremap L $
+noremap H ^
+noremap L $
 " 返回上次光标所在位置 | 可跨文件
 nnoremap gk <c-o>
 " 与 gk 相反
@@ -151,11 +150,11 @@ nnoremap gj <c-i>
 " nnoremap N Nzz
 " 按 U 执行 redo
 nnoremap U <c-r>
-" 在可视模式下使用 p 粘贴时不替换寄存器内容, 这里是利用了黑洞寄存器，
-" 将选中内容删除到黑洞寄存器，然后再执行大写P，在行尾时会有点bug，但基本满足需求
+" 在可视模式下使用 p 粘贴时不替换寄存器内容, 这里是利用了黑洞寄存器, 
+" 将选中内容删除到黑洞寄存器, 然后再执行大写P, 在行尾时会有点bug, 但基本满足需求
 vnoremap p "_dP
 " 取消搜索高亮
-nnoremap <leader><cr> :nohl<cr>
+nnoremap <leader>; :nohl<cr>
 " 可视模式下按 <leader>y 将内容写入系统寄存器
 " vnoremap <leader>y "+y
 " 可视模式下按 <leader>x 将内容写入（剪切到）系统寄存器
@@ -190,11 +189,11 @@ nnoremap <leader>k <C-w>k
 " nnoremap sh <c-w>t<c-w>K
 " 开启/关闭 单词拼写检查
 " nnoremap <leader>sc :set spell!<cr>
-" 通过 <+> 占位符，然后按两次 <leader> 来找到并清除 | 用于快速定位更改
-map <leader><leader> <esc>/<+><cr>:nohlsearch<cr>c3l
+" 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder
+map <leader><leader> <esc>/<++><cr>:nohl<cr>"_c4l
 " 刷新全局 vimrc 配置 | 系统会根据文件等级依次往下找
 nnoremap R :source $MYVIMRC<cr>
-" temp：同步内容给我自己仓库的文件
+" temp: 同步内容给我自己仓库的文件
 nnoremap <leader>u :!cat vimrc > /Users/feng/Github/vscode-settings/.vimrc<CR>q
 " 每次进入一个新文件时先执行取消高亮命令 | 防止上次在此文件的高亮结果再次显示造成视觉干扰
 exec "nohl"
@@ -217,10 +216,10 @@ Plug 'terryma/vim-multiple-cursors'
 " 扩展 . 的功能
 " Plug 'tpope/vim-repeat'
 " easymotion | 移动指令增强
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 " surround, 快速添加成对符号
 Plug 'tpope/vim-surround'
-" TIP: 这个 plug#end() 一定要记得写啊！！！坑死我啦！！！找了好久bug
+" hint: 这个 plug#end() 一定要记得写啊！！！坑死我啦！！！找了好久bug
 call plug#end()
 
 " ================================================================
@@ -249,16 +248,15 @@ colorscheme PaperColor
 
 " easymotion
 " 替换原生 / 查找
-map / <Plug>(easymotion-sn)
+" map / <Plug>(easymotion-sn)
 " 替换原生 n/N 查找
-map n <Plug>(easymotion-next)zz
-map N <Plug>(easymotion-prev)zz
+" map n <Plug>(easymotion-next)zz
+" map N <Plug>(easymotion-prev)zz
 " 实现类似 vim-sneak 的双字符查找快速移动
-nmap s <Plug>(easymotion-s2)
+" nmap s <Plug>(easymotion-s2)
 " 上下方向行首字母快速移动
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
+" map <leader>j <Plug>(easymotion-j)
+" map <leader>k <Plug>(easymotion-k)
 
 " ================================================================
-" <+>
 " ================================================================

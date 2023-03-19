@@ -49,7 +49,7 @@ function getSameSuffix(arr) {
       isPass = false
     }
   }
-  return 'result：' + resList.join('')
+  return 'result: ' + resList.join('')
 }
 
 console.log(getSameSuffix(list1))
