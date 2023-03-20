@@ -15,6 +15,7 @@
 
 # mac
 .DS_Store
+*.swp
 
 # misc
 npm-debug.log*

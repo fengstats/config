@@ -8,6 +8,7 @@
     "key": "cmd+ctrl+n",
     "command": "workbench.action.newWindow"
   },
+
   // 在不同的组件之间进行跳转/聚焦
   {
     "key": "cmd+shift+h",
@@ -24,6 +25,11 @@
   {
     "key": "cmd+shift+j",
     "command": "workbench.action.navigateDown"
+  },
+  // 从任意地方聚焦到终端
+  {
+    "key": "cmd+shift+\\",
+    "command": "workbench.action.terminal.focus"
   },
   // 单独给终端设置的, 可以从终端返回 editor 中而不关闭终端
   {
@@ -62,14 +68,14 @@
   // 标签 | Tab
   // ================================================================
   // 切换左右 tab
-  {
-    "key": "shift+cmd+;",
-    "command": "workbench.action.previousEditor"
-  },
-  {
-    "key": "shift+cmd+'",
-    "command": "workbench.action.nextEditor"
-  },
+  // {
+  //   "key": "shift+cmd+;",
+  //   "command": "workbench.action.previousEditor"
+  // },
+  // {
+  //   "key": "shift+cmd+'",
+  //   "command": "workbench.action.nextEditor"
+  // },
   // 将当前 tab 移动到左/右边编辑组中 | << and >>
   {
     "key": "cmd+shift+, cmd+shift+,",
@@ -151,16 +157,17 @@
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   // 上下
-  {
-    "key": "cmd+shift+;",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
-  {
-    "key": "cmd+shift+'",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
+  // hint: 还是使用 cmd + shift + [] 切换吧, 这个快捷键按起来怪怪的
+  // {
+  //   "key": "cmd+shift+;",
+  //   "command": "workbench.action.terminal.focusPrevious",
+  //   "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  // },
+  // {
+  //   "key": "cmd+shift+'",
+  //   "command": "workbench.action.terminal.focusNext",
+  //   "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  // },
   // 上/下滚动终端内容
   {
     "key": "alt+j",
@@ -296,5 +303,10 @@
   {
     "key": "cmd+=",
     "command": "-workbench.action.zoomIn"
+  },
+  {
+    "key": "shift+cmd+\\",
+    "command": "-editor.action.jumpToBracket",
+    "when": "editorTextFocus"
   }
 ]

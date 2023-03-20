@@ -212,14 +212,18 @@ Plug 'tomasr/molokai'
 " Dracula 主题(暗色), 后面的配置表示将主题装在 dracula 文件夹下
 Plug 'dracula/vim', { 'as': 'dracula' }
 " 扩展多光标功能
-Plug 'terryma/vim-multiple-cursors'
+" hint: 这个插件已经被 deprecated 了
+" Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " 扩展 . 的功能
 " Plug 'tpope/vim-repeat'
 " easymotion | 移动指令增强
-" Plug 'easymotion/vim-easymotion'
-" surround, 快速添加成对符号
+" Plug 'easymotion/vim-easymotion"
+" 通过 enter 键来快速选择包含块内容(text-objects), 再次按下会继续扩大包含块
+Plug 'gcmt/wildfire.vim'
+" 通过选中内容后按 S 快速添加成对符号, 也支持删除与更改, ds/cs, 与 wildfire 搭配有奇效
 Plug 'tpope/vim-surround'
-" hint: 这个 plug#end() 一定要记得写啊！！！坑死我啦！！！找了好久bug
+" hint: 这个 plug#end() 一定要记得写啊！！！坑死我啦！！！找了好久的 bug
 call plug#end()
 
 " ================================================================
@@ -245,6 +249,9 @@ set background=dark
 " colorscheme molokai
 " colorscheme dracula
 colorscheme PaperColor
+
+" wildfire
+" nmap <leader>f <Plug>(wildfire-quick-select)
 
 " easymotion
 " 替换原生 / 查找

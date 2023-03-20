@@ -41,4 +41,4 @@ zmodule Aloxaf/fzf-tab
 # 一个主题丰富的插件
 zmodule romkatv/powerlevel10k
 # 这个 zsh 插件可以启用一些别名, 扩展 exa 的功能, exa 是 ls 命令的现代替代品
-zmodule DarrinTisdale/zsh-aliases-exa
+# zmodule DarrinTisdale/zsh-aliases-exa

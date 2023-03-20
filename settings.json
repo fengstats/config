@@ -41,20 +41,14 @@
   // 对话框外观
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
-  // 是否开启根据白天/黑夜自动切换主题 | 需要先配置好对应的主题
-  "window.autoDetectColorScheme": false,
-
-  // ================================================================
-  // 工作区 | Workbench
-  // ================================================================
-  "workbench.colorTheme": "Vitesse Dark",
   "workbench.iconTheme": "vscode-icons",
   "workbench.productIconTheme": "icons-carbon",
+  "workbench.colorTheme": "Panda Syntax",
+  // 是否开启根据白天/黑夜自动切换主题 | 需要先配置好对应的主题
+  "window.autoDetectColorScheme": true,
   // 白天/夜晚使用的主题
-  "workbench.preferredLightColorTheme": "Vitesse Dark",
+  "workbench.preferredLightColorTheme": "Panda Syntax",
   "workbench.preferredDarkColorTheme": "Vitesse Dark",
-  // "workbench.preferredLightColorTheme": "One Dark Pro Darker",
-  // "workbench.preferredLightColorTheme": "Ayu Mojave",
   "workbench.editor.closeOnFileDelete": true,
   // tab 标签的关闭图标是否显示
   "workbench.editor.tabCloseButton": "off",
@@ -75,18 +69,11 @@
   "editor.fontSize": 13,
   "editor.lineHeight": 1.6,
   // "editor.fontWeight": 400,
-  // 不设置字体的话貌似用的是系统默认字体捏
-  // "editor.fontFamily": "Smiley Sans",
-  // "editor.fontFamily": "Input Mono",
-  "editor.fontFamily": "JetBrains Mono",
-  // "editor.fontFamily": "Input Mono, Fira Code, monospace",
-  // 编辑器保存时格式化
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 不设置默认使用系统字体
+  "editor.fontFamily": "JetBrains Mono, IBM Plex Mono, Input Mono, Fira Code, monospace",
   // 右侧小地图显示大小设置
   "editor.minimap.size": "fit",
   // 行号显示
-  // "editor.lineNumbers": "relative",
   "editor.lineNumbers": "on",
   "editor.detectIndentation": false,
   "editor.accessibilitySupport": "off",
@@ -99,7 +86,6 @@
   "editor.smoothScrolling": true,
   "editor.find.addExtraSpaceOnTop": false,
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
-  // "editor.fontLigatures": true,
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
@@ -143,30 +129,17 @@
       "comments": "#909090",
       "textMateRules": []
     },
+    // 文本样式调整
     "textMateRules": [
-      // 斜体注释矫正
+      // 注释样式
       {
-        "name": "Comments",
-        "scope": "comment, punctuation.definition.comment",
-        "settings": {
-          "fontStyle": ""
-        }
-      },
-      {
-        "name": "js/ts italic",
-        "scope": "entity.other.attribute-name.js,entity.other.attribute-name.ts,entity.other.attribute-name.jsx,entity.other.attribute-name.tsx,variable.parameter,variable.language.super",
-        "settings": {
-          "fontStyle": ""
-        }
-      },
-      {
-        "name": "js ts this",
-        "scope": "var.this,variable.language.this.js,variable.language.this.ts,variable.language.this.jsx,variable.language.this.tsx",
+        "name": "Comment Italics",
+        "scope": ["comment", "punctuation.definition.comment"],
         "settings": {
           "fontStyle": ""
         }
       }
-      // 关键字粗体
+      // 关键字样式
       // {
       //   "name": "Keyword Bold",
       //   "scope": ["keyword", "storage.type", "storage.modifier"],
@@ -180,12 +153,12 @@
   "workbench.colorCustomizations": {
     // note: active: 活动状态 | inactive: 非活动状态 | foreground: 前景色 | background: 背景色 | border: 边框
     "[Vitesse Dark]": {
-      // 基础 | Basic
+      //  Basic | 基础
       // 调整组件之间间距大小的边框
       "sash.hoverBorder": "#4d9375",
       // 输入框
       "input.background": "#1a1d22",
-      // ctrl+p 调出来的面板容器
+      // ctrl+p 调出来的全局面板
       "quickInput.background": "#12151aaf",
       // 焦点元素整体边框颜色 | 大部分组件窗口都适用
       "focusBorder": "#aaaaaa5f",
@@ -198,19 +171,26 @@
       "badge.foreground": "#cccccc",
       // 面板 | Panel | 测试了下貌似会影响到终端颜色, 终端未设置的前提下
       "panel.background": "#13151b",
+      // 小组件阴影 | 查找/替换/全局面板
+      "widget.shadow": "#00000033",
+      // 与滚动条相关的边框阴影设置
+      "scrollbar.shadow": "#050505",
+      "scrollbarSlider.activeBackground": "#aaaaaa2f",
+      "scrollbarSlider.background": "#aaaaaa2f",
+      "scrollbarSlider.hoverBackground": "#aaaaaa2f",
       "panel.border": "#abbcab50",
       // 文件链接
       // "textLink.activeForeground": "#ff8787",
       // "textLink.foreground": "#ff8787cc",
 
-      // 顶部 | 窗口
+      // Window | 窗口 | 顶部
       "titleBar.activeForeground": "#cccccc",
       "titleBar.inactiveForeground": "#cccccc",
       "titleBar.activeBackground": "#12151a",
       "titleBar.inactiveBackground": "#12151a",
       "titleBar.border": "#aaaaaa5f",
 
-      // 左侧 | 活动栏 | 最左侧的那一列
+      // Activity | 活动栏 | 最左侧的那一列
       "activityBar.background": "#12151a",
       "activityBar.border": "#aaaaaa5f",
       // 活动中的图标前景色
@@ -218,7 +198,7 @@
       "activityBar.inactiveForeground": "#dddddd5f",
       "activityBar.activeBorder": "#4d9375",
 
-      // 左侧 | 侧边栏 (文件/资源管理器)
+      // Explorer | 侧边栏 (文件/资源管理器)
       "sideBar.background": "#12151a",
       "sideBar.border": "#aaaaaa5f",
       "sideBarSectionHeader.border": "#aaaaaa5f",
@@ -231,7 +211,7 @@
       "list.inactiveSelectionBackground": "#aaaaaa1f",
       "list.inactiveFocusBackground": "#00000000",
 
-      // 顶部 | 标签 | Tab
+      // Tab | 标签 | 顶部
       "tab.activeBackground": "#1a1d22",
       "tab.inactiveBackground": "#12151a",
       "tab.activeBorderTop": "#4d9375",
@@ -241,13 +221,12 @@
       // tab 背后整个 tab 条的背景色
       "editorGroupHeader.tabsBackground": "#12151a",
 
-      // 顶部 | 面包屑 | Breadcrumb
+      // Breadcrumb | 面包屑 | 顶部
       "breadcrumb.background": "#1a1d22",
       "breadcrumb.activeSelectionForeground": "#4d9375",
       "breadcrumbPicker.background": "#12151abf",
-      "widget.shadow": "#00000033",
 
-      // 中间 | 编辑器 | Editor
+      // Editor | 编辑器 | 中间
       "editor.background": "#1a1d22",
       "editorGroup.border": "#abbcab2f",
       "editorLineNumber.foreground": "#cccccc5f",
@@ -266,19 +245,42 @@
       // 粘性滚动代码背景色设置
       "editorStickyScroll.background": "#1a1d22",
       "editorStickyScrollHover.background": "#aaaaaa1f",
-      // 与滚动条相关的边框阴影设置
-      "scrollbar.shadow": "#050505",
-      "scrollbarSlider.activeBackground": "#aaaaaa2f",
-      "scrollbarSlider.background": "#aaaaaa2f",
-      "scrollbarSlider.hoverBackground": "#aaaaaa2f",
+      // 鼠标悬停在内容上提示的背景色
+      // "editorHoverWidget.background": "#ff0000"
+
       // 代码参数提示
       // "editorInlayHint.background": "#ffffff10",
       // "editorInlayHint.foreground": "#ffffff6f",
 
-      // 中间底部 | 终端 | Terminal
+      // Terminal | 终端 | 中间底部
       // 选择背景色
       "terminal.selectionBackground": "#d1d1d130"
       // todo: 想设置 terminal 失去焦点时的背景色之类的, 没有找到, 后面看看
+    },
+    "[Panda Syntax]": {
+      "badge.background": "#aaaaaa",
+      "badge.foreground": "#000000",
+      "quickInput.background": "#202020bf",
+      "widget.shadow": "#0000008f",
+      "titleBar.border": "#aaaaaa6f",
+      "tab.border": "#aaaaaa6f",
+      "tab.activeBorderTop": "#86f6de",
+      "tab.activeBorder": "#00000000",
+      "textCodeBlock.background": "#aaaaaa3f",
+      "editorWidget.foreground": "#cccccc",
+      // 光标覆盖之后内容的颜色
+      "editorCursor.background": "#ffffff",
+      "editor.selectionBackground": "#aaaaaa6f",
+      "editor.selectionHighlightBackground": "#aaaaaa2f",
+      "editor.wordHighlightBackground": "#aaaaaa2f",
+      // 建议/智能补全提示
+      "editorSuggestWidget.selectedForeground": "#ffffffff",
+      "editorSuggestWidget.selectedBackground": "#aaaaaa2f",
+      "editorHoverWidget.background": "#202020ef",
+      "editorWidget.background": "#202020ef",
+      "scrollbarSlider.activeBackground": "#aaaaaa2f",
+      "scrollbarSlider.background": "#aaaaaa2f",
+      "scrollbarSlider.hoverBackground": "#aaaaaa2f"
     }
   },
 
@@ -290,18 +292,15 @@
   // hint: 开启GPU加速后, 终端速度明显快多了
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.fontSize": 13,
-  // 终端字体, 不设置的话默认使用编辑器字体
+  // 终端字体 | 不设置的话默认使用编辑器字体
+  "terminal.integrated.fontFamily": "Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
-  "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
+  // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
   "terminal.integrated.confirmOnKill": "never",
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.lineHeight": 0,
-  "terminal.integrated.letterSpacing": 0,
-  "terminal.integrated.fontWeightBold": "normal",
-  "terminal.integrated.cursorWidth": 1,
+  "terminal.integrated.lineHeight": 1.1,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.fontWeight": "300",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.tabs.location": "right",
@@ -311,6 +310,12 @@
   // ================================================================
   // 设置 leader 键为空格
   "vim.leader": "<space>",
+  // hint: 体验下崔大的 vim.leap 插件
+  "vim.leap": true,
+  // 双向搜索
+  "vim.leapBidirectionalSearch": true,
+  "vim.leapShowMarkerPosition": "target",
+  "vim.leapCaseSensitive": false,
   // <leader><leader> s <char>: 全文搜索字符
   // <leader><leader> f <char>: 当前光标往下搜索
   "vim.easymotion": false,
@@ -325,14 +330,18 @@
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false,
-    // 作为以为合格的 cv 工程师的, 主力按键怎么能被 vim 接管, 达咩！
+    // 作为一位合格的 cv 工程师, 我的主力按键怎么能被 vim 接管, 达咩！
     "<C-c>": false,
     "<C-v>": false
   },
-  // 插入模式 | 按键功能映射
+  // 插入/写入模式 | 按键功能映射
   "vim.insertModeKeyBindings": [],
-  // 可视模式 | 按键功能映射
+  // 可视/选择模式 | 按键功能映射
   "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["enter"],
+      "after": ["a", "f"]
+    },
     // 其实就是用了个小技巧让我们在可视模式下粘贴时寄存器内数据保持一致:
     // 一般来说如果在可视模式选中后 p 操作会将 p 所覆盖的东西复制到寄存器中, 导致后续再 p 就不是我们想粘贴的内容了
     // 这里在 p 后执行 gv（选中粘贴的数据）并 y（复制）
@@ -378,7 +387,7 @@
     },
 
     // 标签区 | Tab
-    // hack: tab 标签左右切换: 注意若遇到软件设置/插件说明等 tab 标签时, 无效, 可用系统快捷键 cmd + shift + [] 切换
+    // hack: tab 标签左右切换: 注意若遇到软件设置/插件说明等 tab 标签时会无效, 可用系统快捷键 cmd + shift + [] 切换
     // {
     //   "before": ["H"],
     //   "commands": ["workbench.action.previousEditor"]
@@ -389,6 +398,11 @@
     // },
 
     // 编辑区 | Editor
+    // 类似 wildfire.vim 但是不能选择包含块里面的内容, 有点可惜
+    {
+      "before": ["enter"],
+      "after": ["v", "a", "f"]
+    },
     // 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder | 进入 insert 模式
     {
       "before": ["leader", "leader"],
@@ -409,8 +423,7 @@
         "_",
         "c",
         "4",
-        "l",
-        "<esc>"
+        "l"
       ]
     },
     // 解决自动换行后进行光标移动一次跳过多行的问题
@@ -623,7 +636,7 @@
   ],
 
   // ================================================================
-  // errorLens begin
+  // ErrorLens
   // ================================================================
   "errorLens.fontFamily": "JetBrains Mono",
   // 是否使用斜体
@@ -637,7 +650,7 @@
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
 
   // ================================================================
-  // prettier begin
+  // Prettier
   // ================================================================
   "prettier.printWidth": 100,
   "prettier.semi": false,
@@ -645,27 +658,21 @@
   "prettier.trailingComma": "all",
 
   // ================================================================
-  // js begin
+  // Formatter | 指定文件类型指定格式化方式
   // ================================================================
-  "[javascript]": {
+  // 保存时是否格式化
+  "editor.formatOnSave": true,
+  // 所有文件都使用这种方式进行格式化
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript][jsonc][vue][typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // 是否开启语法校验检查
-  "js/ts.implicitProjectConfig.checkJs": true,
-
-  // ================================================================
-  // css begin
-  // ================================================================
-  // less 转换为 css
-  "less.compile": {
-    "outExt": ".css"
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
-  // px 转换为 vw 单位
-  "px-to-vw.viewportWidth": 375,
-  "px-to-vw.unitPrecision": 2,
 
   // ================================================================
-  // paramHints begin
+  // paramHints
   // ================================================================
   "javascript.inlayHints.parameterNames.enabled": "none",
   "typescript.inlayHints.parameterNames.enabled": "none",
@@ -674,7 +681,7 @@
   "editor.inlayHints.enabled": "onUnlessPressed",
 
   // ================================================================
-  // eslint begin
+  // Eslint
   // ================================================================
   // "eslint.validate": ["javascript"],
   // "eslint.options": {
@@ -686,17 +693,18 @@
   // "eslint.alwaysShowStatus": true,
 
   // ================================================================
-  // other begin
+  // other
   // ================================================================
+  // 是否开启语法校验检查
+  "js/ts.implicitProjectConfig.checkJs": true,
   "docker.images.label": "Tag",
   "vsicons.dontShowNewVersionMessage": true,
   "security.workspace.trust.untrustedFiles": "open",
-  "powermode.enabled": false,
-  "powermode.shake.intensity": 0,
-  "commentTranslate.hover.string": true,
-  "commentTranslate.hover.variable": true,
-  "commentTranslate.hover.enabled": false,
-  "commentTranslate.hover.content": false,
+  // 文件类型语言模式映射
+  "files.associations": {
+    ".zimrc": "shellscript"
+  },
+  "cSpell.enableFiletypes": ["vimrc"],
   "cSpell.userWords": [
     "colour",
     "easymotion",
@@ -706,6 +714,10 @@
     "Vitesse",
     "zimfw",
     "zmodule"
-  ],
-  "cSpell.enableFiletypes": ["vimrc"]
+  ]
+  // "px-to-vw.viewportWidth": 375,
+  // "px-to-vw.unitPrecision": 2,
+  // "less.compile": {
+  //   "outExt": ".css"
+  // },
 }
