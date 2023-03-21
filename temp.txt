@@ -1,8 +1,8 @@
 
-( <++> ) BUG：this is the bug description
-( bad ) hello world
-( <++> ) // todo: this is content
-( bad ) TODO: this is content
-( <++> ) add content
+( good ) BUG：this is the bug description
+( good ) hello world
+( good ) // todo: this is content
+( good ) TODO: this is content
+( good ) add content
 
-print("name")
+print("test")

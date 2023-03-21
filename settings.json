@@ -29,7 +29,7 @@
   },
 
   // ================================================================
-  // 窗口 | Window
+  // 窗口 | Window and Workbench
   // ================================================================
   // 是否使用原生标签页
   "window.nativeTabs": false,
@@ -41,32 +41,38 @@
   // 对话框外观
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
+
   "workbench.iconTheme": "vscode-icons",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.colorTheme": "Panda Syntax",
   // 是否开启根据白天/黑夜自动切换主题 | 需要先配置好对应的主题
-  "window.autoDetectColorScheme": true,
+  "window.autoDetectColorScheme": false,
   // 白天/夜晚使用的主题
   "workbench.preferredLightColorTheme": "Panda Syntax",
   "workbench.preferredDarkColorTheme": "Vitesse Dark",
+  // 类似 mac 的台前调度, 是否只显示一个 tab
+  "workbench.editor.showTabs": false,
+  "workbench.editor.showIcons": false,
+  "workbench.list.smoothScrolling": true,
   "workbench.editor.closeOnFileDelete": true,
   // tab 标签的关闭图标是否显示
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.limit.enabled": true,
-  "workbench.editor.wrapTabs": true,
-  "workbench.editor.limit.perEditorGroup": true,
+  // 控制当超出可用空间时, tab 是否换行或者显示滚动条
+  "workbench.editor.wrapTabs": false,
   // 设置最大显示 tab title 的个数
-  // "workbench.editor.limit.value": 5,
+  "workbench.editor.limit.value": 5,
+  // 应用于每个编辑组
+  "workbench.editor.limit.perEditorGroup": true,
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
-  "workbench.list.smoothScrolling": true,
   "workbench.startupEditor": "newUntitledFile",
 
   // ================================================================
   // 编辑区 | Editor
   // ================================================================
   "editor.tabSize": 2,
-  "editor.fontSize": 13,
+  "editor.fontSize": 13.5,
   "editor.lineHeight": 1.6,
   // "editor.fontWeight": 400,
   // 不设置默认使用系统字体
@@ -89,9 +95,10 @@
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
-  // 使用 command 替换 alt/option 的多光标模式
-  // "editor.multiCursorModifier": "ctrlCmd",
-  "editor.renderWhitespace": "all",
+  // 是否替换 alt 的多光标映射
+  "editor.multiCursorModifier": "alt",
+  // 渲染空格字符的方式
+  "editor.renderWhitespace": "selection",
   "editor.suggestSelection": "first",
   "editor.unicodeHighlight.invisibleCharacters": false,
   // 括号着色
@@ -152,10 +159,35 @@
   // 自定义主题样式
   "workbench.colorCustomizations": {
     // note: active: 活动状态 | inactive: 非活动状态 | foreground: 前景色 | background: 背景色 | border: 边框
-    "[Vitesse Dark]": {
+    "[Panda Syntax]": {
+      "badge.background": "#aaaaaa",
+      "badge.foreground": "#000000",
+      "quickInput.background": "#202020bf",
+      "widget.shadow": "#0000008f",
+      "titleBar.border": "#aaaaaa6f",
+      "tab.border": "#aaaaaa6f",
+      "tab.activeBorderTop": "#86f6de",
+      "tab.activeBorder": "#00000000",
+      "textCodeBlock.background": "#aaaaaa3f",
+      "editorWidget.foreground": "#cccccc",
+      "editorCursor.background": "#ffffff",
+      "editor.selectionBackground": "#aaaaaa6f",
+      "editor.selectionHighlightBackground": "#aaaaaa2f",
+      "editor.wordHighlightBackground": "#aaaaaa2f",
+      // 建议/智能补全提示
+      "editorSuggestWidget.selectedForeground": "#ffffffff",
+      "editorSuggestWidget.selectedBackground": "#aaaaaa2f",
+      "editorHoverWidget.background": "#202020ef",
+      "editorWidget.background": "#202020ef",
+      "scrollbarSlider.activeBackground": "#aaaaaa2f",
+      "scrollbarSlider.background": "#aaaaaa2f",
+      "scrollbarSlider.hoverBackground": "#aaaaaa2f"
+    },
+    // hint: 特别暗环境可以开起来这个, 最近发现 dark mode 主题背景太暗的话是有点费眼睛的
+    "[-Panda Syntax][Vitesse Dark]": {
       //  Basic | 基础
       // 调整组件之间间距大小的边框
-      "sash.hoverBorder": "#4d9375",
+      "sash.hoverBorder": "#66c0ad",
       // 输入框
       "input.background": "#1a1d22",
       // ctrl+p 调出来的全局面板
@@ -166,10 +198,7 @@
       "gitDecoration.ignoredResourceForeground": "#aaaaaa5f",
       // 文本中代码块的颜色
       "textCodeBlock.background": "#aaaaaa3f",
-      // Badge
-      "badge.background": "#aaaaaa1f",
-      "badge.foreground": "#cccccc",
-      // 面板 | Panel | 测试了下貌似会影响到终端颜色, 终端未设置的前提下
+      // 编辑区域下面可以调出来的面板(包含终端), 测试了下貌似会影响到终端颜色, 终端未设置的前提下
       "panel.background": "#13151b",
       // 小组件阴影 | 查找/替换/全局面板
       "widget.shadow": "#00000033",
@@ -196,7 +225,9 @@
       // 活动中的图标前景色
       "activityBar.foreground": "#dddddd",
       "activityBar.inactiveForeground": "#dddddd5f",
-      "activityBar.activeBorder": "#4d9375",
+      "activityBar.activeBorder": "#66c0ad",
+      "activityBarBadge.foreground": "#000000",
+      "activityBarBadge.background": "#77dac5",
 
       // Explorer | 侧边栏 (文件/资源管理器)
       "sideBar.background": "#12151a",
@@ -204,7 +235,9 @@
       "sideBarSectionHeader.border": "#aaaaaa5f",
       // 第一级菜单背景色
       "sideBarSectionHeader.background": "#12151a",
-      "list.activeSelectionForeground": "#ffffff",
+      // "list.focusForeground": "#ff0000",
+      // "list.activeSelectionForeground": "#ffffff",
+      // "list.focusAndSelectionOutline": "#ff0000",
       "list.hoverBackground": "#6666661f",
       "list.focusBackground": "#6666661f",
       "list.activeSelectionBackground": "#aaaaaa1f",
@@ -214,8 +247,9 @@
       // Tab | 标签 | 顶部
       "tab.activeBackground": "#1a1d22",
       "tab.inactiveBackground": "#12151a",
-      "tab.activeBorderTop": "#4d9375",
-      // "tab.activeBorder": "#4d9375",
+      // "tab.activeBorderTop": "#4d9375",
+      "tab.activeBorderTop": "#66c0ad",
+      "tab.activeBorder": "#00000000",
       "tab.hoverBackground": "#1a1d22",
       "tab.border": "#aaaaaa5f",
       // tab 背后整个 tab 条的背景色
@@ -223,7 +257,7 @@
 
       // Breadcrumb | 面包屑 | 顶部
       "breadcrumb.background": "#1a1d22",
-      "breadcrumb.activeSelectionForeground": "#4d9375",
+      "breadcrumb.activeSelectionForeground": "#66c0ad",
       "breadcrumbPicker.background": "#12151abf",
 
       // Editor | 编辑器 | 中间
@@ -234,53 +268,34 @@
       "editor.selectionBackground": "#aaaaaa4f",
       "editor.selectionHighlightBackground": "#aaaaaa1f",
       "editor.wordHighlightBackground": "#aaaaaa1f",
+      // 光标覆盖之后内容的颜色
+      "editorCursor.background": "#000000",
       // 与选中内容一致的, 高亮其边框
       // "editor.selectionHighlightBorder": "#ffffff3f",
       // 小组件背景颜色 | 提示/查找/替换
       "editorWidget.background": "#12151aef",
+      // 鼠标悬停在内容上提示的背景色
+      "editorHoverWidget.background": "#12151aef",
       // 智能提示面板 | 如果未设置就使用上面小组件的
       // "editorSuggestWidget.background": "#0a0a0a",
       // "editorSuggestWidget.selectedBackground": "#ff0000",
+      "editorSuggestWidget.selectedForeground": "#ffffffff",
+      "editorSuggestWidget.selectedBackground": "#aaaaaa3f",
       "editor.lineHighlightBackground": "#aaaaaa1f",
       // 粘性滚动代码背景色设置
       "editorStickyScroll.background": "#1a1d22",
       "editorStickyScrollHover.background": "#aaaaaa1f",
-      // 鼠标悬停在内容上提示的背景色
-      // "editorHoverWidget.background": "#ff0000"
-
       // 代码参数提示
       // "editorInlayHint.background": "#ffffff10",
       // "editorInlayHint.foreground": "#ffffff6f",
 
-      // Terminal | 终端 | 中间底部
-      // 选择背景色
-      "terminal.selectionBackground": "#d1d1d130"
+      // Terminal | 终端 | 编辑区底部
       // todo: 想设置 terminal 失去焦点时的背景色之类的, 没有找到, 后面看看
-    },
-    "[Panda Syntax]": {
-      "badge.background": "#aaaaaa",
-      "badge.foreground": "#000000",
-      "quickInput.background": "#202020bf",
-      "widget.shadow": "#0000008f",
-      "titleBar.border": "#aaaaaa6f",
-      "tab.border": "#aaaaaa6f",
-      "tab.activeBorderTop": "#86f6de",
-      "tab.activeBorder": "#00000000",
-      "textCodeBlock.background": "#aaaaaa3f",
-      "editorWidget.foreground": "#cccccc",
-      // 光标覆盖之后内容的颜色
-      "editorCursor.background": "#ffffff",
-      "editor.selectionBackground": "#aaaaaa6f",
-      "editor.selectionHighlightBackground": "#aaaaaa2f",
-      "editor.wordHighlightBackground": "#aaaaaa2f",
-      // 建议/智能补全提示
-      "editorSuggestWidget.selectedForeground": "#ffffffff",
-      "editorSuggestWidget.selectedBackground": "#aaaaaa2f",
-      "editorHoverWidget.background": "#202020ef",
-      "editorWidget.background": "#202020ef",
-      "scrollbarSlider.activeBackground": "#aaaaaa2f",
-      "scrollbarSlider.background": "#aaaaaa2f",
-      "scrollbarSlider.hoverBackground": "#aaaaaa2f"
+      // 选择背景色
+      "terminal.selectionBackground": "#d1d1d130",
+      // Badge: 小型的信息标签, 测试只有终端这边的有反应, 活动栏需要单独设置, 有可能时因为原主题设置了活动栏的原因?
+      "badge.background": "#aaaaaa5f",
+      "badge.foreground": "#cccccc"
     }
   },
 
@@ -291,7 +306,7 @@
   "terminal.external.osxExec": "iTerm.app",
   // hint: 开启GPU加速后, 终端速度明显快多了
   "terminal.integrated.gpuAcceleration": "on",
-  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontSize": 14,
   // 终端字体 | 不设置的话默认使用编辑器字体
   "terminal.integrated.fontFamily": "Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
@@ -336,6 +351,17 @@
   },
   // 插入/写入模式 | 按键功能映射
   "vim.insertModeKeyBindings": [],
+  // 按下 operation (d/y/c) 后等待的模式 | pending
+  "vim.operatorPendingModeKeyBindings": [
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    }
+  ],
   // 可视/选择模式 | 按键功能映射
   "vim.visualModeKeyBindingsNonRecursive": [
     {
@@ -398,34 +424,44 @@
     // },
 
     // 编辑区 | Editor
+    // 向上/下寻找当前文件出现的提示提示/警告/错误
+    {
+      "before": ["leader", "k"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["leader", "j"],
+      "commands": ["editor.action.marker.next"]
+    },
     // 类似 wildfire.vim 但是不能选择包含块里面的内容, 有点可惜
     {
       "before": ["enter"],
       "after": ["v", "a", "f"]
     },
     // 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder | 进入 insert 模式
-    {
-      "before": ["leader", "leader"],
-      "after": [
-        "/",
-        "<",
-        "+",
-        "+",
-        ">",
-        "<cr>",
-        ":",
-        "n",
-        "o",
-        "h",
-        "l",
-        "<cr>",
-        "\"",
-        "_",
-        "c",
-        "4",
-        "l"
-      ]
-    },
+    // bug: 找不到这个占位符的时候也会执行 c4l 就把当前光标所在的4个字符删除了
+    // {
+    //   "before": ["leader", "leader"],
+    //   "after": [
+    //     "/",
+    //     "<",
+    //     "+",
+    //     "+",
+    //     ">",
+    //     "<cr>",
+    //     ":",
+    //     "n",
+    //     "o",
+    //     "h",
+    //     "l",
+    //     "<cr>",
+    //     "\"",
+    //     "_",
+    //     "c",
+    //     "4",
+    //     "l"
+    //   ]
+    // },
     // 解决自动换行后进行光标移动一次跳过多行的问题
     {
       "before": ["j"],
@@ -531,7 +567,7 @@
     }
   ],
   // vim keep english in normal（中文切换到普通/NORMAL模式时自动变成英文输入）
-  // hint: 目前通过 Rime 的配置方案解决了
+  // hint: 通过 Rime 的配置方案解决了
   // bug: 使用操作符 (如：ciw），删除当前光标所在单词并进入 INSERT 模式, 此时光标应该从方块变成细条光束, 但结果仍然保持方块, 直到再次输入字符时光标才会切换为细条光束
   // 对于我来说, 光标状态的显示是我判断模式的根本, 如果光标状态与模式不同时, 可能会产生一些错误的命令输入, 体验上来说就很不友好
   // 是否启用自动切换
@@ -596,36 +632,35 @@
   // better comments
   // ================================================================
   "better-comments.tags": [
+    // hint: 功能提示
+    {
+      "tag": "hint",
+      "color": "#fff",
+      "backgroundColor": "#0bba54"
+    },
+    // note: 一般用于比较难理解的代码/功能, 添加描述
+    {
+      "tag": "note",
+      "color": "#fff",
+      "backgroundColor": "#3498db"
+    },
     // todo: 表示一些未完成的功能/事情
     {
       "tag": "todo",
-      "color": "#000",
-      // "backgroundColor": "#dfe6e9"
-      "backgroundColor": "#fa973a"
+      "color": "#fff",
+      "backgroundColor": "#ff7c00"
+    },
+    // hack: 表示一个功能虽然实现, 但是后续可能会存在问题
+    {
+      "tag": "hack",
+      "color": "#fff",
+      "backgroundColor": "#ff7c00"
     },
     // fixme: 修复我, 表示已经实现但不完美的功能/需要修复
     {
       "tag": "fixme",
       "color": "#fff",
       "backgroundColor": "#ff4757"
-    },
-    // hint: 功能提示
-    {
-      "tag": "hint",
-      "color": "#000",
-      "backgroundColor": "#2faf64"
-    },
-    // note: 一般用于比较难理解的代码/功能, 添加描述
-    {
-      "tag": "note",
-      "color": "#000",
-      "backgroundColor": "#3498db"
-    },
-    // hack: 表示一个功能虽然实现, 但是后续可能会存在问题
-    {
-      "tag": "hack",
-      "color": "#000",
-      "backgroundColor": "#fa973a"
     },
     // bug: 表示一个功能存在问题
     {

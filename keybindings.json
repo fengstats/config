@@ -8,7 +8,11 @@
     "key": "cmd+ctrl+n",
     "command": "workbench.action.newWindow"
   },
-
+  // 选择最近的文件工作区
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.openRecent"
+  },
   // 在不同的组件之间进行跳转/聚焦
   {
     "key": "cmd+shift+h",
@@ -48,11 +52,11 @@
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
-  // project-manager
-  {
-    "key": "ctrl+'",
-    "command": "workbench.view.extension.project-manager"
-  },
+  // project-manager: 我发现了 ctrl+r 来操作项目管理的方式更爽
+  // {
+  //   "key": "ctrl+'",
+  //   "command": "workbench.view.extension.project-manager"
+  // },
   {
     "key": "ctrl+f",
     "command": "workbench.action.findInFiles"
@@ -67,15 +71,6 @@
   // ================================================================
   // 标签 | Tab
   // ================================================================
-  // 切换左右 tab
-  // {
-  //   "key": "shift+cmd+;",
-  //   "command": "workbench.action.previousEditor"
-  // },
-  // {
-  //   "key": "shift+cmd+'",
-  //   "command": "workbench.action.nextEditor"
-  // },
   // 将当前 tab 移动到左/右边编辑组中 | << and >>
   {
     "key": "cmd+shift+, cmd+shift+,",
@@ -85,6 +80,15 @@
     "key": "cmd+shift+. cmd+shift+.",
     "command": "workbench.action.moveEditorToNextGroup"
   },
+  // 切换左右 tab
+  // {
+  //   "key": "shift+cmd+;",
+  //   "command": "workbench.action.previousEditor"
+  // },
+  // {
+  //   "key": "shift+cmd+'",
+  //   "command": "workbench.action.nextEditor"
+  // },
 
   // ================================================================
   // 编辑器 | Editor
@@ -122,11 +126,12 @@
     "command": "openInTerminal"
   },
   // 关闭终端
-  {
-    "key": "cmd+w",
-    "command": "workbench.action.terminal.kill",
-    "when": "terminalFocus"
-  },
+  // note: 没猜错的话应该就是这个快捷键被我在终端误触了之后以为是终端的异常闪退, 还花了好久找问题, 麻了, 现在关了, 我后续观察是否还会出现
+  // {
+  //   "key": "cmd+w",
+  //   "command": "workbench.action.terminal.kill",
+  //   "when": "terminalFocus"
+  // },
   // 最大化终端
   {
     "key": "cmd+shift+enter",
@@ -213,10 +218,6 @@
   },
 
   // setting default
-  {
-    "key": "cmd+r",
-    "command": "vite.open"
-  },
   {
     "key": "shift+cmd+j",
     "command": "-workbench.action.search.toggleQueryDetails",
@@ -308,5 +309,14 @@
     "key": "shift+cmd+\\",
     "command": "-editor.action.jumpToBracket",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-shell.runCommand"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "-lineBreakInsert",
+    "when": "textInputFocus && !editorReadonly"
   }
 ]
