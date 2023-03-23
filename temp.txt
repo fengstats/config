@@ -1,8 +1,0 @@
-
-( good ) BUG：this is the bug description
-( good ) hello world
-( good ) // todo: this is content
-( good ) TODO: this is content
-( good ) add content
-
-print("test")

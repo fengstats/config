@@ -130,7 +130,28 @@
       "comments": "#adb5ad"
     },
     "[Panda Syntax]": {
-      "comments": "#adb5ad"
+      "comments": "#adb5ad",
+      "textMateRules": [
+        // 更改编辑器中 html 配色方案
+        {
+          "scope": ["entity.name.tag", "entity.name.tag.css", "support.class.component"],
+          "settings": {
+            "foreground": "#ed9cc2"
+          }
+        },
+        {
+          "scope": "meta.tag.structure.any.html, meta.tag.other.html, entity.name.tag.html, meta.tag.metadata.script.html, entity.name.tag.jade",
+          "settings": {
+            "foreground": "#ed9cc2"
+          }
+        },
+        {
+          "scope": "source.vue, entity.name.tag.pug, meta.tag.other",
+          "settings": {
+            "foreground": "#ed9cc2"
+          }
+        }
+      ]
     },
     "[Moegi Dark]": {
       "comments": "#909090",
@@ -138,7 +159,7 @@
     },
     // 文本样式调整
     "textMateRules": [
-      // 注释样式
+      // 注释样式: 正常或者斜体
       {
         "name": "Comment Italics",
         "scope": ["comment", "punctuation.definition.comment"],
@@ -146,7 +167,7 @@
           "fontStyle": ""
         }
       }
-      // 关键字样式
+      // 设置关键词粗体
       // {
       //   "name": "Keyword Bold",
       //   "scope": ["keyword", "storage.type", "storage.modifier"],
@@ -160,6 +181,7 @@
   "workbench.colorCustomizations": {
     // note: active: 活动状态 | inactive: 非活动状态 | foreground: 前景色 | background: 背景色 | border: 边框
     "[Panda Syntax]": {
+      // todo
       "badge.background": "#aaaaaa",
       "badge.foreground": "#000000",
       "quickInput.background": "#202020bf",
@@ -634,37 +656,37 @@
   "better-comments.tags": [
     // hint: 功能提示
     {
-      "tag": "hint",
+      "tag": "HINT",
       "color": "#fff",
       "backgroundColor": "#0bba54"
     },
     // note: 一般用于比较难理解的代码/功能, 添加描述
     {
-      "tag": "note",
+      "tag": "NOTE",
       "color": "#fff",
       "backgroundColor": "#3498db"
     },
     // todo: 表示一些未完成的功能/事情
     {
-      "tag": "todo",
+      "tag": "TODO",
       "color": "#fff",
       "backgroundColor": "#ff7c00"
     },
     // hack: 表示一个功能虽然实现, 但是后续可能会存在问题
     {
-      "tag": "hack",
+      "tag": "HACK",
       "color": "#fff",
       "backgroundColor": "#ff7c00"
     },
     // fixme: 修复我, 表示已经实现但不完美的功能/需要修复
     {
-      "tag": "fixme",
+      "tag": "FIXME",
       "color": "#fff",
       "backgroundColor": "#ff4757"
     },
     // bug: 表示一个功能存在问题
     {
-      "tag": "bug",
+      "tag": "BUG",
       "color": "#fff",
       "backgroundColor": "#ff4757"
     }
