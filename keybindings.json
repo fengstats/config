@@ -3,6 +3,14 @@
   // ================================================================
   // 基础通用 | Basic
   // ================================================================
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.navigateForward"
+  },
   // 打开一个新窗口
   {
     "key": "cmd+ctrl+n",
@@ -14,6 +22,20 @@
     "command": "workbench.action.openRecent"
   },
   // 在不同的组件之间进行跳转/聚焦
+  // vim 的方式
+  // {
+  //   "key": "cmd+shift+h",
+  //   "command": "vim.remap",
+  //   "when": "vim.mode == 'Normal'",
+  //   "args": {
+  //     "after": ["<c-w>", "h"]
+  //   }
+  // },
+  // 只能在编辑区
+  // {
+  //   "key": "cmd+shift+h",
+  //   "command": "workbench.action.focusLeftGroup"
+  // },
   {
     "key": "cmd+shift+h",
     "command": "workbench.action.navigateLeft"
@@ -48,7 +70,7 @@
   },
   // 左侧文件管理面板显示
   {
-    "key": "ctrl+;",
+    "key": "cmd+shift+;",
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
@@ -58,12 +80,12 @@
   //   "command": "workbench.view.extension.project-manager"
   // },
   {
-    "key": "ctrl+f",
+    "key": "cmd+shift+f",
     "command": "workbench.action.findInFiles"
   },
   // gitlens
   {
-    "key": "ctrl+g",
+    "key": "cmd+shift+g",
     "command": "workbench.view.scm",
     "when": "workbench.scm.active"
   },
@@ -93,6 +115,11 @@
   // ================================================================
   // 编辑器 | Editor
   // ================================================================
+  // 垂直分屏
+  // {
+  //   "key": "cmd+shift+\\",
+  //   "command": "workbench.action.splitEditorToBelowGroup"
+  // },
   // 替换当前行和上/下行
   {
     "key": "alt+k",
@@ -186,7 +213,7 @@
   },
 
   // ================================================================
-  // file begin
+  // file
   // ================================================================
   // 在文件管理器中搜索
   {

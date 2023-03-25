@@ -72,11 +72,10 @@
   // 编辑区 | Editor
   // ================================================================
   "editor.tabSize": 2,
-  "editor.fontSize": 13.5,
+  "editor.fontSize": 14.5,
   "editor.lineHeight": 1.6,
-  // "editor.fontWeight": 400,
   // 不设置默认使用系统字体
-  "editor.fontFamily": "JetBrains Mono, IBM Plex Mono, Input Mono, Fira Code, monospace",
+  "editor.fontFamily": "Comic Shanns, JetBrains Mono, IBM Plex Mono, Input Mono, Fira Code, monospace",
   // 右侧小地图显示大小设置
   "editor.minimap.size": "fit",
   // 行号显示
@@ -330,12 +329,12 @@
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.fontSize": 14,
   // 终端字体 | 不设置的话默认使用编辑器字体
-  "terminal.integrated.fontFamily": "Hack Nerd Font Mono, monospace",
+  "terminal.integrated.fontFamily": "Comic Shanns, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
   "terminal.integrated.confirmOnKill": "never",
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.lineHeight": 1.1,
+  "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -386,6 +385,14 @@
   ],
   // 可视/选择模式 | 按键功能映射
   "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j"],
+      "after": ["g", "j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
+    },
     {
       "before": ["enter"],
       "after": ["a", "f"]
@@ -446,6 +453,20 @@
     // },
 
     // 编辑区 | Editor
+    // 将没有定义的变量或者函数快速创建出来
+    {
+      "before": ["leader", "v", "v"],
+      "commands": ["hocusPocus.createVariable"]
+    },
+    {
+      "before": ["leader", "f", "f"],
+      "commands": ["hocusPocus.createFunction"]
+    },
+    // 打开 git diff 差异对比查看
+    {
+      "before": ["leader", "d", "f"],
+      "commands": ["git.openChange"]
+    },
     // 向上/下寻找当前文件出现的提示提示/警告/错误
     {
       "before": ["leader", "k"],
@@ -456,10 +477,10 @@
       "commands": ["editor.action.marker.next"]
     },
     // 类似 wildfire.vim 但是不能选择包含块里面的内容, 有点可惜
-    {
-      "before": ["enter"],
-      "after": ["v", "a", "f"]
-    },
+    // {
+    //   "before": ["enter"],
+    //   "after": ["v", "a", "f"]
+    // },
     // 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder | 进入 insert 模式
     // bug: 找不到这个占位符的时候也会执行 c4l 就把当前光标所在的4个字符删除了
     // {
@@ -576,10 +597,10 @@
     //   "after": ["g", "f"]
     // }
     // 光标跳转到前面的函数开始处 | 如果光标在函数体内, 那就是该函数的开始处
-    // {
-    //   "before": ["leader", "["],
-    //   "after": ["[", "{"]
-    // },
+    {
+      "before": ["leader", "["],
+      "after": ["[", "{"]
+    },
 
     // 终端区 | Terminal
     // 光标由 editor 聚焦至 terminal
@@ -721,7 +742,7 @@
   "editor.formatOnSave": true,
   // 所有文件都使用这种方式进行格式化
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript][jsonc][vue][typescript]": {
+  "[javascript][jsonc][vue][typescript][html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
