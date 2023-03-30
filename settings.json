@@ -50,8 +50,8 @@
   // 白天/夜晚使用的主题
   "workbench.preferredLightColorTheme": "Panda Syntax",
   "workbench.preferredDarkColorTheme": "Vitesse Dark",
-  // 类似 mac 的台前调度, 是否只显示一个 tab
-  "workbench.editor.showTabs": false,
+  // 是否显示多个 tab 标签, false 就类似 mac 的台前调度
+  "workbench.editor.showTabs": true,
   "workbench.editor.showIcons": false,
   "workbench.list.smoothScrolling": true,
   "workbench.editor.closeOnFileDelete": true,
@@ -74,37 +74,50 @@
   "editor.tabSize": 2,
   "editor.fontSize": 14.5,
   "editor.lineHeight": 1.6,
+  // 行号显示
+  "editor.lineNumbers": "on",
   // 不设置默认使用系统字体
   "editor.fontFamily": "Comic Shanns, JetBrains Mono, IBM Plex Mono, Input Mono, Fira Code, monospace",
   // 右侧小地图显示大小设置
+  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
   "editor.minimap.size": "fit",
-  // 行号显示
-  "editor.lineNumbers": "on",
+  // 提示建议
+  "editor.suggest.insertMode": "replace",
+  // HINT: 这个设置可以帮助你解决 snippets 导致 tab 补全异常的问题
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.suggest.localityBonus": true,
+  "editor.suggestSelection": "first",
+  "editor.suggest.preview": true,
+  "editor.inlineSuggest.enabled": false,
+  "editor.suggest.shareSuggestSelections": true,
+  "editor.suggest.showStatusBar": true,
+  "emmet.showSuggestionsAsSnippets": true,
   "editor.detectIndentation": false,
   "editor.accessibilitySupport": "off",
+  "editor.acceptSuggestionOnEnter": "on",
   // 突出当前行高亮方式
   "editor.renderLineHighlight": "line",
   // 使光标更加丝滑的移动
   "editor.cursorSmoothCaretAnimation": "on",
   // 光标闪烁动画
   "editor.cursorBlinking": "blink",
-  "editor.smoothScrolling": true,
   "editor.find.addExtraSpaceOnTop": false,
-  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
   "editor.glyphMargin": true,
-  "editor.guides.bracketPairs": "active",
-  "editor.inlineSuggest.enabled": true,
   // 是否替换 alt 的多光标映射
   "editor.multiCursorModifier": "alt",
   // 渲染空格字符的方式
   "editor.renderWhitespace": "selection",
-  "editor.suggestSelection": "first",
   "editor.unicodeHighlight.invisibleCharacters": false,
   // 括号着色
   "editor.bracketPairColorization.enabled": true,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.bracketPairs": "active",
+  // 优化滚动动画
+  "editor.smoothScrolling": true,
+  // 设置是否可以滚动到最后一行之后
+  "editor.scrollBeyondLastLine": false,
   // 是否开启粘性滚动
-  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.enabled": false,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
     // 允许 ESlint 在保存时自动修复
@@ -180,7 +193,6 @@
   "workbench.colorCustomizations": {
     // note: active: 活动状态 | inactive: 非活动状态 | foreground: 前景色 | background: 背景色 | border: 边框
     "[Panda Syntax]": {
-      // todo
       "badge.background": "#aaaaaa",
       "badge.foreground": "#000000",
       "quickInput.background": "#202020bf",
@@ -188,7 +200,9 @@
       "titleBar.border": "#aaaaaa6f",
       "tab.border": "#aaaaaa6f",
       "tab.activeBorderTop": "#86f6de",
-      "tab.activeBorder": "#00000000",
+      "contrastBorder": "#aaaaaa6f",
+      "tab.activeBorder": "#292a2b",
+      "editorGroupHeader.tabsBorder": "#aaaaaa6f",
       "textCodeBlock.background": "#aaaaaa3f",
       "editorWidget.foreground": "#cccccc",
       "editorCursor.background": "#ffffff",
@@ -365,10 +379,10 @@
   // 设置 vim 不接管某些快捷键
   "vim.handleKeys": {
     "<C-a>": false,
-    "<C-f>": false,
+    "<C-f>": false
     // 作为一位合格的 cv 工程师, 我的主力按键怎么能被 vim 接管, 达咩！
-    "<C-c>": false,
-    "<C-v>": false
+    // "<C-c>": false
+    // "<C-v>": false
   },
   // 插入/写入模式 | 按键功能映射
   "vim.insertModeKeyBindings": [],
@@ -431,15 +445,15 @@
       "commands": ["workbench.action.toggleSidebarVisibility"]
     },
     // 创建文件
-    {
-      "before": ["leader", "a"],
-      "commands": ["explorer.newFile"]
-    },
+    // {
+    //   "before": ["leader", "a"],
+    //   "commands": ["explorer.newFile"]
+    // },
     // 创建文件夹
-    {
-      "before": ["leader", "A"],
-      "commands": ["explorer.newFolder"]
-    },
+    // {
+    //   "before": ["leader", "A"],
+    //   "commands": ["explorer.newFolder"]
+    // },
 
     // 标签区 | Tab
     // hack: tab 标签左右切换: 注意若遇到软件设置/插件说明等 tab 标签时会无效, 可用系统快捷键 cmd + shift + [] 切换
@@ -514,14 +528,14 @@
       "before": ["k"],
       "after": ["g", "k"]
     },
-    // 控制光标向上/下滚动指定行 | 并顺便调整到屏幕中间
+    // 控制光标向上/下滚动指定行 | 保留指定可视区域行数显示
     {
       "before": ["K"],
-      "after": ["8", "g", "k", "z", "z"]
+      "after": ["8", "g", "k"]
     },
     {
       "before": ["J"],
-      "after": ["8", "g", "j", "z", "z"]
+      "after": ["8", "g", "j"]
     },
     // n/N vim 查找后上下匹配项切换 | 并调整显示行为屏幕中心
     {
@@ -600,6 +614,10 @@
     {
       "before": ["leader", "["],
       "after": ["[", "{"]
+    },
+    {
+      "before": ["leader", "]"],
+      "after": ["]", "}"]
     },
 
     // 终端区 | Terminal
@@ -742,11 +760,14 @@
   "editor.formatOnSave": true,
   // 所有文件都使用这种方式进行格式化
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript][jsonc][vue][typescript][html]": {
+  "[javascript][jsonc][vue][typescript][html][css][less]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[html]": {
+    "editor.suggest.insertMode": "replace"
   },
 
   // ================================================================
@@ -792,10 +813,10 @@
     "Vitesse",
     "zimfw",
     "zmodule"
-  ]
+  ],
   // "px-to-vw.viewportWidth": 375,
   // "px-to-vw.unitPrecision": 2,
-  // "less.compile": {
-  //   "outExt": ".css"
-  // },
+  "less.compile": {
+    "outExt": ".css"
+  }
 }
