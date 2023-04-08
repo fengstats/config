@@ -3,6 +3,9 @@
   // 基础 | Basic
   // ================================================================
   "files.eol": "\n",
+  // 文件是否自动保存, 保存时间间隔设置
+  "files.autoSave": "off",
+  "files.autoSaveDelay": 200,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -34,24 +37,28 @@
   // 是否使用原生标签页
   "window.nativeTabs": false,
   // 整体编辑器缩放比例
-  "window.zoomLevel": 0.5,
+  "window.zoomLevel": 0.6,
   "window.titleBarStyle": "custom",
   // 搜索项居中
-  "window.commandCenter": true,
+  "window.commandCenter": false,
   // 对话框外观
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
-
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.colorTheme": "Panda Syntax",
-  // 是否开启根据白天/黑夜自动切换主题 | 需要先配置好对应的主题
-  "window.autoDetectColorScheme": false,
   // 白天/夜晚使用的主题
-  "workbench.preferredLightColorTheme": "Panda Syntax",
-  "workbench.preferredDarkColorTheme": "Vitesse Dark",
+  "workbench.preferredLightColorTheme": "Default Light+",
+  "workbench.preferredDarkColorTheme": "Panda Syntax",
+  // 通过 sundial 配置日出日落时间（自定义主题生效时间，不受到系统设定约束）
+  "sundial.sunrise": "07:00",
+  "sundial.sunset": "18:30",
+  // 多长时间进行检查是否更换主题（分钟）
+  "sundial.interval": 5,
+  // 是否开启根据白天/黑夜自动切换主题（需要先配置好对应的主题，已被 sundial 替代）
+  "window.autoDetectColorScheme": false,
   // 是否显示多个 tab 标签, false 就类似 mac 的台前调度
-  "workbench.editor.showTabs": true,
+  "workbench.editor.showTabs": false,
   "workbench.editor.showIcons": false,
   "workbench.list.smoothScrolling": true,
   "workbench.editor.closeOnFileDelete": true,
@@ -72,15 +79,18 @@
   // 编辑区 | Editor
   // ================================================================
   "editor.tabSize": 2,
-  "editor.fontSize": 14.5,
+  "editor.fontSize": 13.5,
   "editor.lineHeight": 1.6,
   // 行号显示
   "editor.lineNumbers": "on",
   // 不设置默认使用系统字体
-  "editor.fontFamily": "Comic Shanns, JetBrains Mono, IBM Plex Mono, Input Mono, Fira Code, monospace",
+  // "editor.fontFamily": "Comic Shanns, JetBrains Mono, IBM Plex Mono, Input Mono, Fira Code, monospace",
+  "editor.fontFamily": "JetBrains Mono, Comic Shanns, IBM Plex Mono, Input Mono, Fira Code, monospace",
   // 右侧小地图显示大小设置
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
   "editor.minimap.size": "fit",
+  // 类似 auto rename tag 插件的功能, 遇到多个 tag 匹配项需要更改后按下保存
+  "editor.linkedEditing": true,
   // 提示建议
   "editor.suggest.insertMode": "replace",
   // HINT: 这个设置可以帮助你解决 snippets 导致 tab 补全异常的问题
@@ -92,6 +102,7 @@
   "editor.suggest.shareSuggestSelections": true,
   "editor.suggest.showStatusBar": true,
   "emmet.showSuggestionsAsSnippets": true,
+  "emmet.useInlineCompletions": true,
   "editor.detectIndentation": false,
   "editor.accessibilitySupport": "off",
   "editor.acceptSuggestionOnEnter": "on",
@@ -115,7 +126,7 @@
   // 优化滚动动画
   "editor.smoothScrolling": true,
   // 设置是否可以滚动到最后一行之后
-  "editor.scrollBeyondLastLine": false,
+  "editor.scrollBeyondLastLine": true,
   // 是否开启粘性滚动
   "editor.stickyScroll.enabled": false,
   "editor.codeActionsOnSave": {
@@ -193,20 +204,24 @@
   "workbench.colorCustomizations": {
     // note: active: 活动状态 | inactive: 非活动状态 | foreground: 前景色 | background: 背景色 | border: 边框
     "[Panda Syntax]": {
+      // "commandCenter.border": "#86f6de8f",
       "badge.background": "#aaaaaa",
       "badge.foreground": "#000000",
       "quickInput.background": "#202020bf",
       "widget.shadow": "#0000008f",
-      "titleBar.border": "#aaaaaa6f",
-      "tab.border": "#aaaaaa6f",
-      "tab.activeBorderTop": "#86f6de",
-      "contrastBorder": "#aaaaaa6f",
-      "tab.activeBorder": "#292a2b",
-      "editorGroupHeader.tabsBorder": "#aaaaaa6f",
-      "textCodeBlock.background": "#aaaaaa3f",
+      "titleBar.border": "#aaaaaa4f",
+      "tab.border": "#aaaaaa4f",
+      "contrastBorder": "#0000008f",
+      // "tab.activeBorderTop": "#86f6de",
+      // "tab.activeBorder": "#292a2b",
+      "tab.activeBorder": "#86f6deaf",
+      "editorGroupHeader.tabsBorder": "#aaaaaa4f",
+      "textCodeBlock.background": "#aaaaaa4f",
       "editorWidget.foreground": "#cccccc",
       "editorCursor.background": "#ffffff",
-      "editor.selectionBackground": "#aaaaaa6f",
+      "editor.selectionBackground": "#aaaaaa4f",
+      // 当前行高亮
+      "editor.lineHighlightBackground": "#aaaaaa2f",
       "editor.selectionHighlightBackground": "#aaaaaa2f",
       "editor.wordHighlightBackground": "#aaaaaa2f",
       // 建议/智能补全提示
@@ -531,11 +546,11 @@
     // 控制光标向上/下滚动指定行 | 保留指定可视区域行数显示
     {
       "before": ["K"],
-      "after": ["8", "g", "k"]
+      "after": ["5", "g", "k"]
     },
     {
       "before": ["J"],
-      "after": ["8", "g", "j"]
+      "after": ["5", "g", "j"]
     },
     // n/N vim 查找后上下匹配项切换 | 并调整显示行为屏幕中心
     {
@@ -601,10 +616,10 @@
       "before": ["leader", "q"],
       "commands": ["workbench.action.closeActiveEditor"]
     },
-    {
-      "before": ["Q"],
-      "commands": ["workbench.action.closeActiveEditor"]
-    },
+    // {
+    //   "before": ["Q"],
+    //   "commands": ["workbench.action.closeActiveEditor"]
+    // },
     // 进入定义文件位置中
     // {
     //   "before": ["leader", "f"],
@@ -818,5 +833,17 @@
   // "px-to-vw.unitPrecision": 2,
   "less.compile": {
     "outExt": ".css"
-  }
+  },
+  // 缩进线条
+  // Using the light mode
+  "indentRainbow.indicatorStyle": "light",
+  // we use a simple 1 pixel wide line
+  "indentRainbow.lightIndicatorStyleLineWidth": 1,
+  // the same colors as above but more visible
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.3)",
+    "rgba(127,255,127,0.3)",
+    "rgba(255,127,255,0.3)",
+    "rgba(79,236,236,0.3)"
+  ]
 }
