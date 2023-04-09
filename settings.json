@@ -43,6 +43,7 @@
   "window.commandCenter": false,
   // 对话框外观
   "window.dialogStyle": "custom",
+  "workbench.statusBar.visible": true,
   "window.newWindowDimensions": "offset",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "icons-carbon",
@@ -50,16 +51,17 @@
   // 白天/夜晚使用的主题
   "workbench.preferredLightColorTheme": "Default Light+",
   "workbench.preferredDarkColorTheme": "Panda Syntax",
+  // "workbench.preferredDarkColorTheme": "Default Light+",
   // 通过 sundial 配置日出日落时间（自定义主题生效时间，不受到系统设定约束）
   "sundial.sunrise": "07:00",
   "sundial.sunset": "18:30",
   // 多长时间进行检查是否更换主题（分钟）
-  "sundial.interval": 5,
+  "sundial.interval": 30,
   // 是否开启根据白天/黑夜自动切换主题（需要先配置好对应的主题，已被 sundial 替代）
   "window.autoDetectColorScheme": false,
   // 是否显示多个 tab 标签, false 就类似 mac 的台前调度
   "workbench.editor.showTabs": false,
-  "workbench.editor.showIcons": false,
+  "workbench.editor.showIcons": true,
   "workbench.list.smoothScrolling": true,
   "workbench.editor.closeOnFileDelete": true,
   // tab 标签的关闭图标是否显示
@@ -128,7 +130,7 @@
   // 设置是否可以滚动到最后一行之后
   "editor.scrollBeyondLastLine": true,
   // 是否开启粘性滚动
-  "editor.stickyScroll.enabled": false,
+  "editor.stickyScroll.enabled": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
     // 允许 ESlint 在保存时自动修复
@@ -368,7 +370,7 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.tabs.enabled": true,
-  "terminal.integrated.tabs.location": "right",
+  // "terminal.integrated.tabs.location": "right",
 
   // ================================================================
   // vim
@@ -376,11 +378,19 @@
   // 设置 leader 键为空格
   "vim.leader": "<space>",
   // hint: 体验下崔大的 vim.leap 插件
-  "vim.leap": true,
-  // 双向搜索
-  "vim.leapBidirectionalSearch": true,
-  "vim.leapShowMarkerPosition": "target",
-  "vim.leapCaseSensitive": false,
+  // 新版本
+  "vim.leap.enable": true,
+  "vim.leap.bidirectionalSearch": true,
+  "vim.leap.showMarkerPosition": "target",
+  "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
+  "vim.leap.caseSensitive": false,
+  "vim.leap.marker.charColor": "#fff",
+  "vim.leap.marker.backgroundColors": ["#f5222d", "#99ccff"],
+  // 旧版本
+  // "vim.leap": true,
+  // "vim.leapBidirectionalSearch": true,
+  // "vim.leapShowMarkerPosition": "target",
+  // "vim.leapCaseSensitive": false,
   // <leader><leader> s <char>: 全文搜索字符
   // <leader><leader> f <char>: 当前光标往下搜索
   "vim.easymotion": false,
@@ -414,6 +424,10 @@
   ],
   // 可视/选择模式 | 按键功能映射
   "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showHover"]
+    },
     {
       "before": ["j"],
       "after": ["g", "j"]
@@ -648,16 +662,13 @@
   // 对于我来说, 光标状态的显示是我判断模式的根本, 如果光标状态与模式不同时, 可能会产生一些错误的命令输入, 体验上来说就很不友好
   // 是否启用自动切换
   "vim.autoSwitchInputMethod.enable": false,
-  // normal 模式下需要切换的输入法
-  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
-  // 获取当前输入法的命令
-  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
-  // 切换输入法的命令，{im} 代表要切换的输入法名称（其实就是设置的 defaultIM）
-  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
 
   // ================================================================
   // git
   // ================================================================
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
   "git.confirmSync": false,
   "git.ignoreRebaseWarning": true,
   "gitlens.menus": {
@@ -845,5 +856,13 @@
     "rgba(127,255,127,0.3)",
     "rgba(255,127,255,0.3)",
     "rgba(79,236,236,0.3)"
-  ]
+  ],
+  "commentTranslate.hover.enabled": true,
+  "commentTranslate.hover.concise": false,
+  "commentTranslate.hover.content": false,
+  "commentTranslate.hover.variable": true,
+  "commentTranslate.hover.string": true,
+  "commentTranslate.targetLanguage": "zh-CN",
+  "commentTranslate.multiLineMerge": true,
+  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud"
 }
