@@ -45,9 +45,9 @@
   "window.dialogStyle": "custom",
   "workbench.statusBar.visible": true,
   "window.newWindowDimensions": "offset",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "file-icons",
+  "workbench.colorTheme": "Default Light+",
   "workbench.productIconTheme": "icons-carbon",
-  "workbench.colorTheme": "Panda Syntax",
   // 白天/夜晚使用的主题
   "workbench.preferredLightColorTheme": "Default Light+",
   "workbench.preferredDarkColorTheme": "Panda Syntax",
@@ -57,6 +57,11 @@
   "sundial.sunset": "18:30",
   // 多长时间进行检查是否更换主题（分钟）
   "sundial.interval": 30,
+  // 白天/夜晚需要替换的其他配置
+  "sundial.daySettings": {
+    // "workbench.iconTheme": "file-icons"
+  },
+  "sundial.nightSettings": {},
   // 是否开启根据白天/黑夜自动切换主题（需要先配置好对应的主题，已被 sundial 替代）
   "window.autoDetectColorScheme": false,
   // 是否显示多个 tab 标签, false 就类似 mac 的台前调度
@@ -342,7 +347,7 @@
       // "editorInlayHint.foreground": "#ffffff6f",
 
       // Terminal | 终端 | 编辑区底部
-      // todo: 想设置 terminal 失去焦点时的背景色之类的, 没有找到, 后面看看
+      // TODO: 怎么设置终端失去焦点时背景色之类？
       // 选择背景色
       "terminal.selectionBackground": "#d1d1d130",
       // Badge: 小型的信息标签, 测试只有终端这边的有反应, 活动栏需要单独设置, 有可能时因为原主题设置了活动栏的原因?
@@ -382,6 +387,7 @@
   "vim.leap.enable": true,
   "vim.leap.bidirectionalSearch": true,
   "vim.leap.showMarkerPosition": "target",
+  // Vimuim-C 字符序列：sadjklewcmpgh
   "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
   "vim.leap.caseSensitive": false,
   "vim.leap.marker.charColor": "#fff",
@@ -718,44 +724,99 @@
   // ================================================================
   // better comments
   // ================================================================
+  "better-comments.multilineComments": true,
+  "better-comments.highlightPlainText": true,
   "better-comments.tags": [
-    // hint: 功能提示
     {
       "tag": "HINT",
       "color": "#fff",
       "backgroundColor": "#0bba54"
     },
-    // note: 一般用于比较难理解的代码/功能, 添加描述
     {
       "tag": "NOTE",
       "color": "#fff",
       "backgroundColor": "#3498db"
     },
-    // todo: 表示一些未完成的功能/事情
     {
       "tag": "TODO",
       "color": "#fff",
       "backgroundColor": "#ff7c00"
     },
-    // hack: 表示一个功能虽然实现, 但是后续可能会存在问题
     {
       "tag": "HACK",
       "color": "#fff",
       "backgroundColor": "#ff7c00"
     },
-    // fixme: 修复我, 表示已经实现但不完美的功能/需要修复
     {
       "tag": "FIXME",
       "color": "#fff",
       "backgroundColor": "#ff4757"
     },
-    // bug: 表示一个功能存在问题
     {
       "tag": "BUG",
       "color": "#fff",
       "backgroundColor": "#ff4757"
     }
   ],
+
+  // ================================================================
+  // comment anchors
+  // ================================================================
+  // 锚点加载解析时长，通过使用更大的值来获得更好的性能
+  "commentAnchors.parseDelay": 300,
+  // 工作区最大显示文件数量
+  "commentAnchors.workspace.maxFiles": 50,
+  // 排除在外
+  "commentAnchors.workspace.excludeFiles": "**/{node_modules,.git,.idea,target,out,build,bin,obj,dist,vendor}/**/*",
+  "commentAnchors.tags.separators": [" - ", ": ", " ", "："],
+  "commentAnchors.tags.anchors": {
+    // ANCHOR: 一个锚点
+    "ANCHOR": {
+      "iconColor": "default",
+      "highlightColor": "#A8C023",
+      "scope": "file"
+    },
+    "TODO": {
+      "iconColor": "blue",
+      "highlightColor": "#3ea8ff",
+      "scope": "workspace"
+    },
+    "BUG": {
+      "iconColor": "red",
+      "highlightColor": "#F44336",
+      "scope": "workspace"
+    },
+    "FIXME": {
+      "iconColor": "red",
+      "highlightColor": "#F44336",
+      "scope": "workspace"
+    },
+    // NOTE: 特别说明
+    "NOTE": {
+      "iconColor": "orange",
+      "highlightColor": "#64DD17",
+      "scope": "workspace"
+    },
+    // REVIEW: 需要额外审查的部分
+    "REVIEW": {
+      "iconColor": "green",
+      "highlightColor": "#FFB300",
+      "scope": "workspace"
+    },
+    // disabled
+    "STUB": {
+      "scope": "file",
+      "enabled": false
+    },
+    "SECTION": {
+      "scope": "file",
+      "enabled": false
+    },
+    "LINK": {
+      "scope": "file",
+      "enabled": false
+    }
+  },
 
   // ================================================================
   // ErrorLens
@@ -803,7 +864,8 @@
   "typescript.inlayHints.parameterNames.enabled": "none",
   "javascript.inlayHints.parameterTypes.enabled": false,
   "typescript.inlayHints.parameterTypes.enabled": false,
-  "editor.inlayHints.enabled": "onUnlessPressed",
+  "editor.inlayHints.enabled": "off",
+  "parameterHints.enabled": false,
 
   // ================================================================
   // Eslint
@@ -829,6 +891,8 @@
   "files.associations": {
     ".zimrc": "shellscript"
   },
+  // 是否不检查 .gitignore 内设定的文件
+  "cSpell.useGitignore": false,
   "cSpell.enableFiletypes": ["vimrc"],
   "cSpell.userWords": [
     "colour",
@@ -863,6 +927,5 @@
   "commentTranslate.hover.variable": true,
   "commentTranslate.hover.string": true,
   "commentTranslate.targetLanguage": "zh-CN",
-  "commentTranslate.multiLineMerge": true,
-  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud"
+  "commentTranslate.multiLineMerge": true
 }
