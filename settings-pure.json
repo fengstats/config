@@ -1,24 +1,17 @@
 {
   // ================================================================
-  // 基础 | Basic
+  // Basic
   // ================================================================
   "files.eol": "\n",
-  // 文件是否自动保存, 保存时间间隔设置
   "files.autoSave": "off",
   "files.autoSaveDelay": 200,
-  // 文件类型语言模式映射
   "files.associations": {
     ".zimrc": "shellscript"
   },
-  // 拖拽文件进入 VSCode 时，是否需要确认弹窗
   "explorer.confirmDragAndDrop": false,
-  // 允许不受信任的文件引入受信任的工作区，而不提示
   "security.workspace.trust.untrustedFiles": "open",
-  // 是否忽略文件空白符
-  "diffEditor.ignoreTrimWhitespace": false,
-  // 智能搜索
+  // "diffEditor.ignoreTrimWhitespace": false,
   "search.smartCase": true,
-  // 全局搜索时排除掉一些指定目录 | 提升检索速度
   "search.exclude": {
     "**/.git": true,
     "**/.github": true,
@@ -37,88 +30,60 @@
     "**/tmp": true,
     "**/yarn.lock": true
   },
-
   // ================================================================
-  // 窗口 | Window and Workbench
+  // Window and Workbench
   // ================================================================
-  // 是否使用原生标签页
   "window.nativeTabs": false,
-  // 整体编辑器缩放比例
   "window.zoomLevel": 0.4,
   "window.titleBarStyle": "custom",
-  // 将命令面板与窗口标题一起显示，注意 titleBarStyle 为 custom 时有效
   "window.commandCenter": false,
-  // 对话框外观
   "window.dialogStyle": "custom",
   "workbench.statusBar.visible": true,
   "window.newWindowDimensions": "offset",
   "workbench.iconTheme": "file-icons",
   "workbench.colorTheme": "Panda Syntax",
   "workbench.productIconTheme": "icons-carbon",
-  // 白天/夜晚使用的主题
   "workbench.preferredLightColorTheme": "Default Light+",
   "workbench.preferredDarkColorTheme": "Panda Syntax",
-  // "workbench.preferredDarkColorTheme": "Default Light+",
-  // 通过 sundial 配置日出日落时间（自定义主题生效时间，不受到系统设定约束）
   "sundial.sunrise": "07:00",
   "sundial.sunset": "18:30",
-  // 多长时间进行检查是否更换主题（分钟）
   "sundial.interval": 30,
-  // 白天/夜晚需要替换的其他配置
-  "sundial.daySettings": {
-    // "workbench.iconTheme": "file-icons"
-  },
+  "sundial.daySettings": {},
   "sundial.nightSettings": {},
-  // 是否开启根据白天/黑夜自动切换主题（需要先配置好对应的主题，已被 sundial 替代）
   "window.autoDetectColorScheme": false,
-  // 是否显示多个 tab 标签, false 就类似 mac 的台前调度
   "workbench.editor.showTabs": true,
   "workbench.editor.showIcons": true,
   "workbench.list.smoothScrolling": true,
   "workbench.editor.closeOnFileDelete": true,
-  // tab 标签的关闭图标是否显示
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.limit.enabled": true,
-  // 控制当超出可用空间时, tab 是否换行或者显示滚动条
   "workbench.editor.wrapTabs": false,
-  // 设置最大显示 tab title 的个数
   "workbench.editor.limit.value": 5,
-  // 应用于每个编辑组
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
   "workbench.startupEditor": "newUntitledFile",
-
   // ================================================================
-  // 编辑区 | Editor
+  // Editor
   // ================================================================
   "editor.tabSize": 2,
   "editor.fontSize": 12.5,
   "editor.lineHeight": 19,
-  // 行号显示
   "editor.lineNumbers": "on",
-  // 若不设置则会默认使用系统字体
   // "editor.fontFamily": "Comic Shanns,  monospace",
   // "editor.fontFamily": "IBM Plex Mono, monospace",
-  "editor.fontFamily": "Monaco, monospace",
+  // "editor.fontFamily": "Monaco, monospace",
   // "editor.fontFamily": "Input Mono, monospace",
-  // 带连字符效果
   // "editor.fontFamily": "JetBrains Mono, monospace",
   // "editor.fontFamily": "Fira Code, monospace",
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
-  // 右侧小地图显示大小设置
   "editor.minimap.size": "fit",
-  // 类似 auto rename tag 插件的功能, 遇到多个 tag 匹配项需要更改后按下保存
   "editor.linkedEditing": true,
-  // 提示建议
   "editor.suggest.insertMode": "replace",
   "editor.quickSuggestions": {
-    // 是否在你打注释的时候给你提示建议
     "comments": "off",
-    // NOTE: 是否在你输入字符的时候给你提示建议，解决了我模板字符串内变量不提示的问题
     "strings": "on"
   },
-  // NOTE: 这个设置可以帮助你解决 snippets 导致 tab 补全异常的问题
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.suggest.localityBonus": true,
   "editor.suggestSelection": "first",
@@ -130,42 +95,29 @@
   "editor.detectIndentation": false,
   "editor.accessibilitySupport": "off",
   "editor.acceptSuggestionOnEnter": "on",
-  // 突出当前行高亮方式
   "editor.renderLineHighlight": "line",
-  // 使光标更加丝滑的移动
   "editor.cursorSmoothCaretAnimation": "on",
-  // 光标闪烁动画
   "editor.cursorBlinking": "blink",
   "editor.find.addExtraSpaceOnTop": false,
   "editor.glyphMargin": true,
-  // 是否替换 alt 的多光标映射
   "editor.multiCursorModifier": "alt",
-  // 渲染空格字符的方式
   "editor.renderWhitespace": "selection",
   "editor.unicodeHighlight.invisibleCharacters": false,
-  // 括号着色
   "editor.bracketPairColorization.enabled": true,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.guides.bracketPairs": "active",
-  // 优化滚动动画
   "editor.smoothScrolling": true,
-  // 设置是否可以滚动到最后一行之后
   "editor.scrollBeyondLastLine": true,
-  // 是否开启粘性滚动
   "editor.stickyScroll.enabled": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
-    // 允许 ESlint 在保存时自动修复
     "source.fixAll.eslint": true
   },
-  // NOTE: 自定义代码颜色（目前看到效果是 vue 项目中子组件/组件库组件的颜色会与普通标签区别开来）
   "editor.semanticTokenColorCustomizations": {
     "enabled": true
   },
-  // 自定义代码编辑区内容
   "editor.tokenColorCustomizations": {
     "[Vitesse Dark]": {
-      // 注释颜色更改
       "comments": "#909090"
     },
     "[Ayu Mojave]": {
@@ -183,7 +135,7 @@
     "[Panda Syntax]": {
       "comments": "#adb5ad",
       "textMateRules": [
-        // 更改编辑器中 html 配色方案
+        // TODO: Vue 项目中子组件和组件库标签的颜色关键字如何设置
         {
           "scope": ["entity.name.tag", "entity.name.tag.css", "support.class.component"],
           "settings": {
@@ -208,9 +160,7 @@
       "comments": "#909090",
       "textMateRules": []
     },
-    // 文本样式调整
     "textMateRules": [
-      // 注释样式: 正常或者斜体
       {
         "name": "Comment Italics",
         "scope": ["comment", "punctuation.definition.comment"],
@@ -218,7 +168,6 @@
           "fontStyle": ""
         }
       }
-      // 设置关键词粗体
       // {
       //   "name": "Keyword Bold",
       //   "scope": ["keyword", "storage.type", "storage.modifier"],
@@ -228,9 +177,7 @@
       // }
     ]
   },
-  // 自定义主题样式
   "workbench.colorCustomizations": {
-    // NOTE: active: 活动状态 | inactive: 非活动状态 | foreground: 前景色 | background: 背景色 | border: 边框
     "[Panda Syntax]": {
       // "commandCenter.border": "#86f6de8f",
       "badge.background": "#aaaaaa",
@@ -248,11 +195,9 @@
       "editorWidget.foreground": "#cccccc",
       "editorCursor.background": "#ffffff",
       "editor.selectionBackground": "#aaaaaa4f",
-      // 当前行高亮
       "editor.lineHighlightBackground": "#aaaaaa2f",
       "editor.selectionHighlightBackground": "#aaaaaa2f",
       "editor.wordHighlightBackground": "#aaaaaa2f",
-      // 建议/智能补全提示
       "editorSuggestWidget.selectedForeground": "#ffffffff",
       "editorSuggestWidget.selectedBackground": "#aaaaaa2f",
       "editorHoverWidget.background": "#202020ef",
@@ -261,84 +206,51 @@
       "scrollbarSlider.background": "#aaaaaa2f",
       "scrollbarSlider.hoverBackground": "#aaaaaa2f"
     },
-    // NOTE: 特别暗环境可以开起来这个, 最近发现 dark mode 主题背景太暗的话是有点费眼睛的
     "[-Panda Syntax][-Vitesse Dark]": {
-      //  Basic | 基础
-      // 调整组件之间间距大小的边框
       "sash.hoverBorder": "#66c0ad",
-      // 输入框
       "input.background": "#1a1d22",
-      // ctrl+p 调出来的全局面板
       "quickInput.background": "#12151aaf",
-      // 焦点元素整体边框颜色 | 大部分组件窗口都适用
       "focusBorder": "#aaaaaa5f",
-      // git 忽略文件字体颜色
       "gitDecoration.ignoredResourceForeground": "#aaaaaa5f",
-      // 文本中代码块的颜色
       "textCodeBlock.background": "#aaaaaa3f",
-      // 编辑区域下面可以调出来的面板(包含终端), 测试了下貌似会影响到终端颜色, 终端未设置的前提下
       "panel.background": "#13151b",
-      // 小组件阴影 | 查找/替换/全局面板
       "widget.shadow": "#00000033",
-      // 与滚动条相关的边框阴影设置
       "scrollbar.shadow": "#050505",
       "scrollbarSlider.activeBackground": "#aaaaaa2f",
       "scrollbarSlider.background": "#aaaaaa2f",
       "scrollbarSlider.hoverBackground": "#aaaaaa2f",
       "panel.border": "#abbcab50",
-      // 文件链接
-      // "textLink.activeForeground": "#ff8787",
-      // "textLink.foreground": "#ff8787cc",
-
-      // Window | 窗口 | 顶部
       "titleBar.activeForeground": "#cccccc",
       "titleBar.inactiveForeground": "#cccccc",
       "titleBar.activeBackground": "#12151a",
       "titleBar.inactiveBackground": "#12151a",
       "titleBar.border": "#aaaaaa5f",
-
-      // Activity | 活动栏 | 最左侧的那一列
       "activityBar.background": "#12151a",
       "activityBar.border": "#aaaaaa5f",
-      // 活动中的图标前景色
       "activityBar.foreground": "#dddddd",
       "activityBar.inactiveForeground": "#dddddd5f",
       "activityBar.activeBorder": "#66c0ad",
       "activityBarBadge.foreground": "#000000",
       "activityBarBadge.background": "#77dac5",
-
-      // Explorer | 侧边栏 (文件/资源管理器)
       "sideBar.background": "#12151a",
       "sideBar.border": "#aaaaaa5f",
       "sideBarSectionHeader.border": "#aaaaaa5f",
-      // 第一级菜单背景色
       "sideBarSectionHeader.background": "#12151a",
-      // "list.focusForeground": "#ff0000",
-      // "list.activeSelectionForeground": "#ffffff",
-      // "list.focusAndSelectionOutline": "#ff0000",
       "list.hoverBackground": "#6666661f",
       "list.focusBackground": "#6666661f",
       "list.activeSelectionBackground": "#aaaaaa1f",
       "list.inactiveSelectionBackground": "#aaaaaa1f",
       "list.inactiveFocusBackground": "#00000000",
-
-      // Tab | 标签 | 顶部
       "tab.activeBackground": "#1a1d22",
       "tab.inactiveBackground": "#12151a",
-      // "tab.activeBorderTop": "#4d9375",
       "tab.activeBorderTop": "#66c0ad",
       "tab.activeBorder": "#00000000",
       "tab.hoverBackground": "#1a1d22",
       "tab.border": "#aaaaaa5f",
-      // tab 背后整个 tab 条的背景色
       "editorGroupHeader.tabsBackground": "#12151a",
-
-      // Breadcrumb | 面包屑 | 顶部
       "breadcrumb.background": "#1a1d22",
       "breadcrumb.activeSelectionForeground": "#66c0ad",
       "breadcrumbPicker.background": "#12151abf",
-
-      // Editor | 编辑器 | 中间
       "editor.background": "#1a1d22",
       "editorGroup.border": "#abbcab2f",
       "editorLineNumber.foreground": "#cccccc5f",
@@ -346,45 +258,26 @@
       "editor.selectionBackground": "#aaaaaa4f",
       "editor.selectionHighlightBackground": "#aaaaaa1f",
       "editor.wordHighlightBackground": "#aaaaaa1f",
-      // 光标覆盖之后内容的颜色
       "editorCursor.background": "#000000",
-      // 与选中内容一致的, 高亮其边框
-      // "editor.selectionHighlightBorder": "#ffffff3f",
-      // 小组件背景颜色 | 提示/查找/替换
       "editorWidget.background": "#12151aef",
-      // 鼠标悬停在内容上提示的背景色
       "editorHoverWidget.background": "#12151aef",
-      // 智能提示面板 | 如果未设置就使用上面小组件的
-      // "editorSuggestWidget.background": "#0a0a0a",
-      // "editorSuggestWidget.selectedBackground": "#ff0000",
       "editorSuggestWidget.selectedForeground": "#ffffffff",
       "editorSuggestWidget.selectedBackground": "#aaaaaa3f",
       "editor.lineHighlightBackground": "#aaaaaa1f",
-      // 粘性滚动代码背景色设置
       "editorStickyScroll.background": "#1a1d22",
       "editorStickyScrollHover.background": "#aaaaaa1f",
-      // 代码参数提示
-      // "editorInlayHint.background": "#ffffff10",
-      // "editorInlayHint.foreground": "#ffffff6f",
-
-      // Terminal | 终端 | 编辑区底部
-      // 选择背景色
+      // TODO: 终端失去焦点后背景色之类如何设置
       "terminal.selectionBackground": "#d1d1d130",
-      // Badge: 小型的信息标签, 测试只有终端这边的有反应, 活动栏需要单独设置, 有可能时因为原主题设置了活动栏的原因?
       "badge.background": "#aaaaaa5f",
       "badge.foreground": "#cccccc"
     }
   },
-
   // ================================================================
-  // 终端 | Terminal
+  // Terminal
   // ================================================================
-  // 定义在 macOS 上运行的终端应用程序
   "terminal.external.osxExec": "iTerm.app",
-  // NOTE: 开启GPU加速后, 终端速度明显快多了
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.fontSize": 13,
-  // 终端字体 | 不设置的话默认使用编辑器字体
   "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Comic Shanns, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
@@ -394,44 +287,29 @@
   // "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.persistentSessionReviveProcess": "never",
-  // "terminal.integrated.tabs.location": "right",
-
   // ================================================================
   // vim
   // ================================================================
-  // 设置 leader 键为空格
   "vim.leader": "<space>",
-  // NOTE: 崔大的 vim.leap 插件
-  // 新版本
   "vim.leap.enable": true,
   "vim.leap.bidirectionalSearch": true,
   "vim.leap.showMarkerPosition": "target",
-  // Vimium-C 字符序列：sadjklewcmpgh
   "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
   "vim.leap.caseSensitive": false,
   "vim.leap.marker.charColor": "#fff",
   "vim.leap.marker.backgroundColors": ["#f5222d", "#99ccff"],
-  // <leader><leader> s <char>: 全文搜索字符
-  // <leader><leader> f <char>: 当前光标往下搜索
   "vim.easymotion": false,
-  // 使用系统剪切板 cv -> yp
   "vim.useSystemClipboard": true,
   "vim.incsearch": true,
   "vim.useCtrlKeys": false,
   "vim.hlsearch": true,
   "vim.surround": true,
   "vim.sneak": true,
-  // 设置 vim 不接管某些快捷键
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
-    // 作为一位合格的 cv 工程师, 我的主力按键怎么能被 vim 接管, 达咩！
-    // "<C-c>": false
-    // "<C-v>": false
   },
-  // 插入/写入模式 | 按键功能映射
   "vim.insertModeKeyBindings": [],
-  // 按下 operation (d/y/c) 后等待的模式 | pending
   "vim.operatorPendingModeKeyBindings": [
     {
       "before": ["H"],
@@ -442,10 +320,8 @@
       "after": ["g", "_"]
     }
   ],
-  // 可视/选择模式 | 按键功能映射
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      // 删除但是不保存到剪贴板，利用 vim 的黑洞寄存器
       "before": ["backspace"],
       "after": ["\"", "_", "d"]
     },
@@ -465,9 +341,6 @@
       "before": ["enter"],
       "after": ["a", "f"]
     },
-    // 其实就是用了个小技巧让我们在可视模式下粘贴时寄存器内数据保持一致：
-    // 一般来说如果在可视模式选中后 p 操作会将 p 所覆盖的东西复制到寄存器中, 导致后续再 p 就不是我们想粘贴的内容了
-    // 这里在 p 后执行 gv（选中粘贴的数据）并 y（复制）
     {
       "before": ["p"],
       "after": ["p", "g", "v", "y"]
@@ -480,7 +353,6 @@
       "before": ["J"],
       "after": ["5", "j"]
     },
-    // 行首/行尾移动
     {
       "before": ["H"],
       "after": ["^"]
@@ -490,38 +362,19 @@
       "after": ["g", "_"]
     }
   ],
-  // 普通模式 | 按键功能映射
   "vim.normalModeKeyBindingsNonRecursive": [
-    // 资源管理区 | Explorer
-    // 侧边栏的显示和隐藏的快捷键 | explorer
     {
       "before": ["leader", "e"],
       "commands": ["workbench.action.toggleSidebarVisibility"]
     },
-    // 创建文件
     // {
     //   "before": ["leader", "a"],
     //   "commands": ["explorer.newFile"]
     // },
-    // 创建文件夹
     // {
     //   "before": ["leader", "A"],
     //   "commands": ["explorer.newFolder"]
     // },
-
-    // 标签区 | Tab
-    // 标签左右切换: 注意若遇到软件设置/插件说明文档时无效, 建议使用系统快捷键 cmd + shift + []（全局可用）
-    // {
-    //   "before": ["H"],
-    //   "commands": ["workbench.action.previousEditor"]
-    // },
-    // {
-    //   "before": ["L"],
-    //   "commands": ["workbench.action.nextEditor"]
-    // },
-
-    // 编辑区 | Editor
-    // 将没有定义的变量或者函数快速创建出来
     {
       "before": ["leader", "v", "v"],
       "commands": ["hocusPocus.createVariable"]
@@ -530,12 +383,10 @@
       "before": ["leader", "f", "f"],
       "commands": ["hocusPocus.createFunction"]
     },
-    // 打开 git diff 差异对比查看
     {
       "before": ["leader", "d", "f"],
       "commands": ["git.openChange"]
     },
-    // 向上/下寻找当前文件出现的提示提示/警告/错误
     {
       "before": ["leader", "k"],
       "commands": ["editor.action.marker.prev"]
@@ -544,36 +395,6 @@
       "before": ["leader", "j"],
       "commands": ["editor.action.marker.next"]
     },
-    // 类似 wildfire.vim 但是不能选择包含块里面的内容, 有点可惜
-    // {
-    //   "before": ["enter"],
-    //   "after": ["v", "a", "f"]
-    // },
-    // 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder | 进入 insert 模式
-    // FIXME: 就算找不到这个占位符的时候也会执行 c4l 就把当前光标所在的4个字符删除了
-    // {
-    //   "before": ["leader", "leader"],
-    //   "after": [
-    //     "/",
-    //     "<",
-    //     "+",
-    //     "+",
-    //     ">",
-    //     "<cr>",
-    //     ":",
-    //     "n",
-    //     "o",
-    //     "h",
-    //     "l",
-    //     "<cr>",
-    //     "\"",
-    //     "_",
-    //     "c",
-    //     "4",
-    //     "l"
-    //   ]
-    // },
-    // 解决自动换行后进行光标移动一次跳过多行的问题
     {
       "before": ["j"],
       "after": ["g", "j"]
@@ -582,7 +403,6 @@
       "before": ["k"],
       "after": ["g", "k"]
     },
-    // 控制光标向上/下滚动指定行 | 保留指定可视区域行数显示
     {
       "before": ["K"],
       "after": ["5", "g", "k"]
@@ -591,7 +411,6 @@
       "before": ["J"],
       "after": ["5", "g", "j"]
     },
-    // n/N vim 查找后上下匹配项切换 | 并调整显示行为屏幕中心
     {
       "before": ["n"],
       "after": ["n", "z", "z"]
@@ -600,12 +419,10 @@
       "before": ["N"],
       "after": ["N", "z", "z"]
     },
-    // u 的 redo 操作
     {
       "before": ["U"],
       "after": ["<c-r>"]
     },
-    // 右/下分屏
     {
       "before": ["s", "l", ";"],
       "commands": [":vsplit"]
@@ -614,19 +431,14 @@
       "before": ["s", "j", ";"],
       "commands": [":split"]
     },
-    // 返回上一次操作的位置
     {
       "before": ["g", "k"],
-      // "commands": ["workbench.action.navigateBack"]
       "after": ["<c-o>"]
     },
-    // gk 的 redo
     {
       "before": ["g", "j"],
-      // "commands": ["workbench.action.navigateBack"]
       "after": ["<c-i>"]
     },
-    // 行首/行尾移动
     {
       "before": ["H"],
       "after": ["^"]
@@ -635,22 +447,18 @@
       "before": ["L"],
       "after": ["g", "_"]
     },
-    // 保存但不格式化
     {
       "before": ["leader", "w"],
       "commands": ["workbench.action.files.saveWithoutFormatting"]
     },
-    // 取消查找后的光标高亮
     {
       "before": ["leader", ";"],
       "commands": [":noh"]
     },
-    // 保存文件
     {
       "before": ["leader", "s"],
       "commands": ["workbench.action.files.save"]
     },
-    // 关闭文件
     {
       "before": ["leader", "q"],
       "commands": ["workbench.action.closeActiveEditor"]
@@ -659,12 +467,10 @@
     //   "before": ["Q"],
     //   "commands": ["workbench.action.closeActiveEditor"]
     // },
-    // 进入定义文件位置中
     // {
     //   "before": ["leader", "f"],
     //   "after": ["g", "f"]
     // }
-    // 光标跳转到前面的函数开始处 | 如果光标在函数体内, 那就是该函数的开始处
     {
       "before": ["leader", "["],
       "after": ["[", "{"]
@@ -673,37 +479,20 @@
       "before": ["leader", "]"],
       "after": ["]", "}"]
     },
-
-    // 终端区 | Terminal
-    // 光标由 editor 聚焦至 terminal
     {
       "before": ["leader", "t"],
       "commands": ["workbench.action.terminal.focus"]
     }
   ],
-  // vim keep english in normal（中文输入切换到 NORMAL 模式时自动更改为英文输入法）
-  // NOTE: 通过 Rime 的配置方案解决了
-  // BUG: 使用 vim 指令时出现的问题 (如：ciw，删除当前光标所在单词并进入 INSERT 模式，正常来说光标应该从"方块"变成一根"细条光束"，但结果是仍然保持方块状态，直到你再次输入按下字符时光标才会切换为"细条光束"）
-  // 对于我来说，光标状态的显示是我快速判断当前 vim 模式的根本，如果光标状态与模式不同步, 可能会产生一些错误的命令输入，单单是从体验上来说就很不友好了
-  // 是否启用自动切换
-  "vim.autoSwitchInputMethod.enable": false,
-  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
-  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
-  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
-
   // ================================================================
   // Comment Anchors
   // ================================================================
   "commentAnchors.tags.provideAutoCompletion": false,
-  // 锚点加载解析时长，通过使用更大的值来获得更好的性能
   "commentAnchors.parseDelay": 300,
-  // 工作区最大显示文件数量
   "commentAnchors.workspace.maxFiles": 50,
-  // 排除在外
   "commentAnchors.workspace.excludeFiles": "**/{node_modules,.git,.idea,target,out,build,bin,obj,dist,vendor}/**/*",
   "commentAnchors.tags.separators": [" - ", ": ", " ", "："],
   "commentAnchors.tags.anchors": {
-    // ANCHOR: 一个锚点
     "ANCHOR": {
       "iconColor": "default",
       "highlightColor": "#A8C023",
@@ -724,19 +513,16 @@
       "highlightColor": "#F44336",
       "scope": "workspace"
     },
-    // REVIEW: 需要额外审查的部分
     "REVIEW": {
       "iconColor": "green",
       "highlightColor": "#FFB300",
       "scope": "workspace"
     },
-    // NOTE: 特别说明/额外补充
     "NOTE": {
       "iconColor": "orange",
       "highlightColor": "#64DD17",
       "scope": "file"
     },
-    // disabled
     "STUB": {
       "scope": "file",
       "enabled": false
@@ -750,31 +536,22 @@
       "enabled": false
     }
   },
-
   // ================================================================
-  // ErrorLens | 错误提示
+  // ErrorLens
   // ================================================================
   "errorLens.fontFamily": "JetBrains Mono",
-  // 是否使用斜体
-  // "errorLens.fontStyleItalic": true,
-  "errorLens.fontWeight": "500",
-  "errorLens.margin": "20px",
+  "errorLens.fontWeight": "normal",
+  // "errorLens.margin": "20px",
   "errorLens.messageTemplate": "$severity：$message ($source) $count",
-  "errorLens.removeLinebreaks": false,
-  "errorLens.gutterIconsFollowCursorOverride": false,
-  // 启用的错误提示等级
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
-
   // ================================================================
-  // Formatter | 指定文件类型指定格式化方式
+  // Formatter
   // ================================================================
-  // 保存时是否格式化
   "editor.formatOnSave": true,
   "prettier.printWidth": 100,
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
-  // 所有文件都使用这种方式进行格式化
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript][jsonc][vue][typescript][html][css][less]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -785,38 +562,35 @@
   "[html]": {
     "editor.suggest.insertMode": "replace"
   },
-
   // ================================================================
-  // paramHints | 代码提示
+  // paramHints
   // ================================================================
   "javascript.inlayHints.parameterNames.enabled": "none",
   "typescript.inlayHints.parameterNames.enabled": "none",
   "javascript.inlayHints.parameterTypes.enabled": false,
   "typescript.inlayHints.parameterTypes.enabled": false,
   "editor.inlayHints.enabled": "off",
-
   // ================================================================
-  // other | 其他
+  // other
   // ================================================================
   "less.compile": {
     "outExt": ".css"
   },
-  // 是否开启语法校验检查
   "js/ts.implicitProjectConfig.checkJs": true,
-  // 是否不检查 .gitignore 内指定的文件
   "cSpell.useGitignore": false,
   "cSpell.enableFiletypes": ["vimrc"],
   "cSpell.userWords": [
+    "codeium",
     "colour",
     "easymotion",
     "hlsearch",
     "incsearch",
     "peachpuff",
+    "tencent",
     "Vitesse",
     "zimfw",
     "zmodule"
   ],
-  // 缩进线条
   "indentRainbow.indicatorStyle": "light",
   "indentRainbow.lightIndicatorStyleLineWidth": 1,
   "indentRainbow.colors": [
@@ -825,15 +599,11 @@
     "rgba(255,127,255,0.3)",
     "rgba(79,236,236,0.3)"
   ],
-  // codeium
   "codeium.enableSearch": false,
   "codeium.enableConfig": {
     "*": true,
     "plaintext": true
   },
-  // 模板字符
-  // "template-string-converter.autoRemoveTemplateString": true,
-  // 悬停翻译
   "commentTranslate.hover.enabled": true,
   "commentTranslate.hover.concise": false,
   "commentTranslate.hover.content": false,
