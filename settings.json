@@ -183,21 +183,27 @@
     "[Panda Syntax]": {
       "comments": "#adb5ad",
       "textMateRules": [
-        // 更改编辑器中 html 配色方案
+        // NOTE: Vue 项目中子组件和组件库标签的颜色关键字
         {
-          "scope": ["entity.name.tag", "entity.name.tag.css", "support.class.component"],
+          "scope": ["support.class.component"],
           "settings": {
-            "foreground": "#ed9cc2"
+            "foreground": "#54e4f4",
+            "fontStyle": ""
           }
         },
         {
-          "scope": "meta.tag.structure.any.html, meta.tag.other.html, entity.name.tag.html, meta.tag.metadata.script.html, entity.name.tag.jade",
-          "settings": {
-            "foreground": "#ed9cc2"
-          }
-        },
-        {
-          "scope": "source.vue, entity.name.tag.pug, meta.tag.other",
+          "scope": [
+            "entity.name.tag",
+            "entity.name.tag.html"
+            // "entity.name.tag.css",
+            // "meta.tag.structure.any.html",
+            // "meta.tag.other.html",
+            // "meta.tag.metadata.script.html",
+            // "entity.name.tag.jade"
+            // "source.vue",
+            // "entity.name.tag.pug"
+            // "meta.tag.other"
+          ],
           "settings": {
             "foreground": "#ed9cc2"
           }

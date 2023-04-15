@@ -6,11 +6,12 @@
   "files.autoSave": "off",
   "files.autoSaveDelay": 200,
   "files.associations": {
-    ".zimrc": "shellscript"
+    ".zimrc": "shellscript",
+    "*.json": "jsonc"
   },
   "explorer.confirmDragAndDrop": false,
   "security.workspace.trust.untrustedFiles": "open",
-  // "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.ignoreTrimWhitespace": false,
   "search.smartCase": true,
   "search.exclude": {
     "**/.git": true,
@@ -30,6 +31,7 @@
     "**/tmp": true,
     "**/yarn.lock": true
   },
+
   // ================================================================
   // Window and Workbench
   // ================================================================
@@ -63,22 +65,23 @@
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
   "workbench.startupEditor": "newUntitledFile",
+
   // ================================================================
   // Editor
   // ================================================================
   "editor.tabSize": 2,
-  "editor.fontSize": 12.5,
-  "editor.lineHeight": 19,
+  "editor.fontSize": 13,
+  "editor.lineHeight": 1.5,
   "editor.lineNumbers": "on",
+  "editor.fontFamily": "JetBrains Mono, monospace",
+  // "editor.fontFamily": "Monaco, monospace",
   // "editor.fontFamily": "Comic Shanns,  monospace",
   // "editor.fontFamily": "IBM Plex Mono, monospace",
-  // "editor.fontFamily": "Monaco, monospace",
   // "editor.fontFamily": "Input Mono, monospace",
-  // "editor.fontFamily": "JetBrains Mono, monospace",
   // "editor.fontFamily": "Fira Code, monospace",
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
   "editor.minimap.size": "fit",
-  "editor.linkedEditing": true,
+  // "editor.linkedEditing": true,
   "editor.suggest.insertMode": "replace",
   "editor.quickSuggestions": {
     "comments": "off",
@@ -113,6 +116,7 @@
     "source.fixAll": false,
     "source.fixAll.eslint": true
   },
+  // NOTE: 从当前主题重写编辑器某些关键字样式
   "editor.semanticTokenColorCustomizations": {
     "enabled": true
   },
@@ -135,21 +139,27 @@
     "[Panda Syntax]": {
       "comments": "#adb5ad",
       "textMateRules": [
-        // TODO: Vue 项目中子组件和组件库标签的颜色关键字如何设置
+        // NOTE: Vue 项目中子组件和组件库标签的颜色关键字
         {
-          "scope": ["entity.name.tag", "entity.name.tag.css", "support.class.component"],
+          "scope": ["support.class.component"],
           "settings": {
-            "foreground": "#ed9cc2"
+            "foreground": "#54e4f4",
+            "fontStyle": ""
           }
         },
         {
-          "scope": "meta.tag.structure.any.html, meta.tag.other.html, entity.name.tag.html, meta.tag.metadata.script.html, entity.name.tag.jade",
-          "settings": {
-            "foreground": "#ed9cc2"
-          }
-        },
-        {
-          "scope": "source.vue, entity.name.tag.pug, meta.tag.other",
+          "scope": [
+            "entity.name.tag",
+            "entity.name.tag.html"
+            // "entity.name.tag.css",
+            // "meta.tag.structure.any.html",
+            // "meta.tag.other.html",
+            // "meta.tag.metadata.script.html",
+            // "entity.name.tag.jade"
+            // "source.vue",
+            // "entity.name.tag.pug"
+            // "meta.tag.other"
+          ],
           "settings": {
             "foreground": "#ed9cc2"
           }
@@ -272,6 +282,7 @@
       "badge.foreground": "#cccccc"
     }
   },
+
   // ================================================================
   // Terminal
   // ================================================================
@@ -287,6 +298,7 @@
   // "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.persistentSessionReviveProcess": "never",
+
   // ================================================================
   // vim
   // ================================================================
@@ -484,6 +496,7 @@
       "commands": ["workbench.action.terminal.focus"]
     }
   ],
+
   // ================================================================
   // Comment Anchors
   // ================================================================
@@ -536,6 +549,7 @@
       "enabled": false
     }
   },
+
   // ================================================================
   // ErrorLens
   // ================================================================
@@ -544,6 +558,7 @@
   // "errorLens.margin": "20px",
   "errorLens.messageTemplate": "$severity：$message ($source) $count",
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+
   // ================================================================
   // Formatter
   // ================================================================
@@ -562,6 +577,7 @@
   "[html]": {
     "editor.suggest.insertMode": "replace"
   },
+
   // ================================================================
   // paramHints
   // ================================================================
@@ -570,6 +586,7 @@
   "javascript.inlayHints.parameterTypes.enabled": false,
   "typescript.inlayHints.parameterTypes.enabled": false,
   "editor.inlayHints.enabled": "off",
+
   // ================================================================
   // other
   // ================================================================
@@ -585,6 +602,7 @@
     "easymotion",
     "hlsearch",
     "incsearch",
+    "Moegi",
     "peachpuff",
     "tencent",
     "Vitesse",
