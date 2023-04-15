@@ -37,16 +37,16 @@
   // 是否使用原生标签页
   "window.nativeTabs": false,
   // 整体编辑器缩放比例
-  "window.zoomLevel": 0.6,
+  "window.zoomLevel": 0.4,
   "window.titleBarStyle": "custom",
-  // 搜索项居中
+  // 将命令面板与窗口标题一起显示，注意 titleBarStyle 为 custom 时有效
   "window.commandCenter": false,
   // 对话框外观
   "window.dialogStyle": "custom",
   "workbench.statusBar.visible": true,
   "window.newWindowDimensions": "offset",
   "workbench.iconTheme": "file-icons",
-  "workbench.colorTheme": "Default Light+",
+  "workbench.colorTheme": "Panda Syntax",
   "workbench.productIconTheme": "icons-carbon",
   // 白天/夜晚使用的主题
   "workbench.preferredLightColorTheme": "Default Light+",
@@ -65,7 +65,7 @@
   // 是否开启根据白天/黑夜自动切换主题（需要先配置好对应的主题，已被 sundial 替代）
   "window.autoDetectColorScheme": false,
   // 是否显示多个 tab 标签, false 就类似 mac 的台前调度
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": true,
   "workbench.editor.showIcons": true,
   "workbench.list.smoothScrolling": true,
   "workbench.editor.closeOnFileDelete": true,
@@ -81,31 +81,42 @@
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
   "workbench.startupEditor": "newUntitledFile",
+  // "workbench.commandPalette.experimental.suggestCommands": true,
 
   // ================================================================
   // 编辑区 | Editor
   // ================================================================
   "editor.tabSize": 2,
-  "editor.fontSize": 13.5,
-  "editor.lineHeight": 1.6,
+  "editor.fontSize": 12.5,
+  "editor.lineHeight": 19,
   // 行号显示
   "editor.lineNumbers": "on",
-  // 不设置默认使用系统字体
-  // "editor.fontFamily": "Comic Shanns, JetBrains Mono, IBM Plex Mono, Input Mono, Fira Code, monospace",
-  "editor.fontFamily": "JetBrains Mono, Comic Shanns, IBM Plex Mono, Input Mono, Fira Code, monospace",
-  // 右侧小地图显示大小设置
+  // 若不设置则会默认使用系统字体
+  // "editor.fontFamily": "Comic Shanns,  monospace",
+  // "editor.fontFamily": "IBM Plex Mono, monospace",
+  "editor.fontFamily": "Monaco, monospace",
+  // "editor.fontFamily": "Input Mono, monospace",
+  // 带连字符效果
+  // "editor.fontFamily": "JetBrains Mono, monospace",
+  // "editor.fontFamily": "Fira Code, monospace",
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
+  // 右侧小地图显示大小设置
   "editor.minimap.size": "fit",
   // 类似 auto rename tag 插件的功能, 遇到多个 tag 匹配项需要更改后按下保存
   "editor.linkedEditing": true,
   // 提示建议
   "editor.suggest.insertMode": "replace",
-  // HINT: 这个设置可以帮助你解决 snippets 导致 tab 补全异常的问题
+  "editor.quickSuggestions": {
+    // 是否在你打注释的时候给你提示建议
+    "comments": "off",
+    // NOTE: 是否在你输入字符的时候给你提示建议，解决了我模板字符串内变量不提示的问题
+    "strings": "on"
+  },
+  // NOTE: 这个设置可以帮助你解决 snippets 导致 tab 补全异常的问题
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.suggest.localityBonus": true,
   "editor.suggestSelection": "first",
   "editor.suggest.preview": true,
-  "editor.inlineSuggest.enabled": false,
   "editor.suggest.shareSuggestSelections": true,
   "editor.suggest.showStatusBar": true,
   "emmet.showSuggestionsAsSnippets": true,
@@ -141,6 +152,10 @@
     // 允许 ESlint 在保存时自动修复
     "source.fixAll.eslint": true
   },
+  // NOTE: 自定义代码颜色（目前看到效果是 vue 项目中子组件/组件库组件的颜色会与普通标签区别开来）
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true
+  },
   // 自定义代码编辑区内容
   "editor.tokenColorCustomizations": {
     "[Vitesse Dark]": {
@@ -163,6 +178,7 @@
       "comments": "#adb5ad",
       "textMateRules": [
         // 更改编辑器中 html 配色方案
+        // TODO: 找一下 vue 项目中子组件和组件库组件标签的颜色关键字设置看看
         {
           "scope": ["entity.name.tag", "entity.name.tag.css", "support.class.component"],
           "settings": {
@@ -240,8 +256,8 @@
       "scrollbarSlider.background": "#aaaaaa2f",
       "scrollbarSlider.hoverBackground": "#aaaaaa2f"
     },
-    // hint: 特别暗环境可以开起来这个, 最近发现 dark mode 主题背景太暗的话是有点费眼睛的
-    "[-Panda Syntax][Vitesse Dark]": {
+    // NOTE: 特别暗环境可以开起来这个, 最近发现 dark mode 主题背景太暗的话是有点费眼睛的
+    "[-Panda Syntax][-Vitesse Dark]": {
       //  Basic | 基础
       // 调整组件之间间距大小的边框
       "sash.hoverBorder": "#66c0ad",
@@ -361,16 +377,17 @@
   // ================================================================
   // 定义在 macOS 上运行的终端应用程序
   "terminal.external.osxExec": "iTerm.app",
-  // hint: 开启GPU加速后, 终端速度明显快多了
+  // NOTE: 开启GPU加速后, 终端速度明显快多了
   "terminal.integrated.gpuAcceleration": "on",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 13,
   // 终端字体 | 不设置的话默认使用编辑器字体
-  "terminal.integrated.fontFamily": "Comic Shanns, Hack Nerd Font Mono, monospace",
+  "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
+  // "terminal.integrated.fontFamily": "Comic Shanns, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
   "terminal.integrated.confirmOnKill": "never",
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.lineHeight": 1.2,
+  // "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.persistentSessionReviveProcess": "never",
@@ -382,21 +399,16 @@
   // ================================================================
   // 设置 leader 键为空格
   "vim.leader": "<space>",
-  // hint: 体验下崔大的 vim.leap 插件
+  // NOTE: 崔大的 vim.leap 插件
   // 新版本
   "vim.leap.enable": true,
   "vim.leap.bidirectionalSearch": true,
   "vim.leap.showMarkerPosition": "target",
-  // Vimuim-C 字符序列：sadjklewcmpgh
+  // Vimium-C 字符序列：sadjklewcmpgh
   "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
   "vim.leap.caseSensitive": false,
   "vim.leap.marker.charColor": "#fff",
   "vim.leap.marker.backgroundColors": ["#f5222d", "#99ccff"],
-  // 旧版本
-  // "vim.leap": true,
-  // "vim.leapBidirectionalSearch": true,
-  // "vim.leapShowMarkerPosition": "target",
-  // "vim.leapCaseSensitive": false,
   // <leader><leader> s <char>: 全文搜索字符
   // <leader><leader> f <char>: 当前光标往下搜索
   "vim.easymotion": false,
@@ -431,6 +443,11 @@
   // 可视/选择模式 | 按键功能映射
   "vim.visualModeKeyBindingsNonRecursive": [
     {
+      // 删除但是不保存到剪贴板，利用 vim 的黑洞寄存器
+      "before": ["backspace"],
+      "after": ["\"", "_", "d"]
+    },
+    {
       "before": ["g", "h"],
       "commands": ["editor.action.showHover"]
     },
@@ -446,7 +463,7 @@
       "before": ["enter"],
       "after": ["a", "f"]
     },
-    // 其实就是用了个小技巧让我们在可视模式下粘贴时寄存器内数据保持一致:
+    // 其实就是用了个小技巧让我们在可视模式下粘贴时寄存器内数据保持一致：
     // 一般来说如果在可视模式选中后 p 操作会将 p 所覆盖的东西复制到寄存器中, 导致后续再 p 就不是我们想粘贴的内容了
     // 这里在 p 后执行 gv（选中粘贴的数据）并 y（复制）
     {
@@ -491,7 +508,7 @@
     // },
 
     // 标签区 | Tab
-    // hack: tab 标签左右切换: 注意若遇到软件设置/插件说明等 tab 标签时会无效, 可用系统快捷键 cmd + shift + [] 切换
+    // 标签左右切换: 注意若遇到软件设置/插件说明文档时无效, 建议使用系统快捷键 cmd + shift + []（全局可用）
     // {
     //   "before": ["H"],
     //   "commands": ["workbench.action.previousEditor"]
@@ -531,7 +548,7 @@
     //   "after": ["v", "a", "f"]
     // },
     // 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder | 进入 insert 模式
-    // bug: 找不到这个占位符的时候也会执行 c4l 就把当前光标所在的4个字符删除了
+    // FIXME: 就算找不到这个占位符的时候也会执行 c4l 就把当前光标所在的4个字符删除了
     // {
     //   "before": ["leader", "leader"],
     //   "after": [
@@ -662,106 +679,20 @@
       "commands": ["workbench.action.terminal.focus"]
     }
   ],
-  // vim keep english in normal（中文切换到普通/NORMAL模式时自动变成英文输入）
-  // hint: 通过 Rime 的配置方案解决了
-  // bug: 使用操作符 (如：ciw），删除当前光标所在单词并进入 INSERT 模式, 此时光标应该从方块变成细条光束, 但结果仍然保持方块, 直到再次输入字符时光标才会切换为细条光束
-  // 对于我来说, 光标状态的显示是我判断模式的根本, 如果光标状态与模式不同时, 可能会产生一些错误的命令输入, 体验上来说就很不友好
+  // vim keep english in normal（中文输入切换到 NORMAL 模式时自动更改为英文输入法）
+  // NOTE: 通过 Rime 的配置方案解决了
+  // BUG: 使用 vim 指令时出现的问题 (如：ciw，删除当前光标所在单词并进入 INSERT 模式，正常来说光标应该从"方块"变成一根"细条光束"，但结果是仍然保持方块状态，直到你再次输入按下字符时光标才会切换为"细条光束"）
+  // 对于我来说，光标状态的显示是我快速判断当前 vim 模式的根本，如果光标状态与模式不同步, 可能会产生一些错误的命令输入，单单是从体验上来说就很不友好了
   // 是否启用自动切换
   "vim.autoSwitchInputMethod.enable": false,
-
-  // ================================================================
-  // git
-  // ================================================================
   "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
   "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
   "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
-  "git.confirmSync": false,
-  "git.ignoreRebaseWarning": true,
-  "gitlens.menus": {
-    "editor": {
-      "blame": false,
-      "clipboard": true,
-      "compare": true,
-      "history": false,
-      "remote": false
-    },
-    "editorGroup": {
-      "blame": true,
-      "compare": false
-    },
-    "editorTab": {
-      "clipboard": true,
-      "compare": true,
-      "history": true,
-      "remote": true
-    },
-    "explorer": {
-      "clipboard": true,
-      "compare": true,
-      "history": true,
-      "remote": true
-    },
-    "scm": {
-      "authors": true
-    },
-    "scmGroup": {
-      "compare": true,
-      "openClose": true,
-      "stash": true
-    },
-    "scmGroupInline": {
-      "stash": true
-    },
-    "scmItem": {
-      "clipboard": true,
-      "compare": true,
-      "history": true,
-      "remote": false,
-      "stash": true
-    }
-  },
 
   // ================================================================
-  // better comments
+  // Comment Anchors
   // ================================================================
-  "better-comments.multilineComments": true,
-  "better-comments.highlightPlainText": true,
-  "better-comments.tags": [
-    {
-      "tag": "HINT",
-      "color": "#fff",
-      "backgroundColor": "#0bba54"
-    },
-    {
-      "tag": "NOTE",
-      "color": "#fff",
-      "backgroundColor": "#3498db"
-    },
-    {
-      "tag": "TODO",
-      "color": "#fff",
-      "backgroundColor": "#ff7c00"
-    },
-    {
-      "tag": "HACK",
-      "color": "#fff",
-      "backgroundColor": "#ff7c00"
-    },
-    {
-      "tag": "FIXME",
-      "color": "#fff",
-      "backgroundColor": "#ff4757"
-    },
-    {
-      "tag": "BUG",
-      "color": "#fff",
-      "backgroundColor": "#ff4757"
-    }
-  ],
-
-  // ================================================================
-  // comment anchors
-  // ================================================================
+  "commentAnchors.tags.provideAutoCompletion": false,
   // 锚点加载解析时长，通过使用更大的值来获得更好的性能
   "commentAnchors.parseDelay": 300,
   // 工作区最大显示文件数量
@@ -791,17 +722,17 @@
       "highlightColor": "#F44336",
       "scope": "workspace"
     },
-    // NOTE: 特别说明
-    "NOTE": {
-      "iconColor": "orange",
-      "highlightColor": "#64DD17",
-      "scope": "workspace"
-    },
     // REVIEW: 需要额外审查的部分
     "REVIEW": {
       "iconColor": "green",
       "highlightColor": "#FFB300",
       "scope": "workspace"
+    },
+    // NOTE: 特别说明/额外补充
+    "NOTE": {
+      "iconColor": "orange",
+      "highlightColor": "#64DD17",
+      "scope": "file"
     },
     // disabled
     "STUB": {
@@ -819,7 +750,7 @@
   },
 
   // ================================================================
-  // ErrorLens
+  // ErrorLens | 错误提示
   // ================================================================
   "errorLens.fontFamily": "JetBrains Mono",
   // 是否使用斜体
@@ -833,18 +764,14 @@
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
 
   // ================================================================
-  // Prettier
-  // ================================================================
-  "prettier.printWidth": 100,
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
-
-  // ================================================================
   // Formatter | 指定文件类型指定格式化方式
   // ================================================================
   // 保存时是否格式化
   "editor.formatOnSave": true,
+  "prettier.printWidth": 100,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
   // 所有文件都使用这种方式进行格式化
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript][jsonc][vue][typescript][html][css][less]": {
@@ -858,14 +785,13 @@
   },
 
   // ================================================================
-  // paramHints
+  // paramHints | 代码提示
   // ================================================================
   "javascript.inlayHints.parameterNames.enabled": "none",
   "typescript.inlayHints.parameterNames.enabled": "none",
   "javascript.inlayHints.parameterTypes.enabled": false,
   "typescript.inlayHints.parameterTypes.enabled": false,
   "editor.inlayHints.enabled": "off",
-  "parameterHints.enabled": false,
 
   // ================================================================
   // Eslint
@@ -880,7 +806,7 @@
   // "eslint.alwaysShowStatus": true,
 
   // ================================================================
-  // other
+  // other | 其他
   // ================================================================
   // 是否开启语法校验检查
   "js/ts.implicitProjectConfig.checkJs": true,
@@ -921,6 +847,15 @@
     "rgba(255,127,255,0.3)",
     "rgba(79,236,236,0.3)"
   ],
+  // codeium
+  "codeium.enableSearch": false,
+  "codeium.enableConfig": {
+    "*": true,
+    "plaintext": true
+  },
+  // 模板字符
+  // "template-string-converter.autoRemoveTemplateString": true,
+  // 悬停翻译
   "commentTranslate.hover.enabled": true,
   "commentTranslate.hover.concise": false,
   "commentTranslate.hover.content": false,
