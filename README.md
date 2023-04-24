@@ -1,26 +1,35 @@
-# vscode settings
+## My Config
 
-this is my vscode settings
+### VS Code
 
-## Theme
+[`settings.json`](./01-vscode/settings.json)<br>
+[`settings-comments.json`](./01-vscode/settings-comments.json)<br>
+[`keybindings.json`](./01-vscode/keybindings.json)
 
-Light Theme：Default Light+
+### Zsh
 
-![Default Light+](./images/theme-DefaultLight%2B.png)
+[`.vimrc`](./02-zsh/.vimrc)
+[`.zimrc`](./02-zsh/.zimrc)
 
-Dark Theme：Panda Syntax
+<p align="center"><samp>Preview</samp></p>
 
-![Panda Syntax](./images/theme-PandaSyntax.png)
+<p align="center">
+<img src="./images/theme-PandaSyntax.png">
+<img src="./images/theme-DefaultLight+.png">
+</p>
 
-## Font
+### Theme
 
-Downlaod
+> Default Light+ theme comes with the VS Code
 
-- [JetBrains Mono Font](https://github.com/JetBrains/JetBrainsMono)
-- [Comic Shanns Font](https://github.com/shannpersand/comic-shanns)
+[Panda Syntax](https://github.com/tinkertrain/panda-syntax-vscode)
 
-Config
+### Fonts
 
-```json
-"editor.fontFamily": "JetBrains Mono, Comic Shanns, IBM Plex Mono, Input Mono, Fira Code, monospace",
-```
+> Monaco font comes with the Mac system
+
+[Comic Shanns Font](https://github.com/shannpersand/comic-shanns)
+[JetBrains Mono Font](https://github.com/JetBrains/JetBrainsMono)
+[Fira Code](https://github.com/tonsky/FiraCode)
+[IBM Plex Mono](https://github.com/IBM/plex)
+[Input Mono](https://input.djr.com/)

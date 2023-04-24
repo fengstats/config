@@ -1,15 +1,20 @@
-" hahahahah
 " ================================================================
 " 基本设置
 " ================================================================
 " vim 时, normal/insert 模式下光标的显示状态
-let &t_ut=''
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" let &t_ut=''
+" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+" let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+" NOTE: 原生 terminal 以及 vsocde terminal vim 光标显示状态设置, 测试发现 iterm2 上也没问题
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+
 " 可以让你在 vim 编辑时使用鼠标进行操作
 set mouse=a
-" 显示普通模式未完成的指令 | 一般在右下角
+" 显示普通模式未完成的指令(一般在右下角)
 set showcmd
 " 解决插入模式下删除键不能删除的问题
 set backspace=indent,eol,start
@@ -28,7 +33,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " autocmd BufWrite * mkview
 " autocmd BufWinLeave * mkview
 " autocmd BufRead * silent loadview
-
 
 " ================================================================
 " 编辑器设置 | editor
@@ -79,7 +83,6 @@ set history=200
 " 合并行时不添加多余空格
 " set nojoinspaces
 
-
 " ================================================================
 " 编码设置
 " ================================================================
@@ -93,7 +96,6 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,big5,cuc-jp,cuc-kr,latin
 set termencoding=utf-8
 " 防止特殊符号无法显示
 set ambiwidth=double
-
 
 " ================================================================
 " 文件设置
@@ -113,7 +115,6 @@ set autoread
 set undofile
 set undodir=~/.vim/undodir
 
-
 " ================================================================
 " 搜索匹配
 " ================================================================
@@ -126,15 +127,14 @@ set incsearch
 " 智能大小敏感, 若有字母大写, 敏感, 否则不敏感
 set ignorecase smartcase
 
-
 " ================================================================
 " 操作习惯 | 快捷键
 " ================================================================
 " 将 <leader> 键配置为 space | 空格
 let mapleader = " "
 " 快速上下移动 | 这里使用递归因为 jk 都被我改了
-map J 5jzz
-map K 5kzz
+map J 5j
+map K 5k
 " 对于很长的行, vim 会自动换行, 此时 j 或者 k 就会一下跳很多行
 " 使用 gk/gj 可以避免跳过多行, 但是不方便, 所以做了如下映射: 
 noremap k gk
@@ -175,10 +175,10 @@ nnoremap <leader>s :w<cr>
 nnoremap <leader>q :q<cr>
 nnoremap Q :q<cr>
 " 上下左右分屏
-nnoremap sk<cr> :set nosplitbelow<cr>:split<cr>
-nnoremap sj<cr> :set splitbelow<cr>:split<cr>
-nnoremap sh<cr> :set nosplitright<cr>:vsplit<cr>
-nnoremap sl<cr> :set splitright<cr>:vsplit<cr>
+nnoremap sk; :set nosplitbelow<cr>:split<cr>
+nnoremap sj; :set splitbelow<cr>:split<cr>
+nnoremap sh; :set nosplitright<cr>:vsplit<cr>
+nnoremap sl; :set splitright<cr>:vsplit<cr>
 " 聚焦上下左右分屏
 nnoremap <leader>l <C-w>l
 nnoremap <leader>h <C-w>h
@@ -194,11 +194,8 @@ nnoremap <leader>k <C-w>k
 map <leader><leader> <esc>/<++><cr>:nohl<cr>"_c4l
 " 刷新全局 vimrc 配置 | 系统会根据文件等级依次往下找
 nnoremap R :source $MYVIMRC<cr>
-" temp: 同步内容给我自己仓库的文件
-nnoremap <leader>u :!cat vimrc > /Users/feng/Github/vscode-settings/.vimrc<CR>q
 " 每次进入一个新文件时先执行取消高亮命令 | 防止上次在此文件的高亮结果再次显示造成视觉干扰
 exec "nohl"
-
 
 " ================================================================
 " 插件引入 | vim-plug

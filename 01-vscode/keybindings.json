@@ -3,6 +3,12 @@
   // ================================================================
   // 基础通用 | Basic
   // ================================================================
+  // 打开当前文件所在访达位置（需要聚焦文件）
+  {
+    "key": "cmd+shift+r",
+    "command": "revealFileInOS",
+    "when": "!editorFocus"
+  },
   {
     "key": "cmd+[",
     "command": "workbench.action.navigateBack"
@@ -31,10 +37,14 @@
   //     "after": ["<c-w>", "h"]
   //   }
   // },
-  // 只能在编辑区
+  // 只能在编辑区聚焦
   // {
   //   "key": "cmd+shift+h",
-  //   "command": "workbench.action.focusLeftGroup"
+  //   "command": "workbench.action.focusLeftGroupWithoutWrap"
+  // },
+  // {
+  //   "key": "cmd+shift+l",
+  //   "command": "workbench.action.focusRightGroupWithoutWrap"
   // },
   {
     "key": "cmd+shift+h",
@@ -147,13 +157,19 @@
     "command": "workbench.action.terminal.new",
     "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   },
-  // 创建终端 | 根据当前 editor 文件位置
+  {
+    "key": "cmd+shift+d",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus && terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  // 创建终端（为当前编辑区聚焦文件的位置）
   {
     "key": "ctrl+`",
     "command": "openInTerminal"
   },
   // 关闭终端
-  // note: 没猜错的话应该就是这个快捷键被我在终端误触了之后以为是终端的异常闪退, 还花了好久找问题, 麻了, 现在关了, 我后续观察是否还会出现
+  // NOTE: 没猜错的话应该就是这个快捷键被我在终端误触了之后以为是终端的异常闪退, 还花了好久找问题, 麻了, 现在关了, 后续观察下是否还会出现
+  // NOTE: 后续补充，没出现过这个问题了，就是这个导致的，慎用
   // {
   //   "key": "cmd+w",
   //   "command": "workbench.action.terminal.kill",
@@ -169,12 +185,15 @@
   {
     "key": "cmd+shift+-",
     "command": "workbench.action.terminal.resizePaneDown",
-    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    // 聚焦在底部面板的位置就行
+    "when": "panelFocus"
+    // "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   {
     "key": "cmd+shift+=",
     "command": "workbench.action.terminal.resizePaneUp",
-    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    "when": "panelFocus"
+    // "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   // 在不同的终端之间进行聚焦
   // 左右

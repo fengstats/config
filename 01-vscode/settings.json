@@ -5,11 +5,16 @@
   "files.eol": "\n",
   "files.autoSave": "off",
   "files.autoSaveDelay": 200,
+  "files.insertFinalNewline": true,
+  "files.simpleDialog.enable": true,
   "files.associations": {
     ".zimrc": "shellscript",
     "*.json": "jsonc"
   },
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  // "extensions.ignoreRecommendations": true,
   "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
   "security.workspace.trust.untrustedFiles": "open",
   "diffEditor.ignoreTrimWhitespace": false,
   "search.smartCase": true,
@@ -40,19 +45,20 @@
   "window.titleBarStyle": "custom",
   "window.commandCenter": false,
   "window.dialogStyle": "custom",
-  "workbench.statusBar.visible": true,
   "window.newWindowDimensions": "offset",
+  "window.autoDetectColorScheme": false,
+  "workbench.sideBar.location": "left",
+  "workbench.statusBar.visible": true,
   "workbench.iconTheme": "file-icons",
-  "workbench.colorTheme": "Panda Syntax",
   "workbench.productIconTheme": "icons-carbon",
-  "workbench.preferredLightColorTheme": "Default Light+",
+  "workbench.colorTheme": "Panda Syntax",
+  "workbench.preferredLightColorTheme": "Panda Syntax",
   "workbench.preferredDarkColorTheme": "Panda Syntax",
   "sundial.sunrise": "07:00",
   "sundial.sunset": "18:30",
   "sundial.interval": 30,
   "sundial.daySettings": {},
   "sundial.nightSettings": {},
-  "window.autoDetectColorScheme": false,
   "workbench.editor.showTabs": true,
   "workbench.editor.showIcons": true,
   "workbench.list.smoothScrolling": true,
@@ -72,9 +78,9 @@
   "editor.tabSize": 2,
   "editor.fontSize": 13,
   "editor.lineHeight": 1.5,
-  "editor.lineNumbers": "on",
-  "editor.fontFamily": "JetBrains Mono, monospace",
-  // "editor.fontFamily": "Monaco, monospace",
+  "editor.lineNumbers": "interval",
+  // "editor.fontFamily": "JetBrains Mono, monospace",
+  "editor.fontFamily": "Monaco, monospace",
   // "editor.fontFamily": "Comic Shanns,  monospace",
   // "editor.fontFamily": "IBM Plex Mono, monospace",
   // "editor.fontFamily": "Input Mono, monospace",
@@ -89,10 +95,8 @@
   },
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.suggest.localityBonus": true,
-  "editor.suggestSelection": "first",
   "editor.suggest.preview": true,
   "editor.suggest.shareSuggestSelections": true,
-  "editor.suggest.showStatusBar": true,
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.useInlineCompletions": true,
   "editor.detectIndentation": false,
@@ -100,7 +104,7 @@
   "editor.acceptSuggestionOnEnter": "on",
   "editor.renderLineHighlight": "line",
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.cursorBlinking": "blink",
+  "editor.cursorBlinking": "smooth",
   "editor.find.addExtraSpaceOnTop": false,
   "editor.glyphMargin": true,
   "editor.multiCursorModifier": "alt",
@@ -111,7 +115,8 @@
   "editor.guides.bracketPairs": "active",
   "editor.smoothScrolling": true,
   "editor.scrollBeyondLastLine": true,
-  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.enabled": false,
+  "editor.hover.sticky": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
     "source.fixAll.eslint": true
@@ -150,14 +155,14 @@
         {
           "scope": [
             "entity.name.tag",
-            "entity.name.tag.html"
-            // "entity.name.tag.css",
+            "entity.name.tag.html",
+            "entity.name.tag.css"
             // "meta.tag.structure.any.html",
             // "meta.tag.other.html",
             // "meta.tag.metadata.script.html",
-            // "entity.name.tag.jade"
+            // "entity.name.tag.jade",
             // "source.vue",
-            // "entity.name.tag.pug"
+            // "entity.name.tag.pug",
             // "meta.tag.other"
           ],
           "settings": {
@@ -293,11 +298,15 @@
   // "terminal.integrated.fontFamily": "Comic Shanns, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
+  // "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.confirmOnKill": "never",
   "terminal.integrated.copyOnSelection": true,
-  // "terminal.integrated.lineHeight": 1.2,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
 
   // ================================================================
   // vim
@@ -558,6 +567,7 @@
   // "errorLens.margin": "20px",
   "errorLens.messageTemplate": "$severity：$message ($source) $count",
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.excludeBySource": ["cSpell", "Grammarly", "eslint"],
 
   // ================================================================
   // Formatter
@@ -590,6 +600,10 @@
   // ================================================================
   // other
   // ================================================================
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.untrackedChanges": "separate",
   "less.compile": {
     "outExt": ".css"
   },
@@ -600,6 +614,7 @@
     "codeium",
     "colour",
     "easymotion",
+    "feng",
     "hlsearch",
     "incsearch",
     "Moegi",
@@ -617,16 +632,23 @@
     "rgba(255,127,255,0.3)",
     "rgba(79,236,236,0.3)"
   ],
+  // code intellisense
+  "Codegeex.Privacy": false,
+  "Codegeex.DisabledFor": {
+    "plaintext": true
+  },
   "codeium.enableSearch": false,
   "codeium.enableConfig": {
     "*": true,
     "plaintext": true
   },
+  "livePreview.notifyOnOpenLooseFile": false,
   "commentTranslate.hover.enabled": true,
   "commentTranslate.hover.concise": false,
   "commentTranslate.hover.content": false,
   "commentTranslate.hover.variable": true,
   "commentTranslate.hover.string": true,
   "commentTranslate.targetLanguage": "zh-CN",
-  "commentTranslate.multiLineMerge": true
+  "commentTranslate.multiLineMerge": true,
+  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud",
 }

@@ -12,6 +12,8 @@
   },
   // 拖拽文件进入 VSCode 时，是否需要确认弹窗
   "explorer.confirmDragAndDrop": false,
+  // 通过回收站删除文件时是否需要确认
+  "explorer.confirmDelete": false,
   // 允许不受信任的文件引入受信任的工作区，而不提示
   "security.workspace.trust.untrustedFiles": "open",
   // 是否忽略文件空白符

@@ -37,8 +37,15 @@ zmodule hlissner/zsh-autopair
 # 和 z 搭配使用的插件, 使用 fzf 的模糊搜索来完成 z 的 tab 补全
 zmodule wookayin/fzf-fasd
 # 非常强大的智能补全插件, 接管你的 Tab
-zmodule Aloxaf/fzf-tab
+# fig 更好用，强烈推荐！！！
+# zmodule Aloxaf/fzf-tab
 # 一个主题丰富的插件
 zmodule romkatv/powerlevel10k
 # 这个 zsh 插件可以启用一些别名, 扩展 exa 的功能, exa 是 ls 命令的现代替代品
 # zmodule DarrinTisdale/zsh-aliases-exa
+
+# 使用 oh-my-zsh 的插件
+# clipboard 里面有个命令（copyclip）是 copypath 需要用的，所以必须先加载进来
+zmodule ohmyzsh/ohmyzsh --root lib --source clipboard.zsh
+zmodule ohmyzsh/ohmyzsh --root plugins/copypath
+zmodule ohmyzsh/ohmyzsh --root plugins/autojump
