@@ -635,7 +635,8 @@
   // code intellisense
   "Codegeex.Privacy": false,
   "Codegeex.DisabledFor": {
-    "plaintext": true
+    "plaintext": true,
+    "": true
   },
   "codeium.enableSearch": false,
   "codeium.enableConfig": {
@@ -650,5 +651,5 @@
   "commentTranslate.hover.string": true,
   "commentTranslate.targetLanguage": "zh-CN",
   "commentTranslate.multiLineMerge": true,
-  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud",
+  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud"
 }

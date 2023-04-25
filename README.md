@@ -21,7 +21,7 @@
 
 ### Themes
 
-> Default Light+ theme comes with the VS Code
+> Default Light+ theme comes with the VSCode
 
 - [Moegi Light Vitesse](https://github.com/moegi-design/vscode-theme)
 - [Panda Syntax](https://github.com/tinkertrain/panda-syntax-vscode)
