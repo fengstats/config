@@ -74,10 +74,10 @@
     "when": "terminal.active && terminalFocus"
   },
   // 切换侧边栏是否可见
-  {
-    "key": "cmd+n",
-    "command": "workbench.action.toggleSidebarVisibility"
-  },
+  // {
+  //   "key": "cmd+n",
+  //   "command": "workbench.action.toggleSidebarVisibility"
+  // },
   // 左侧文件管理面板显示
   {
     "key": "cmd+shift+;",
@@ -364,5 +364,20 @@
     "key": "ctrl+o",
     "command": "-lineBreakInsert",
     "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+f",
+    "command": "-actions.find",
+    "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "cmd+f",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "alt+cmd+f",
+    "command": "-editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
   }
 ]

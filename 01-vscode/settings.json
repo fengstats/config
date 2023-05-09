@@ -15,6 +15,8 @@
   // "extensions.ignoreRecommendations": true,
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
+  "explorer.openEditors.sortOrder": "alphabetical",
+  "explorer.openEditors.visible": 20,
   "security.workspace.trust.untrustedFiles": "open",
   "diffEditor.ignoreTrimWhitespace": false,
   "search.smartCase": true,
@@ -41,13 +43,12 @@
   // Window and Workbench
   // ================================================================
   "window.nativeTabs": false,
-  "window.zoomLevel": 0.4,
+  "window.zoomLevel": 0.2,
   "window.titleBarStyle": "custom",
   "window.commandCenter": false,
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
   "window.autoDetectColorScheme": false,
-  "workbench.sideBar.location": "left",
   "workbench.statusBar.visible": true,
   "workbench.iconTheme": "file-icons",
   "workbench.productIconTheme": "icons-carbon",
@@ -59,7 +60,7 @@
   "sundial.interval": 30,
   "sundial.daySettings": {},
   "sundial.nightSettings": {},
-  "workbench.editor.showTabs": true,
+  "workbench.editor.showTabs": false,
   "workbench.editor.showIcons": true,
   "workbench.list.smoothScrolling": true,
   "workbench.editor.closeOnFileDelete": true,
@@ -344,7 +345,7 @@
   "vim.visualModeKeyBindingsNonRecursive": [
     {
       "before": ["backspace"],
-      "after": ["\"", "_", "d"]
+      "after": ["\"", "_", "c"]
     },
     {
       "before": ["g", "h"],
@@ -604,6 +605,7 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.untrackedChanges": "separate",
+  "git.openRepositoryInParentFolders": "never",
   "less.compile": {
     "outExt": ".css"
   },
@@ -635,8 +637,7 @@
   // code intellisense
   "Codegeex.Privacy": false,
   "Codegeex.DisabledFor": {
-    "plaintext": true,
-    "": true
+    "plaintext": true
   },
   "codeium.enableSearch": false,
   "codeium.enableConfig": {
@@ -651,5 +652,5 @@
   "commentTranslate.hover.string": true,
   "commentTranslate.targetLanguage": "zh-CN",
   "commentTranslate.multiLineMerge": true,
-  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud"
+  "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud",
 }

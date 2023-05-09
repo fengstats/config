@@ -5,6 +5,7 @@ alias x='exit'
 alias c='clear'
 alias o='open .'
 alias yp='copypath'
+alias syncNote='/Users/feng/codebase/03-Config/config/syncDailyNote.sh'
 
 # general use
 # alias ll='exa -lbF --git'                                             # long list
