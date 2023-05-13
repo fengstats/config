@@ -16,7 +16,7 @@ const len = input.length
     // 不满10补0
     const m = Math.floor(t % 60)
     // 0的情况就不输出了
-    return `${h == 0 ? '' : h + 'h'}${m == 0 ? '' : `${m}`.padStart(2, '0') + 'min'}`
+    return `**${h == 0 ? '' : h + 'h'}${m == 0 ? '' : `${m}`.padStart(2, '0') + 'min'}**`
   }
 
   let copyContent = ''
@@ -31,6 +31,7 @@ const len = input.length
     const m = parseInt(eval(input[1]))
     const minuteTime = h * 60 + m
     copyContent = minuteTime + ''
+    console.log(timeTransform(minuteTime))
   } else {
     // 将输入的数据加起来，输出总分钟，以及小时 + 分钟
     const timeSumStr = input.filter((item) => item > 0).join('+')
@@ -42,8 +43,9 @@ const len = input.length
       (accumulator, currentTime) => parseInt(currentTime) + accumulator,
       0,
     )
-    const output = `${timeSumStr} | ${minuteSum} | **${timeTransform(minuteSum)}**`
-    copyContent = output + ''
+    copyContent = `${timeTransform(minuteSum)}`
+    const output = `${timeSumStr}\n${minuteSum}\n`
+    console.log(output)
   }
   console.log(copyContent)
   // 写入系统剪贴板，省得我手动复制了

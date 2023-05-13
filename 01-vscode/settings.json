@@ -15,7 +15,6 @@
   // "extensions.ignoreRecommendations": true,
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
-  "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.openEditors.visible": 20,
   "security.workspace.trust.untrustedFiles": "open",
   "diffEditor.ignoreTrimWhitespace": false,
@@ -67,7 +66,7 @@
   "workbench.editor.tabCloseButton": "off",
   "workbench.editor.limit.enabled": true,
   "workbench.editor.wrapTabs": false,
-  "workbench.editor.limit.value": 5,
+  "workbench.editor.limit.value": 20,
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
@@ -105,7 +104,7 @@
   "editor.acceptSuggestionOnEnter": "on",
   "editor.renderLineHighlight": "line",
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.cursorBlinking": "smooth",
+  "editor.cursorBlinking": "expand",
   "editor.find.addExtraSpaceOnTop": false,
   "editor.glyphMargin": true,
   "editor.multiCursorModifier": "alt",
@@ -588,6 +587,15 @@
   "[html]": {
     "editor.suggest.insertMode": "replace"
   },
+  "formatFiles.excludedFolders": [
+    "node_modules",
+    ".vscode",
+    ".git",
+    "dist",
+    ".chrome",
+    "attachments"
+  ],
+  "formatFiles.extensionsToInclude": ".md",
 
   // ================================================================
   // paramHints

@@ -93,6 +93,12 @@
     "key": "cmd+shift+f",
     "command": "workbench.action.findInFiles"
   },
+  // 替换单个文件匹配
+  {
+    "key": "shift+cmd+enter",
+    "command": "search.action.replace",
+    "when": "isEditableItem && matchFocus && replaceActive && searchViewletVisible"
+  },
   // gitlens
   {
     "key": "cmd+shift+g",
@@ -265,16 +271,6 @@
 
   // setting default
   {
-    "key": "shift+cmd+j",
-    "command": "-workbench.action.search.toggleQueryDetails",
-    "when": "inSearchEditor || searchViewletFocus"
-  },
-  {
-    "key": "ctrl+p",
-    "command": "-selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-  {
     "key": "alt+cmd+h",
     "command": "-rest-client.history"
   },
@@ -299,18 +295,16 @@
     "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
   },
   {
-    "key": "cmd+j",
-    "command": "workbench.action.togglePanel"
+    "key": "ctrl+f",
+    "command": "workbench.action.terminal.searchWorkspace",
+    "when": "terminalFocus && terminalProcessSupported && terminalTextSelected"
   },
+
+  // disable setting
   {
     "key": "shift+cmd+f",
     "command": "-workbench.view.search",
     "when": "workbench.view.search.active && neverMatch =~ /doesNotMatch/"
-  },
-  {
-    "key": "ctrl+f",
-    "command": "workbench.action.terminal.searchWorkspace",
-    "when": "terminalFocus && terminalProcessSupported && terminalTextSelected"
   },
   {
     "key": "shift+cmd+f",
@@ -379,5 +373,20 @@
     "key": "alt+cmd+f",
     "command": "-editor.action.startFindReplaceAction",
     "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "shift+cmd+1",
+    "command": "-search.action.replace",
+    "when": "isEditableItem && matchFocus && replaceActive && searchViewletVisible"
+  },
+  {
+    "key": "alt+cmd+up",
+    "command": "-extension.vim_cmd+alt+up",
+    "when": "editorTextFocus && vim.active && !inDebugRepl"
+  },
+  {
+    "key": "alt+cmd+down",
+    "command": "-extension.vim_cmd+alt+down",
+    "when": "editorTextFocus && vim.active && !inDebugRepl"
   }
 ]
