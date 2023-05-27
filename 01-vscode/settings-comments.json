@@ -816,16 +816,7 @@
   // 是否不检查 .gitignore 内指定的文件
   "cSpell.useGitignore": false,
   "cSpell.enableFiletypes": ["vimrc"],
-  "cSpell.userWords": [
-    "colour",
-    "easymotion",
-    "hlsearch",
-    "incsearch",
-    "peachpuff",
-    "Vitesse",
-    "zimfw",
-    "zmodule"
-  ],
+  "cSpell.userWords": ["colour", "easymotion", "hlsearch", "incsearch", "peachpuff", "Vitesse", "zimfw", "zmodule"],
   // 缩进线条
   "indentRainbow.indicatorStyle": "light",
   "indentRainbow.lightIndicatorStyleLineWidth": 1,

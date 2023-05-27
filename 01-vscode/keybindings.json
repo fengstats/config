@@ -107,6 +107,44 @@
   },
 
   // ================================================================
+  // file
+  // ================================================================
+  // 在文件管理器中搜索
+  {
+    "key": "/",
+    "command": "list.find",
+    "when": "listFocus && listSupportsFind && !inputFocus"
+  },
+  // 新建文件/文件夹
+  // NOTE: 去掉了 !explorerResourceIsRoot 达到了在资源管理器根目录中新建的功能，不知道可能会有什么隐患，先观望一下
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile"
+    // "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  // 重命名/删除
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+
+  // ================================================================
   // 标签 | Tab
   // ================================================================
   // 将当前 tab 移动到左/右边编辑组中 | << and >>
@@ -131,6 +169,11 @@
   // ================================================================
   // 编辑器 | Editor
   // ================================================================
+  {
+    "key": "cmd+g",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  },
   // 垂直分屏
   // {
   //   "key": "cmd+shift+\\",
@@ -147,9 +190,19 @@
     "command": "editor.action.moveLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
   },
+  {
+    "key": "cmd+8",
+    "command": "editor.action.marker.next",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+shift+8",
+    "command": "editor.action.marker.prev",
+    "when": "editorFocus"
+  },
 
   // ================================================================
-  // terminal begin
+  // 终端 | terminal
   // ================================================================
   // 创建终端 | 水平方向
   {
@@ -235,38 +288,6 @@
     "key": "alt+k",
     "command": "workbench.action.terminal.scrollUp",
     "when": "terminalFocus"
-  },
-
-  // ================================================================
-  // file
-  // ================================================================
-  // 在文件管理器中搜索
-  {
-    "key": "/",
-    "command": "list.find",
-    "when": "listFocus && listSupportsFind && !inputFocus"
-  },
-  // 新建文件/文件夹
-  {
-    "key": "a",
-    "command": "explorer.newFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  {
-    "key": "shift+a",
-    "command": "explorer.newFolder",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  // 重命名/删除
-  {
-    "key": "r",
-    "command": "renameFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  {
-    "key": "d",
-    "command": "deleteFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
 
   // setting default
@@ -360,16 +381,6 @@
     "when": "textInputFocus && !editorReadonly"
   },
   {
-    "key": "cmd+f",
-    "command": "-actions.find",
-    "when": "editorFocus || editorIsOpen"
-  },
-  {
-    "key": "cmd+f",
-    "command": "editor.action.startFindReplaceAction",
-    "when": "editorFocus || editorIsOpen"
-  },
-  {
     "key": "alt+cmd+f",
     "command": "-editor.action.startFindReplaceAction",
     "when": "editorFocus || editorIsOpen"
@@ -388,5 +399,9 @@
     "key": "alt+cmd+down",
     "command": "-extension.vim_cmd+alt+down",
     "when": "editorTextFocus && vim.active && !inDebugRepl"
+  },
+  {
+    "key": "cmd+n",
+    "command": "-workbench.action.files.newUntitledFile"
   }
 ]

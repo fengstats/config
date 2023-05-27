@@ -17,7 +17,6 @@
   "explorer.confirmDelete": false,
   "explorer.openEditors.visible": 20,
   "security.workspace.trust.untrustedFiles": "open",
-  "diffEditor.ignoreTrimWhitespace": false,
   "search.smartCase": true,
   "search.exclude": {
     "**/.git": true,
@@ -42,7 +41,7 @@
   // Window and Workbench
   // ================================================================
   "window.nativeTabs": false,
-  "window.zoomLevel": 0.2,
+  "window.zoomLevel": 0.1,
   "window.titleBarStyle": "custom",
   "window.commandCenter": false,
   "window.dialogStyle": "custom",
@@ -51,9 +50,9 @@
   "workbench.statusBar.visible": true,
   "workbench.iconTheme": "file-icons",
   "workbench.productIconTheme": "icons-carbon",
-  "workbench.colorTheme": "Panda Syntax",
   "workbench.preferredLightColorTheme": "Panda Syntax",
   "workbench.preferredDarkColorTheme": "Panda Syntax",
+  "workbench.colorTheme": "Panda Syntax",
   "sundial.sunrise": "07:00",
   "sundial.sunset": "18:30",
   "sundial.interval": 30,
@@ -78,7 +77,7 @@
   "editor.tabSize": 2,
   "editor.fontSize": 13,
   "editor.lineHeight": 1.5,
-  "editor.lineNumbers": "interval",
+  // "editor.lineNumbers": "interval",
   // "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.fontFamily": "Monaco, monospace",
   // "editor.fontFamily": "Comic Shanns,  monospace",
@@ -93,9 +92,12 @@
     "comments": "off",
     "strings": "on"
   },
+  "editor.unicodeHighlight.allowedLocales": {
+    // 允许中文符号显示而不突出高亮
+    "zh-hant": true
+  },
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.suggest.localityBonus": true,
-  "editor.suggest.preview": true,
   "editor.suggest.shareSuggestSelections": true,
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.useInlineCompletions": true,
@@ -104,7 +106,7 @@
   "editor.acceptSuggestionOnEnter": "on",
   "editor.renderLineHighlight": "line",
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.cursorBlinking": "expand",
+  "editor.cursorBlinking": "phase",
   "editor.find.addExtraSpaceOnTop": false,
   "editor.glyphMargin": true,
   "editor.multiCursorModifier": "alt",
@@ -193,6 +195,9 @@
     ]
   },
   "workbench.colorCustomizations": {
+    "[MacOS Modern Dark - Xcode Modern][MacOS Modern Dark - Ventura Xcode]": {
+      "minimap.background": "#ffffff0a"
+    },
     "[Panda Syntax]": {
       // "commandCenter.border": "#86f6de8f",
       "badge.background": "#aaaaaa",
@@ -293,8 +298,9 @@
   // ================================================================
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.gpuAcceleration": "on",
-  "terminal.integrated.fontSize": 13,
-  "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "Hack Nerd Font Mono, monospace",
+  // "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Comic Shanns, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Input Mono, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
@@ -312,13 +318,14 @@
   // vim
   // ================================================================
   "vim.leader": "<space>",
-  "vim.leap.enable": true,
-  "vim.leap.bidirectionalSearch": true,
-  "vim.leap.showMarkerPosition": "target",
-  "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
-  "vim.leap.caseSensitive": false,
-  "vim.leap.marker.charColor": "#fff",
-  "vim.leap.marker.backgroundColors": ["#f5222d", "#99ccff"],
+  // BUG: 分组编辑同文件时光标位置跳跃有问题，具体问题记录查看 2023-05-21 日记
+  // "vim.leap.enable": true,
+  // "vim.leap.bidirectionalSearch": true,
+  // "vim.leap.showMarkerPosition": "target",
+  // "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
+  // "vim.leap.caseSensitive": false,
+  // "vim.leap.marker.charColor": "#fff",
+  // "vim.leap.marker.backgroundColors": ["#f5222d", "#99ccff"],
   "vim.easymotion": false,
   "vim.useSystemClipboard": true,
   "vim.incsearch": true,
@@ -328,7 +335,11 @@
   "vim.sneak": true,
   "vim.handleKeys": {
     "<C-a>": false,
-    "<C-f>": false
+    "<C-f>": false,
+    // 不开启默认不生效
+    "<C-i>": true,
+    "<C-o>": true,
+    "<C-y>": true
   },
   "vim.insertModeKeyBindings": [],
   "vim.operatorPendingModeKeyBindings": [
@@ -388,6 +399,10 @@
       "before": ["leader", "e"],
       "commands": ["workbench.action.toggleSidebarVisibility"]
     },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.toggleAuxiliaryBar"]
+    },
     // {
     //   "before": ["leader", "a"],
     //   "commands": ["explorer.newFile"]
@@ -408,14 +423,14 @@
       "before": ["leader", "d", "f"],
       "commands": ["git.openChange"]
     },
-    {
-      "before": ["leader", "k"],
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      "before": ["leader", "j"],
-      "commands": ["editor.action.marker.next"]
-    },
+    // {
+    //   "before": ["leader", "k"],
+    //   "commands": ["editor.action.marker.prev"]
+    // },
+    // {
+    //   "before": ["leader", "j"],
+    //   "commands": ["editor.action.marker.next"]
+    // },
     {
       "before": ["j"],
       "after": ["g", "j"]
@@ -444,6 +459,12 @@
       "before": ["U"],
       "after": ["<c-r>"]
     },
+    // 给顶部预留一点空间
+    // BUG: 遇到折叠代码块后，<c-y> 会导致光标位置异常跳跃
+    // {
+    //   "before": ["z", "t"],
+    //   "after": ["z", "t", "4", "<c-y>"]
+    // },
     {
       "before": ["s", "l", ";"],
       "commands": [":vsplit"]
@@ -452,14 +473,14 @@
       "before": ["s", "j", ";"],
       "commands": [":split"]
     },
-    {
-      "before": ["g", "k"],
-      "after": ["<c-o>"]
-    },
-    {
-      "before": ["g", "j"],
-      "after": ["<c-i>"]
-    },
+    // {
+    //   "before": ["g", "k"],
+    //   "after": ["<c-o>"]
+    // },
+    // {
+    //   "before": ["g", "j"],
+    //   "after": ["<c-i>"]
+    // },
     {
       "before": ["H"],
       "after": ["^"]
@@ -573,10 +594,11 @@
   // Formatter
   // ================================================================
   "editor.formatOnSave": true,
-  "prettier.printWidth": 100,
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
+  "prettier.printWidth": 120,
+  "prettier.proseWrap": "never",
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript][jsonc][vue][typescript][html][css][less]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -587,14 +609,7 @@
   "[html]": {
     "editor.suggest.insertMode": "replace"
   },
-  "formatFiles.excludedFolders": [
-    "node_modules",
-    ".vscode",
-    ".git",
-    "dist",
-    ".chrome",
-    "attachments"
-  ],
+  "formatFiles.excludedFolders": ["node_modules", ".vscode", ".git", "dist", ".chrome", "attachments"],
   "formatFiles.extensionsToInclude": ".md",
 
   // ================================================================
@@ -648,6 +663,7 @@
     "plaintext": true
   },
   "codeium.enableSearch": false,
+  "codeium.enableCodeLens": false,
   "codeium.enableConfig": {
     "*": true,
     "plaintext": true
