@@ -94,6 +94,12 @@
   // ================================================================
   // 编辑区 | Editor
   // ================================================================
+  "editor.unicodeHighlight.allowedLocales": {
+    // 允许中文符号显示而不突出高亮
+    "zh-hant": true
+  },
+  // 保持上下 4 行的代码在可视范围内
+  "editor.cursorSurroundingLines": 4,
   "editor.tabSize": 2,
   "editor.fontSize": 12.5,
   "editor.lineHeight": 19,
@@ -160,12 +166,53 @@
     // 允许 ESlint 在保存时自动修复
     "source.fixAll.eslint": true
   },
-  // NOTE: 自定义代码颜色（目前看到效果是 vue 项目中子组件/组件库组件的颜色会与普通标签区别开来）
+  // NOTE: 从当前主题重写编辑器某些关键字样式（目前看到效果是 vue 项目中子组件/组件库组件的颜色会与普通标签区别开来）
   "editor.semanticTokenColorCustomizations": {
     "enabled": true
   },
   // 自定义代码编辑区内容
   "editor.tokenColorCustomizations": {
+    "[Spacegray Eighties Dark]": {
+      "comments": "#adb5ad",
+      "textMateRules": [
+        {
+          "scope": [
+            // JSON key
+            "support.type.property-name"
+          ],
+          "settings": {
+            "foreground": "#ff7675"
+          }
+        },
+        {
+          "scope": [
+            // 符号：前后引号
+            "punctuation.definition.string.begin",
+            "punctuation.definition.string.end",
+            // 被引号包围的字符
+            "string.quoted"
+          ],
+          "settings": {
+            "foreground": "#55efc4"
+            // "foreground": "#2bcbba"
+          }
+        },
+        {
+          // markdown 无序列表
+          "scope": ["markup.list.unnumbered"],
+          "settings": {
+            "foreground": "#bdc3c7"
+          }
+        },
+        {
+          // markdown 链接
+          "scope": ["markup.underline"],
+          "settings": {
+            "foreground": "#48dbfb"
+          }
+        }
+      ]
+    },
     "[Vitesse Dark]": {
       // 注释颜色更改
       "comments": "#909090"
@@ -409,16 +456,16 @@
   // ================================================================
   // 设置 leader 键为空格
   "vim.leader": "<space>",
-  // NOTE: 崔大的 vim.leap 插件
-  // 新版本
-  "vim.leap.enable": true,
-  "vim.leap.bidirectionalSearch": true,
-  "vim.leap.showMarkerPosition": "target",
+  // 崔大的 vim.leap 插件
+  // BUG: 分组编辑同文件时光标位置跳跃有问题，具体问题记录查看 2023-05-21 日记
+  // "vim.leap.enable": true,
+  // "vim.leap.bidirectionalSearch": true,
+  // "vim.leap.showMarkerPosition": "target",
   // Vimium-C 字符序列：sadjklewcmpgh
-  "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
-  "vim.leap.caseSensitive": false,
-  "vim.leap.marker.charColor": "#fff",
-  "vim.leap.marker.backgroundColors": ["#f5222d", "#99ccff"],
+  // "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
+  // "vim.leap.caseSensitive": false,
+  // "vim.leap.marker.charColor": "#fff",
+  // "vim.leap.marker.backgroundColors": ["#f5222d", "#99ccff"],
   // <leader><leader> s <char>: 全文搜索字符
   // <leader><leader> f <char>: 当前光标往下搜索
   "vim.easymotion": false,
@@ -432,10 +479,11 @@
   // 设置 vim 不接管某些快捷键
   "vim.handleKeys": {
     "<C-a>": false,
-    "<C-f>": false
-    // 作为一位合格的 cv 工程师, 我的主力按键怎么能被 vim 接管, 达咩！
-    // "<C-c>": false
-    // "<C-v>": false
+    "<C-f>": false,
+    // 不开启默认功能是不生效的
+    "<C-i>": true,
+    "<C-o>": true,
+    "<C-y>": true
   },
   // 插入/写入模式 | 按键功能映射
   "vim.insertModeKeyBindings": [],
@@ -507,28 +555,54 @@
       "commands": ["workbench.action.toggleSidebarVisibility"]
     },
     // 创建文件
-    // {
-    //   "before": ["leader", "a"],
-    //   "commands": ["explorer.newFile"]
-    // },
+    {
+      "before": ["leader", "a"],
+      "commands": ["explorer.newFile"]
+    },
     // 创建文件夹
-    // {
-    //   "before": ["leader", "A"],
-    //   "commands": ["explorer.newFolder"]
-    // },
+    {
+      "before": ["leader", "A"],
+      "commands": ["explorer.newFolder"]
+    },
 
     // 标签区 | Tab
     // 标签左右切换: 注意若遇到软件设置/插件说明文档时无效, 建议使用系统快捷键 cmd + shift + []（全局可用）
-    // {
-    //   "before": ["H"],
-    //   "commands": ["workbench.action.previousEditor"]
-    // },
-    // {
-    //   "before": ["L"],
-    //   "commands": ["workbench.action.nextEditor"]
-    // },
+    {
+      "before": ["H"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["L"],
+      "commands": ["workbench.action.nextEditor"]
+    },
 
     // 编辑区 | Editor
+    // 类似 wildfire.vim 但是不能选择包含块里面的内容, 有点可惜
+    {
+      "before": ["enter"],
+      "after": ["v", "a", "f"]
+    },
+    // 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder | 进入 insert 模式
+    // FIXME: 就算找不到这个占位符的时候也会执行 c4l 就把当前光标所在的4个字符删除了
+    {
+      "before": ["leader", "leader"],
+      "after": ["/", "<", "+", "+", ">", "<cr>", ":", "n", "o", "h", "l", "<cr>", "\"", "_", "c", "4", "l"]
+    },
+    // 给顶部预留一点空间，但发现遇到折叠代码块后，<c-y> 滚动可视区域会导致光标位置异常跳跃
+    // DONE: 发现我的需求可以直接设置 cursorSurroundingLines 来解决
+    {
+      "before": ["z", "t"],
+      "after": ["z", "t", "4", "<c-y>"]
+    },
+    {
+      "before": ["Q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    // 进入定义文件位置中
+    {
+      "before": ["leader", "f"],
+      "after": ["g", "f"]
+    },
     // 将没有定义的变量或者函数快速创建出来
     {
       "before": ["leader", "v", "v"],
@@ -552,35 +626,6 @@
       "before": ["leader", "j"],
       "commands": ["editor.action.marker.next"]
     },
-    // 类似 wildfire.vim 但是不能选择包含块里面的内容, 有点可惜
-    // {
-    //   "before": ["enter"],
-    //   "after": ["v", "a", "f"]
-    // },
-    // 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder | 进入 insert 模式
-    // FIXME: 就算找不到这个占位符的时候也会执行 c4l 就把当前光标所在的4个字符删除了
-    // {
-    //   "before": ["leader", "leader"],
-    //   "after": [
-    //     "/",
-    //     "<",
-    //     "+",
-    //     "+",
-    //     ">",
-    //     "<cr>",
-    //     ":",
-    //     "n",
-    //     "o",
-    //     "h",
-    //     "l",
-    //     "<cr>",
-    //     "\"",
-    //     "_",
-    //     "c",
-    //     "4",
-    //     "l"
-    //   ]
-    // },
     // 解决自动换行后进行光标移动一次跳过多行的问题
     {
       "before": ["j"],
@@ -663,15 +708,6 @@
       "before": ["leader", "q"],
       "commands": ["workbench.action.closeActiveEditor"]
     },
-    // {
-    //   "before": ["Q"],
-    //   "commands": ["workbench.action.closeActiveEditor"]
-    // },
-    // 进入定义文件位置中
-    // {
-    //   "before": ["leader", "f"],
-    //   "after": ["g", "f"]
-    // }
     // 光标跳转到前面的函数开始处 | 如果光标在函数体内, 那就是该函数的开始处
     {
       "before": ["leader", "["],
@@ -690,8 +726,8 @@
     }
   ],
   // vim keep english in normal（中文输入切换到 NORMAL 模式时自动更改为英文输入法）
-  // NOTE: 通过 Rime 的配置方案解决了
-  // BUG: 使用 vim 指令时出现的问题 (如：ciw，删除当前光标所在单词并进入 INSERT 模式，正常来说光标应该从"方块"变成一根"细条光束"，但结果是仍然保持方块状态，直到你再次输入按下字符时光标才会切换为"细条光束"）
+  // DONE: 通过 Rime 的配置方案解决了
+  // 使用 vim 指令时出现的问题 (如：ciw，删除当前光标所在单词并进入 INSERT 模式，正常来说光标应该从"方块"变成一根"细条光束"，但结果是仍然保持方块状态，直到你再次输入按下字符时光标才会切换为"细条光束"）
   // 对于我来说，光标状态的显示是我快速判断当前 vim 模式的根本，如果光标状态与模式不同步, 可能会产生一些错误的命令输入，单单是从体验上来说就很不友好了
   // 是否启用自动切换
   "vim.autoSwitchInputMethod.enable": false,

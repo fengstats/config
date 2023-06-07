@@ -235,7 +235,7 @@
         "coreVersion": "2.7.1"
       },
       "settings": {
-        "enabled": false,
+        "enabled": true,
         "options": {}
       }
     },
@@ -386,9 +386,9 @@
           "padding": 1.5,
           "globalFixed": true,
           "fill": false,
-          "transparent": true,
+          "transparent": false,
           "blur": false,
-          "shadow": false,
+          "shadow": true,
           "seasonLogo": false,
           "touch": false,
           "openInNewTab": true,
@@ -398,7 +398,7 @@
             "logo": false
           },
           "showDeadVideos": false,
-          "lastFavoriteFolder": 1858604541
+          "lastFavoriteFolder": 2313506641
         }
       }
     },
@@ -424,38 +424,6 @@
       },
       "settings": {
         "enabled": true,
-        "options": {}
-      }
-    },
-    "playerOnTop": {
-      "code": "!function(e,t){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=t():\"function\"==typeof define&&define.amd?define([],t):\"object\"==typeof exports?exports[\"style/player-on-top\"]=t():e[\"style/player-on-top\"]=t()}(globalThis,(()=>(()=>{var e,t,n={727:(e,t,n)=>{var o=n(355)((function(e){return e[1]}));o.push([e.id,\".v-wrap .l-con,\\n.v-wrap .r-con {\\n  display: flex;\\n  flex-direction: column;\\n  margin-top: 24px;\\n}\\n.v-wrap .l-con .player-wrap {\\n  order: -1;\\n}\\n.v-wrap .l-con .video-info {\\n  margin: 20px 0 0 0 !important;\\n  padding: 0 !important;\\n  height: auto !important;\\n}\\n.v-wrap .l-con .video-info .video-data .argue,\\n.v-wrap .l-con .video-info .video-data .copyright {\\n  overflow: hidden;\\n  text-overflow: ellipsis;\\n}\\n.v-wrap .r-con .danmaku-box {\\n  order: -1;\\n}\\n.v-wrap .r-con .up-info {\\n  padding-top: 0 !important;\\n}\",\"\"]),e.exports=o},355:e=>{\"use strict\";\n// eslint-disable-next-line func-names\ne.exports=function(e){var t=[];return t.toString=function(){return this.map((function(t){var n=e(t);return t[2]?\"@media \".concat(t[2],\" {\").concat(n,\"}\"):n})).join(\"\")},\n// eslint-disable-next-line func-names\nt.i=function(e,n,o){\"string\"==typeof e&&(\n// eslint-disable-next-line no-param-reassign\ne=[[null,e,\"\"]]);var r={};if(o)for(var a=0;a<this.length;a++){\n// eslint-disable-next-line prefer-destructuring\nvar i=this[a][0];null!=i&&(r[i]=!0)}for(var p=0;p<e.length;p++){var c=[].concat(e[p]);o&&r[c[0]]||(n&&(c[2]?c[2]=\"\".concat(n,\" and \").concat(c[2]):c[2]=n),t.push(c))}},t}},554:(e,t,n)=>{var o=n(727);o&&o.__esModule&&(o=o.default),e.exports=\"string\"==typeof o?o:o.toString()}},o={};function r(e){var t=o[e];if(void 0!==t)return t.exports;var a=o[e]={id:e,exports:{}};return n[e](a,a.exports,r),a.exports}t=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,r.t=function(n,o){if(1&o&&(n=this(n)),8&o)return n;if(\"object\"==typeof n&&n){if(4&o&&n.__esModule)return n;if(16&o&&\"function\"==typeof n.then)return n}var a=Object.create(null);r.r(a);var i={};e=e||[null,t({}),t([]),t(t)];for(var p=2&o&&n;\"object\"==typeof p&&!~e.indexOf(p);p=t(p))Object.getOwnPropertyNames(p).forEach((e=>i[e]=()=>n[e]));return i.default=()=>n,r.d(a,i),a},r.d=(e,t)=>{for(var n in t)r.o(t,n)&&!r.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r.r=e=>{\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})};var a={};return(()=>{\"use strict\";r.d(a,{component:()=>e});const e=(0,coreApis.componentApis.define.defineComponentMetadata)({name:\"playerOnTop\",displayName:\"播放器置顶\",description:{\"zh-CN\":\"在视频页面中将播放器放在页面最上方.\"},instantStyles:[{name:\"playerOnTop\",style:()=>Promise.resolve().then(r.t.bind(r,554,23))}],tags:[componentsTags.style,componentsTags.video],entry:none,commitHash:\"dd29a98069987f6859615844b6a97f609c5ddfd2\",coreVersion:\"2.7.1\"})})(),a=a.component})()));",
-      "metadata": {
-        "name": "playerOnTop",
-        "displayName": "播放器置顶",
-        "description": {
-          "zh-CN": "在视频页面中将播放器放在页面最上方."
-        },
-        "tags": [
-          {
-            "name": "style",
-            "displayName": "样式",
-            "color": "#8BC34A",
-            "icon": "mdi-palette-outline",
-            "order": 2
-          },
-          {
-            "name": "video",
-            "displayName": "视频",
-            "color": "#2196F3",
-            "icon": "mdi-play-circle-outline",
-            "order": 1
-          }
-        ],
-        "commitHash": "dd29a98069987f6859615844b6a97f609c5ddfd2",
-        "coreVersion": "2.7.1"
-      },
-      "settings": {
-        "enabled": false,
         "options": {}
       }
     },
@@ -492,7 +460,7 @@
       }
     },
     "disableScrollVolume": {
-      "code": "!function(e,o){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=o():\"function\"==typeof define&&define.amd?define([],o):\"object\"==typeof exports?exports[\"video/player/disable-scroll-volume\"]=o():e[\"video/player/disable-scroll-volume\"]=o()}(globalThis,(()=>(()=>{var e,o,t={132:e=>{function o(e){var o=new Error(\"Cannot find module '\"+e+\"'\");throw o.code=\"MODULE_NOT_FOUND\",o}o.keys=()=>[],o.resolve=o,o.id=132,e.exports=o},466:e=>{\"use strict\";e.exports=\"在网页全屏 / 全屏模式下, 禁止鼠标滚轮控制播放器的音量.\"}},r={};function n(e){var o=r[e];if(void 0!==o)return o.exports;var i=r[e]={exports:{}};return t[e](i,i.exports,n),i.exports}o=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,n.t=function(t,r){if(1&r&&(t=this(t)),8&r)return t;if(\"object\"==typeof t&&t){if(4&r&&t.__esModule)return t;if(16&r&&\"function\"==typeof t.then)return t}var i=Object.create(null);n.r(i);var l={};e=e||[null,o({}),o([]),o(o)];for(var s=2&r&&t;\"object\"==typeof s&&!~e.indexOf(s);s=o(s))Object.getOwnPropertyNames(s).forEach((e=>l[e]=()=>t[e]));return l.default=()=>t,n.d(i,l),i},n.d=(e,o)=>{for(var t in o)n.o(o,t)&&!n.o(e,t)&&Object.defineProperty(e,t,{enumerable:!0,get:o[t]})},n.o=(e,o)=>Object.prototype.hasOwnProperty.call(e,o),n.r=e=>{\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})};var i={};return(()=>{\"use strict\";n.d(i,{component:()=>l});const e=coreApis.componentApis.define,o=coreApis.utils;let t;const r=()=>{t?.(),t=(0,o.preventEvent)(unsafeWindow,\"mousewheel\",(()=>[\"player-mode-webfullscreen\",\"player-fullscreen-fix\",\"player-full-win\"].some((e=>document.body.classList.contains(e)))))},l=(0,e.defineComponentMetadata)({name:\"disableScrollVolume\",displayName:\"禁止滚轮调音量\",tags:[componentsTags.video],entry:r,reload:r,unload:()=>{t?.()},commitHash:\"dd29a98069987f6859615844b6a97f609c5ddfd2\",coreVersion:\"2.7.1\",description:(()=>{const e=n(132);return{...Object.fromEntries(e.keys().map((o=>[o.match(/index\\.(.+)\\.md$/)[1],e(o)]))),\"zh-CN\":()=>Promise.resolve().then(n.t.bind(n,466,17)).then((e=>e.default))}})()})})(),i=i.component})()));",
+      "code": "!function(e,o){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=o():\"function\"==typeof define&&define.amd?define([],o):\"object\"==typeof exports?exports[\"video/player/disable-scroll-volume\"]=o():e[\"video/player/disable-scroll-volume\"]=o()}(globalThis,(()=>(()=>{var e,o,t={132:e=>{function o(e){var o=new Error(\"Cannot find module '\"+e+\"'\");throw o.code=\"MODULE_NOT_FOUND\",o}o.keys=()=>[],o.resolve=o,o.id=132,e.exports=o},466:e=>{\"use strict\";e.exports=\"在网页全屏 / 全屏模式下, 禁止鼠标滚轮控制播放器的音量.  请注意不能和 `反转滚轮调音量` 一同使用.\\r\\n\"}},r={};function n(e){var o=r[e];if(void 0!==o)return o.exports;var l=r[e]={exports:{}};return t[e](l,l.exports,n),l.exports}o=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,n.t=function(t,r){if(1&r&&(t=this(t)),8&r)return t;if(\"object\"==typeof t&&t){if(4&r&&t.__esModule)return t;if(16&r&&\"function\"==typeof t.then)return t}var l=Object.create(null);n.r(l);var i={};e=e||[null,o({}),o([]),o(o)];for(var s=2&r&&t;\"object\"==typeof s&&!~e.indexOf(s);s=o(s))Object.getOwnPropertyNames(s).forEach((e=>i[e]=()=>t[e]));return i.default=()=>t,n.d(l,i),l},n.d=(e,o)=>{for(var t in o)n.o(o,t)&&!n.o(e,t)&&Object.defineProperty(e,t,{enumerable:!0,get:o[t]})},n.o=(e,o)=>Object.prototype.hasOwnProperty.call(e,o),n.r=e=>{\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})};var l={};return(()=>{\"use strict\";n.d(l,{component:()=>s});const e=coreApis.componentApis.define,o=coreApis.utils,t=coreApis.utils.urls;let r;const i=()=>(0,o.preventEvent)(unsafeWindow,\"mousewheel\",(()=>[\"player-mode-webfullscreen\",\"player-fullscreen-fix\",\"player-full-win\"].some((e=>document.body.classList.contains(e))))),s=(0,e.defineComponentMetadata)({name:\"disableScrollVolume\",displayName:\"禁止滚轮调音量\",tags:[componentsTags.video],entry:()=>{r?.(),r=i()},reload:()=>{r?.(),r=i()},unload:()=>{r?.()},urlInclude:t.allVideoUrls,commitHash:\"f64801060d2d83daeba6eebb3462941893da548d\",coreVersion:\"2.7.1\",description:(()=>{const e=n(132);return{...Object.fromEntries(e.keys().map((o=>[o.match(/index\\.(.+)\\.md$/)[1],e(o)]))),\"zh-CN\":()=>Promise.resolve().then(n.t.bind(n,466,17)).then((e=>e.default))}})()})})(),l=l.component})()));",
       "metadata": {
         "name": "disableScrollVolume",
         "displayName": "禁止滚轮调音量",
@@ -505,12 +473,12 @@
             "order": 1
           }
         ],
-        "commitHash": "dd29a98069987f6859615844b6a97f609c5ddfd2",
+        "commitHash": "f64801060d2d83daeba6eebb3462941893da548d",
         "coreVersion": "2.7.1",
         "description": {}
       },
       "settings": {
-        "enabled": true,
+        "enabled": false,
         "options": {}
       }
     },
@@ -573,7 +541,7 @@
       "settings": {
         "enabled": true,
         "options": {
-          "offset": -24
+          "offset": -4
         }
       }
     },
@@ -599,7 +567,7 @@
         "coreVersion": "2.7.1"
       },
       "settings": {
-        "enabled": true,
+        "enabled": false,
         "options": {}
       }
     },
@@ -683,7 +651,6 @@
           "types": [],
           "patterns": [],
           "sideCards": [
-            "6",
             "0"
           ],
           "specialTypes": []
@@ -920,7 +887,7 @@
         "coreVersion": "2.7.1"
       },
       "settings": {
-        "enabled": true,
+        "enabled": false,
         "options": {
           "touchMoveDistance": 10
         }
@@ -2091,7 +2058,7 @@
         "coreVersion": "2.7.1"
       },
       "settings": {
-        "enabled": true,
+        "enabled": false,
         "options": {
           "swiperDistance": 10
         }
@@ -2149,7 +2116,7 @@
         "coreVersion": "2.7.1"
       },
       "settings": {
-        "enabled": true,
+        "enabled": false,
         "options": {}
       }
     },
@@ -2275,7 +2242,7 @@
       "settings": {
         "enabled": true,
         "options": {
-          "showPlaceholder": true,
+          "showPlaceholder": false,
           "preserveEventBanner": false,
           "preserveFeedGoods": false
         }
@@ -2319,7 +2286,7 @@
         "coreVersion": "2.7.1"
       },
       "settings": {
-        "enabled": false,
+        "enabled": true,
         "options": {
           "page": true,
           "navbar": true
@@ -2355,10 +2322,10 @@
         "description": {}
       },
       "settings": {
-        "enabled": true,
+        "enabled": false,
         "options": {
           "fullEpisodeTitle": false,
-          "fullEpisodeList": true
+          "fullEpisodeList": false
         }
       }
     },
@@ -2491,14 +2458,14 @@
         "coreVersion": "2.7.1"
       },
       "settings": {
-        "enabled": true,
+        "enabled": false,
         "options": {
           "maxMenuHeight": 360,
           "hideScrollbar": false,
           "hideRemoveBtn": false,
           "hideAddBtn": false,
           "extendSpeedList": [
-            1.2,
+            1.1,
             2.5,
             3
           ]
@@ -2585,21 +2552,40 @@
         "coreVersion": "2.7.1"
       },
       "settings": {
-        "enabled": true,
+        "enabled": false,
         "options": {
           "globalSpeed": 1,
           "fixGlobalSpeed": true,
           "individualRemember": true,
           "individualRememberRecord": {
             "2": [
-              "313552363"
+              "313552363",
+              "933832189"
             ],
             "1.25": [
               "527214207",
               "698470932",
               "570760703",
               "740985861",
-              "311502633"
+              "311502633",
+              "861659620",
+              "638083279",
+              "485849553",
+              "485767941",
+              "628497724",
+              "670604829",
+              "995199628",
+              "63566699",
+              "783840113",
+              "545516742",
+              "868902806",
+              "354924636",
+              "868034873",
+              "401449813",
+              "401398289",
+              "229043482",
+              "229027544",
+              "414096645"
             ],
             "1.5": [
               "826051739",
@@ -2607,6 +2593,14 @@
             ],
             "1.2": [
               "868579626"
+            ],
+            "1.1": [
+              "697711465",
+              "953366625",
+              "430649563",
+              "313311903",
+              "655944198",
+              "441606133"
             ]
           },
           "showRestoreTip": false
@@ -2670,17 +2664,310 @@
           "reservations": true
         }
       }
+    },
+    "autoHideSidebar": {
+      "code": "!function(e,t){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=t():\"function\"==typeof define&&define.amd?define([],t):\"object\"==typeof exports?exports[\"style/auto-hide-sidebar\"]=t():e[\"style/auto-hide-sidebar\"]=t()}(globalThis,(()=>(()=>{var e,t,o={308:(e,t,o)=>{var n=o(355)((function(e){return e[1]}));n.push([e.id,'body .be-settings::before {\\n  content: \"\";\\n  position: fixed;\\n  width: var(--auto-hide-sidebar-width, 8px);\\n  height: 100vh;\\n  top: 0;\\n  left: 0;\\n}\\nbody .be-settings > .sidebar {\\n  transition: transform 0.2s ease-out;\\n}\\nbody .be-settings:not(:hover) > .sidebar {\\n  transform: translateX(calc(-100% * var(--direction))) translateY(-50%);\\n}\\nbody.settings-panel-dock-right .be-settings::before {\\n  left: unset;\\n  right: 0;\\n}',\"\"]),e.exports=n},355:e=>{\"use strict\";\n// eslint-disable-next-line func-names\ne.exports=function(e){var t=[];return t.toString=function(){return this.map((function(t){var o=e(t);return t[2]?\"@media \".concat(t[2],\" {\").concat(o,\"}\"):o})).join(\"\")},\n// eslint-disable-next-line func-names\nt.i=function(e,o,n){\"string\"==typeof e&&(\n// eslint-disable-next-line no-param-reassign\ne=[[null,e,\"\"]]);var r={};if(n)for(var i=0;i<this.length;i++){\n// eslint-disable-next-line prefer-destructuring\nvar a=this[i][0];null!=a&&(r[a]=!0)}for(var s=0;s<e.length;s++){var d=[].concat(e[s]);n&&r[d[0]]||(o&&(d[2]?d[2]=\"\".concat(o,\" and \").concat(d[2]):d[2]=o),t.push(d))}},t}},717:(e,t,o)=>{var n=o(308);n&&n.__esModule&&(n=n.default),e.exports=\"string\"==typeof n?n:n.toString()}},n={};function r(e){var t=n[e];if(void 0!==t)return t.exports;var i=n[e]={id:e,exports:{}};return o[e](i,i.exports,r),i.exports}t=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,r.t=function(o,n){if(1&n&&(o=this(o)),8&n)return o;if(\"object\"==typeof o&&o){if(4&n&&o.__esModule)return o;if(16&n&&\"function\"==typeof o.then)return o}var i=Object.create(null);r.r(i);var a={};e=e||[null,t({}),t([]),t(t)];for(var s=2&n&&o;\"object\"==typeof s&&!~e.indexOf(s);s=t(s))Object.getOwnPropertyNames(s).forEach((e=>a[e]=()=>o[e]));return a.default=()=>o,r.d(i,a),i},r.d=(e,t)=>{for(var o in t)r.o(t,o)&&!r.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r.r=e=>{\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})};var i={};return(()=>{\"use strict\";r.d(i,{component:()=>n});const e=coreApis.componentApis.define,t=coreApis.settings,o=coreApis.utils,n=(0,e.defineComponentMetadata)({name:\"autoHideSidebar\",entry:()=>{(0,t.addComponentListener)(\"autoHideSidebar.triggerWidth\",(e=>{document.documentElement.style.setProperty(\"--auto-hide-sidebar-width\",`${e}px`)}),!0)},displayName:\"自动隐藏侧栏\",instantStyles:[{name:\"autoHideSidebar\",style:()=>Promise.resolve().then(r.t.bind(r,717,23)),important:!0}],tags:[componentsTags.style,componentsTags.general],options:{triggerWidth:{defaultValue:8,displayName:\"触发区域宽度 (px)\",validator:(0,o.getNumberValidator)(1,1e3)}},description:{\"zh-CN\":\"自动隐藏脚本的侧栏 (功能和设置图标). 设置面板停靠在右侧时不建议使用, 因为网页的滚动条会占用右边缘的触发区域.\"},commitHash:\"f64801060d2d83daeba6eebb3462941893da548d\",coreVersion:\"2.7.1\"})})(),i=i.component})()));",
+      "metadata": {
+        "name": "autoHideSidebar",
+        "displayName": "自动隐藏侧栏",
+        "tags": [
+          {
+            "name": "style",
+            "displayName": "样式",
+            "color": "#8BC34A",
+            "icon": "mdi-palette-outline",
+            "order": 2
+          },
+          {
+            "name": "general",
+            "displayName": "通用",
+            "color": "#888",
+            "icon": "mdi-progress-wrench",
+            "order": 8
+          }
+        ],
+        "options": {
+          "triggerWidth": {
+            "defaultValue": 8,
+            "displayName": "触发区域宽度 (px)"
+          }
+        },
+        "description": {
+          "zh-CN": "自动隐藏脚本的侧栏 (功能和设置图标). 设置面板停靠在右侧时不建议使用, 因为网页的滚动条会占用右边缘的触发区域."
+        },
+        "commitHash": "f64801060d2d83daeba6eebb3462941893da548d",
+        "coreVersion": "2.7.1"
+      },
+      "settings": {
+        "enabled": false,
+        "options": {
+          "triggerWidth": 8
+        }
+      }
+    },
+    "hideUserCard": {
+      "code": "!function(e,t){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=t():\"function\"==typeof define&&define.amd?define([],t):\"object\"==typeof exports?exports[\"style/hide/user-card\"]=t():e[\"style/hide/user-card\"]=t()}(globalThis,(()=>(()=>{var e,t,o={110:(e,t,o)=>{var r=o(355)((function(e){return e[1]}));r.push([e.id,\".user-card,\\n.user-card-m-exp,\\n.bili-user-profile {\\n  display: none !important;\\n}\",\"\"]),e.exports=r},355:e=>{\"use strict\";\n// eslint-disable-next-line func-names\ne.exports=function(e){var t=[];return t.toString=function(){return this.map((function(t){var o=e(t);return t[2]?\"@media \".concat(t[2],\" {\").concat(o,\"}\"):o})).join(\"\")},\n// eslint-disable-next-line func-names\nt.i=function(e,o,r){\"string\"==typeof e&&(\n// eslint-disable-next-line no-param-reassign\ne=[[null,e,\"\"]]);var n={};if(r)for(var i=0;i<this.length;i++){\n// eslint-disable-next-line prefer-destructuring\nvar a=this[i][0];null!=a&&(n[a]=!0)}for(var s=0;s<e.length;s++){var c=[].concat(e[s]);r&&n[c[0]]||(o&&(c[2]?c[2]=\"\".concat(o,\" and \").concat(c[2]):c[2]=o),t.push(c))}},t}},100:(e,t,o)=>{var r=o(110);r&&r.__esModule&&(r=r.default),e.exports=\"string\"==typeof r?r:r.toString()}},r={};function n(e){var t=r[e];if(void 0!==t)return t.exports;var i=r[e]={id:e,exports:{}};return o[e](i,i.exports,n),i.exports}t=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,n.t=function(o,r){if(1&r&&(o=this(o)),8&r)return o;if(\"object\"==typeof o&&o){if(4&r&&o.__esModule)return o;if(16&r&&\"function\"==typeof o.then)return o}var i=Object.create(null);n.r(i);var a={};e=e||[null,t({}),t([]),t(t)];for(var s=2&r&&o;\"object\"==typeof s&&!~e.indexOf(s);s=t(s))Object.getOwnPropertyNames(s).forEach((e=>a[e]=()=>o[e]));return a.default=()=>o,n.d(i,a),i},n.d=(e,t)=>{for(var o in t)n.o(t,o)&&!n.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),n.r=e=>{\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})};var i={};return(()=>{\"use strict\";n.d(i,{component:()=>o});const e=coreApis.componentApis.define,t=coreApis.componentApis.styledComponent,o=(0,e.defineComponentMetadata)({displayName:\"隐藏用户信息卡片\",description:{\"zh-CN\":\"隐藏鼠标指向用户名或用户头像时弹出的浮动用户信息卡片\"},author:{name:\"WakelessSloth56\",link:\"https://github.com/WakelessSloth56\"},tags:[componentsTags.style],...(0,t.toggleStyle)(\"hideUserCard\",(()=>Promise.resolve().then(n.t.bind(n,100,23)))),commitHash:\"f64801060d2d83daeba6eebb3462941893da548d\",coreVersion:\"2.7.1\"})})(),i=i.component})()));",
+      "metadata": {
+        "displayName": "隐藏用户信息卡片",
+        "description": {
+          "zh-CN": "隐藏鼠标指向用户名或用户头像时弹出的浮动用户信息卡片"
+        },
+        "author": {
+          "name": "WakelessSloth56",
+          "link": "https://github.com/WakelessSloth56"
+        },
+        "tags": [
+          {
+            "name": "style",
+            "displayName": "样式",
+            "color": "#8BC34A",
+            "icon": "mdi-palette-outline",
+            "order": 2
+          }
+        ],
+        "name": "hideUserCard",
+        "commitHash": "f64801060d2d83daeba6eebb3462941893da548d",
+        "coreVersion": "2.7.1"
+      },
+      "settings": {
+        "enabled": true,
+        "options": {}
+      }
+    },
+    "playerOnTopNew": {
+      "code": "!function(e,o){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=o():\"function\"==typeof define&&define.amd?define([],o):\"object\"==typeof exports?exports[\"style/player-on-top-new\"]=o():e[\"style/player-on-top-new\"]=o()}(globalThis,(()=>(()=>{\"use strict\";var e={d:(o,t)=>{for(var n in t)e.o(t,n)&&!e.o(o,n)&&Object.defineProperty(o,n,{enumerable:!0,get:t[n]})},o:(e,o)=>Object.prototype.hasOwnProperty.call(e,o)},o={};e.d(o,{component:()=>p});const t=coreApis.componentApis.define,n=coreApis.utils;function r(e,o){const t=e.parentElement;t&&(t.removeChild(e),t.insertBefore(e,o.nextSibling))}const a=async()=>{await(0,n.playerReady)();r(document.querySelector(\"#viewbox_report\"),document.querySelector(\"#arc_toolbar_report\"));r(document.querySelector(\"#v_upinfo\").parentElement,document.querySelector(\"#danmukuBox\"))},p=(0,t.defineComponentMetadata)({name:\"playerOnTopNew\",author:{name:\"RieN7\",link:\"https://github.com/rien7\"},tags:[componentsTags.style,componentsTags.video],displayName:\"播放器置顶（新）\",description:\"原来的播放器置顶插件，现在已经不可用了，这是一个新的版本，可以在视频页面中将播放器放在页面最上方.\",entry:a,reload:a,commitHash:\"f64801060d2d83daeba6eebb3462941893da548d\",coreVersion:\"2.7.1\"});return o=o.component})()));",
+      "metadata": {
+        "name": "playerOnTopNew",
+        "author": {
+          "name": "RieN7",
+          "link": "https://github.com/rien7"
+        },
+        "tags": [
+          {
+            "name": "style",
+            "displayName": "样式",
+            "color": "#8BC34A",
+            "icon": "mdi-palette-outline",
+            "order": 2
+          },
+          {
+            "name": "video",
+            "displayName": "视频",
+            "color": "#2196F3",
+            "icon": "mdi-play-circle-outline",
+            "order": 1
+          }
+        ],
+        "displayName": "播放器置顶（新）",
+        "description": "原来的播放器置顶插件，现在已经不可用了，这是一个新的版本，可以在视频页面中将播放器放在页面最上方.",
+        "commitHash": "f64801060d2d83daeba6eebb3462941893da548d",
+        "coreVersion": "2.7.1"
+      },
+      "settings": {
+        "enabled": false,
+        "options": {}
+      }
+    },
+    "elegantScrollbar": {
+      "code": "!function(t,e){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=e():\"function\"==typeof define&&define.amd?define([],e):\"object\"==typeof exports?exports[\"style/scrollbar\"]=e():t[\"style/scrollbar\"]=e()}(globalThis,(()=>(()=>{var t,e,r={948:(t,e,r)=>{var n=r(355)((function(t){return t[1]}));n.push([t.id,\"html ::-webkit-scrollbar {\\n  width: 5px !important;\\n  height: 5px !important;\\n}\\nhtml ::-webkit-scrollbar-corner,\\nhtml ::-webkit-scrollbar-track {\\n  background: transparent !important;\\n}\\nhtml ::-webkit-resizer,\\nhtml ::-webkit-scrollbar-thumb {\\n  background: #aaa;\\n  border-radius: 3px;\\n}\\nhtml ::-webkit-scrollbar-thumb:hover {\\n  background: #888;\\n}\\nhtml,\\nhtml * {\\n  scrollbar-color: #aaa transparent;\\n  scrollbar-width: thin !important;\\n}\",\"\"]),t.exports=n},355:t=>{\"use strict\";\n// eslint-disable-next-line func-names\nt.exports=function(t){var e=[];return e.toString=function(){return this.map((function(e){var r=t(e);return e[2]?\"@media \".concat(e[2],\" {\").concat(r,\"}\"):r})).join(\"\")},\n// eslint-disable-next-line func-names\ne.i=function(t,r,n){\"string\"==typeof t&&(\n// eslint-disable-next-line no-param-reassign\nt=[[null,t,\"\"]]);var o={};if(n)for(var a=0;a<this.length;a++){\n// eslint-disable-next-line prefer-destructuring\nvar i=this[a][0];null!=i&&(o[i]=!0)}for(var l=0;l<t.length;l++){var c=[].concat(t[l]);n&&o[c[0]]||(r&&(c[2]?c[2]=\"\".concat(r,\" and \").concat(c[2]):c[2]=r),e.push(c))}},e}},383:(t,e,r)=>{var n=r(948);n&&n.__esModule&&(n=n.default),t.exports=\"string\"==typeof n?n:n.toString()}},n={};function o(t){var e=n[t];if(void 0!==e)return e.exports;var a=n[t]={id:t,exports:{}};return r[t](a,a.exports,o),a.exports}e=Object.getPrototypeOf?t=>Object.getPrototypeOf(t):t=>t.__proto__,o.t=function(r,n){if(1&n&&(r=this(r)),8&n)return r;if(\"object\"==typeof r&&r){if(4&n&&r.__esModule)return r;if(16&n&&\"function\"==typeof r.then)return r}var a=Object.create(null);o.r(a);var i={};t=t||[null,e({}),e([]),e(e)];for(var l=2&n&&r;\"object\"==typeof l&&!~t.indexOf(l);l=e(l))Object.getOwnPropertyNames(l).forEach((t=>i[t]=()=>r[t]));return i.default=()=>r,o.d(a,i),a},o.d=(t,e)=>{for(var r in e)o.o(e,r)&&!o.o(t,r)&&Object.defineProperty(t,r,{enumerable:!0,get:e[r]})},o.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e),o.r=t=>{\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(t,\"__esModule\",{value:!0})};var a={};return(()=>{\"use strict\";o.d(a,{component:()=>t});const t=(0,coreApis.componentApis.define.defineComponentMetadata)({name:\"elegantScrollbar\",entry:none,displayName:\"使用细滚动条\",description:\"使用浏览器的滚动条风格替代系统的滚动条, 不过 macOS 系统滚动条比浏览器做得好一些, 因此不建议 macOS 使用此功能.\",tags:[componentsTags.style,componentsTags.general],instantStyles:[{name:\"elegant-scrollbar\",style:()=>Promise.resolve().then(o.t.bind(o,383,23))}],commitHash:\"f64801060d2d83daeba6eebb3462941893da548d\",coreVersion:\"2.7.1\"})})(),a=a.component})()));",
+      "metadata": {
+        "name": "elegantScrollbar",
+        "displayName": "使用细滚动条",
+        "description": "使用浏览器的滚动条风格替代系统的滚动条, 不过 macOS 系统滚动条比浏览器做得好一些, 因此不建议 macOS 使用此功能.",
+        "tags": [
+          {
+            "name": "style",
+            "displayName": "样式",
+            "color": "#8BC34A",
+            "icon": "mdi-palette-outline",
+            "order": 2
+          },
+          {
+            "name": "general",
+            "displayName": "通用",
+            "color": "#888",
+            "icon": "mdi-progress-wrench",
+            "order": 8
+          }
+        ],
+        "commitHash": "f64801060d2d83daeba6eebb3462941893da548d",
+        "coreVersion": "2.7.1"
+      },
+      "settings": {
+        "enabled": true,
+        "options": {}
+      }
+    },
+    "invertScrollVolume": {
+      "code": "!function(e,t){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=t():\"function\"==typeof define&&define.amd?define([],t):\"object\"==typeof exports?exports[\"video/player/invert-scroll-volume\"]=t():e[\"video/player/invert-scroll-volume\"]=t()}(globalThis,(()=>(()=>{var e,t,o={132:e=>{function t(e){var t=new Error(\"Cannot find module '\"+e+\"'\");throw t.code=\"MODULE_NOT_FOUND\",t}t.keys=()=>[],t.resolve=t,t.id=132,e.exports=t},17:e=>{function t(e){var t=new Error(\"Cannot find module '\"+e+\"'\");throw t.code=\"MODULE_NOT_FOUND\",t}t.keys=()=>[],t.resolve=t,t.id=17,e.exports=t},466:e=>{\"use strict\";e.exports=\"在网页全屏 / 全屏模式下, 禁止鼠标滚轮控制播放器的音量.  请注意不能和 `反转滚轮调音量` 一同使用.\\r\\n\"},777:e=>{\"use strict\";e.exports=\"反转在网页全屏 / 全屏模式下使用滚轮调节音量的方向, 使其更符合使用触控板时的操作方向. 请注意不能和 `禁止滚轮调音量` 一同使用.\\r\\n\\r\\n- 手指向上推时, 增加音量\\r\\n- 手指向下推时, 减少音量\\r\\n- 可以自定义 `灵敏度`, 同样的滚动幅度下, 灵敏度越高变化的音量越多\"}},n={};function r(e){var t=n[e];if(void 0!==t)return t.exports;var s=n[e]={exports:{}};return o[e](s,s.exports,r),s.exports}t=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,r.t=function(o,n){if(1&n&&(o=this(o)),8&n)return o;if(\"object\"==typeof o&&o){if(4&n&&o.__esModule)return o;if(16&n&&\"function\"==typeof o.then)return o}var s=Object.create(null);r.r(s);var l={};e=e||[null,t({}),t([]),t(t)];for(var i=2&n&&o;\"object\"==typeof i&&!~e.indexOf(i);i=t(i))Object.getOwnPropertyNames(i).forEach((e=>l[e]=()=>o[e]));return l.default=()=>o,r.d(s,l),s},r.d=(e,t)=>{for(var o in t)r.o(t,o)&&!r.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r.r=e=>{\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})};var s={};return(()=>{\"use strict\";r.d(s,{component:()=>u});const e=coreApis.componentApis.define,t=coreApis.utils,o=coreApis.utils.urls;let n;const l=()=>(0,t.preventEvent)(unsafeWindow,\"mousewheel\",(()=>[\"player-mode-webfullscreen\",\"player-fullscreen-fix\",\"player-full-win\"].some((e=>document.body.classList.contains(e))))),i=((0,e.defineComponentMetadata)({name:\"disableScrollVolume\",displayName:\"禁止滚轮调音量\",tags:[componentsTags.video],entry:()=>{n?.(),n=l()},reload:()=>{n?.(),n=l()},unload:()=>{n?.()},urlInclude:o.allVideoUrls,commitHash:\"f64801060d2d83daeba6eebb3462941893da548d\",coreVersion:\"2.7.1\",description:(()=>{const e=r(132);return{...Object.fromEntries(e.keys().map((t=>[t.match(/index\\.(.+)\\.md$/)[1],e(t)]))),\"zh-CN\":()=>Promise.resolve().then(r.t.bind(r,466,17)).then((e=>e.default))}})()}),coreApis.componentApis.video.playerAgent),a=coreApis.settings;let d;const c=(0,e.defineOptionsMetadata)({deltaFactor:{defaultValue:15,slider:{min:1,max:30,step:1},displayName:\"灵敏度\"}}),p=()=>{d?.();const e=(0,a.getComponentSettings)(\"invertScrollVolume\"),t=t=>{[\"player-mode-webfullscreen\",\"player-fullscreen-fix\",\"player-full-win\"].some((e=>document.body.classList.contains(e)))&&i.playerAgent.changeVolume(t.deltaY/((30-e.options.deltaFactor+1)/2))};unsafeWindow.addEventListener(\"wheel\",t);const o=l();return()=>{unsafeWindow.removeEventListener(\"wheel\",t),o()}},u=(0,e.defineComponentMetadata)({name:\"invertScrollVolume\",displayName:\"反转滚轮调音量\",tags:[componentsTags.video],options:c,entry:()=>{d?.(),d=p()},reload:()=>{d?.(),d=p()},unload:()=>d?.(),urlInclude:o.allVideoUrls,commitHash:\"f64801060d2d83daeba6eebb3462941893da548d\",coreVersion:\"2.7.1\",description:(()=>{const e=r(17);return{...Object.fromEntries(e.keys().map((t=>[t.match(/index\\.(.+)\\.md$/)[1],e(t)]))),\"zh-CN\":()=>Promise.resolve().then(r.t.bind(r,777,17)).then((e=>e.default))}})()})})(),s=s.component})()));",
+      "metadata": {
+        "name": "invertScrollVolume",
+        "displayName": "反转滚轮调音量",
+        "tags": [
+          {
+            "name": "video",
+            "displayName": "视频",
+            "color": "#2196F3",
+            "icon": "mdi-play-circle-outline",
+            "order": 1
+          }
+        ],
+        "options": {
+          "deltaFactor": {
+            "defaultValue": 15,
+            "slider": {
+              "min": 1,
+              "max": 30,
+              "step": 1
+            },
+            "displayName": "灵敏度"
+          }
+        },
+        "commitHash": "f64801060d2d83daeba6eebb3462941893da548d",
+        "coreVersion": "2.7.1",
+        "description": {}
+      },
+      "settings": {
+        "enabled": true,
+        "options": {
+          "deltaFactor": 1
+        }
+      }
+    },
+    "simplifyHome": {
+      "code": "!function(e,t){\"object\"==typeof exports&&\"object\"==typeof module?module.exports=t():\"function\"==typeof define&&define.amd?define([],t):\"object\"==typeof exports?exports[\"style/simplify/home\"]=t():e[\"style/simplify/home\"]=t()}(globalThis,(()=>(()=>{var e,t,i={595:(e,t,i)=>{var n=i(355)((function(e){return e[1]}));n.push([e.id,\"body.simplifyHome-switch-categories .z-top-container.has-menu {\\n  height: auto !important;\\n  min-height: unset !important;\\n}\\nbody.simplifyHome-switch-categories .bili-header-m > .bili-wrapper {\\n  visibility: hidden !important;\\n  height: 18px !important;\\n}\\nbody.simplifyHome-switch-categories .primary-menu-itnl {\\n  visibility: hidden !important;\\n  height: 24px !important;\\n  padding: 0 !important;\\n}\\nbody.simplifyHome-switch-categories .bili-header__channel {\\n  height: 12px !important;\\n}\\nbody.simplifyHome-switch-categories .bili-header__channel > * {\\n  display: none !important;\\n}\\nbody.simplifyHome-switch-categories.header-v3 .bili-wrapper {\\n  padding-top: 8px !important;\\n  border-top: none !important;\\n}\\nbody.simplifyHome-switch-trends .first-screen #reportFirst1 {\\n  display: none !important;\\n}\\nbody.simplifyHome-switch-trends .first-screen .space-between {\\n  margin-bottom: 0 !important;\\n}\\nbody.simplifyHome-switch-trends .bili-layout .bili-grid:first-child,\\nbody.simplifyHome-switch-trends .recommended-container,\\nbody.simplifyHome-switch-trends .rcmd-box-wrap {\\n  display: none !important;\\n}\\nbody.simplifyHome-switch-online .first-screen #reportFirst2 {\\n  display: none !important;\\n}\\nbody.simplifyHome-switch-ext-box .first-screen #reportFirst3 {\\n  display: none !important;\\n}\\nbody.simplifyHome-switch-special #bili_report_spe_rec {\\n  display: none !important;\\n}\\nbody.simplifyHome-switch-contact .bili-footer .b-footer-wrap,\\nbody.simplifyHome-switch-contact .international-footer {\\n  display: none !important;\\n}\\nbody.simplifyHome-switch-elevator .storey-box .elevator {\\n  display: none !important;\\n}\",\"\"]),e.exports=n},355:e=>{\"use strict\";\n// eslint-disable-next-line func-names\ne.exports=function(e){var t=[];return t.toString=function(){return this.map((function(t){var i=e(t);return t[2]?\"@media \".concat(t[2],\" {\").concat(i,\"}\"):i})).join(\"\")},\n// eslint-disable-next-line func-names\nt.i=function(e,i,n){\"string\"==typeof e&&(\n// eslint-disable-next-line no-param-reassign\ne=[[null,e,\"\"]]);var o={};if(n)for(var r=0;r<this.length;r++){\n// eslint-disable-next-line prefer-destructuring\nvar a=this[r][0];null!=a&&(o[a]=!0)}for(var s=0;s<e.length;s++){var l=[].concat(e[s]);n&&o[l[0]]||(i&&(l[2]?l[2]=\"\".concat(i,\" and \").concat(l[2]):l[2]=i),t.push(l))}},t}},262:(e,t,i)=>{var n=i(595);n&&n.__esModule&&(n=n.default),e.exports=\"string\"==typeof n?n:n.toString()}},n={};function o(e){var t=n[e];if(void 0!==t)return t.exports;var r=n[e]={id:e,exports:{}};return i[e](r,r.exports,o),r.exports}t=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,o.t=function(i,n){if(1&n&&(i=this(i)),8&n)return i;if(\"object\"==typeof i&&i){if(4&n&&i.__esModule)return i;if(16&n&&\"function\"==typeof i.then)return i}var r=Object.create(null);o.r(r);var a={};e=e||[null,t({}),t([]),t(t)];for(var s=2&n&&i;\"object\"==typeof s&&!~e.indexOf(s);s=t(s))Object.getOwnPropertyNames(s).forEach((e=>a[e]=()=>i[e]));return a.default=()=>i,o.d(r,a),r},o.d=(e,t)=>{for(var i in t)o.o(t,i)&&!o.o(e,i)&&Object.defineProperty(e,i,{enumerable:!0,get:t[i]})},o.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),o.r=e=>{\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})};var r={};return(()=>{\"use strict\";o.d(r,{component:()=>d});const e=coreApis.componentApis.switchOptions,t=coreApis.settings,i=coreApis.spinQuery,n=coreApis.style,a=coreApis.utils,s=coreApis.utils.log,l=coreApis.utils.urls,p=(0,e.defineSwitchMetadata)({name:\"simplifyOptions\",dimAt:\"checked\",switchProps:{checkedIcon:\"mdi-eye-off-outline\",notCheckedIcon:\"mdi-eye-outline\"},switches:{categories:{defaultValue:!1,displayName:\"分区栏\"},trends:{defaultValue:!1,displayName:\"活动/热门视频\"},online:{defaultValue:!1,displayName:\"在线列表(旧)\"},\"ext-box\":{defaultValue:!1,displayName:\"电竞赛事(旧)\"},special:{defaultValue:!1,displayName:\"特别推荐(旧)\"},contact:{defaultValue:!1,displayName:\"联系方式\"},elevator:{defaultValue:!1,displayName:\"右侧分区导航(旧)\"}}}),c=(0,s.useScopedConsole)(\"简化首页\"),d=(0,e.newSwitchComponentWrapper)(p)({name:\"simplifyHome\",displayName:\"简化首页\",description:\"隐藏原版首页不需要的元素 / 分区.\",instantStyles:[{name:\"simplifyHome\",style:()=>Promise.resolve().then(o.t.bind(o,262,23))}],urlInclude:l.mainSiteUrls,tags:[componentsTags.style],entry:async e=>{let{metadata:o}=e;const r=(0,a.matchUrlPattern)(\"https://www.bilibili.com/\");if(!r)return;c.log(\"isHome\",r);const{options:s}=(0,t.getComponentSettings)(o.name),l=\"-1\"===(0,a.getCookieValue)(\"i-wanna-go-back\"),d=await(async()=>{if(!l){const e=await(0,i.sq)((()=>dqa(\".proxy-box > div\")),(e=>e.length>0||!r));return Object.fromEntries(e.map((e=>[e.id.replace(/^bili_/,\"\"),{displayName:e.querySelector(\"header .name\")?.textContent?.trim()??\"未知分区\",defaultValue:!1}])))}const e=[\"推广\"],t=await(0,i.sq)((()=>dqa(\".bili-grid .the-world\")),(e=>e.length>3||!r));c.log(t);const n=t?.filter((t=>!e.includes(t.id))).map((e=>{const t=(e=>{let t=e;for(;t.parentElement;){if(t.classList.contains(\"bili-grid\"))return t;t=t.parentElement}return null})(e),i=e.id;return t?(t.dataset.area=i,[i,{displayName:i,defaultValue:!1}]):null})).filter((e=>null!==e))??[];return Object.fromEntries(n)})(),m={};Object.entries(d).forEach((e=>{let[i,{displayName:n,defaultValue:r}]=e;const a={defaultValue:r,displayName:n},l=`switch-${i}`;void 0===s[l]&&(s[l]=r);const c=`switch-${i}`;(0,t.addComponentListener)(`${o.name}.${c}`,(e=>{document.body.classList.toggle(`${o.name}-${c}`,e)}),!0),p.switches[i]=a,m[i]=a})),s.simplifyOptions.switches=m;const y=Object.keys(d).map((e=>`\\n        body.simplifyHome-switch-${e} .bili-layout .bili-grid[data-area=\"${e}\"],\\n        body.simplifyHome-switch-${e} .storey-box .proxy-box #bili_${e} {\\n          display: none !important;\\n        }\\n      `.trim())).join(\"\\n\");(0,n.addStyle)(y,\"simplify-home-generated\")},commitHash:\"f64801060d2d83daeba6eebb3462941893da548d\",coreVersion:\"2.7.1\"})})(),r=r.component})()));",
+      "metadata": {
+        "name": "simplifyHome",
+        "displayName": "简化首页",
+        "description": "隐藏原版首页不需要的元素 / 分区.",
+        "tags": [
+          {
+            "name": "style",
+            "displayName": "样式",
+            "color": "#8BC34A",
+            "icon": "mdi-palette-outline",
+            "order": 2
+          }
+        ],
+        "commitHash": "f64801060d2d83daeba6eebb3462941893da548d",
+        "coreVersion": "2.7.1",
+        "options": {
+          "switch-categories": {
+            "defaultValue": false,
+            "displayName": "分区栏",
+            "hidden": true
+          },
+          "switch-trends": {
+            "defaultValue": false,
+            "displayName": "活动/热门视频",
+            "hidden": true
+          },
+          "switch-online": {
+            "defaultValue": false,
+            "displayName": "在线列表(旧)",
+            "hidden": true
+          },
+          "switch-ext-box": {
+            "defaultValue": false,
+            "displayName": "电竞赛事(旧)",
+            "hidden": true
+          },
+          "switch-special": {
+            "defaultValue": false,
+            "displayName": "特别推荐(旧)",
+            "hidden": true
+          },
+          "switch-contact": {
+            "defaultValue": false,
+            "displayName": "联系方式",
+            "hidden": true
+          },
+          "switch-elevator": {
+            "defaultValue": false,
+            "displayName": "右侧分区导航(旧)",
+            "hidden": true
+          },
+          "simplifyOptions": {
+            "defaultValue": {
+              "name": "simplifyOptions",
+              "dimAt": "checked",
+              "switchProps": {
+                "checkedIcon": "mdi-eye-off-outline",
+                "notCheckedIcon": "mdi-eye-outline"
+              },
+              "switches": {
+                "categories": {
+                  "defaultValue": false,
+                  "displayName": "分区栏"
+                },
+                "trends": {
+                  "defaultValue": false,
+                  "displayName": "活动/热门视频"
+                },
+                "online": {
+                  "defaultValue": false,
+                  "displayName": "在线列表(旧)"
+                },
+                "ext-box": {
+                  "defaultValue": false,
+                  "displayName": "电竞赛事(旧)"
+                },
+                "special": {
+                  "defaultValue": false,
+                  "displayName": "特别推荐(旧)"
+                },
+                "contact": {
+                  "defaultValue": false,
+                  "displayName": "联系方式"
+                },
+                "elevator": {
+                  "defaultValue": false,
+                  "displayName": "右侧分区导航(旧)"
+                }
+              },
+              "radio": false,
+              "componentName": "simplifyHome",
+              "optionDisplayName": "简化首页选项"
+            },
+            "displayName": "简化首页选项"
+          }
+        }
+      },
+      "settings": {
+        "enabled": true,
+        "options": {
+          "switch-categories": true,
+          "switch-trends": true,
+          "switch-online": true,
+          "switch-ext-box": true,
+          "switch-special": true,
+          "switch-contact": true,
+          "switch-elevator": true,
+          "simplifyOptions": {
+            "name": "simplifyOptions",
+            "dimAt": "checked",
+            "switchProps": {
+              "checkedIcon": "mdi-eye-off-outline",
+              "notCheckedIcon": "mdi-eye-outline"
+            },
+            "switches": {},
+            "radio": false,
+            "componentName": "simplifyHome",
+            "optionDisplayName": "简化首页选项"
+          }
+        }
+      }
     }
   },
   "components": {
     "settingsPanel": {
       "enabled": true,
       "options": {
-        "themeColor": "#00A0D8",
-        "scriptLoadingMode": "延后",
+        "themeColor": "#F06291",
+        "scriptLoadingMode": "同时",
         "styleLoadingMode": "同时",
-        "textColor": "自动",
-        "cdnRoot": "AltCdn",
+        "textColor": "白色",
+        "cdnRoot": "GitHub",
         "dockSide": "左侧",
         "filenameFormat": "[title][ - ep]",
         "batchFilenameFormat": "[n - ][ep]",
@@ -2688,78 +2975,82 @@
         "devMode": false,
         "recentComponents": {
           "keymap": 1681030189188,
-          "customNavbar": 1683984745543,
-          "fullFeedsContent": 1683984744317,
-          "fullVideoDescription": 1683984745201,
-          "elegantScrollbar": 1681031847205,
-          "hideVideoTopMask": 1683984746329,
-          "collapseLiveSideBar": 1683984745383,
-          "hideRecommendedLive": 1683984744254,
-          "simplifyHome": 1681031840005,
-          "hideRelatedVideos": 1683984744813,
+          "customNavbar": 1685348939520,
+          "fullFeedsContent": 1685357320483,
+          "fullVideoDescription": 1685348938955,
+          "elegantScrollbar": 1685348935879,
+          "hideVideoTopMask": 1685348941336,
+          "collapseLiveSideBar": 1685356121023,
+          "hideRecommendedLive": 1685348937904,
+          "simplifyHome": 1685356172224,
+          "hideRelatedVideos": 1685348937939,
           "disableSpecialDanmaku": 1681031841055,
-          "simplifyLiveroom": 1683984744287,
-          "simplifyComments": 1683984746645,
-          "v1PanelStyle": 1683984745262,
-          "minimalHome": 1683984744754,
-          "freshHome": 1683984746071,
-          "removeLiveWatermark": 1683984744434,
-          "removePlayerPopup": 1683984746269,
-          "removePromotions": 1683984746560,
-          "compatibilities": 1681041727263,
-          "autoUpdate": 1681038498627,
-          "quickFavorite": 1683984745081,
-          "outerWatchlater": 1683984745112,
-          "copyCommentsLink": 1683984745142,
-          "extendFeedsLive": 1683984744902,
-          "copyFeedsLink": 1683984745488,
-          "disableFeedsDetails": 1683984744346,
-          "hideFeedsCommentPreview": 1683984745459,
-          "unfoldFeeds": 1683984744405,
-          "feedsFilter": 1683984744871,
-          "fullFeedsTitle": 1683984745573,
-          "fixedFeedsSidebars": 1683984744783,
-          "touchMiniPlayer": 1683984744932,
-          "touchComboLike": 1683984744841,
-          "badgeHelper": 1683984744526,
-          "liveDanmakuSendbar": 1683984744694,
-          "originalLiveroom": 1683984744555,
-          "columnUnlock": 1683984744376,
-          "viewCover": 1683984744495,
-          "checkInCenter": 1683984744585,
-          "playerShadow": 1683984746163,
-          "showUploadTime": 1683984745172,
-          "doubleClickFullscreen": 1683984746414,
+          "simplifyLiveroom": 1685348938136,
+          "simplifyComments": 1685356122096,
+          "v1PanelStyle": 1685348941062,
+          "minimalHome": 1685348940771,
+          "freshHome": 1685356168679,
+          "removeLiveWatermark": 1685348940199,
+          "removePlayerPopup": 1685348938402,
+          "removePromotions": 1685348941601,
+          "compatibilities": 1684693845328,
+          "autoUpdate": 1684689825196,
+          "quickFavorite": 1685348938022,
+          "outerWatchlater": 1685348938266,
+          "copyCommentsLink": 1685348936230,
+          "extendFeedsLive": 1685357325657,
+          "copyFeedsLink": 1685357335984,
+          "disableFeedsDetails": 1685357341450,
+          "hideFeedsCommentPreview": 1685357319009,
+          "unfoldFeeds": 1685357343036,
+          "feedsFilter": 1685357330659,
+          "fullFeedsTitle": 1685357327600,
+          "fixedFeedsSidebars": 1685357323658,
+          "touchMiniPlayer": 1685348940344,
+          "touchComboLike": 1685348940952,
+          "badgeHelper": 1685348939626,
+          "liveDanmakuSendbar": 1685348937022,
+          "originalLiveroom": 1685348938354,
+          "columnUnlock": 1685348937719,
+          "viewCover": 1685348941401,
+          "checkInCenter": 1685348941478,
+          "playerShadow": 1685348940065,
+          "showUploadTime": 1685348935924,
+          "doubleClickFullscreen": 1685348937373,
           "playerControlBackground": 1681040385905,
           "showCoverBeforePlay": 1681040426338,
-          "legacyAutoPlay": 1683984744629,
-          "extendVideoSpeed": 1683984746473,
-          "rememberVideoSpeed": 1683984746503,
-          "touchPlayerGestures": 1683984746240,
-          "touchPlayerControl": 1683984746210,
-          "expandDanmakuList": 1683984745020,
-          "settingsPanel": 1681041726645,
-          "liveGiftBox": 1683984745230,
-          "dpiLiveShowgirl": 1683984746300,
-          "darkMode": 1683984746115,
-          "fullEpisodeTitle": 1683984746588,
+          "legacyAutoPlay": 1685348938769,
+          "extendVideoSpeed": 1685348937518,
+          "rememberVideoSpeed": 1685348942154,
+          "touchPlayerGestures": 1685348938622,
+          "touchPlayerControl": 1685348941691,
+          "expandDanmakuList": 1685348938530,
+          "settingsPanel": 1684744691308,
+          "liveGiftBox": 1685348940430,
+          "dpiLiveShowgirl": 1685348939821,
+          "darkMode": 1685348940690,
+          "fullEpisodeTitle": 1685348942310,
           "unescapeDanmaku": 1681041221377,
-          "hideVideoShare": 1683984746531,
-          "watchlaterRedirect": 1683984746357,
-          "foldComments": 1683984744723,
-          "urlParamsClean": 1683984744464,
-          "disableScrollVolume": 1683984745354,
-          "hideBanner": 1683984745294,
-          "playerOnTop": 1683984745325,
-          "sidebarOffset": 1683984744664,
-          "alwaysShowDuration": 1683984745427,
-          "videoCurTime": 1683984745049,
-          "playerIntersectionActions": 1683984744961,
-          "playerAutoLight": 1683984746616,
-          "skipChargeList": 1683984744991,
-          "defaultPlayerMode": 1683984746386,
-          "preserveDanmakuInput": 1683984746443,
-          "notifyNewVersion": 1681041965839
+          "hideVideoShare": 1685348937163,
+          "watchlaterRedirect": 1685348940130,
+          "foldComments": 1685348938832,
+          "urlParamsClean": 1685348939887,
+          "disableScrollVolume": 1685348939982,
+          "hideBanner": 1685355136968,
+          "playerOnTop": 1684690728520,
+          "sidebarOffset": 1685356111872,
+          "alwaysShowDuration": 1685348939169,
+          "videoCurTime": 1685348936872,
+          "playerIntersectionActions": 1685348939723,
+          "playerAutoLight": 1685348939359,
+          "skipChargeList": 1685348941252,
+          "defaultPlayerMode": 1685348937248,
+          "preserveDanmakuInput": 1685356122611,
+          "notifyNewVersion": 1684689823000,
+          "autoHideSidebar": 1685356124532,
+          "hideUserCard": 1685356029920,
+          "playerOnTopNew": 1685348941863,
+          "invertScrollVolume": 1685348941976
         },
         "registryBranch": "preview"
       }
@@ -2778,7 +3069,7 @@
     "autoUpdate": {
       "enabled": true,
       "options": {
-        "lastUpdateCheck": 1683984747031,
+        "lastUpdateCheck": 1685348943527,
         "lastInstalledVersion": "2.7.1",
         "localPortOverride": "",
         "minimumDuration": 86400000,
@@ -2786,435 +3077,465 @@
           "components": {
             "removeLiveWatermark": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/live/remove-watermark.js",
-              "lastUpdateCheck": 1683984744435,
+              "lastUpdateCheck": 1685348940199,
               "installTime": 1681029319504,
               "alwaysUpdate": false
             },
             "simplifyLiveroom": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/simplify/live.js",
-              "lastUpdateCheck": 1683984744287,
+              "lastUpdateCheck": 1685348938136,
               "installTime": 1681029319542,
               "alwaysUpdate": false
             },
             "hideRelatedVideos": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/hide/video/related-videos.js",
-              "lastUpdateCheck": 1683984744813,
+              "lastUpdateCheck": 1685348937940,
               "installTime": 1681029319567,
               "alwaysUpdate": false
             },
             "hideRecommendedLive": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/hide/video/recommended-live.js",
-              "lastUpdateCheck": 1683984744255,
+              "lastUpdateCheck": 1685348937905,
               "installTime": 1681029319589,
               "alwaysUpdate": false
             },
             "collapseLiveSideBar": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/live/side-bar.js",
-              "lastUpdateCheck": 1683984745384,
+              "lastUpdateCheck": 1685348936520,
               "installTime": 1681029319595,
               "alwaysUpdate": false
             },
             "customNavbar": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/custom-navbar.js",
-              "lastUpdateCheck": 1683984745544,
+              "lastUpdateCheck": 1685348939522,
               "installTime": 1681029914095,
               "alwaysUpdate": false
             },
             "urlParamsClean": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/utils/url-params-clean.js",
-              "lastUpdateCheck": 1683984744465,
+              "lastUpdateCheck": 1685348939889,
               "installTime": 1681029914115,
               "alwaysUpdate": false
             },
             "columnUnlock": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/utils/column-unlock.js",
-              "lastUpdateCheck": 1683984744376,
+              "lastUpdateCheck": 1685348937720,
               "installTime": 1681029914125,
               "alwaysUpdate": false
             },
             "viewCover": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/utils/view-cover.js",
-              "lastUpdateCheck": 1683984744496,
+              "lastUpdateCheck": 1685348941402,
               "installTime": 1681029914154,
               "alwaysUpdate": false
             },
             "disableFeedsDetails": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/disable-details.js",
-              "lastUpdateCheck": 1683984744346,
+              "lastUpdateCheck": 1685348936777,
               "installTime": 1681029914286,
               "alwaysUpdate": false
             },
             "unfoldFeeds": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/unfold.js",
-              "lastUpdateCheck": 1683984744406,
+              "lastUpdateCheck": 1685348936034,
               "installTime": 1681029914292,
               "alwaysUpdate": false
             },
             "fullVideoDescription": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/full-description.js",
-              "lastUpdateCheck": 1683984745201,
+              "lastUpdateCheck": 1685348938955,
               "installTime": 1681029914301,
               "alwaysUpdate": false
             },
             "fullFeedsContent": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/full-content.js",
-              "lastUpdateCheck": 1683984744317,
+              "lastUpdateCheck": 1685348939073,
               "installTime": 1681029914316,
               "alwaysUpdate": false
             },
             "liveDanmakuSendbar": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/live/danmaku-sendbar.js",
-              "lastUpdateCheck": 1683984744695,
+              "lastUpdateCheck": 1685348937022,
               "installTime": 1681029914327,
               "alwaysUpdate": false
             },
             "liveGiftBox": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/live/gift-box.js",
-              "lastUpdateCheck": 1683984745231,
+              "lastUpdateCheck": 1685348940431,
               "installTime": 1681029914337,
               "alwaysUpdate": false
             },
             "foldComments": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/fold-comments.js",
-              "lastUpdateCheck": 1683984744723,
+              "lastUpdateCheck": 1685348938833,
               "installTime": 1681029914345,
               "alwaysUpdate": false
             },
             "v1PanelStyle": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/v1-panel.js",
-              "lastUpdateCheck": 1683984745262,
+              "lastUpdateCheck": 1685348941062,
               "installTime": 1681031531763,
               "alwaysUpdate": false
             },
             "minimalHome": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/home-redesign/minimal.js",
-              "lastUpdateCheck": 1683984744754,
+              "lastUpdateCheck": 1685348940771,
               "installTime": 1681031539569,
               "alwaysUpdate": false
             },
             "freshHome": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/home-redesign/fresh.js",
-              "lastUpdateCheck": 1683984746071,
+              "lastUpdateCheck": 1685348940578,
               "installTime": 1681031546486,
               "alwaysUpdate": false
             },
             "hideBanner": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/hide/banner.js",
-              "lastUpdateCheck": 1683984745295,
+              "lastUpdateCheck": 1685348936674,
               "installTime": 1681032386057,
               "alwaysUpdate": false
             },
             "fixedFeedsSidebars": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/fixed-sidebars.js",
-              "lastUpdateCheck": 1683984744784,
+              "lastUpdateCheck": 1685348941165,
               "installTime": 1681033428037,
-              "alwaysUpdate": false
-            },
-            "playerOnTop": {
-              "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/player-on-top.js",
-              "lastUpdateCheck": 1683984745325,
-              "installTime": 1681035218938,
               "alwaysUpdate": false
             },
             "fullFeedsTitle": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/full-title.js",
-              "lastUpdateCheck": 1683984745574,
+              "lastUpdateCheck": 1685348938712,
               "installTime": 1681035221612,
               "alwaysUpdate": false
             },
             "disableScrollVolume": {
-              "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/player/disable-scroll-volume.js",
-              "lastUpdateCheck": 1683984745354,
+              "url": "https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/registry/dist/components/video/player/disable-scroll-volume.js",
+              "lastUpdateCheck": 1685348939983,
               "installTime": 1681035384911,
               "alwaysUpdate": false
             },
             "darkMode": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/dark-mode.js",
-              "lastUpdateCheck": 1683984746115,
+              "lastUpdateCheck": 1685348940691,
               "installTime": 1681035391377,
               "alwaysUpdate": false
             },
             "sidebarOffset": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/sidebar-offset.js",
-              "lastUpdateCheck": 1683984744665,
+              "lastUpdateCheck": 1685348939273,
               "installTime": 1681035555581,
               "alwaysUpdate": false
             },
             "touchComboLike": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/touch/combo-like.js",
-              "lastUpdateCheck": 1683984744841,
+              "lastUpdateCheck": 1685348940953,
               "installTime": 1681035602394,
               "alwaysUpdate": false
             },
             "alwaysShowDuration": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/always-show-duration.js",
-              "lastUpdateCheck": 1683984745428,
+              "lastUpdateCheck": 1685348939169,
               "installTime": 1681035818762,
               "alwaysUpdate": false
             },
             "feedsFilter": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/filter.js",
-              "lastUpdateCheck": 1683984744871,
+              "lastUpdateCheck": 1685348937599,
               "installTime": 1681036092612,
               "alwaysUpdate": false
             },
             "hideFeedsCommentPreview": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/hide-comment-preview.js",
-              "lastUpdateCheck": 1683984745459,
+              "lastUpdateCheck": 1685348940858,
               "installTime": 1681036094220,
               "alwaysUpdate": false
             },
             "copyFeedsLink": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/copy-link.js",
-              "lastUpdateCheck": 1683984745489,
+              "lastUpdateCheck": 1685348936415,
               "installTime": 1681036095176,
               "alwaysUpdate": false
             },
             "extendFeedsLive": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/feeds/extend-live.js",
-              "lastUpdateCheck": 1683984744903,
+              "lastUpdateCheck": 1685348939214,
               "installTime": 1681036096391,
               "alwaysUpdate": false
             },
             "touchMiniPlayer": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/touch/mini-player.js",
-              "lastUpdateCheck": 1683984744932,
+              "lastUpdateCheck": 1685348940345,
               "installTime": 1681036098087,
               "alwaysUpdate": false
             },
             "playerAutoLight": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/player/auto-light.js",
-              "lastUpdateCheck": 1683984746617,
+              "lastUpdateCheck": 1685348939362,
               "installTime": 1681036100842,
               "alwaysUpdate": false
             },
             "playerIntersectionActions": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/player/intersection-actions.js",
-              "lastUpdateCheck": 1683984744961,
+              "lastUpdateCheck": 1685348939725,
               "installTime": 1681036104428,
               "alwaysUpdate": false
             },
             "skipChargeList": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/player/skip-charge-list.js",
-              "lastUpdateCheck": 1683984744991,
+              "lastUpdateCheck": 1685348941253,
               "installTime": 1681036105375,
               "alwaysUpdate": false
             },
             "expandDanmakuList": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/danmaku/expand.js",
-              "lastUpdateCheck": 1683984745020,
+              "lastUpdateCheck": 1685348938533,
               "installTime": 1681036107276,
               "alwaysUpdate": false
             },
             "videoCurTime": {
               "url": "https://fastly.jsdelivr.net/gh/FoundTheWOUT/Bilibili-Evolved@master/registry/dist/components/video/player/localtime.js",
-              "lastUpdateCheck": 1683984745050,
+              "lastUpdateCheck": 1685348936873,
               "installTime": 1681037468339,
               "alwaysUpdate": false
             },
             "quickFavorite": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/quick-favorite.js",
-              "lastUpdateCheck": 1683984745082,
+              "lastUpdateCheck": 1685348938022,
               "installTime": 1681037476641,
               "alwaysUpdate": false
             },
             "outerWatchlater": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/outer-watchlater.js",
-              "lastUpdateCheck": 1683984745112,
+              "lastUpdateCheck": 1685348938267,
               "installTime": 1681037603127,
               "alwaysUpdate": false
             },
             "copyCommentsLink": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/utils/comments/copy-link.js",
-              "lastUpdateCheck": 1683984745142,
+              "lastUpdateCheck": 1685348936316,
               "installTime": 1681037609833,
               "alwaysUpdate": false
             },
             "badgeHelper": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/live/badge-helper.js",
-              "lastUpdateCheck": 1683984744527,
+              "lastUpdateCheck": 1685348939626,
               "installTime": 1681038742237,
               "alwaysUpdate": false
             },
             "originalLiveroom": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/live/original.js",
-              "lastUpdateCheck": 1683984744556,
+              "lastUpdateCheck": 1685348938355,
               "installTime": 1681038773433,
               "alwaysUpdate": false
             },
             "checkInCenter": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/utils/check-in-center.js",
-              "lastUpdateCheck": 1683984744585,
+              "lastUpdateCheck": 1685348941482,
               "installTime": 1681038879485,
               "alwaysUpdate": false
             },
             "playerShadow": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/style/player-shadow.js",
-              "lastUpdateCheck": 1683984746163,
+              "lastUpdateCheck": 1685348940065,
               "installTime": 1681039108013,
               "alwaysUpdate": false
             },
             "showUploadTime": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/player/show-upload-time.js",
-              "lastUpdateCheck": 1683984745173,
+              "lastUpdateCheck": 1685348935925,
               "installTime": 1681039187783,
               "alwaysUpdate": false
             },
             "legacyAutoPlay": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/video/player/legacy-auto-play.js",
-              "lastUpdateCheck": 1683984744629,
+              "lastUpdateCheck": 1685348938769,
               "installTime": 1681039632947,
               "alwaysUpdate": false
             },
             "touchPlayerGestures": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/touch/player-gestures.js",
-              "lastUpdateCheck": 1683984746240,
+              "lastUpdateCheck": 1685348938623,
               "installTime": 1681039865572,
               "alwaysUpdate": false
             },
             "touchPlayerControl": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/touch/player-control.js",
-              "lastUpdateCheck": 1683984746210,
+              "lastUpdateCheck": 1685348941692,
               "installTime": 1681039888531,
               "alwaysUpdate": false
             },
             "dpiLiveShowgirl": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/components/live/showgirl.js",
-              "lastUpdateCheck": 1683984746300,
+              "lastUpdateCheck": 1685348939822,
               "installTime": 1681040883520,
               "alwaysUpdate": false
             },
             "hideVideoShare": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/style/hide/video/share.js",
-              "lastUpdateCheck": 1683984746532,
+              "lastUpdateCheck": 1685348937164,
               "installTime": 1681041572520,
               "alwaysUpdate": false
             },
             "hideVideoTopMask": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/style/hide/video/top-mask.js",
-              "lastUpdateCheck": 1683984746330,
+              "lastUpdateCheck": 1685348941337,
               "installTime": 1681041573501,
               "alwaysUpdate": false
             },
             "simplifyComments": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/style/simplify/comments.js",
-              "lastUpdateCheck": 1683984746645,
+              "lastUpdateCheck": 1685348941784,
               "installTime": 1681041575195,
               "alwaysUpdate": false
             },
             "removePromotions": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/utils/remove-promotions.js",
-              "lastUpdateCheck": 1683984746560,
+              "lastUpdateCheck": 1685348941604,
               "installTime": 1681041584125,
               "alwaysUpdate": false
             },
             "watchlaterRedirect": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/utils/watchlater-redirect.js",
-              "lastUpdateCheck": 1683984746358,
+              "lastUpdateCheck": 1685348940134,
               "installTime": 1681041586064,
               "alwaysUpdate": false
             },
             "fullEpisodeTitle": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/video/full-episode-title.js",
-              "lastUpdateCheck": 1683984746588,
+              "lastUpdateCheck": 1685348942314,
               "installTime": 1681041594626,
               "alwaysUpdate": false
             },
             "defaultPlayerMode": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/video/player/default-mode.js",
-              "lastUpdateCheck": 1683984746387,
+              "lastUpdateCheck": 1685348937249,
               "installTime": 1681041604521,
               "alwaysUpdate": false
             },
             "doubleClickFullscreen": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/video/player/double-click-fullscreen.js",
-              "lastUpdateCheck": 1683984746415,
+              "lastUpdateCheck": 1685348937393,
               "installTime": 1681041606079,
               "alwaysUpdate": false
             },
             "extendVideoSpeed": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/video/player/extend-speed.js",
-              "lastUpdateCheck": 1683984746473,
+              "lastUpdateCheck": 1685348937518,
               "installTime": 1681041606842,
               "alwaysUpdate": false
             },
             "preserveDanmakuInput": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/video/player/preserve-danmaku-input.js",
-              "lastUpdateCheck": 1683984746444,
+              "lastUpdateCheck": 1685348942058,
               "installTime": 1681041620451,
               "alwaysUpdate": false
             },
             "rememberVideoSpeed": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/video/player/remember-speed.js",
-              "lastUpdateCheck": 1683984746503,
+              "lastUpdateCheck": 1685348942159,
               "installTime": 1681041621786,
               "alwaysUpdate": false
             },
             "removePlayerPopup": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@preview/registry/dist/components/video/player/remove-popup.js",
-              "lastUpdateCheck": 1683984746269,
+              "lastUpdateCheck": 1685348938403,
               "installTime": 1681041622639,
+              "alwaysUpdate": false
+            },
+            "autoHideSidebar": {
+              "url": "https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/registry/dist/components/style/auto-hide-sidebar.js",
+              "lastUpdateCheck": 1685348940265,
+              "installTime": 1684689855267,
+              "alwaysUpdate": false
+            },
+            "hideUserCard": {
+              "url": "https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/registry/dist/components/style/hide/user-card.js",
+              "lastUpdateCheck": 1685348940497,
+              "installTime": 1684690033956,
+              "alwaysUpdate": false
+            },
+            "elegantScrollbar": {
+              "url": "https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/registry/dist/components/style/scrollbar.js",
+              "lastUpdateCheck": 1685348935879,
+              "installTime": 1684690034748,
+              "alwaysUpdate": false
+            },
+            "playerOnTopNew": {
+              "url": "https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/registry/dist/components/style/player-on-top-new.js",
+              "lastUpdateCheck": 1685348941864,
+              "installTime": 1684690037078,
+              "alwaysUpdate": false
+            },
+            "invertScrollVolume": {
+              "url": "https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/registry/dist/components/video/player/invert-scroll-volume.js",
+              "lastUpdateCheck": 1685348941976,
+              "installTime": 1684836121961,
+              "alwaysUpdate": false
+            },
+            "simplifyHome": {
+              "url": "https://raw.githubusercontent.com/the1812/Bilibili-Evolved/preview/registry/dist/components/style/simplify/home.js",
+              "lastUpdateCheck": 1685356058286,
+              "installTime": 1685356058286,
               "alwaysUpdate": false
             }
           },
           "plugins": {
             "customNavbar.items.channel": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/style/custom-navbar-channel.js",
-              "lastUpdateCheck": 1683984747030,
+              "lastUpdateCheck": 1685348943487,
               "installTime": 1681032447077,
               "alwaysUpdate": false
             },
             "customNavbar.items.darkMode": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/style/custom-navbar-dark-mode.js",
-              "lastUpdateCheck": 1683984746962,
+              "lastUpdateCheck": 1685348943475,
               "installTime": 1681035210504,
               "alwaysUpdate": false
             },
             "downloadVideo.inputs.manual": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/video/download/manual-input.js",
-              "lastUpdateCheck": 1683984747013,
+              "lastUpdateCheck": 1685348943481,
               "installTime": 1681036102622,
               "alwaysUpdate": false
             },
             "keymap.actions.empty": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/utils/keymap-empty-action.ts.js",
-              "lastUpdateCheck": 1683984746997,
+              "lastUpdateCheck": 1685348943526,
               "installTime": 1681036103984,
               "alwaysUpdate": false
             },
             "keymap.actions.toggleDanmakuList": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/utils/keymap-toggle-danmaku-list.js",
-              "lastUpdateCheck": 1683984746972,
+              "lastUpdateCheck": 1685348943497,
               "installTime": 1681036104841,
               "alwaysUpdate": false
             },
             "keymap.actions.darkMode": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/utils/keymap-dark-mode.js",
-              "lastUpdateCheck": 1683984746982,
+              "lastUpdateCheck": 1685348943492,
               "installTime": 1681036106208,
               "alwaysUpdate": false
             },
             "keymap.actions.toggleSubtitle": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/utils/keymap-toggle-subtitle.js",
-              "lastUpdateCheck": 1683984746967,
+              "lastUpdateCheck": 1685348943503,
               "installTime": 1681036106937,
               "alwaysUpdate": false
             },
             "settingsPanel.tagFilters.recentComponents": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/settings-panel/recent-components.js",
-              "lastUpdateCheck": 1683984746976,
+              "lastUpdateCheck": 1685348943508,
               "installTime": 1681037451513,
               "alwaysUpdate": false
             },
             "launchBar.trendingSearch": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/launch-bar/trending-search.js",
-              "lastUpdateCheck": 1683984746992,
+              "lastUpdateCheck": 1685348943521,
               "installTime": 1681037463434,
               "alwaysUpdate": false
             },
             "vLoading.reimu": {
               "url": "https://fastly.jsdelivr.net/gh/the1812/Bilibili-Evolved@master/registry/dist/plugins/v-loading/reimu.js",
-              "lastUpdateCheck": 1683984746987,
+              "lastUpdateCheck": 1685348943514,
               "installTime": 1681040229106,
               "alwaysUpdate": false
             }
@@ -3227,14 +3548,14 @@
     "notifyNewVersion": {
       "enabled": true,
       "options": {
-        "lastUpdateCheck": 1683984746133,
+        "lastUpdateCheck": 1685355912665,
         "minimumDuration": 86400000
       }
     },
     "compatibilities": {
       "enabled": true,
       "options": {
-        "disableOnBalh": false
+        "disableOnBalh": true
       }
     }
   },

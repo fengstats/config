@@ -12,7 +12,7 @@
     "*.json": "jsonc"
   },
   "extensions.autoUpdate": "onlyEnabledExtensions",
-  // "extensions.ignoreRecommendations": true,
+  "extensions.ignoreRecommendations": true,
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "explorer.openEditors.visible": 20,
@@ -41,41 +41,40 @@
   // Window and Workbench
   // ================================================================
   "window.nativeTabs": false,
-  "window.zoomLevel": 0.1,
-  "window.titleBarStyle": "custom",
+  "window.zoomLevel": 0.4,
   "window.commandCenter": false,
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
   "window.autoDetectColorScheme": false,
   "workbench.statusBar.visible": true,
-  "workbench.iconTheme": "file-icons",
+  "workbench.iconTheme": "pop-icon-theme",
   "workbench.productIconTheme": "icons-carbon",
+  "workbench.colorTheme": "Spacegray Eighties Dark",
   "workbench.preferredLightColorTheme": "Panda Syntax",
   "workbench.preferredDarkColorTheme": "Panda Syntax",
-  "workbench.colorTheme": "Panda Syntax",
-  "sundial.sunrise": "07:00",
-  "sundial.sunset": "18:30",
-  "sundial.interval": 30,
-  "sundial.daySettings": {},
-  "sundial.nightSettings": {},
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": true,
+  "workbench.editor.wrapTabs": true,
   "workbench.editor.showIcons": true,
   "workbench.list.smoothScrolling": true,
   "workbench.editor.closeOnFileDelete": true,
-  "workbench.editor.tabCloseButton": "off",
   "workbench.editor.limit.enabled": true,
-  "workbench.editor.wrapTabs": false,
   "workbench.editor.limit.value": 20,
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
   "workbench.startupEditor": "newUntitledFile",
+  // sundial
+  "sundial.sunrise": "07:00",
+  "sundial.sunset": "18:30",
+  "sundial.interval": 30,
+  "sundial.daySettings": {},
+  "sundial.nightSettings": {},
 
   // ================================================================
   // Editor
   // ================================================================
   "editor.tabSize": 2,
-  "editor.fontSize": 13,
+  "editor.fontSize": 12.5,
   "editor.lineHeight": 1.5,
   // "editor.lineNumbers": "interval",
   // "editor.fontFamily": "JetBrains Mono, monospace",
@@ -96,6 +95,7 @@
     // 允许中文符号显示而不突出高亮
     "zh-hant": true
   },
+  "editor.cursorSurroundingLines": 4,
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.suggest.localityBonus": true,
   "editor.suggest.shareSuggestSelections": true,
@@ -105,8 +105,8 @@
   "editor.accessibilitySupport": "off",
   "editor.acceptSuggestionOnEnter": "on",
   "editor.renderLineHighlight": "line",
-  "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.find.addExtraSpaceOnTop": false,
   "editor.glyphMargin": true,
   "editor.multiCursorModifier": "alt",
@@ -128,6 +128,47 @@
     "enabled": true
   },
   "editor.tokenColorCustomizations": {
+    "[Spacegray Eighties Dark]": {
+      "comments": "#adb5ad",
+      "textMateRules": [
+        {
+          "scope": [
+            // JSON key
+            "support.type.property-name"
+          ],
+          "settings": {
+            "foreground": "#ff7675"
+          }
+        },
+        {
+          "scope": [
+            // 符号：前后引号
+            "punctuation.definition.string.begin",
+            "punctuation.definition.string.end",
+            // 被引号包围的字符
+            "string.quoted"
+          ],
+          "settings": {
+            "foreground": "#55efc4"
+            // "foreground": "#2bcbba"
+          }
+        },
+        {
+          // markdown 无序列表
+          "scope": ["markup.list.unnumbered"],
+          "settings": {
+            "foreground": "#bdc3c7"
+          }
+        },
+        {
+          // markdown 链接
+          "scope": ["markup.underline"],
+          "settings": {
+            "foreground": "#48dbfb"
+          }
+        }
+      ]
+    },
     "[Vitesse Dark]": {
       "comments": "#909090"
     },
@@ -195,8 +236,10 @@
     ]
   },
   "workbench.colorCustomizations": {
-    "[MacOS Modern Dark - Xcode Modern][MacOS Modern Dark - Ventura Xcode]": {
-      "minimap.background": "#ffffff0a"
+    "minimap.background": "#ffffff0a",
+    "[Spacegray Eighties Dark]": {
+      "tab.border": "#aaaaaa2f",
+      "tab.activeBorder": "#86f6deaf"
     },
     "[Panda Syntax]": {
       // "commandCenter.border": "#86f6de8f",
@@ -205,7 +248,7 @@
       "quickInput.background": "#202020bf",
       "widget.shadow": "#0000008f",
       "titleBar.border": "#aaaaaa4f",
-      "tab.border": "#aaaaaa4f",
+      "tab.border": "#aaaaaa2f",
       "contrastBorder": "#0000008f",
       // "tab.activeBorderTop": "#86f6de",
       // "tab.activeBorder": "#292a2b",
@@ -296,9 +339,9 @@
   // ================================================================
   // Terminal
   // ================================================================
-  "terminal.external.osxExec": "iTerm.app",
+  "terminal.external.osxExec": "iterm.app",
   "terminal.integrated.gpuAcceleration": "on",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 13,
   "terminal.integrated.fontFamily": "Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Comic Shanns, Hack Nerd Font Mono, monospace",
@@ -309,23 +352,14 @@
   "terminal.integrated.confirmOnKill": "never",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
   },
 
   // ================================================================
-  // vim
+  // Vim
   // ================================================================
   "vim.leader": "<space>",
-  // BUG: 分组编辑同文件时光标位置跳跃有问题，具体问题记录查看 2023-05-21 日记
-  // "vim.leap.enable": true,
-  // "vim.leap.bidirectionalSearch": true,
-  // "vim.leap.showMarkerPosition": "target",
-  // "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
-  // "vim.leap.caseSensitive": false,
-  // "vim.leap.marker.charColor": "#fff",
-  // "vim.leap.marker.backgroundColors": ["#f5222d", "#99ccff"],
   "vim.easymotion": false,
   "vim.useSystemClipboard": true,
   "vim.incsearch": true,
@@ -336,7 +370,6 @@
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false,
-    // 不开启默认不生效
     "<C-i>": true,
     "<C-o>": true,
     "<C-y>": true
@@ -379,11 +412,11 @@
     },
     {
       "before": ["K"],
-      "after": ["5", "k"]
+      "after": ["4", "k"]
     },
     {
       "before": ["J"],
-      "after": ["5", "j"]
+      "after": ["4", "j"]
     },
     {
       "before": ["H"],
@@ -395,6 +428,7 @@
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    // Basic
     {
       "before": ["leader", "e"],
       "commands": ["workbench.action.toggleSidebarVisibility"]
@@ -403,14 +437,22 @@
       "before": ["leader", "l"],
       "commands": ["workbench.action.toggleAuxiliaryBar"]
     },
-    // {
-    //   "before": ["leader", "a"],
-    //   "commands": ["explorer.newFile"]
-    // },
-    // {
-    //   "before": ["leader", "A"],
-    //   "commands": ["explorer.newFolder"]
-    // },
+
+    // Editor
+    // 覆盖 Vim 提供的原始命令，使用 VSCode 提供的折叠/展开
+    {
+      "before": ["z", "C"],
+      "commands": ["editor.foldAll"]
+    },
+    {
+      "before": ["z", "O"],
+      "commands": ["editor.unfoldAll"]
+    },
+    // DONE: 崔大的 leap 插件的平替，目前使用下来没有问题
+    {
+      "before": ["s"],
+      "commands": ["leap.find"]
+    },
     {
       "before": ["leader", "v", "v"],
       "commands": ["hocusPocus.createVariable"]
@@ -423,14 +465,6 @@
       "before": ["leader", "d", "f"],
       "commands": ["git.openChange"]
     },
-    // {
-    //   "before": ["leader", "k"],
-    //   "commands": ["editor.action.marker.prev"]
-    // },
-    // {
-    //   "before": ["leader", "j"],
-    //   "commands": ["editor.action.marker.next"]
-    // },
     {
       "before": ["j"],
       "after": ["g", "j"]
@@ -459,28 +493,6 @@
       "before": ["U"],
       "after": ["<c-r>"]
     },
-    // 给顶部预留一点空间
-    // BUG: 遇到折叠代码块后，<c-y> 会导致光标位置异常跳跃
-    // {
-    //   "before": ["z", "t"],
-    //   "after": ["z", "t", "4", "<c-y>"]
-    // },
-    {
-      "before": ["s", "l", ";"],
-      "commands": [":vsplit"]
-    },
-    {
-      "before": ["s", "j", ";"],
-      "commands": [":split"]
-    },
-    // {
-    //   "before": ["g", "k"],
-    //   "after": ["<c-o>"]
-    // },
-    // {
-    //   "before": ["g", "j"],
-    //   "after": ["<c-i>"]
-    // },
     {
       "before": ["H"],
       "after": ["^"]
@@ -505,14 +517,6 @@
       "before": ["leader", "q"],
       "commands": ["workbench.action.closeActiveEditor"]
     },
-    // {
-    //   "before": ["Q"],
-    //   "commands": ["workbench.action.closeActiveEditor"]
-    // },
-    // {
-    //   "before": ["leader", "f"],
-    //   "after": ["g", "f"]
-    // }
     {
       "before": ["leader", "["],
       "after": ["[", "{"]
@@ -521,10 +525,54 @@
       "before": ["leader", "]"],
       "after": ["]", "}"]
     },
+
+    // Terminal
     {
       "before": ["leader", "t"],
       "commands": ["workbench.action.terminal.focus"]
     }
+
+    // Disable
+    // {
+    //   "before": ["leader", "a"],
+    //   "commands": ["explorer.newFile"]
+    // },
+    // {
+    //   "before": ["leader", "A"],
+    //   "commands": ["explorer.newFolder"]
+    // },
+    // {
+    //   "before": ["s", "l", ";"],
+    //   "commands": [":vsplit"]
+    // },
+    // {
+    //   "before": ["s", "j", ";"],
+    //   "commands": [":split"]
+    // },
+    // {
+    //   "before": ["g", "k"],
+    //   "after": ["<c-o>"]
+    // },
+    // {
+    //   "before": ["g", "j"],
+    //   "after": ["<c-i>"]
+    // },
+    // {
+    //   "before": ["Q"],
+    //   "commands": ["workbench.action.closeActiveEditor"]
+    // },
+    // {
+    //   "before": ["leader", "f"],
+    //   "after": ["g", "f"]
+    // }
+    // {
+    //   "before": ["leader", "k"],
+    //   "commands": ["editor.action.marker.prev"]
+    // },
+    // {
+    //   "before": ["leader", "j"],
+    //   "commands": ["editor.action.marker.next"]
+    // },
   ],
 
   // ================================================================
@@ -557,12 +605,17 @@
       "scope": "workspace"
     },
     "REVIEW": {
-      "iconColor": "green",
+      "iconColor": "orange",
       "highlightColor": "#FFB300",
       "scope": "workspace"
     },
     "NOTE": {
-      "iconColor": "orange",
+      "iconColor": "green",
+      "highlightColor": "#64DD17",
+      "scope": "file"
+    },
+    "DONE": {
+      "iconColor": "green",
       "highlightColor": "#64DD17",
       "scope": "file"
     },
@@ -666,7 +719,8 @@
   "codeium.enableCodeLens": false,
   "codeium.enableConfig": {
     "*": true,
-    "plaintext": true
+    "plaintext": true,
+    "markdown": true
   },
   "livePreview.notifyOnOpenLooseFile": false,
   "commentTranslate.hover.enabled": true,
@@ -677,4 +731,18 @@
   "commentTranslate.targetLanguage": "zh-CN",
   "commentTranslate.multiLineMerge": true,
   "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud",
+  "symbols.hidesExplorerArrows": false,
+  "animations.Active": "None",
+  "animations.Command-Palette": "Fade",
+  "animations.Tabs": "None",
+  "vscode_custom_css.imports": [
+    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-1.0.8/dist/updateHandler.js"
+  ],
+  "animations.Custom-CSS": false,
+  "animations.Scrolling": "Fade",
+  "animations.Smooth-Mode": false,
+  "animations.Durations": {
+    "Command-Palette": 200,
+    "Scrolling": 200
+  }
 }
