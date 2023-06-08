@@ -14,17 +14,17 @@
 <p align="center"><b>Preview</b></p>
 
 <p align="center">
-<!-- <img src="./images/theme-DefaultLight+.png"> -->
-<img src="./images/theme-MoegiLightVitesse.png">
-<img src="./images/theme-PandaSyntax.png">
+<img src="./images/theme-LightModern.png">
+<img src="./images/theme-PandaSyntax2.png">
+<img src="./images/theme-SpacegrayEightiesDark.png">
 </p>
 
 ### Themes
 
-> Default Light+ theme comes with the VSCode
+> Light Modern theme comes with the VSCode
 
-- [Moegi Light Vitesse](https://github.com/moegi-design/vscode-theme)
 - [Panda Syntax](https://github.com/tinkertrain/panda-syntax-vscode)
+- [Spacegray VSCode](https://github.com/mihai-vlc/spacegray-vscode)
 
 ### Fonts
 
