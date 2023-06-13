@@ -3,21 +3,61 @@
   // ================================================================
   // Basic
   // ================================================================
-  // 打开当前文件所在访达位置
+  // 选择最近的文件工作区（只能在聚焦文件管理、编辑器、Panel 时使用）
   {
-    "key": "cmd+shift+r",
-    "command": "revealFileInOS"
-    // "when": "!editorFocus"
+    "key": "cmd+r",
+    "command": "workbench.action.openRecent",
+    "when": "filesExplorerFocus || editorFocus || panelFocus"
+  },
+  // 搜索面板刷新搜索结果，需要聚焦侧边栏以及搜索面板可见
+  {
+    "key": "cmd+r",
+    "command": "search.action.refreshSearchResults",
+    "when": "sideBarFocus && searchViewletVisible"
+  },
+  // 搜索面板调出替换输入框的快捷键
+  {
+    "key": "cmd+g",
+    "command": "workbench.action.replaceInFiles",
+    "when": "sideBarFocus"
+  },
+  // 替换单个文件内的某处匹配（在搜索面板中使用，需聚焦具体匹配项）
+  {
+    "key": "enter",
+    "command": "search.action.replace",
+    "when": "matchFocus && replaceActive && searchViewletVisible"
+  },
+  // 切换随机背景图
+  {
+    "key": "shift+cmd+7",
+    "command": "extension.backgroundCover.refresh"
+  },
+  // Run Code
+  {
+    "key": "cmd+alt+n",
+    "command": "code-runner.run"
+  },
+  // 切换左右 panel
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.previousPanelView",
+    "when": "panelFocus"
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.nextPanelView",
+    "when": "panelFocus"
   },
   // 打开一个新窗口
   {
     "key": "cmd+ctrl+n",
     "command": "workbench.action.newWindow"
   },
-  // 选择最近的文件工作区
+  // 打开当前文件所在访达位置
   {
-    "key": "cmd+r",
-    "command": "workbench.action.openRecent"
+    "key": "cmd+shift+r",
+    "command": "revealFileInOS"
+    // "when": "!editorFocus"
   },
   // 在不同的面板（组件）之间进行聚焦
   {
@@ -36,33 +76,27 @@
     "key": "cmd+shift+j",
     "command": "workbench.action.navigateDown"
   },
-  // 左侧文件管理面板显示
+  // 聚焦文件管理面板
   {
     "key": "cmd+shift+;",
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
+  // 聚焦全局搜索面板
   {
     "key": "cmd+shift+f",
     "command": "workbench.action.findInFiles"
   },
-  // 替换单个文件匹配
-  {
-    "key": "shift+cmd+enter",
-    "command": "search.action.replace",
-    "when": "isEditableItem && matchFocus && replaceActive && searchViewletVisible"
-  },
-  // gitlens
+  // 聚焦 gitlens
   {
     "key": "cmd+shift+g",
     "command": "workbench.view.scm",
     "when": "workbench.scm.active"
   },
-  // run code
-  {
-    "key": "alt+cmd+n",
-    "command": "code-runner.run"
-  },
+  // {
+  //   "key": "cmd+r",
+  //   "command": "workbench.action.openRecent"
+  // },
   // project-manager: 我发现了 ctrl+r 来操作项目管理的方式更爽
   // {
   //   "key": "ctrl+'",
@@ -103,6 +137,12 @@
   // ================================================================
   // File
   // ================================================================
+  // TODO: 去掉了 !explorerResourceIsRoot 达到了聚焦资源管理器根目录中新建的功能，但不知道可能会有什么隐患，先观望一下
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile"
+    // "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
   // 新建未命名文件
   {
     "key": "cmd+t",
@@ -115,12 +155,6 @@
     "when": "listFocus && listSupportsFind && !inputFocus"
   },
   // 新建文件/文件夹
-  // NOTE: 去掉了 !explorerResourceIsRoot 达到了在资源管理器根目录中新建的功能，不知道可能会有什么隐患，先观望一下
-  {
-    "key": "cmd+n",
-    "command": "explorer.newFile"
-    // "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
   {
     "key": "a",
     "command": "explorer.newFile",
@@ -146,6 +180,27 @@
   // ================================================================
   // Tabs
   // ================================================================
+  // 在当前编辑组内切换左右文件（将当前文件与左右文件换位置）
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.moveEditorLeftInGroup",
+    // NOTE: 解决和 panel 切换快捷键冲突的问题
+    "when": "!panelFocus"
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.moveEditorRightInGroup",
+    "when": "!panelFocus"
+  },
+  // 在当前编辑组内左右聚焦文件
+  {
+    "key": "cmd+shift+[",
+    "command": "workbench.action.previousEditorInGroup"
+  },
+  {
+    "key": "cmd+shift+]",
+    "command": "workbench.action.nextEditorInGroup"
+  },
   // 将当前编辑组的文件移动到上一个/下一个编辑组中 | << and >>
   {
     "key": "cmd+shift+, cmd+shift+,",
@@ -155,25 +210,7 @@
     "key": "cmd+shift+. cmd+shift+.",
     "command": "workbench.action.moveEditorToNextGroup"
   },
-  // 在当前编辑组内左右聚焦
-  {
-    "key": "cmd+shift+[",
-    "command": "workbench.action.previousEditorInGroup"
-  },
-  {
-    "key": "cmd+shift+]",
-    "command": "workbench.action.nextEditorInGroup"
-  },
-  // 在当前编辑组内左右切换 tab
-  {
-    "key": "cmd+[",
-    "command": "workbench.action.moveEditorLeftInGroup"
-  },
-  {
-    "key": "cmd+]",
-    "command": "workbench.action.moveEditorRightInGroup"
-  },
-  // 切换左右 tab
+  // 聚焦左右文件，怪怪的，先不用了
   // {
   //   "key": "shift+cmd+;",
   //   "command": "workbench.action.previousEditor"
@@ -186,12 +223,14 @@
   // ================================================================
   // Editor
   // ================================================================
-  // 调整编辑组区域宽度大小（恢复、缩小、放大）
+  // 查找替换
   {
-    "key": "cmd+shift+0",
-    "command": "workbench.action.evenEditorWidths"
-    // "when": "editorTextFocus && !editorReadonly"
+    "key": "cmd+g",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus"
+    // "when": "editorFocus || editorIsOpen"
   },
+  // 调整编辑组区域宽度大小（缩小、放大、恢复）
   {
     "key": "cmd+shift+-",
     "command": "workbench.action.decreaseViewWidth"
@@ -204,14 +243,25 @@
     // "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "cmd+g",
-    "command": "editor.action.startFindReplaceAction",
-    "when": "editorFocus || editorIsOpen"
+    "key": "cmd+shift+0",
+    "command": "workbench.action.evenEditorWidths"
+    // "when": "editorTextFocus && !editorReadonly"
   },
   // 垂直分屏
   {
     "key": "cmd+shift+\\",
     "command": "workbench.action.splitEditorToBelowGroup"
+  },
+  // 向上/下寻找当前文件出现的提示提示/警告/错误
+  {
+    "key": "cmd+8",
+    "command": "editor.action.marker.next",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+shift+8",
+    "command": "editor.action.marker.prev",
+    "when": "editorFocus"
   },
   // 替换当前行和上/下行
   {
@@ -224,47 +274,10 @@
     "command": "editor.action.moveLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
   },
-  {
-    "key": "cmd+8",
-    "command": "editor.action.marker.next",
-    "when": "editorFocus"
-  },
-  {
-    "key": "cmd+shift+8",
-    "command": "editor.action.marker.prev",
-    "when": "editorFocus"
-  },
 
   // ================================================================
   // Terminal
   // ================================================================
-  // 切换左右 panel
-  {
-    "key": "cmd+[",
-    "command": "workbench.action.previousPanelView",
-    "when": "panelFocus"
-  },
-  {
-    "key": "cmd+]",
-    "command": "workbench.action.nextPanelView",
-    "when": "panelFocus"
-  },
-  // 从任意地方聚焦到终端，i = iterm
-  {
-    "key": "cmd+shift+i",
-    "command": "workbench.action.terminal.focus"
-  },
-  // 创建终端 | 垂直方向
-  {
-    "key": "cmd+shift+n",
-    "command": "workbench.action.terminal.new",
-    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
-  },
-  {
-    "key": "cmd+shift+d",
-    "command": "workbench.action.terminal.new",
-    "when": "terminalFocus && terminalProcessSupported || terminalWebExtensionContributedProfile"
-  },
   // 创建终端（根据当前编辑区聚焦文件的位置）
   {
     "key": "ctrl+`",
@@ -272,13 +285,36 @@
     // "command": "openInTerminal",
     "command": "openInIntegratedTerminal"
   },
+
+  // 创建终端（水平方向）
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+  },
+  // 创建终端（垂直方向）
+  {
+    "key": "cmd+shift+d",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus && terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "cmd+shift+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  // 从任意地方聚焦到终端，i = iterm
+  {
+    "key": "cmd+shift+i",
+    "command": "workbench.action.terminal.focus"
+  },
   // 最大化终端
   {
     "key": "cmd+shift+enter",
     "command": "workbench.action.toggleMaximizedPanel",
     "when": "terminalFocus"
   },
-  // 上下拉伸终端 | 原本快捷键是编辑器整体放大缩小, 被我禁用了
+  // 上下拉伸终端（快捷键原本是编辑器整体放大缩小, 被我禁用了）
   {
     "key": "cmd+shift+-",
     "command": "workbench.action.terminal.resizePaneDown",
@@ -288,7 +324,6 @@
   {
     "key": "cmd+shift+=",
     "command": "workbench.action.terminal.resizePaneUp",
-    // "when": "terminalFocus",
     "when": "panelFocus"
     // "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
@@ -303,22 +338,22 @@
     "command": "workbench.action.terminal.focusNextPane",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // TODO: 前后终端聚焦，用来覆盖 Tabs 中设置左右聚焦 tab 功能，后续再看看能不能优化
-  {
-    "key": "shift+cmd+[",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
-  {
-    "key": "shift+cmd+]",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
   // 可以从终端返回编辑区中而不关闭终端
   {
     "key": "cmd+shift+k",
     "command": "workbench.action.navigateUp",
     "when": "terminal.active && terminalFocus"
+  },
+  // TODO: 上下终端聚焦，用来覆盖 Tabs 中设置左右聚焦 tab 功能，后续再看看能不能优化
+  {
+    "key": "cmd+shift+[",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "cmd+shift+]",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
   },
   // 左右拉伸终端
   // {
@@ -342,12 +377,6 @@
   //   "command": "workbench.action.terminal.scrollUp",
   //   "when": "terminalFocus"
   // },
-  // 创建终端 | 水平方向
-  // {
-  //   "key": "cmd+d",
-  //   "command": "workbench.action.terminal.split",
-  //   "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
-  // },
   //
   // 关闭终端：没猜错的话应该就是这个快捷键被我在终端误触了之后以为是终端的异常闪退, 还花了好久找问题, 麻了, 现在关了, 后续观察下是否还会出现
   // DONE: 后续补充，没出现过这个问题了，就是这个导致的，慎用
@@ -357,7 +386,7 @@
   //   "when": "terminalFocus"
   // },
   // 聚焦上下终端
-  // NOTE: 建议还是使用 cmd + shift + [/] 切换吧, 这个快捷键用起来怪怪的
+  // NOTE: 建议还是使用 Command + Shift + [ / ] 切换吧, 这个快捷键用起来怪怪的
   // {
   //   "key": "cmd+shift+;",
   //   "command": "workbench.action.terminal.focusPrevious",
@@ -460,11 +489,6 @@
     "when": "editorFocus || editorIsOpen"
   },
   {
-    "key": "shift+cmd+1",
-    "command": "-search.action.replace",
-    "when": "isEditableItem && matchFocus && replaceActive && searchViewletVisible"
-  },
-  {
     "key": "alt+cmd+up",
     "command": "-extension.vim_cmd+alt+up",
     "when": "editorTextFocus && vim.active && !inDebugRepl"
@@ -485,5 +509,9 @@
   {
     "key": "ctrl+alt+n",
     "command": "-code-runner.run"
+  },
+  {
+    "key": "ctrl+shift+f7",
+    "command": "-extension.backgroundCover.refresh"
   }
 ]

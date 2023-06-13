@@ -47,22 +47,24 @@
   "window.newWindowDimensions": "offset",
   "window.autoDetectColorScheme": false,
   "workbench.statusBar.visible": true,
+  "workbench.startupEditor": "newUntitledFile",
   "workbench.iconTheme": "pop-icon-theme",
-  "workbench.productIconTheme": "icons-carbon",
   "workbench.colorTheme": "Spacegray Eighties Dark",
+  "workbench.productIconTheme": "icons-carbon",
   "workbench.preferredLightColorTheme": "Panda Syntax",
   "workbench.preferredDarkColorTheme": "Panda Syntax",
-  "workbench.editor.showTabs": true,
-  "workbench.editor.wrapTabs": true,
-  "workbench.editor.showIcons": true,
+  "workbench.tree.expandMode": "singleClick",
+  "workbench.tree.indent": 10,
   "workbench.list.smoothScrolling": true,
-  "workbench.editor.closeOnFileDelete": true,
+  // 关闭文件后是否聚焦到最近打开过的文件
+  "workbench.editor.focusRecentEditorAfterClose": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.showTabs": true,
+  "workbench.editor.showIcons": true,
+  "workbench.editor.closeOnFileDelete": false,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 20,
   "workbench.editor.limit.perEditorGroup": true,
-  "workbench.tree.expandMode": "singleClick",
-  "workbench.tree.indent": 10,
-  "workbench.startupEditor": "newUntitledFile",
   // sundial
   "sundial.sunrise": "07:00",
   "sundial.sunset": "18:30",
@@ -269,7 +271,7 @@
       "scrollbarSlider.background": "#aaaaaa2f",
       "scrollbarSlider.hoverBackground": "#aaaaaa2f"
     },
-    "[-Panda Syntax][-Vitesse Dark]": {
+    "[-Panda Syntax][Vitesse Dark]": {
       "sash.hoverBorder": "#66c0ad",
       "input.background": "#1a1d22",
       "quickInput.background": "#12151aaf",
@@ -430,15 +432,28 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // Basic
     {
-      "before": ["leader", "e"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
-    },
-    {
       "before": ["leader", "l"],
       "commands": ["workbench.action.toggleAuxiliaryBar"]
     },
+    {
+      "before": ["leader", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
 
     // Editor
+    {
+      "before": ["n"],
+      "after": ["n", "z", "z"]
+    },
+    {
+      "before": ["N"],
+      "after": ["N", "z", "z"]
+    },
+    // DONE: 崔大的 leap 插件的平替，目前使用下来没有问题
+    {
+      "before": ["s"],
+      "commands": ["leap.find"]
+    },
     // 覆盖 Vim 提供的原始命令，使用 VSCode 提供的折叠/展开
     {
       "before": ["z", "C"],
@@ -447,23 +462,6 @@
     {
       "before": ["z", "O"],
       "commands": ["editor.unfoldAll"]
-    },
-    // DONE: 崔大的 leap 插件的平替，目前使用下来没有问题
-    {
-      "before": ["s"],
-      "commands": ["leap.find"]
-    },
-    {
-      "before": ["leader", "v", "v"],
-      "commands": ["hocusPocus.createVariable"]
-    },
-    {
-      "before": ["leader", "f", "f"],
-      "commands": ["hocusPocus.createFunction"]
-    },
-    {
-      "before": ["leader", "d", "f"],
-      "commands": ["git.openChange"]
     },
     {
       "before": ["j"],
@@ -482,24 +480,24 @@
       "after": ["5", "g", "j"]
     },
     {
-      "before": ["n"],
-      "after": ["n", "z", "z"]
-    },
-    {
-      "before": ["N"],
-      "after": ["N", "z", "z"]
-    },
-    {
-      "before": ["U"],
-      "after": ["<c-r>"]
-    },
-    {
       "before": ["H"],
       "after": ["^"]
     },
     {
       "before": ["L"],
       "after": ["g", "_"]
+    },
+    {
+      "before": ["U"],
+      "after": ["<c-r>"]
+    },
+    {
+      "before": ["leader", "s"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["leader", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
     },
     {
       "before": ["leader", "w"],
@@ -510,12 +508,16 @@
       "commands": [":noh"]
     },
     {
-      "before": ["leader", "s"],
-      "commands": ["workbench.action.files.save"]
+      "before": ["leader", "d", "f"],
+      "commands": ["git.openChange"]
     },
     {
-      "before": ["leader", "q"],
-      "commands": ["workbench.action.closeActiveEditor"]
+      "before": ["leader", "v", "v"],
+      "commands": ["hocusPocus.createVariable"]
+    },
+    {
+      "before": ["leader", "f", "f"],
+      "commands": ["hocusPocus.createFunction"]
     },
     {
       "before": ["leader", "["],
@@ -534,12 +536,12 @@
 
     // Disable
     // {
-    //   "before": ["leader", "a"],
-    //   "commands": ["explorer.newFile"]
+    //   "before": ["g", "k"],
+    //   "after": ["<c-o>"]
     // },
     // {
-    //   "before": ["leader", "A"],
-    //   "commands": ["explorer.newFolder"]
+    //   "before": ["g", "j"],
+    //   "after": ["<c-i>"]
     // },
     // {
     //   "before": ["s", "l", ";"],
@@ -550,12 +552,20 @@
     //   "commands": [":split"]
     // },
     // {
-    //   "before": ["g", "k"],
-    //   "after": ["<c-o>"]
+    //   "before": ["leader", "a"],
+    //   "commands": ["explorer.newFile"]
     // },
     // {
-    //   "before": ["g", "j"],
-    //   "after": ["<c-i>"]
+    //   "before": ["leader", "A"],
+    //   "commands": ["explorer.newFolder"]
+    // },
+    // {
+    //   "before": ["leader", "k"],
+    //   "commands": ["editor.action.marker.prev"]
+    // },
+    // {
+    //   "before": ["leader", "j"],
+    //   "commands": ["editor.action.marker.next"]
     // },
     // {
     //   "before": ["Q"],
@@ -565,14 +575,6 @@
     //   "before": ["leader", "f"],
     //   "after": ["g", "f"]
     // }
-    // {
-    //   "before": ["leader", "k"],
-    //   "commands": ["editor.action.marker.prev"]
-    // },
-    // {
-    //   "before": ["leader", "j"],
-    //   "commands": ["editor.action.marker.next"]
-    // },
   ],
 
   // ================================================================
@@ -677,6 +679,12 @@
   // ================================================================
   // other
   // ================================================================
+  "backgroundCover.imagePath": "/Users/feng/Pictures/02-Wallpaper/pc/pc-8.png",
+  "backgroundCover.randomImageFolder": "/Users/feng/Pictures/02-Wallpaper/pc",
+  "backgroundCover.opacity": 0.2,
+  // 是否自动切换
+  "backgroundCover.autoStatus": false,
+  "diffEditor.renderSideBySide": false,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
@@ -689,8 +697,10 @@
   "cSpell.useGitignore": false,
   "cSpell.enableFiletypes": ["vimrc"],
   "cSpell.userWords": [
+    "bilibili",
     "codeium",
     "colour",
+    "douyin",
     "easymotion",
     "feng",
     "hlsearch",
@@ -698,15 +708,19 @@
     "Moegi",
     "peachpuff",
     "tencent",
+    "timi",
+    "utools",
     "Vitesse",
+    "wechat",
+    "weibo",
     "zimfw",
     "zmodule"
   ],
   "indentRainbow.indicatorStyle": "light",
   "indentRainbow.lightIndicatorStyleLineWidth": 1,
   "indentRainbow.colors": [
-    "rgba(255,255,64,0.3)",
     "rgba(127,255,127,0.3)",
+    "rgba(255,255,64,0.3)",
     "rgba(255,127,255,0.3)",
     "rgba(79,236,236,0.3)"
   ],
@@ -736,7 +750,7 @@
   "animations.Command-Palette": "Fade",
   "animations.Tabs": "None",
   "vscode_custom_css.imports": [
-    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-1.0.8/dist/updateHandler.js"
+    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-1.0.10/dist/updateHandler.js"
   ],
   "animations.Custom-CSS": false,
   "animations.Scrolling": "Fade",
