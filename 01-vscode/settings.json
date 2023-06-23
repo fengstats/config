@@ -1,7 +1,23 @@
 {
-  // ================================================================
   // Basic
-  // ================================================================
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "security.workspace.trust.untrustedFiles": "open",
+  // turn off system sound
+  "audioCues.volume": 0,
+  "audioCues.diffLineDeleted": "off",
+  "audioCues.diffLineInserted": "off",
+  "audioCues.diffLineModified": "off",
+  "audioCues.lineHasBreakpoint": "off",
+  "audioCues.lineHasError": "off",
+  "audioCues.lineHasFoldedArea": "off",
+  "audioCues.lineHasInlineSuggestion": "off",
+  "audioCues.notebookCellCompleted": "off",
+  "audioCues.notebookCellFailed": "off",
+  "audioCues.onDebugBreak": "off",
+  "audioCues.taskCompleted": "off",
+  "audioCues.taskFailed": "off",
+  "audioCues.terminalCommandFailed": "off",
+  "audioCues.terminalQuickFix": "off",
   "files.eol": "\n",
   "files.autoSave": "off",
   "files.autoSaveDelay": 200,
@@ -11,12 +27,10 @@
     ".zimrc": "shellscript",
     "*.json": "jsonc"
   },
-  "extensions.autoUpdate": "onlyEnabledExtensions",
   "extensions.ignoreRecommendations": true,
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "explorer.openEditors.visible": 20,
-  "security.workspace.trust.untrustedFiles": "open",
   "search.smartCase": true,
   "search.exclude": {
     "**/.git": true,
@@ -37,22 +51,26 @@
     "**/yarn.lock": true
   },
 
-  // ================================================================
   // Window and Workbench
-  // ================================================================
   "window.nativeTabs": false,
-  "window.zoomLevel": 0.4,
-  "window.commandCenter": false,
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
+  "window.zoomLevel": 0.4,
+  "window.commandCenter": false,
   "window.autoDetectColorScheme": false,
+  // sundial
+  // "sundial.sunrise": "07:00",
+  // "sundial.sunset": "18:30",
+  // "sundial.interval": 30,
+  // "sundial.daySettings": {},
+  // "sundial.nightSettings": {},
+  "workbench.sideBar.location": "right",
   "workbench.statusBar.visible": true,
-  "workbench.startupEditor": "newUntitledFile",
   "workbench.iconTheme": "pop-icon-theme",
-  "workbench.colorTheme": "Spacegray Eighties Dark",
   "workbench.productIconTheme": "icons-carbon",
-  "workbench.preferredLightColorTheme": "Panda Syntax",
-  "workbench.preferredDarkColorTheme": "Panda Syntax",
+  "workbench.colorTheme": "Panda Syntax",
+  // "workbench.preferredLightColorTheme": "Panda Syntax",
+  // "workbench.preferredDarkColorTheme": "Panda Syntax",
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
   "workbench.list.smoothScrolling": true,
@@ -65,29 +83,23 @@
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 20,
   "workbench.editor.limit.perEditorGroup": true,
-  // sundial
-  "sundial.sunrise": "07:00",
-  "sundial.sunset": "18:30",
-  "sundial.interval": 30,
-  "sundial.daySettings": {},
-  "sundial.nightSettings": {},
 
-  // ================================================================
   // Editor
-  // ================================================================
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.useInlineCompletions": true,
+  "editor.linkedEditing": true,
   "editor.tabSize": 2,
-  "editor.fontSize": 12.5,
-  "editor.lineHeight": 1.5,
-  // "editor.lineNumbers": "interval",
-  // "editor.fontFamily": "JetBrains Mono, monospace",
-  "editor.fontFamily": "Monaco, monospace",
+  "editor.fontSize": 13,
+  "editor.lineNumbers": "on",
+  "editor.fontFamily": "JetBrains Mono, monospace",
+  // "editor.lineHeight": 1.5,
+  // "editor.fontFamily": "Monaco, monospace",
   // "editor.fontFamily": "Comic Shanns,  monospace",
   // "editor.fontFamily": "IBM Plex Mono, monospace",
   // "editor.fontFamily": "Input Mono, monospace",
   // "editor.fontFamily": "Fira Code, monospace",
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
-  "editor.minimap.size": "fit",
-  // "editor.linkedEditing": true,
+  "editor.minimap.size": "proportional",
   "editor.suggest.insertMode": "replace",
   "editor.quickSuggestions": {
     "comments": "off",
@@ -98,11 +110,8 @@
     "zh-hant": true
   },
   "editor.cursorSurroundingLines": 4,
-  "editor.suggest.snippetsPreventQuickSuggestions": false,
   "editor.suggest.localityBonus": true,
   "editor.suggest.shareSuggestSelections": true,
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.useInlineCompletions": true,
   "editor.detectIndentation": false,
   "editor.accessibilitySupport": "off",
   "editor.acceptSuggestionOnEnter": "on",
@@ -338,9 +347,7 @@
     }
   },
 
-  // ================================================================
   // Terminal
-  // ================================================================
   "terminal.external.osxExec": "iterm.app",
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.fontSize": 13,
@@ -358,9 +365,7 @@
     "FIG_NEW_SESSION": "1"
   },
 
-  // ================================================================
   // Vim
-  // ================================================================
   "vim.leader": "<space>",
   "vim.easymotion": false,
   "vim.useSystemClipboard": true,
@@ -432,11 +437,11 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // Basic
     {
-      "before": ["leader", "l"],
+      "before": ["leader", "e"],
       "commands": ["workbench.action.toggleAuxiliaryBar"]
     },
     {
-      "before": ["leader", "e"],
+      "before": ["leader", "l"],
       "commands": ["workbench.action.toggleSidebarVisibility"]
     },
 
@@ -577,9 +582,7 @@
     // }
   ],
 
-  // ================================================================
   // Comment Anchors
-  // ================================================================
   "commentAnchors.tags.provideAutoCompletion": false,
   "commentAnchors.parseDelay": 300,
   "commentAnchors.workspace.maxFiles": 50,
@@ -635,19 +638,16 @@
     }
   },
 
-  // ================================================================
   // ErrorLens
-  // ================================================================
-  "errorLens.fontFamily": "JetBrains Mono",
+  "errorLens.fontFamily": "Monaco, monospace",
   "errorLens.fontWeight": "normal",
-  // "errorLens.margin": "20px",
-  "errorLens.messageTemplate": "$severity：$message ($source) $count",
+  "errorLens.margin": "20px",
+  "errorLens.messageTemplate": "$severity($source): $message",
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
   "errorLens.excludeBySource": ["cSpell", "Grammarly", "eslint"],
+  // "errorLens.messageTemplate": "$severity：$message ($source) $count",
 
-  // ================================================================
   // Formatter
-  // ================================================================
   "editor.formatOnSave": true,
   "prettier.semi": false,
   "prettier.singleQuote": true,
@@ -667,37 +667,27 @@
   "formatFiles.excludedFolders": ["node_modules", ".vscode", ".git", "dist", ".chrome", "attachments"],
   "formatFiles.extensionsToInclude": ".md",
 
-  // ================================================================
-  // paramHints
-  // ================================================================
+  // Param Hints
+  "editor.inlayHints.enabled": "off",
   "javascript.inlayHints.parameterNames.enabled": "none",
   "typescript.inlayHints.parameterNames.enabled": "none",
   "javascript.inlayHints.parameterTypes.enabled": false,
   "typescript.inlayHints.parameterTypes.enabled": false,
-  "editor.inlayHints.enabled": "off",
 
-  // ================================================================
-  // other
-  // ================================================================
-  "backgroundCover.imagePath": "/Users/feng/Pictures/02-Wallpaper/pc/pc-8.png",
-  "backgroundCover.randomImageFolder": "/Users/feng/Pictures/02-Wallpaper/pc",
-  "backgroundCover.opacity": 0.2,
-  // 是否自动切换
-  "backgroundCover.autoStatus": false,
-  "diffEditor.renderSideBySide": false,
+  // Git
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.untrackedChanges": "separate",
   "git.openRepositoryInParentFolders": "never",
-  "less.compile": {
-    "outExt": ".css"
-  },
   "js/ts.implicitProjectConfig.checkJs": true,
+
+  // Spell Check
   "cSpell.useGitignore": false,
   "cSpell.enableFiletypes": ["vimrc"],
   "cSpell.userWords": [
     "bilibili",
+    "Codegeex",
     "codeium",
     "colour",
     "douyin",
@@ -707,6 +697,7 @@
     "incsearch",
     "Moegi",
     "peachpuff",
+    "powermode",
     "tencent",
     "timi",
     "utools",
@@ -716,6 +707,8 @@
     "zimfw",
     "zmodule"
   ],
+
+  // Indent Rainbow
   "indentRainbow.indicatorStyle": "light",
   "indentRainbow.lightIndicatorStyleLineWidth": 1,
   "indentRainbow.colors": [
@@ -724,11 +717,17 @@
     "rgba(255,127,255,0.3)",
     "rgba(79,236,236,0.3)"
   ],
-  // code intellisense
-  "Codegeex.Privacy": false,
-  "Codegeex.DisabledFor": {
-    "plaintext": true
-  },
+
+  // Typing Special Effects
+  "powermode.enabled": true,
+  "powermode.shake.enabled": false,
+  "powermode.explosions.duration": 500,
+  "powermode.explosions.maxExplosions": 2,
+  "powermode.combo.timerEnabled": "hide",
+  "powermode.combo.location": "off",
+  "powermode.combo.counterEnabled": "hide",
+
+  // Code Intellisense
   "codeium.enableSearch": false,
   "codeium.enableCodeLens": false,
   "codeium.enableConfig": {
@@ -736,27 +735,48 @@
     "plaintext": true,
     "markdown": true
   },
-  "livePreview.notifyOnOpenLooseFile": false,
+  "Codegeex.Privacy": false,
+  "Codegeex.DisabledFor": {
+    "plaintext": true
+  },
+
+  // Animations
+  "animations.Active": "None",
+  "animations.Tabs": "None",
+  "animations.Custom-CSS": false,
+  "animations.Scrolling": "Fade",
+  "animations.Command-Palette": "Fade",
+  "animations.Smooth-Mode": false,
+  "animations.Durations": {
+    "Command-Palette": 200,
+    "Scrolling": 200
+  },
+  "vscode_custom_css.imports": [
+    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-1.0.11/dist/updateHandler.js"
+  ],
+
+  // Background Image
+  "backgroundCover.imagePath": "/Users/feng/Pictures/02-Wallpaper/pc/pc-25.png",
+  "backgroundCover.randomImageFolder": "/Users/feng/Pictures/02-Wallpaper/pc",
+  "backgroundCover.opacity": 0.2,
+  "backgroundCover.autoStatus": false,
+
+  //  Translate
   "commentTranslate.hover.enabled": true,
   "commentTranslate.hover.concise": false,
   "commentTranslate.hover.content": false,
   "commentTranslate.hover.variable": true,
   "commentTranslate.hover.string": true,
   "commentTranslate.targetLanguage": "zh-CN",
+  "commentTranslate.maxTranslationLength": 1000,
   "commentTranslate.multiLineMerge": true,
   "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud",
+
+  // other
+  "livePreview.notifyOnOpenLooseFile": false,
   "symbols.hidesExplorerArrows": false,
-  "animations.Active": "None",
-  "animations.Command-Palette": "Fade",
-  "animations.Tabs": "None",
-  "vscode_custom_css.imports": [
-    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-1.0.10/dist/updateHandler.js"
-  ],
-  "animations.Custom-CSS": false,
-  "animations.Scrolling": "Fade",
-  "animations.Smooth-Mode": false,
-  "animations.Durations": {
-    "Command-Palette": 200,
-    "Scrolling": 200
+  "diffEditor.renderSideBySide": false,
+  "less.compile": {
+    "outExt": ".css"
   }
 }
