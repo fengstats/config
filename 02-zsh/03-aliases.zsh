@@ -1,4 +1,16 @@
 # alias config file
+
+# git
+alias gs='git status'
+alias gp='git push'
+alias gcl='git clone'
+alias gco='git checkout'
+alias gl='git log'
+alias ga='git add'
+alias gc='git commit'
+alias gcm='git commit -m'
+
+# system
 alias ra='ranger'
 alias q='exit'
 alias x='exit'
