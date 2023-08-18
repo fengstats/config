@@ -8,10 +8,10 @@ set ttimeout ttimeoutlen=10
 " Key Map
 " ===============================================
 let mapleader=" "
-map J 4gj
-map K 4gk
+map J 4j
+map K 4k
 noremap H ^
-noremap L g_
+noremap L $
 nnoremap U <c-r>
 nnoremap <leader>if V$%
 nnoremap <leader>df V$%d

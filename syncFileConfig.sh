@@ -7,8 +7,8 @@ zshSystemPath="${userPath}/.config/zsh"
 
 # my config path
 configPath="${userPath}/Codebase/config"
-vsocdePath="${configPath}/01-vscode"
-zshPath="${configPath}/02-zsh"
+vsocdePath="${configPath}/vscode"
+zshPath="${configPath}/zsh"
 pathArr=(${vsocdePath} ${zshPath})
 
 # 自动校验创建目录
@@ -24,9 +24,7 @@ if [ ${isSync} -eq 1 ]; then
   # NOTE: 双引号用于解析变量，双引号内的变量可以被扩展，而单引号内的变量则不会被扩展
   # 这里需要再添加一个双引号才能特殊处理带有空格的目录/文件名
   # grep -v 取反，简单做下数据脱敏（key）
-  # settings.json
   grep -v "secret" "${vscodeSystemPath}/settings.json" >${vsocdePath}/settings.json
-  # keybindings.json
   cat "${vscodeSystemPath}/keybindings.json" >${vsocdePath}/keybindings.json
 
   # vimrc

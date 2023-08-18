@@ -1,8 +1,31 @@
 // 将键绑定放在此文件中以覆盖默认值auto[]
 [
+  // NeoVim
+  {
+    "key": "enter",
+    "command": "expand_region",
+    "when": "editorTextFocus && neovim.mode != insert && vim.mode != 'SearchInProgressMode'"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "undo_expand_region",
+    "when": "editorTextFocus && editorHasSelection"
+  },
+
   // ================================================================
   // Basic
   // ================================================================
+  // 让你的 Esc 优先执行取消提示建议的操作，然后才会识别进入 normal 模式
+  // {
+  //   "key": "escape",
+  //   "command": "hideSuggestWidget",
+  //   "when": "suggestWidgetVisible && textInputFocus"
+  // },
+  {
+    "key": "cmd+l",
+    "command": "markdown.extension.checkTaskList",
+    "when": "editorTextFocus && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
+  },
   // 选择最近的文件工作区（只能在聚焦文件管理、编辑器、Panel 时使用）
   {
     "key": "cmd+r",
@@ -165,6 +188,17 @@
     "command": "explorer.newFolder",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
+  // 复制/粘贴
+  {
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
   // 重命名/删除
   {
     "key": "r",
@@ -223,6 +257,17 @@
   // ================================================================
   // Editor
   // ================================================================
+  // 选中范围扩大与缩小（通过 Enter 取代）
+  // {
+  //   "key": "cmd+-",
+  //   "command": "undo_expand_region",
+  //   "when": "editorTextFocus && editorHasSelection"
+  // },
+  // {
+  //   "key": "cmd+=",
+  //   "command": "expand_region",
+  //   "when": "editorTextFocus"
+  // },
   // 查找替换
   {
     "key": "cmd+g",
@@ -285,7 +330,6 @@
     // "command": "openInTerminal",
     "command": "openInIntegratedTerminal"
   },
-
   // 创建终端（水平方向）
   {
     "key": "cmd+d",
@@ -513,5 +557,15 @@
   {
     "key": "ctrl+shift+f7",
     "command": "-extension.backgroundCover.refresh"
+  },
+  {
+    "key": "cmd+l cmd+o",
+    "command": "-fiveServer.start",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+l cmd+c",
+    "command": "-fiveServer.close",
+    "when": "editorTextFocus"
   }
 ]

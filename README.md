@@ -2,21 +2,21 @@
 
 ### vscode
 
-- [`settings.json`](./01-vscode/settings.json)
-- [`settings-comments.json`](./01-vscode/settings-comments.json)
-- [`keybindings.json`](./01-vscode/keybindings.json)
+- [`settings.json`](./vscode/settings.json)
+- [`keybindings.json`](./vscode/keybindings.json)
 
 ### zsh
 
-- [`.vimrc`](./02-zsh/.vimrc)
-- [`.zimrc`](./02-zsh/.zimrc)
+- [`.vimrc`](./zsh/.vimrc)
+- [`.zimrc`](./zsh/.zimrc)
+- [`init.vim`](./zsh/init.vim)
 
 <p align="center"><b>Preview</b></p>
 
 <p align="center">
 <img src="./images/theme-LightModern.png">
 <img src="./images/theme-PandaSyntax2.png">
-<img src="./images/theme-SpacegrayEightiesDark.png">
+<!-- <img src="./images/theme-SpacegrayEightiesDark.png"> -->
 </p>
 
 ### Themes
