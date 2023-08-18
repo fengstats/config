@@ -143,9 +143,9 @@ noremap j gj
 noremap H ^
 noremap L $
 " 返回上次光标所在位置 | 可跨文件
-nnoremap gk <c-o>
+" nnoremap gk <c-o>
 " 与 gk 相反
-nnoremap gj <c-i>
+" nnoremap gj <c-i>
 " 将查找所在行内容居中显示 | 目前通过 easymotion 替代了
 " nnoremap n nzz
 " nnoremap N Nzz
@@ -191,7 +191,7 @@ nnoremap <leader>k <C-w>k
 " 开启/关闭 单词拼写检查
 " nnoremap <leader>sc :set spell!<cr>
 " 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder
-map <leader><leader> <esc>/<++><cr>:nohl<cr>"_c4l
+" map <leader><leader> <esc>/<++><cr>:nohl<cr>"_c4l
 " 刷新全局 vimrc 配置 | 系统会根据文件等级依次往下找
 nnoremap R :source $MYVIMRC<cr>
 " 每次进入一个新文件时先执行取消高亮命令 | 防止上次在此文件的高亮结果再次显示造成视觉干扰

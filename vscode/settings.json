@@ -1,6 +1,8 @@
 {
   // Basic
-  // turn off system sound
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.openEditors.visible": 20,
   "files.eol": "\n",
   "files.autoSave": "off",
   "files.insertFinalNewline": true,
@@ -9,12 +11,6 @@
     ".zimrc": "shellscript",
     "*.json": "jsonc"
   },
-  "filesize.displayInfoOnTheRightSideOfStatusBar": true,
-  "breadcrumbs.icons": false,
-  "extensions.ignoreRecommendations": true,
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
-  "explorer.openEditors.visible": 20,
   "search.smartCase": true,
   "search.exclude": {
     "**/.git": true,
@@ -35,281 +31,75 @@
     "**/yarn.lock": true
   },
 
-  // Window and Workbench
-  "window.nativeTabs": false,
+  // Window
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
-  "window.zoomLevel": 0.7,
-  "window.commandCenter": false,
-  "window.autoDetectColorScheme": false,
-  // sundial
-  "sundial.sunrise": "06:30",
-  "sundial.sunset": "17:55",
-  "sundial.interval": 30,
-  "sundial.daySettings": {},
-  "sundial.nightSettings": {},
-  "workbench.iconTheme": "pop-icon-theme",
+  "window.zoomLevel": 0.6,
+
+  // Workbench
+  "workbench.iconTheme": "easy-icons",
+  "workbench.productIconTheme": "icons-carbon",
   "workbench.colorTheme": "Default Dark+",
   "workbench.preferredLightColorTheme": "Panda Moe",
   "workbench.preferredDarkColorTheme": "Panda Moe",
-  "workbench.tree.expandMode": "singleClick",
-  "workbench.tree.indent": 10,
   "workbench.list.smoothScrolling": true,
-  // 关闭文件后是否聚焦到最近打开过的文件
   "workbench.editor.focusRecentEditorAfterClose": false,
   "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editor.showTabs": true,
-  "workbench.editor.showIcons": true,
-  "workbench.editor.closeOnFileDelete": false,
-  "workbench.editor.wrapTabs": false,
-  "workbench.editor.limit.value": 20,
+  "workbench.editor.limit.value": 12,
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.editor.limit.enabled": true,
-  "workbench.editor.tabSizingFixedMinWidth": 80,
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#00000000",
+    "[Default Dark+]": {
+      "terminal.ansiBlue": "#8adcf1",
+      "terminal.ansiRed": "#ff6b81",
+      "terminal.ansiBrightRed": "#ff7675",
+      "statusBar.background": "#333"
+    }
+  },
 
   // Editor
-  "emmet.showSuggestionsAsSnippets": true,
-  "emmet.useInlineCompletions": true,
-  "editor.linkedEditing": true,
   "editor.tabSize": 2,
-  "editor.fontSize": 13,
-  "editor.lineNumbers": "on",
-  // "editor.lineHeight": 1.5,
+  "editor.fontSize": 13.5,
+  "editor.lineNumbers": "interval",
+  "editor.lineHeight": 1.5,
+  "editor.linkedEditing": true,
   "editor.fontFamily": "Input Mono Freeze, monospace",
   // "editor.fontFamily": "Input Mono, monospace",
   // "editor.fontFamily": "Monaco, monospace",
   // "editor.fontFamily": "JetBrains Mono, monospace",
-  // "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'zero'",
-  // "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'ss12', 'ss13",
   "editor.minimap.enabled": false,
-  "editor.minimap.size": "proportional",
   "editor.suggest.insertMode": "replace",
+  "editor.cursorSurroundingLines": 5,
+  "editor.suggest.localityBonus": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "editor.accessibilitySupport": "off",
+  "editor.renderLineHighlight": "all",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.smoothScrolling": true,
+  "editor.stickyScroll.enabled": true,
   "editor.quickSuggestions": {
     "strings": "on"
   },
   "editor.unicodeHighlight.allowedLocales": {
-    // 允许中文符号显示而不突出高亮
     "zh-hant": true
   },
-  "editor.cursorSurroundingLines": 4,
-  "editor.suggest.localityBonus": true,
-  "editor.suggest.shareSuggestSelections": true,
-  // NOTE: 使用 snippets 时阻止快速提示信息
-  "editor.suggest.snippetsPreventQuickSuggestions": true,
-  "editor.acceptSuggestionOnEnter": "on",
-  "editor.detectIndentation": true,
-  "editor.accessibilitySupport": "off",
-  "editor.renderLineHighlight": "line",
-  "editor.cursorBlinking": "phase",
-  "editor.cursorSmoothCaretAnimation": "on",
-  "editor.find.addExtraSpaceOnTop": false,
-  "editor.glyphMargin": true,
-  "editor.multiCursorModifier": "alt",
-  "editor.renderWhitespace": "selection",
-  "editor.unicodeHighlight.invisibleCharacters": false,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-  "editor.guides.bracketPairs": "active",
-  "editor.smoothScrolling": true,
-  "editor.scrollBeyondLastLine": true,
-  "editor.stickyScroll.enabled": false,
-  "editor.hover.sticky": true,
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
     "source.fixAll.eslint": true
   },
-  // NOTE: 从当前主题重写编辑器某些关键字样式
-  "editor.semanticTokenColorCustomizations": {
-    "enabled": true
-  },
   "editor.tokenColorCustomizations": {
-    "[Houston]": {
-      "comments": "#adb5ad"
-    },
     "[Default Dark+]": {
       "comments": "#adb5ad"
     },
-    "[Bearded Theme Monokai Stone]": {
-      "comments": "#adb5ad"
-    },
-    "[Moegi Light]": {
-      "comments": "#7f8c8d"
-    },
-    "[Spacegray Eighties Dark]": {
-      "comments": "#adb5ad",
-      "textMateRules": [
-        {
-          // JSON key
-          "scope": ["support.type.property-name"],
-          "settings": {
-            "foreground": "#ff7675"
-          }
-        },
-        {
-          // 符号：前后引号 + 被引号包围的字符
-          "scope": ["punctuation.definition.string.begin", "punctuation.definition.string.end", "string.quoted"],
-          "settings": {
-            "foreground": "#55efc4"
-          }
-        },
-        {
-          // markdown 无序列表
-          "scope": ["markup.list.unnumbered"],
-          "settings": {
-            "foreground": "#bdc3c7"
-          }
-        },
-        {
-          // markdown 链接
-          "scope": ["markup.underline"],
-          "settings": {
-            "foreground": "#48dbfb"
-          }
-        }
-      ]
-    },
-    "[Vitesse Dark]": {
-      "comments": "#909090"
-    },
-    "[Ayu Mojave]": {
-      "comments": "#a2aaa2"
-    },
-    "[One Dark Pro Darker]": {
-      "comments": "#a2aaa2"
-    },
     "[Moegi Dark Vitesse]": {
       "comments": "#a1a7a1"
-    },
-    "[GitHub Dark Dimmed]": {
-      "comments": "#adb5ad"
-    },
-    "[Panda Syntax][Panda Moe]": {
-      "comments": "#adb5ad",
-      "textMateRules": [
-        // {
-        //   "scope": ["variable"],
-        //   "settings": {
-        //     "foreground": "#ffbe76",
-        //     "fontStyle": ""
-        //   }
-        // },
-        // {
-        //   "scope": ["variable.other", "variable.parameter"],
-        //   "settings": {
-        //     "foreground": "#ff0000",
-        //     "fontStyle": ""
-        //   }
-        // },
-        // NOTE: Vue 项目中子组件和组件库标签的颜色关键字
-        {
-          "scope": ["support.class.component"],
-          "settings": {
-            "foreground": "#54e4f4",
-            "fontStyle": ""
-          }
-        },
-        {
-          "scope": [
-            "entity.name.tag",
-            "entity.name.tag.html",
-            "entity.name.tag.css"
-            // "source.vue"
-            // "meta.tag.structure.any.html",
-            // "meta.tag.other.html",
-            // "meta.tag.metadata.script.html",
-            // "entity.name.tag.jade",
-            // "entity.name.tag.pug",
-            // "meta.tag.other"
-          ],
-          "settings": {
-            "foreground": "#ed9cc2"
-          }
-        }
-      ]
-    },
-    "[Panda Moe]": {
-      "textMateRules": [
-        {
-          "scope": [
-            // new URL()
-            "entity.name.type",
-            "entity.name.type.class"
-            // "support.class"
-          ],
-          "settings": {
-            "foreground": "#6FC1FF",
-            "fontStyle": ""
-          }
-        },
-
-        {
-          "scope": [
-            // css 原生属性
-            "support.constant.property-value.css"
-          ],
-          "settings": {
-            "foreground": "#19F1D0"
-          }
-        },
-        {
-          "scope": [
-            "source.vue",
-            // 变量/属性
-            "variable.other.property",
-            // 只读常量
-            "readonly",
-            // js/ts
-            "source.js",
-            "source.ts",
-            "variable.other.object.ts",
-            "variable.other.readwrite.ts",
-            "support.type.property-name.css",
-            "variable.other.constant.object.ts",
-            "variable.other.less"
-          ],
-          "settings": {
-            "foreground": "#ED9CC2",
-            "fontStyle": ""
-          }
-        },
-        {
-          "scope": [
-            // css 中的数字
-            "constant.numeric.css",
-            // deg
-            "keyword.other.unit.deg.css",
-            // css 百分比
-            "keyword.other.unit.percentage.css",
-            // px
-            "keyword.other.unit.px.css"
-          ],
-          "settings": {
-            "foreground": "#FFCC95"
-          }
-        },
-        {
-          "scope": [
-            // 标签内的文字
-            "text.html.derivative",
-            // 终结符（分号）
-            "punctuation.terminator",
-            // 分隔符（逗号/等于）
-            "punctuation.separator",
-            // .vue: 冒号/引号
-            "meta.tag.other"
-          ],
-          "settings": {
-            "foreground": "#E6E6E6"
-          }
-        },
-        {
-          "scope": ["punctuation.definition.tag"],
-          "settings": {
-            "foreground": "#ADB5AD",
-            "fontStyle": ""
-          }
-        }
-      ]
     },
     "textMateRules": [
       {
@@ -319,119 +109,66 @@
           "fontStyle": ""
         }
       }
-      // {
-      //   "name": "Keyword Bold",
-      //   "scope": ["keyword", "storage.type", "storage.modifier"],
-      //   "settings": {
-      //     "fontStyle": "bold"
-      //   }
-      // }
     ]
-  },
-  "workbench.colorCustomizations": {
-    "minimap.background": "#ffffff08",
-    "[Default Dark+]": {
-      "terminal.ansiBlue": "#8adcf1",
-      "terminal.ansiRed": "#ff6b81",
-      "terminal.ansiBrightRed": "#ff7675",
-      "statusBar.background": "#333"
-    },
-    "[Moegi Light]": {
-      "terminal.ansiBlue": "#1a7b93",
-      "terminal.ansiRed": "#d35366",
-      "terminal.ansiBrightRed": "#e23737"
-    },
-    "[Spacegray Eighties Dark]": {
-      "tab.border": "#aaaaaa2f",
-      "tab.activeBorder": "#71edd1af"
-    },
-    "[Panda Syntax][Panda Moe]": {
-      // "commandCenter.border": "#71edd18f",
-      "badge.background": "#aaaaaa",
-      "badge.foreground": "#000000",
-      "quickInput.background": "#202020bf",
-      "widget.shadow": "#0000008f",
-      "titleBar.border": "#aaaaaa2f",
-      "list.activeSelectionBackground": "#71edd11f",
-      "list.focusBackground": "#00000000",
-      "list.inactiveSelectionBackground": "#aaaaaa2f",
-      "tab.border": "#aaaaaa2f",
-      "contrastBorder": "#0000008f",
-      // "tab.activeBorderTop": "#71edd1",
-      // "tab.activeBorder": "#292a2b",
-      "tab.activeBorder": "#71edd1df",
-      "textCodeBlock.background": "#aaaaaa4f",
-      "editor.lineHighlightBackground": "#71edd11f",
-      // "editor.selectionBackground": "#71edd13f",
-      "editor.selectionHighlightBorder": "#71edd14f",
-      "editor.selectionHighlightBackground": "#aaaaaa2f",
-      "editor.wordHighlightBorder": "#71edd15f",
-      "editor.wordHighlightBackground": "#aaaaaa2f",
-      "editorCursor.background": "#ffffff",
-      "editorLineNumber.activeForeground": "#71edd1",
-      "editorGroupHeader.tabsBorder": "#aaaaaa4f",
-      "editorWidget.foreground": "#cccccc",
-      "editorWidget.background": "#202020ef",
-      "editorSuggestWidget.selectedForeground": "#ffffff",
-      "editorSuggestWidget.selectedBackground": "#0a3d62",
-      // "editorSuggestWidget.selectedBackground": "#aaaaaa2f",
-      "editorHoverWidget.background": "#202020ef",
-      "scrollbarSlider.activeBackground": "#aaaaaa2f",
-      "scrollbarSlider.background": "#aaaaaa2f",
-      "scrollbarSlider.hoverBackground": "#aaaaaa2f",
-      // "terminal.ansiBlue": "#3498db",
-      "terminal.ansiBlue": "#8adcf1",
-      "terminal.ansiRed": "#ff6b81",
-      "terminal.ansiBrightRed": "#ff7675"
-    }
   },
 
   // Terminal
-  "terminal.integrated.fontSize": 13,
   "terminal.integrated.gpuAcceleration": "on",
-  "terminal.integrated.fontFamily": "Input Mono Freeze, Hack Nerd Font Mono, monospace",
-  // "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
-  // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
+  "terminal.integrated.fontSize": 13,
   "terminal.integrated.lineHeight": 1.1,
-  "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.confirmOnKill": "never",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.fontFamily": "Input Mono Freeze, Hack Nerd Font Mono, monospace",
+  // "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
+  // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
+
+  // Formatter
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.printWidth": 120,
+  "prettier.proseWrap": "preserve",
+  "editor.formatOnSave": true,
+  "formatFiles.excludedFolders": ["node_modules", ".vscode", ".git", "dist", ".chrome", "attachments"],
+  "formatFiles.extensionsToInclude": ".md",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript][jsonc][vue][typescript][html][css][less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Extensions
+  "extensions.ignoreRecommendations": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1,
+    "vscodevim.vim": 2,
+    "Vue.volar": 3
+    // "BrandonKirbyson.vscode-animations": 4,
+  },
 
   // Vim
   "vim.leader": "<space>",
-  "vim.easymotion": false,
   "vim.useSystemClipboard": true,
-  "vim.incsearch": true,
   "vim.useCtrlKeys": false,
   "vim.hlsearch": true,
-  "vim.surround": true,
-  "vim.sneak": true,
-  // 设置 jk 遇到折叠代码时不自动展开
   "vim.foldfix": true,
-  // yy 操作时显示高亮
   "vim.highlightedyank.enable": true,
-  "vim.highlightedyank.duration": 120,
-  "vim.highlightedyank.color": "rgba(46, 213, 115, 0.6)",
+  "vim.highlightedyank.duration": 80,
+  "vim.highlightedyank.color": "#00000000",
   "vim.highlightedyank.textColor": "white",
-  // TODO: 崔大写的 leap 插件，具体记录看 2023-05-21 日记，先用着
-  "vim.leap.enable": false,
-  "vim.leap.bidirectionalSearch": true,
-  "vim.leap.showMarkerPosition": "target",
-  "vim.leap.labels": "sklyuiopnm,qwertzxcvbahdgjf;",
-  "vim.leap.marker.charColor": "#ffffff",
-  "vim.leap.marker.backgroundColors": ["#d63031", "#3742fa"],
-  "vim.leap.caseSensitive": false,
   "vim.handleKeys": {
     "<C-f>": false,
     "<C-v>": true,
     "<C-a>": true,
     "<C-x>": true,
     "<C-i>": true,
-    "<C-o>": true,
-    "<C-y>": true
+    "<C-o>": true
   },
-  "vim.insertModeKeyBindings": [],
   "vim.operatorPendingModeKeyBindings": [
     {
       "before": ["H"],
@@ -444,24 +181,20 @@
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
+      "before": ["\""],
+      "after": ["S", "\""]
+    },
+    {
+      "before": ["'"],
+      "after": ["S", "'"]
+    },
+    {
       "before": ["backspace"],
       "after": ["\"", "_", "c"]
     },
     {
       "before": ["g", "h"],
       "commands": ["editor.action.showHover"]
-    },
-    {
-      "before": ["j"],
-      "after": ["g", "j"]
-    },
-    {
-      "before": ["k"],
-      "after": ["g", "k"]
-    },
-    {
-      "before": ["enter"],
-      "after": ["a", "f"]
     },
     {
       "before": ["p"],
@@ -482,61 +215,40 @@
     {
       "before": ["L"],
       "after": ["g", "_"]
+    },
+    {
+      "before": ["leader", "d", "f"],
+      "after": ["$", "%", "d"]
+    },
+    {
+      "before": ["leader", "i", "w"],
+      "after": ["$", "%", "o"]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Basic
     {
-      "before": ["leader", "l"],
-      "commands": ["workbench.action.toggleAuxiliaryBar"]
+      "before": [",", ","],
+      "after": ["A", ",", "esc"]
     },
     {
-      "before": ["leader", "e"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
-    },
-
-    // Editor
-    {
-      "before": ["leader", "i"],
-      "commands": ["extension.toggleBool"]
+      "before": ["'", "'"],
+      "after": ["v", "i", "w", "S", "'", "b"]
     },
     {
-      "before": ["n"],
-      "after": ["n", "z", "z"]
+      "before": ["\"", "\""],
+      "after": ["v", "i", "w", "S", "\"", "b"]
     },
     {
-      "before": ["N"],
-      "after": ["N", "z", "z"]
-    },
-    // leap 快速跳转，就是弹框模式有点突兀，功能实现倒是没什么问题
-    // {
-    //   "before": ["s"],
-    //   "commands": ["leap.find"]
-    // },
-    // 覆盖 Vim 提供的原始命令，使用 VSCode 提供的折叠/展开
-    {
-      "before": ["z", "C"],
-      "commands": ["editor.foldAll"]
-    },
-    {
-      "before": ["z", "O"],
-      "commands": ["editor.unfoldAll"]
-    },
-    {
-      "before": ["j"],
-      "after": ["g", "j"]
-    },
-    {
-      "before": ["k"],
-      "after": ["g", "k"]
-    },
-    {
-      "before": ["K"],
-      "after": ["5", "g", "k"]
+      "before": ["s"],
+      "commands": ["leap.find"]
     },
     {
       "before": ["J"],
       "after": ["5", "g", "j"]
+    },
+    {
+      "before": ["K"],
+      "after": ["5", "g", "k"]
     },
     {
       "before": ["H"],
@@ -549,6 +261,50 @@
     {
       "before": ["U"],
       "after": ["<c-r>"]
+    },
+    {
+      "before": ["n"],
+      "after": ["n", "z", "z"]
+    },
+    {
+      "before": ["N"],
+      "after": ["N", "z", "z"]
+    },
+    {
+      "before": ["z", "C"],
+      "commands": ["editor.foldAll"]
+    },
+    {
+      "before": ["z", "O"],
+      "commands": ["editor.unfoldAll"]
+    },
+    {
+      "before": ["leader", "d", "f"],
+      "after": ["V", "$", "%", "d"]
+    },
+    {
+      "before": ["leader", "i", "w"],
+      "after": ["V", "$", "%", "o"]
+    },
+    {
+      "before": ["leader", "["],
+      "after": ["[", "{"]
+    },
+    {
+      "before": ["leader", "]"],
+      "after": ["]", "}"]
+    },
+    {
+      "before": ["leader", "o"],
+      "commands": ["extension.toggleBool"]
+    },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.toggleAuxiliaryBar"]
+    },
+    {
+      "before": ["leader", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
     },
     {
       "before": ["leader", "s"],
@@ -565,75 +321,7 @@
     {
       "before": ["leader", ";"],
       "commands": [":noh"]
-    },
-    {
-      "before": ["leader", "d", "f"],
-      "commands": ["git.openChange"]
-    },
-    {
-      "before": ["leader", "v", "v"],
-      "commands": ["hocusPocus.createVariable"]
-    },
-    {
-      "before": ["leader", "f", "f"],
-      "commands": ["hocusPocus.createFunction"]
-    },
-    {
-      "before": ["leader", "["],
-      "after": ["[", "{"]
-    },
-    {
-      "before": ["leader", "]"],
-      "after": ["]", "}"]
-    },
-
-    // Terminal
-    {
-      "before": ["leader", "t"],
-      "commands": ["workbench.action.terminal.focus"]
     }
-
-    // Disable
-    // {
-    //   "before": ["g", "k"],
-    //   "after": ["<c-o>"]
-    // },
-    // {
-    //   "before": ["g", "j"],
-    //   "after": ["<c-i>"]
-    // },
-    // {
-    //   "before": ["s", "l", ";"],
-    //   "commands": [":vsplit"]
-    // },
-    // {
-    //   "before": ["s", "j", ";"],
-    //   "commands": [":split"]
-    // },
-    // {
-    //   "before": ["leader", "a"],
-    //   "commands": ["explorer.newFile"]
-    // },
-    // {
-    //   "before": ["leader", "A"],
-    //   "commands": ["explorer.newFolder"]
-    // },
-    // {
-    //   "before": ["leader", "k"],
-    //   "commands": ["editor.action.marker.prev"]
-    // },
-    // {
-    //   "before": ["leader", "j"],
-    //   "commands": ["editor.action.marker.next"]
-    // },
-    // {
-    //   "before": ["Q"],
-    //   "commands": ["workbench.action.closeActiveEditor"]
-    // },
-    // {
-    //   "before": ["leader", "f"],
-    //   "after": ["g", "f"]
-    // }
   ],
 
   // NeoVim
@@ -641,12 +329,38 @@
   "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/opt/neovim/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "/Users/feng/.config/zsh/init.vim",
 
+  // Git
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
+
+  // Codeium
+  "codeium.enableSearch": false,
+  "codeium.enableCodeLens": false,
+  "codeium.enableConfig": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "jsonc": false
+  },
+
+  // Markdown
+  "markdown-preview-github-styles.colorTheme": "light",
+  "markdown-preview-github-styles.lightTheme": "light_tritanopia",
+  "markdown-preview-github-styles.darkTheme": "dark_dimmed",
+
+  // IndentRainbow
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.lightIndicatorStyleLineWidth": 1,
+  "indentRainbow.colors": [
+    "rgba(127,255,127,0.4)",
+    "rgba(255,255,64,0.4)",
+    "rgba(255,127,255,0.4)",
+    "rgba(79,236,236,0.4)"
+  ],
+
   // Comment Anchors
-  "commentAnchors.tags.provideAutoCompletion": false,
-  "commentAnchors.parseDelay": 300,
-  "commentAnchors.workspace.maxFiles": 50,
-  "commentAnchors.workspace.excludeFiles": "**/{node_modules,.git,.idea,target,out,build,bin,obj,dist,vendor}/**/*",
-  "commentAnchors.tags.separators": [" - ", ": ", " ", "："],
   "commentAnchors.tags.anchors": {
     "ANCHOR": {
       "isBold": false,
@@ -704,58 +418,10 @@
     }
   },
 
-  // ErrorLens
-  "errorLens.fontFamily": "Monaco, monospace",
-  "errorLens.fontWeight": "normal",
-  "errorLens.margin": "20px",
-  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
-  "errorLens.excludeBySource": ["cSpell", "Grammarly", "eslint"],
-  // "errorLens.messageTemplate": "$severity($source): $message",
-  // "errorLens.messageTemplate": "$severity：$message ($source) $count",
-
-  // Formatter
-  "editor.formatOnSave": true,
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
-  "prettier.printWidth": 120,
-  "prettier.proseWrap": "never",
-  // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript][jsonc][vue][typescript][html][css][less]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[html]": {
-    "editor.suggest.insertMode": "replace"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "formatFiles.excludedFolders": ["node_modules", ".vscode", ".git", "dist", ".chrome", "attachments"],
-  "formatFiles.extensionsToInclude": ".md",
-
-  // paramHints
-  "javascript.inlayHints.parameterNames.enabled": "none",
-  "typescript.inlayHints.parameterNames.enabled": "none",
-  "javascript.inlayHints.parameterTypes.enabled": false,
-  "typescript.inlayHints.parameterTypes.enabled": false,
-  "editor.inlayHints.enabled": "off",
-
-  // git
-  "git.autofetch": true,
-  "git.confirmSync": false,
-  "git.enableSmartCommit": true,
-  "git.untrackedChanges": "separate",
-  "git.openRepositoryInParentFolders": "never",
-  // TODO: 这玩意让我在单文件 JS 中失去了变量提示，有点问题，后续看一下
-  "js/ts.implicitProjectConfig.checkJs": true,
-
-  // spell check
-  "cSpell.useGitignore": false,
+  // Code Spell Checker
   "cSpell.enableFiletypes": ["vimrc"],
   "cSpell.userWords": [
+    "autofetch",
     "bilibili",
     "Codegeex",
     "codeium",
@@ -764,16 +430,22 @@
     "easymotion",
     "feng",
     "filesize",
+    "foldfix",
+    "Grammarly",
+    "highlightedyank",
     "hlsearch",
     "incsearch",
     "juejin",
     "Moegi",
     "neovim",
+    "nuxt",
     "peachpuff",
     "powermode",
+    "rgba",
     "tencent",
     "timi",
     "utools",
+    "vimrc",
     "Vitesse",
     "vscodevim",
     "wechat",
@@ -781,54 +453,13 @@
     "yuque",
     "zhihu",
     "zimfw",
+    "zimrc",
     "zmodule"
   ],
 
-  // indent rainbow
-  "indentRainbow.indicatorStyle": "light",
-  "indentRainbow.lightIndicatorStyleLineWidth": 1,
-  "indentRainbow.colors": [
-    "rgba(127,255,127,0.3)",
-    "rgba(255,255,64,0.3)",
-    "rgba(255,127,255,0.3)",
-    "rgba(79,236,236,0.3)"
-  ],
-
-  // Intellisense
-  "codeium.enableSearch": false,
-  "codeium.enableCodeLens": false,
-  "codeium.enableConfig": {
-    "*": true,
-    "plaintext": true,
-    "markdown": true,
-    "jsonc": false
-  },
-
-  // Animations
-  "animations.Custom-CSS": false,
-  "animations.Active": "None",
-  "animations.Tabs": "None",
-  "animations.Scrolling": "Fade",
-  "animations.Command-Palette": "Fade",
-  "animations.Smooth-Mode": false,
-  "animations.Durations": {
-    "Command-Palette": 200,
-    "Scrolling": 200
-  },
-  "vscode_custom_css.imports": [
-    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-1.0.14/dist/updateHandler.js"
-  ],
-
-  // Background Image
-  "backgroundCover.imagePath": "/Users/feng/Pictures/02-Wallpaper/pc/pc-25.png",
-  "backgroundCover.randomImageFolder": "/Users/feng/Pictures/02-Wallpaper/pc",
-  "backgroundCover.opacity": 0.2,
-  "backgroundCover.autoStatus": false,
-
-  // Markdown
-  "markdown-preview-github-styles.colorTheme": "light",
-  "markdown-preview-github-styles.lightTheme": "light_tritanopia",
-  "markdown-preview-github-styles.darkTheme": "dark_dimmed",
+  // ErrorLens
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
+  "errorLens.excludeBySource": ["cSpell", "Grammarly"],
 
   // Translate
   "commentTranslate.hover.string": true,
@@ -840,21 +471,4 @@
   "commentTranslate.maxTranslationLength": 1000,
   "commentTranslate.targetLanguage": "zh-CN",
   "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud",
-
-  // other
-  "livePreview.notifyOnOpenLooseFile": false,
-  "less.compile": {
-    "outExt": ".css"
-  },
-  // NOTE: 单独开启一个线程运行，提升性能，1/2/3 是不同进程分组
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1,
-    "vscodevim.vim": 2,
-    "Vue.volar": 3
-    // "BrandonKirbyson.vscode-animations": 4,
-  },
-  "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
-  },
-  "diffEditor.ignoreTrimWhitespace": false
 }
