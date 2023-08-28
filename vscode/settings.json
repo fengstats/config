@@ -34,14 +34,11 @@
   // Window
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
+  "window.commandCenter": true,
   "window.zoomLevel": 0.6,
-
-  // Workbench
-  "workbench.iconTheme": "easy-icons",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.colorTheme": "GitHub Dark Classic",
   "workbench.productIconTheme": "icons-carbon",
-  "workbench.colorTheme": "Default Dark+",
-  "workbench.preferredLightColorTheme": "Panda Moe",
-  "workbench.preferredDarkColorTheme": "Panda Moe",
   "workbench.list.smoothScrolling": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
   "workbench.editor.highlightModifiedTabs": true,
@@ -49,7 +46,7 @@
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.editor.limit.enabled": true,
   "workbench.colorCustomizations": {
-    "editor.lineHighlightBackground": "#00000000",
+    "editor.lineHighlightBackground": "#ffffff00",
     "[Default Dark+]": {
       "terminal.ansiBlue": "#8adcf1",
       "terminal.ansiRed": "#ff6b81",
@@ -57,33 +54,27 @@
       "statusBar.background": "#333"
     }
   },
+  // "workbench.preferredLightColorTheme": "Panda Moe",
+  // "workbench.preferredDarkColorTheme": "Panda Moe",
 
   // Editor
   "editor.tabSize": 2,
   "editor.fontSize": 13.5,
   "editor.lineNumbers": "interval",
   "editor.lineHeight": 1.5,
-  "editor.linkedEditing": true,
+  "editor.linkedEditing": false,
   "editor.fontFamily": "Input Mono Freeze, monospace",
-  // "editor.fontFamily": "Input Mono, monospace",
-  // "editor.fontFamily": "Monaco, monospace",
-  // "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.minimap.enabled": false,
-  "editor.suggest.insertMode": "replace",
   "editor.cursorSurroundingLines": 5,
-  "editor.suggest.localityBonus": true,
   "editor.suggest.snippetsPreventQuickSuggestions": true,
   "editor.accessibilitySupport": "off",
   "editor.renderLineHighlight": "all",
-  "editor.cursorBlinking": "smooth",
+  "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.guides.bracketPairs": "active",
   "editor.smoothScrolling": true,
-  "editor.stickyScroll.enabled": true,
-  "editor.quickSuggestions": {
-    "strings": "on"
-  },
+  "editor.stickyScroll.enabled": false,
   "editor.unicodeHighlight.allowedLocales": {
     "zh-hant": true
   },
@@ -95,6 +86,9 @@
     "source.fixAll.eslint": true
   },
   "editor.tokenColorCustomizations": {
+    "[GitHub Dark Classic][Atom One Dark]": {
+      "comments": "#95a5a6"
+    },
     "[Default Dark+]": {
       "comments": "#adb5ad"
     },
@@ -111,8 +105,16 @@
       }
     ]
   },
+  // "editor.fontFamily": "Input Mono, monospace",
+  // "editor.fontFamily": "Monaco, monospace",
+  // "editor.fontFamily": "JetBrains Mono, monospace",
+  // "emmet.showSuggestionsAsSnippets": true,
+  // "editor.quickSuggestions": {
+  //   "strings": "on"
+  // },
 
   // Terminal
+  "terminal.external.osxExec": "iTerm",
   "terminal.integrated.gpuAcceleration": "on",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.lineHeight": 1.1,
@@ -120,6 +122,9 @@
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.fontFamily": "Input Mono Freeze, Hack Nerd Font Mono, monospace",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
   // "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
 
@@ -145,11 +150,13 @@
   // Extensions
   "extensions.ignoreRecommendations": true,
   "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1,
-    "vscodevim.vim": 2,
-    "Vue.volar": 3
+    "vscodevim.vim": 1,
+    "asvetliakov.vscode-neovim": 2
+    // BUG: 将 Volar 单独配置线程后，hover 提示或者输入提示会出现重复的选项，起初以为是插件的问题，没想到是这个！
+    // "Vue.volar": 3
     // "BrandonKirbyson.vscode-animations": 4,
   },
+  "js/ts.implicitProjectConfig.checkJs": true,
 
   // Vim
   "vim.leader": "<space>",
@@ -157,6 +164,7 @@
   "vim.useCtrlKeys": false,
   "vim.hlsearch": true,
   "vim.foldfix": true,
+  "vim.easymotion": true,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.duration": 80,
   "vim.highlightedyank.color": "#00000000",
@@ -166,8 +174,8 @@
     "<C-v>": true,
     "<C-a>": true,
     "<C-x>": true,
-    "<C-i>": true,
-    "<C-o>": true
+    // insert mode 下删除一个单词的快捷方式
+    "<C-w>": true
   },
   "vim.operatorPendingModeKeyBindings": [
     {
@@ -187,10 +195,6 @@
     {
       "before": ["'"],
       "after": ["S", "'"]
-    },
-    {
-      "before": ["backspace"],
-      "after": ["\"", "_", "c"]
     },
     {
       "before": ["g", "h"],
@@ -218,29 +222,37 @@
     },
     {
       "before": ["leader", "d", "f"],
-      "after": ["$", "%", "d"]
+      "after": ["V", "$", "%", "d"]
     },
     {
       "before": ["leader", "i", "w"],
-      "after": ["$", "%", "o"]
+      "after": ["V", "$", "%", "o"]
     }
+    // {
+    //   "before": ["backspace"],
+    //   "after": ["\"", "_", "c"]
+    // },
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.goToReferences"]
+    },
     {
       "before": [",", ","],
       "after": ["A", ",", "esc"]
     },
     {
       "before": ["'", "'"],
-      "after": ["v", "i", "w", "S", "'", "b"]
+      "after": ["v", "i", "w", "S", "'", "e", "l"]
     },
     {
       "before": ["\"", "\""],
-      "after": ["v", "i", "w", "S", "\"", "b"]
+      "after": ["v", "i", "w", "S", "\"", "e", "l"]
     },
     {
       "before": ["s"],
-      "commands": ["leap.find"]
+      "after": ["<space>", "<space>", "2", "s"]
     },
     {
       "before": ["J"],
@@ -322,6 +334,14 @@
       "before": ["leader", ";"],
       "commands": [":noh"]
     }
+    // {
+    //   "before": ["s"],
+    //   "commands": ["leap.find"]
+    // },
+    // {
+    //   "before": ["enter"],
+    //   "commands": ["expand_region"]
+    // },
   ],
 
   // NeoVim
