@@ -1,23 +1,18 @@
 [
   // Vim or NeoVim
+  // 选中范围扩大、缩小
   {
     "key": "enter",
     "command": "expand_region",
-    "when": "editorTextFocus && neovim.mode != insert && vim.mode != 'SearchInProgressMode' && vim.mode != 'Insert' && vim.mode != 'CommandlineInProgress'"
+    "when": "editorTextFocus && (vim.mode == 'Normal' || vim.mode == 'Visual') && !suggestWidgetVisible"
   },
   {
-    "key": "ctrl+enter",
+    "key": "backspace",
     "command": "undo_expand_region",
-    "when": "editorTextFocus && editorHasSelection"
+    "when": "editorTextFocus && editorHasSelection && vim.mode == 'Visual'"
   },
 
   // Basic
-  // 让你的 Esc 优先执行取消提示建议的操作，然后才会识别进入 normal 模式
-  // {
-  //   "key": "escape",
-  //   "command": "hideSuggestWidget",
-  //   "when": "suggestWidgetVisible && textInputFocus"
-  // },
   {
     "key": "cmd+l",
     "command": "markdown.extension.checkTaskList",
@@ -53,11 +48,6 @@
     "command": "search.action.replace",
     "when": "matchFocus && replaceActive && searchViewletVisible"
   },
-  // 切换随机背景图（暂时不用了，影响写代码速度）
-  // {
-  //   "key": "shift+cmd+7",
-  //   "command": "extension.backgroundCover.refresh"
-  // },
   // Run Code
   {
     "key": "cmd+alt+n",
@@ -119,6 +109,17 @@
     "command": "workbench.view.scm",
     "when": "workbench.scm.active"
   },
+  // 让你的 Esc 优先执行取消提示建议的操作，然后才会识别进入 normal 模式
+  // {
+  //   "key": "escape",
+  //   "command": "hideSuggestWidget",
+  //   "when": "suggestWidgetVisible && textInputFocus"
+  // },
+  // 切换随机背景图（暂时不用了，影响写代码速度）
+  // {
+  //   "key": "shift+cmd+7",
+  //   "command": "extension.backgroundCover.refresh"
+  // },
   // vsc 调用 vim 指令方式
   // {
   //   "key": "cmd+shift+h",
@@ -130,8 +131,7 @@
   // },
 
   // File
-  // 去掉了 !explorerResourceIsRoot 达到了聚焦资源管理器根目录中新建的功能，但不知道可能会有什么隐患，先观望一下
-  // REVIEW: 2023-08-18 用了几个月了，没什么问题
+  // NOTE: 没什么问题（去掉了 !explorerResourceIsRoot 达到了聚焦资源管理器根目录中新建的功能，但不知道可能会有什么隐患，先观望一下）
   {
     "key": "cmd+n",
     "command": "explorer.newFile"
@@ -219,17 +219,14 @@
   },
 
   // Editor
-  // 选中范围扩大与缩小（目前通过 Enter 代替了）
-  // {
-  //   "key": "cmd+-",
-  //   "command": "undo_expand_region",
-  //   "when": "editorTextFocus && editorHasSelection"
-  // },
-  // {
-  //   "key": "cmd+=",
-  //   "command": "expand_region",
-  //   "when": "editorTextFocus"
-  // },
+  {
+    "key": "ctrl+o",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "workbench.action.navigateForward"
+  },
   // 查找替换
   {
     "key": "cmd+g",
@@ -482,4 +479,13 @@
     "command": "-fiveServer.close",
     "when": "editorTextFocus"
   }
+  // {
+  //   "key": "ctrl+w",
+  //   "command": "-workbench.action.switchWindow"
+  // },
+  // {
+  //   "key": "ctrl+w",
+  //   "command": "-expand_region",
+  //   "when": "editorTextFocus"
+  // }
 ]
