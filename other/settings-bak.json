@@ -38,6 +38,281 @@
   "vim.leap.marker.backgroundColors": ["#d63031", "#3742fa"],
   "vim.leap.caseSensitive": false,
 
+  // 设置 leader 键为空格
+  "vim.leader": "<space>",
+  "vim.easymotion": false,
+  // 使用系统剪切板 cv -> yp
+  "vim.useSystemClipboard": true,
+  "vim.incsearch": true,
+  "vim.useCtrlKeys": false,
+  "vim.hlsearch": true,
+  "vim.surround": true,
+  "vim.sneak": true,
+  // 设置 vim 不接管某些快捷键
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    // 不开启默认功能是不生效的
+    "<C-i>": true,
+    "<C-o>": true,
+    "<C-y>": true
+  },
+  // 插入/写入模式 | 按键功能映射
+  "vim.insertModeKeyBindings": [],
+  // 按下 operation (d/y/c) 后等待的模式 | pending
+  "vim.operatorPendingModeKeyBindings": [
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    }
+  ],
+  // 可视/选择模式 | 按键功能映射
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      // 删除但是不保存到剪贴板，利用 vim 的黑洞寄存器
+      "before": ["backspace"],
+      "after": ["\"", "_", "d"]
+    },
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["j"],
+      "after": ["g", "j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
+    },
+    {
+      "before": ["enter"],
+      "after": ["a", "f"]
+    },
+    // 其实就是用了个小技巧让我们在可视模式下粘贴时寄存器内数据保持一致：
+    // 一般来说如果在可视模式选中后 p 操作会将 p 所覆盖的东西复制到寄存器中, 导致后续再 p 就不是我们想粘贴的内容了
+    // 这里在 p 后执行 gv（选中粘贴的数据）并 y（复制）
+    {
+      "before": ["p"],
+      "after": ["p", "g", "v", "y"]
+    },
+    {
+      "before": ["K"],
+      "after": ["5", "k"]
+    },
+    {
+      "before": ["J"],
+      "after": ["5", "j"]
+    },
+    // 行首/行尾移动
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    }
+  ],
+  // 普通模式 | 按键功能映射
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-o>"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["<C-i>"],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    {
+      "before": ["leader", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    // 创建文件
+    {
+      "before": ["leader", "a"],
+      "commands": ["explorer.newFile"]
+    },
+    // 创建文件夹
+    {
+      "before": ["leader", "A"],
+      "commands": ["explorer.newFolder"]
+    },
+
+    // 标签区 | Tab
+    // 标签左右切换: 注意若遇到软件设置/插件说明文档时无效, 建议使用系统快捷键 cmd + shift + []（全局可用）
+    {
+      "before": ["H"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["L"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+
+    // 编辑区 | Editor
+    // 类似 wildfire.vim 但是不能选择包含块里面的内容, 有点可惜
+    {
+      "before": ["enter"],
+      "after": ["v", "a", "f"]
+    },
+    // 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder | 进入 insert 模式
+    // FIXME: 就算找不到这个占位符的时候也会执行 c4l 就把当前光标所在的4个字符删除了
+    {
+      "before": ["leader", "leader"],
+      "after": ["/", "<", "+", "+", ">", "<cr>", ":", "n", "o", "h", "l", "<cr>", "\"", "_", "c", "4", "l"]
+    },
+    // 给顶部预留一点空间，但发现遇到折叠代码块后，<c-y> 滚动可视区域会导致光标位置异常跳跃
+    // DONE: 发现我的需求可以直接设置 cursorSurroundingLines 来解决
+    {
+      "before": ["z", "t"],
+      "after": ["z", "t", "4", "<c-y>"]
+    },
+    {
+      "before": ["Q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    // 进入定义文件位置中
+    {
+      "before": ["leader", "f"],
+      "after": ["g", "f"]
+    },
+    // 将没有定义的变量或者函数快速创建出来
+    {
+      "before": ["leader", "v", "v"],
+      "commands": ["hocusPocus.createVariable"]
+    },
+    {
+      "before": ["leader", "f", "f"],
+      "commands": ["hocusPocus.createFunction"]
+    },
+    // 打开 git diff 差异对比查看
+    {
+      "before": ["leader", "d", "f"],
+      "commands": ["git.openChange"]
+    },
+    // 向上/下寻找当前文件出现的提示提示/警告/错误
+    {
+      "before": ["leader", "k"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["leader", "j"],
+      "commands": ["editor.action.marker.next"]
+    },
+    // 解决自动换行后进行光标移动一次跳过多行的问题
+    {
+      "before": ["j"],
+      "after": ["g", "j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
+    },
+    // 控制光标向上/下滚动指定行 | 保留指定可视区域行数显示
+    {
+      "before": ["K"],
+      "after": ["5", "g", "k"]
+    },
+    {
+      "before": ["J"],
+      "after": ["5", "g", "j"]
+    },
+    // n/N vim 查找后上下匹配项切换 | 并调整显示行为屏幕中心
+    {
+      "before": ["n"],
+      "after": ["n", "z", "z"]
+    },
+    {
+      "before": ["N"],
+      "after": ["N", "z", "z"]
+    },
+    // u 的 redo 操作
+    {
+      "before": ["U"],
+      "after": ["<c-r>"]
+    },
+    // 右/下分屏
+    {
+      "before": ["s", "l", ";"],
+      "commands": [":vsplit"]
+    },
+    {
+      "before": ["s", "j", ";"],
+      "commands": [":split"]
+    },
+    // 返回上一次操作的位置
+    {
+      "before": ["g", "k"],
+      // "commands": ["workbench.action.navigateBack"]
+      "after": ["<c-o>"]
+    },
+    // gk 的 redo
+    {
+      "before": ["g", "j"],
+      // "commands": ["workbench.action.navigateBack"]
+      "after": ["<c-i>"]
+    },
+    // 行首/行尾移动
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    },
+    // 保存但不格式化
+    {
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.files.saveWithoutFormatting"]
+    },
+    // 取消查找后的光标高亮
+    {
+      "before": ["leader", ";"],
+      "commands": [":noh"]
+    },
+    // 保存文件
+    {
+      "before": ["leader", "s"],
+      "commands": ["workbench.action.files.save"]
+    },
+    // 关闭文件
+    {
+      "before": ["leader", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    // 光标跳转到前面的函数开始处 | 如果光标在函数体内, 那就是该函数的开始处
+    {
+      "before": ["leader", "["],
+      "after": ["[", "{"]
+    },
+    {
+      "before": ["leader", "]"],
+      "after": ["]", "}"]
+    },
+
+    // 终端区 | Terminal
+    // 光标由 editor 聚焦至 terminal
+    {
+      "before": ["leader", "t"],
+      "commands": ["workbench.action.terminal.focus"]
+    }
+  ],
+  // vim keep english in normal（中文输入切换到 NORMAL 模式时自动更改为英文输入法）
+  // DONE: 通过 Rime 的配置方案解决了
+  // 使用 vim 指令时出现的问题 (如：ciw，删除当前光标所在单词并进入 INSERT 模式，正常来说光标应该从"方块"变成一根"细条光束"，但结果是仍然保持方块状态，直到你再次输入按下字符时光标才会切换为"细条光束"）
+  // 对于我来说，光标状态的显示是我快速判断当前 vim 模式的根本，如果光标状态与模式不同步, 可能会产生一些错误的命令输入，单单是从体验上来说就很不友好了
+  // 是否启用自动切换
+  "vim.autoSwitchInputMethod.enable": false,
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
+
   // 关闭文件后是否聚焦到最近打开过的文件
   "workbench.editor.focusRecentEditorAfterClose": false,
 
@@ -448,192 +723,6 @@
 
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
 
-  // 普通模式 | 按键功能映射
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<C-o>"],
-      "commands": ["workbench.action.navigateBack"]
-    },
-    {
-      "before": ["<C-i>"],
-      "commands": ["workbench.action.navigateForward"]
-    },
-    {
-      "before": ["leader", "e"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
-    },
-    // 创建文件
-    {
-      "before": ["leader", "a"],
-      "commands": ["explorer.newFile"]
-    },
-    // 创建文件夹
-    {
-      "before": ["leader", "A"],
-      "commands": ["explorer.newFolder"]
-    },
-
-    // 标签区 | Tab
-    // 标签左右切换: 注意若遇到软件设置/插件说明文档时无效, 建议使用系统快捷键 cmd + shift + []（全局可用）
-    {
-      "before": ["H"],
-      "commands": ["workbench.action.previousEditor"]
-    },
-    {
-      "before": ["L"],
-      "commands": ["workbench.action.nextEditor"]
-    },
-
-    // 编辑区 | Editor
-    // 类似 wildfire.vim 但是不能选择包含块里面的内容, 有点可惜
-    {
-      "before": ["enter"],
-      "after": ["v", "a", "f"]
-    },
-    // 通过设置一个自定义占位符, 然后按"两次空格"来快速定位更改 | placeholder | 进入 insert 模式
-    // FIXME: 就算找不到这个占位符的时候也会执行 c4l 就把当前光标所在的4个字符删除了
-    {
-      "before": ["leader", "leader"],
-      "after": ["/", "<", "+", "+", ">", "<cr>", ":", "n", "o", "h", "l", "<cr>", "\"", "_", "c", "4", "l"]
-    },
-    // 给顶部预留一点空间，但发现遇到折叠代码块后，<c-y> 滚动可视区域会导致光标位置异常跳跃
-    // DONE: 发现我的需求可以直接设置 cursorSurroundingLines 来解决
-    {
-      "before": ["z", "t"],
-      "after": ["z", "t", "4", "<c-y>"]
-    },
-    {
-      "before": ["Q"],
-      "commands": ["workbench.action.closeActiveEditor"]
-    },
-    // 进入定义文件位置中
-    {
-      "before": ["leader", "f"],
-      "after": ["g", "f"]
-    },
-    // 将没有定义的变量或者函数快速创建出来
-    {
-      "before": ["leader", "v", "v"],
-      "commands": ["hocusPocus.createVariable"]
-    },
-    {
-      "before": ["leader", "f", "f"],
-      "commands": ["hocusPocus.createFunction"]
-    },
-    // 打开 git diff 差异对比查看
-    {
-      "before": ["leader", "d", "f"],
-      "commands": ["git.openChange"]
-    },
-    // 向上/下寻找当前文件出现的提示提示/警告/错误
-    {
-      "before": ["leader", "k"],
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      "before": ["leader", "j"],
-      "commands": ["editor.action.marker.next"]
-    },
-    // 解决自动换行后进行光标移动一次跳过多行的问题
-    {
-      "before": ["j"],
-      "after": ["g", "j"]
-    },
-    {
-      "before": ["k"],
-      "after": ["g", "k"]
-    },
-    // 控制光标向上/下滚动指定行 | 保留指定可视区域行数显示
-    {
-      "before": ["K"],
-      "after": ["5", "g", "k"]
-    },
-    {
-      "before": ["J"],
-      "after": ["5", "g", "j"]
-    },
-    // n/N vim 查找后上下匹配项切换 | 并调整显示行为屏幕中心
-    {
-      "before": ["n"],
-      "after": ["n", "z", "z"]
-    },
-    {
-      "before": ["N"],
-      "after": ["N", "z", "z"]
-    },
-    // u 的 redo 操作
-    {
-      "before": ["U"],
-      "after": ["<c-r>"]
-    },
-    // 右/下分屏
-    {
-      "before": ["s", "l", ";"],
-      "commands": [":vsplit"]
-    },
-    {
-      "before": ["s", "j", ";"],
-      "commands": [":split"]
-    },
-    // 返回上一次操作的位置
-    {
-      "before": ["g", "k"],
-      // "commands": ["workbench.action.navigateBack"]
-      "after": ["<c-o>"]
-    },
-    // gk 的 redo
-    {
-      "before": ["g", "j"],
-      // "commands": ["workbench.action.navigateBack"]
-      "after": ["<c-i>"]
-    },
-    // 行首/行尾移动
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
-    {
-      "before": ["L"],
-      "after": ["g", "_"]
-    },
-    // 保存但不格式化
-    {
-      "before": ["leader", "w"],
-      "commands": ["workbench.action.files.saveWithoutFormatting"]
-    },
-    // 取消查找后的光标高亮
-    {
-      "before": ["leader", ";"],
-      "commands": [":noh"]
-    },
-    // 保存文件
-    {
-      "before": ["leader", "s"],
-      "commands": ["workbench.action.files.save"]
-    },
-    // 关闭文件
-    {
-      "before": ["leader", "q"],
-      "commands": ["workbench.action.closeActiveEditor"]
-    },
-    // 光标跳转到前面的函数开始处 | 如果光标在函数体内, 那就是该函数的开始处
-    {
-      "before": ["leader", "["],
-      "after": ["[", "{"]
-    },
-    {
-      "before": ["leader", "]"],
-      "after": ["]", "}"]
-    },
-
-    // 终端区 | Terminal
-    // 光标由 editor 聚焦至 terminal
-    {
-      "before": ["leader", "t"],
-      "commands": ["workbench.action.terminal.focus"]
-    }
-  ],
-
   // Animations
   "animations.Custom-CSS": false,
   "animations.Active": "None",
@@ -808,99 +897,6 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.persistentSessionReviveProcess": "never",
   // "terminal.integrated.tabs.location": "right",
-
-  // ================================================================
-  // vim
-  // ================================================================
-  // 设置 leader 键为空格
-  "vim.leader": "<space>",
-  "vim.easymotion": false,
-  // 使用系统剪切板 cv -> yp
-  "vim.useSystemClipboard": true,
-  "vim.incsearch": true,
-  "vim.useCtrlKeys": false,
-  "vim.hlsearch": true,
-  "vim.surround": true,
-  "vim.sneak": true,
-  // 设置 vim 不接管某些快捷键
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false,
-    // 不开启默认功能是不生效的
-    "<C-i>": true,
-    "<C-o>": true,
-    "<C-y>": true
-  },
-  // 插入/写入模式 | 按键功能映射
-  "vim.insertModeKeyBindings": [],
-  // 按下 operation (d/y/c) 后等待的模式 | pending
-  "vim.operatorPendingModeKeyBindings": [
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
-    {
-      "before": ["L"],
-      "after": ["g", "_"]
-    }
-  ],
-  // 可视/选择模式 | 按键功能映射
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      // 删除但是不保存到剪贴板，利用 vim 的黑洞寄存器
-      "before": ["backspace"],
-      "after": ["\"", "_", "d"]
-    },
-    {
-      "before": ["g", "h"],
-      "commands": ["editor.action.showHover"]
-    },
-    {
-      "before": ["j"],
-      "after": ["g", "j"]
-    },
-    {
-      "before": ["k"],
-      "after": ["g", "k"]
-    },
-    {
-      "before": ["enter"],
-      "after": ["a", "f"]
-    },
-    // 其实就是用了个小技巧让我们在可视模式下粘贴时寄存器内数据保持一致：
-    // 一般来说如果在可视模式选中后 p 操作会将 p 所覆盖的东西复制到寄存器中, 导致后续再 p 就不是我们想粘贴的内容了
-    // 这里在 p 后执行 gv（选中粘贴的数据）并 y（复制）
-    {
-      "before": ["p"],
-      "after": ["p", "g", "v", "y"]
-    },
-    {
-      "before": ["K"],
-      "after": ["5", "k"]
-    },
-    {
-      "before": ["J"],
-      "after": ["5", "j"]
-    },
-    // 行首/行尾移动
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
-    {
-      "before": ["L"],
-      "after": ["g", "_"]
-    }
-  ],
-  // vim keep english in normal（中文输入切换到 NORMAL 模式时自动更改为英文输入法）
-  // DONE: 通过 Rime 的配置方案解决了
-  // 使用 vim 指令时出现的问题 (如：ciw，删除当前光标所在单词并进入 INSERT 模式，正常来说光标应该从"方块"变成一根"细条光束"，但结果是仍然保持方块状态，直到你再次输入按下字符时光标才会切换为"细条光束"）
-  // 对于我来说，光标状态的显示是我快速判断当前 vim 模式的根本，如果光标状态与模式不同步, 可能会产生一些错误的命令输入，单单是从体验上来说就很不友好了
-  // 是否启用自动切换
-  "vim.autoSwitchInputMethod.enable": false,
-  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
-  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
-  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
 
   "commentAnchors.tags.provideAutoCompletion": false,
   // 锚点加载解析时长，通过使用更大的值来获得更好的性能
