@@ -346,6 +346,7 @@
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1,
     "vscodevim.vim": 2,
+    // BUG: 将 Volar 单独配置线程后，hover 提示或者输入提示会出现重复的选项，起初以为是插件的问题，没想到是这个！
     "Vue.volar": 3
     // "BrandonKirbyson.vscode-animations": 4,
   },

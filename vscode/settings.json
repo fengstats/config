@@ -36,9 +36,11 @@
   "window.newWindowDimensions": "offset",
   "window.commandCenter": true,
   "window.zoomLevel": 0.6,
-  "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "GitHub Dark Classic",
+  "breadcrumbs.enabled": false,
+  "workbench.iconTheme": "city-lights-icons-vsc-light",
   "workbench.productIconTheme": "icons-carbon",
+  "workbench.preferredLightColorTheme": "GitHub Dark Classic",
+  "workbench.preferredDarkColorTheme": "GitHub Dark Classic",
   "workbench.list.smoothScrolling": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
   "workbench.editor.highlightModifiedTabs": true,
@@ -46,35 +48,37 @@
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.editor.limit.enabled": true,
   "workbench.colorCustomizations": {
-    "editor.lineHighlightBackground": "#ffffff00",
-    "[Default Dark+]": {
+    // "editor.lineHighlightBackground": "#ffffff00",
+    "[Default Dark+][GitHub Dark Classic]": {
       "terminal.ansiBlue": "#8adcf1",
       "terminal.ansiRed": "#ff6b81",
       "terminal.ansiBrightRed": "#ff7675",
       "statusBar.background": "#333"
     }
   },
-  // "workbench.preferredLightColorTheme": "Panda Moe",
-  // "workbench.preferredDarkColorTheme": "Panda Moe",
 
   // Editor
   "editor.tabSize": 2,
-  "editor.fontSize": 13.5,
-  "editor.lineNumbers": "interval",
+  "editor.fontSize": 14,
+  "editor.lineNumbers": "on",
   "editor.lineHeight": 1.5,
   "editor.linkedEditing": false,
   "editor.fontFamily": "Input Mono Freeze, monospace",
+  // "editor.fontFamily": "Monaco, monospace",
+  // "editor.fontFamily": "Input Mono, monospace",
+  // "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.minimap.enabled": false,
   "editor.cursorSurroundingLines": 5,
   "editor.suggest.snippetsPreventQuickSuggestions": true,
   "editor.accessibilitySupport": "off",
   "editor.renderLineHighlight": "all",
-  "editor.cursorBlinking": "phase",
+  "editor.cursorBlinking": "expand",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.guides.bracketPairs": "active",
   "editor.smoothScrolling": true,
   "editor.stickyScroll.enabled": false,
+  "editor.inlineSuggest.showToolbar": "always",
   "editor.unicodeHighlight.allowedLocales": {
     "zh-hant": true
   },
@@ -105,9 +109,6 @@
       }
     ]
   },
-  // "editor.fontFamily": "Input Mono, monospace",
-  // "editor.fontFamily": "Monaco, monospace",
-  // "editor.fontFamily": "JetBrains Mono, monospace",
   // "emmet.showSuggestionsAsSnippets": true,
   // "editor.quickSuggestions": {
   //   "strings": "on"
@@ -151,10 +152,8 @@
   "extensions.ignoreRecommendations": true,
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1,
-    "asvetliakov.vscode-neovim": 2
-    // BUG: 将 Volar 单独配置线程后，hover 提示或者输入提示会出现重复的选项，起初以为是插件的问题，没想到是这个！
-    // "Vue.volar": 3
-    // "BrandonKirbyson.vscode-animations": 4,
+    "asvetliakov.vscode-neovim": 2,
+    "BrandonKirbyson.vscode-animations": 3
   },
   "js/ts.implicitProjectConfig.checkJs": true,
 
@@ -174,9 +173,12 @@
     "<C-v>": true,
     "<C-a>": true,
     "<C-x>": true,
+    "<C-o>": true,
+    "<C-i>": true,
     // insert mode 下删除一个单词的快捷方式
     "<C-w>": true
   },
+  "vim.flash.enable": true,
   "vim.operatorPendingModeKeyBindings": [
     {
       "before": ["H"],
@@ -235,7 +237,7 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["g", "d"],
+      "before": ["g", "r"],
       "commands": ["editor.action.goToReferences"]
     },
     {
@@ -250,9 +252,17 @@
       "before": ["\"", "\""],
       "after": ["v", "i", "w", "S", "\"", "e", "l"]
     },
+    // {
+    //   "before": ["s"],
+    //   "after": ["<space>", "<space>", "2", "s"]
+    // },
     {
-      "before": ["s"],
-      "after": ["<space>", "<space>", "2", "s"]
+      "before": ["j"],
+      "after": ["g", "j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
     },
     {
       "before": ["J"],
@@ -441,6 +451,7 @@
   // Code Spell Checker
   "cSpell.enableFiletypes": ["vimrc"],
   "cSpell.userWords": [
+    "asvetliakov",
     "autofetch",
     "bilibili",
     "Codegeex",
@@ -456,6 +467,7 @@
     "hlsearch",
     "incsearch",
     "juejin",
+    "Kirbyson",
     "Moegi",
     "neovim",
     "nuxt",
@@ -480,6 +492,23 @@
   // ErrorLens
   "errorLens.enabledDiagnosticLevels": ["error", "warning", "info"],
   "errorLens.excludeBySource": ["cSpell", "Grammarly"],
+
+  // Animations
+  "animations.Scrolling": "Fade",
+  "animations.CursorAnimation": true,
+  "animations.Active": "None",
+  "animations.Tabs": "None",
+  "animations.Command-Palette": "None",
+  "animations.Focus-Dimming-Mode": "None",
+  "animations.Custom-CSS": false,
+  "animations.Smooth-Mode": false,
+  "animations.Durations": {
+    "Command-Palette": 200,
+    "Scrolling": 200
+  },
+  "vscode_custom_css.imports": [
+    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-1.1.0/dist/updateHandler.js"
+  ],
 
   // Translate
   "commentTranslate.hover.string": true,

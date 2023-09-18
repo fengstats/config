@@ -1,6 +1,6 @@
 [
   // Vim or NeoVim
-  // 选中范围扩大、缩小
+  // 增量范围选中扩大、缩小
   {
     "key": "enter",
     "command": "expand_region",
@@ -109,16 +109,16 @@
     "command": "workbench.view.scm",
     "when": "workbench.scm.active"
   },
+  // 切换随机背景图（暂时不用了，影响写代码速度）
+  // {
+  //   "key": "shift+cmd+7",
+  //   "command": "extension.backgroundCover.refresh"
+  // },
   // 让你的 Esc 优先执行取消提示建议的操作，然后才会识别进入 normal 模式
   // {
   //   "key": "escape",
   //   "command": "hideSuggestWidget",
   //   "when": "suggestWidgetVisible && textInputFocus"
-  // },
-  // 切换随机背景图（暂时不用了，影响写代码速度）
-  // {
-  //   "key": "shift+cmd+7",
-  //   "command": "extension.backgroundCover.refresh"
   // },
   // vsc 调用 vim 指令方式
   // {
@@ -219,14 +219,14 @@
   },
 
   // Editor
-  {
-    "key": "ctrl+o",
-    "command": "workbench.action.navigateBack"
-  },
-  {
-    "key": "ctrl+i",
-    "command": "workbench.action.navigateForward"
-  },
+  // {
+  //   "key": "ctrl+o",
+  //   "command": "workbench.action.navigateBack"
+  // },
+  // {
+  //   "key": "ctrl+i",
+  //   "command": "workbench.action.navigateForward"
+  // },
   // 查找替换
   {
     "key": "cmd+g",
