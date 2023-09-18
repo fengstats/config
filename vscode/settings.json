@@ -90,22 +90,14 @@
     "source.fixAll.eslint": true
   },
   "editor.tokenColorCustomizations": {
-    "[GitHub Dark Classic][Atom One Dark]": {
-      "comments": "#95a5a6"
-    },
-    "[Default Dark+]": {
-      "comments": "#adb5ad"
-    },
-    "[Moegi Dark Vitesse]": {
-      "comments": "#a1a7a1"
-    },
+    "[GitHub Dark Classic][Atom One Dark]": { "comments": "#95a5a6" },
+    "[Default Dark+]": { "comments": "#adb5ad" },
+    "[Moegi Dark Vitesse]": { "comments": "#a1a7a1" },
     "textMateRules": [
       {
         "name": "Comment Italics",
         "scope": ["comment", "punctuation.definition.comment"],
-        "settings": {
-          "fontStyle": ""
-        }
+        "settings": { "fontStyle": "" }
       }
     ]
   },
@@ -138,12 +130,8 @@
   "editor.formatOnSave": true,
   "formatFiles.excludedFolders": ["node_modules", ".vscode", ".git", "dist", ".chrome", "attachments"],
   "formatFiles.extensionsToInclude": ".md",
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "[json]": { "editor.defaultFormatter": "vscode.json-language-features" },
+  "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascript][jsonc][vue][typescript][html][css][less]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -160,24 +148,13 @@
   // Vim
   "vim.leader": "<space>",
   "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": false,
   "vim.hlsearch": true,
   "vim.foldfix": true,
   "vim.easymotion": true,
   "vim.highlightedyank.enable": true,
-  "vim.highlightedyank.duration": 80,
+  "vim.highlightedyank.duration": 100,
   "vim.highlightedyank.color": "#00000000",
   "vim.highlightedyank.textColor": "white",
-  "vim.handleKeys": {
-    "<C-f>": false,
-    "<C-v>": true,
-    "<C-a>": true,
-    "<C-x>": true,
-    "<C-o>": true,
-    "<C-i>": true,
-    // insert mode 下删除一个单词的快捷方式
-    "<C-w>": true
-  },
   "vim.flash.enable": true,
   "vim.operatorPendingModeKeyBindings": [
     { "before": ["H"], "after": ["^"] },
@@ -230,9 +207,9 @@
   ],
 
   // NeoVim
-  "vscode-neovim.revealCursorScrollLine": true,
-  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/opt/neovim/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "/Users/feng/.config/zsh/init.vim",
+  // "vscode-neovim.revealCursorScrollLine": true,
+  // "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/opt/neovim/bin/nvim",
+  // "vscode-neovim.neovimInitVimPaths.darwin": "/Users/feng/.config/zsh/init.vim",
 
   // Git
   "git.autofetch": true,

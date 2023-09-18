@@ -49,13 +49,16 @@
   "vim.surround": true,
   "vim.sneak": true,
   // 设置 vim 不接管某些快捷键
+  // NOTE: 2023-09-19 发现是我自己设置了 useCtrlKeys 为 false 才导致了 Vim Ctrl 组合键不生效，默认是开启的，笨蛋！
   "vim.handleKeys": {
-    "<C-a>": false,
     "<C-f>": false,
-    // 不开启默认功能是不生效的
-    "<C-i>": true,
+    "<C-v>": true,
+    "<C-a>": true,
+    "<C-x>": true,
     "<C-o>": true,
-    "<C-y>": true
+    "<C-i>": true,
+    // insert mode 下删除一个单词的快捷方式
+    "<C-w>": true
   },
   // 插入/写入模式 | 按键功能映射
   "vim.insertModeKeyBindings": [],
