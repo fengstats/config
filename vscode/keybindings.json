@@ -18,11 +18,12 @@
     "command": "markdown.extension.checkTaskList",
     "when": "editorTextFocus && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
   },
-  // 选择最近的文件工作区（只能在聚焦文件管理、编辑器、Panel 时使用）
+  // 选择最近的文件工作区
   {
     "key": "cmd+r",
-    "command": "workbench.action.openRecent",
-    "when": "filesExplorerFocus || editorFocus || panelFocus"
+    "command": "workbench.action.openRecent"
+    // 只能在聚焦文件管理、编辑器、Panel 时使用
+    // "when": "filesExplorerFocus || editorFocus || panelFocus"
   },
   // 搜索面板刷新搜索结果，需要聚焦侧边栏以及搜索面板可见
   {
@@ -30,7 +31,7 @@
     "command": "search.action.refreshSearchResults",
     "when": "sideBarFocus && searchViewletVisible"
   },
-  // 就当我没事给自己找点事干好了，这个配置挺鸡肋的，直接 cmd+a 然后 del 就行哈哈哈哈
+  // 清空扩展输入信息（就当我没事给自己找点事干好了，这个配置挺鸡肋的，直接 cmd+a 然后 del 就行哈哈哈哈）
   {
     "key": "cmd+k",
     "command": "workbench.extensions.action.clearExtensionsSearchResults",
