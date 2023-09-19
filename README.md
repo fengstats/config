@@ -15,8 +15,8 @@
 <p align="center"><b>Preview</b></p>
 
 <p align="center">
-<img src="https://cdn.staticaly.com/gh/fengstats/blogcdn@main/2023/Moegi-Light-Vitesse.png">
-<img src="https://cdn.staticaly.com/gh/fengstats/blogcdn@main/2023/Github-Dark-Classic.png">
+<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Moegi-Light-Vitesse2.png">
+<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Github-Dark-Classic2.png">
 </p>
 
 ### themes
