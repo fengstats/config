@@ -232,7 +232,8 @@ function timeTransform(t, timePrefix = '：**', timeSuffix = '**', isTotalTime =
         if (item.statsTime !== 0) {
           item.percentage = Math.round((item.statsTime / totalTime) * 100)
           // NOTE: 这里百分比是四舍五入的，可能会存在总和不为 100 的情况
-          item.result += `（<font color="#45465e">${item.percentage}%</font>）`
+          // item.result += `（<font color="#45465e">${item.percentage}%</font>）`
+          item.result += `（${item.percentage}%）`
         }
       })
     addData(
