@@ -1,12 +1,9 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 # mine
 **/tmp
 *.swp
 
 # dependencies
 /node_modules
-
-# 深层次匹配所有目录 node_modules/ 进行忽略
 **/node_modules
 
 # production

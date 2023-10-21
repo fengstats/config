@@ -6,9 +6,9 @@ vscodeSystemPath="${userPath}/Library/Application Support/Code/User"
 zshSystemPath="${userPath}/.config/zsh"
 
 # my config path
-configPath="${userPath}/Codebase/config"
-vsocdePath="${configPath}/vscode"
-zshPath="${configPath}/zsh"
+configPath="${userPath}/codebase/config"
+zshPath="${configPath}/1-zsh"
+vsocdePath="${configPath}/2-vscode"
 pathArr=(${vsocdePath} ${zshPath})
 
 # 自动校验创建目录
