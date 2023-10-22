@@ -35,9 +35,11 @@
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
   "window.commandCenter": true,
-  "window.zoomLevel": 0.6,
+  "window.zoomLevel": 0.8,
+  "fonted.font": "Arial",
   "breadcrumbs.enabled": false,
-  "workbench.iconTheme": "city-lights-icons-vsc-light",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Evondev Dracula Darker Contrast",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.preferredLightColorTheme": "GitHub Dark Classic",
   "workbench.preferredDarkColorTheme": "GitHub Dark Classic",
@@ -59,14 +61,14 @@
 
   // Editor
   "editor.tabSize": 2,
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.lineNumbers": "on",
   "editor.lineHeight": 1.5,
   "editor.linkedEditing": false,
+  // "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.fontFamily": "Input Mono Freeze, monospace",
   // "editor.fontFamily": "Monaco, monospace",
   // "editor.fontFamily": "Input Mono, monospace",
-  // "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.minimap.enabled": false,
   "editor.cursorSurroundingLines": 5,
   "editor.suggest.snippetsPreventQuickSuggestions": true,
@@ -90,6 +92,8 @@
     "source.fixAll.eslint": true
   },
   "editor.tokenColorCustomizations": {
+    "[Default Light Modern][Moegi Light Vitesse]": { "comments": "#95a5a6" },
+    "[Evondev Dracula Darker Contrast]": { "comments": "#95a5a6" },
     "[GitHub Dark Classic][Atom One Dark]": { "comments": "#95a5a6" },
     "[Default Dark+]": { "comments": "#adb5ad" },
     "[Moegi Dark Vitesse]": { "comments": "#a1a7a1" },
@@ -174,6 +178,10 @@
     // { "before": ["backspace"], "after": ["\"", "_", "c"] }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    // 还原 f 的原生命令
+    { "before": ["f"], "after": ["\\"] },
+    // 将 fash.vim 查找键设置为 s
+    { "before": ["s"], "after": ["f"] },
     { "before": ["j"], "after": ["g", "j"] },
     { "before": ["k"], "after": ["g", "k"] },
     { "before": ["J"], "after": ["5", "g", "j"] },
@@ -216,6 +224,7 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
+  "git.ignoreRebaseWarning": true,
 
   // Codeium
   "codeium.enableSearch": false,
@@ -320,12 +329,16 @@
     "incsearch",
     "juejin",
     "Kirbyson",
+    "leetcode",
     "Moegi",
     "neovim",
+    "nums",
     "nuxt",
+    "nvim",
     "peachpuff",
     "powermode",
     "rgba",
+    "strs",
     "tencent",
     "timi",
     "utools",
@@ -372,4 +385,12 @@
   "commentTranslate.maxTranslationLength": 1000,
   "commentTranslate.targetLanguage": "zh-CN",
   "commentTranslate.source": "Kaiqun.tencent-cloud-translate-tencentCloud",
+
+  // LeetCode
+  "leetcode.endpoint": "leetcode-cn",
+  "leetcode.hint.configWebviewMarkdown": false,
+  "leetcode.workspaceFolder": "/Users/feng/Codebase/workspace/leetcode",
+  "leetcode.hint.commandShortcut": false,
+  "leetcode.defaultLanguage": "typescript",
+  "leetcode.hint.commentDescription": false
 }
