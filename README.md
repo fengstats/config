@@ -2,14 +2,14 @@
 
 ### vscode
 
-- [`settings.json`](./vscode/settings.json)
-- [`keybindings.json`](./vscode/keybindings.json)
+- [`settings.json`](./2-vscode/settings.json)
+- [`keybindings.json`](./2-vscode/keybindings.json)
 
 ### zsh
 
-- [`vimrc`](./zsh/.vimrc)
-- [`zimrc`](./zsh/.zimrc)
-- [`init.vim`](./zsh/init.vim)
+- [`vimrc`](./1-zsh/.vimrc)
+- [`zimrc`](./1-zsh/.zimrc)
+- [`init.vim`](./1-zsh/init.vim)
 
 <br>
 <p align="center"><b>Preview</b></p>
