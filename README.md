@@ -19,18 +19,19 @@
 <img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Github-Dark-Classic2.png">
 </p>
 
-### themes
+### Themes
 
 > I recommend it.
 
 - [Moegi Theme](https://github.com/moegi-design/vscode-theme)
 - [Vitesse Theme](https://github.com/antfu/vscode-theme-vitesse)
+- [Evondev Dracula](https://github.com/evondev/evondev-dracula)
+- [Spacegray VSCode](https://marketplace.visualstudio.com/items?itemName=ionutvmi.spacegray-vscode)
 - [Panda Syntax Theme](https://marketplace.visualstudio.com/items?itemName=tinkertrain.theme-panda)
 - [Github Dark Classic Theme](https://marketplace.visualstudio.com/items?itemName=BerriJ.github-vscode-theme-dark-classic)
-- [Spacegray VSCode](https://marketplace.visualstudio.com/items?itemName=ionutvmi.spacegray-vscode)
 - Light Modern theme comes with the VSCode
 
-### fonts
+### Fonts
 
 - [Fira Code](https://github.com/tonsky/FiraCode)
 - [Input Mono](https://input.djr.com/)
