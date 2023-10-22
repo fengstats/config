@@ -110,6 +110,17 @@
     "command": "workbench.view.scm",
     "when": "workbench.scm.active"
   },
+  // 断点调试
+  {
+    "key": "cmd+5",
+    "command": "workbench.action.debug.start",
+    "when": "debuggersAvailable && debugState == 'inactive'"
+  },
+  {
+    "key": "cmd+5",
+    "command": "workbench.action.debug.continue",
+    "when": "debugState == 'stopped'"
+  },
   // 切换随机背景图（暂时不用了，影响写代码速度）
   // {
   //   "key": "shift+cmd+7",
@@ -479,6 +490,10 @@
     "key": "cmd+l cmd+c",
     "command": "-fiveServer.close",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+5",
+    "command": "-workbench.action.focusFifthEditorGroup"
   }
   // {
   //   "key": "ctrl+w",
