@@ -17,7 +17,6 @@ alias x='exit'
 alias c='clear'
 alias o='open .'
 alias yp='copypath'
-alias noteStats="node /Users/feng/codebase/config/js/note-stats.js /Users/feng/mine/life/daily-note/2023/10月"
 
 # general use
 # alias ll='exa -lbF --git'                                             # long list

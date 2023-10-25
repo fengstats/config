@@ -231,18 +231,32 @@
   },
 
   // Editor
-  // {
-  //   "key": "ctrl+o",
-  //   "command": "workbench.action.navigateBack"
-  // },
-  // {
-  //   "key": "ctrl+i",
-  //   "command": "workbench.action.navigateForward"
-  // },
+  // 替换当前行和上/下行
+  {
+    "key": "alt+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+j",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
   // 查找替换
   {
     "key": "cmd+g",
     "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus"
+  },
+  // 向下/上寻找当前文件出现的提示提示/警告/错误
+  {
+    "key": "cmd+8",
+    "command": "editor.action.marker.next",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+shift+8",
+    "command": "editor.action.marker.prev",
     "when": "editorFocus"
   },
   // 调整编辑组区域宽度大小（缩小、放大、恢复）
@@ -264,28 +278,14 @@
     "key": "cmd+shift+\\",
     "command": "workbench.action.splitEditorToBelowGroup"
   },
-  // 向上/下寻找当前文件出现的提示提示/警告/错误
-  {
-    "key": "cmd+8",
-    "command": "editor.action.marker.next",
-    "when": "editorFocus"
-  },
-  {
-    "key": "cmd+shift+8",
-    "command": "editor.action.marker.prev",
-    "when": "editorFocus"
-  },
-  // 替换当前行和上/下行
-  {
-    "key": "alt+k",
-    "command": "editor.action.moveLinesUpAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "alt+j",
-    "command": "editor.action.moveLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
+  // {
+  //   "key": "ctrl+o",
+  //   "command": "workbench.action.navigateBack"
+  // },
+  // {
+  //   "key": "ctrl+i",
+  //   "command": "workbench.action.navigateForward"
+  // },
 
   // Terminal
   // 创建终端（根据当前编辑区聚焦文件的位置）
@@ -366,6 +366,11 @@
   },
 
   // Setting Default
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
   {
     "key": "alt+cmd+h",
     "command": "-rest-client.history"

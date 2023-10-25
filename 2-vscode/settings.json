@@ -38,10 +38,10 @@
   "window.zoomLevel": 0.8,
   "fonted.font": "Arial",
   "breadcrumbs.enabled": false,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Evondev Dracula Darker Contrast",
+  "workbench.iconTheme": "file-icons",
+  "workbench.colorTheme": "GitHub Dark Classic",
   "workbench.productIconTheme": "icons-carbon",
-  "workbench.preferredLightColorTheme": "GitHub Dark Classic",
+  "workbench.preferredLightColorTheme": "Default Light Modern",
   "workbench.preferredDarkColorTheme": "GitHub Dark Classic",
   "workbench.list.smoothScrolling": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
@@ -58,6 +58,14 @@
       "statusBar.background": "#333"
     }
   },
+
+  // Sundial
+  "sundial.sunset": "18:00",
+  "sundial.interval": 30,
+  "sundial.daySettings": {
+    "workbench.iconTheme": "file-icons"
+  },
+  "sundial.nightSettings": {},
 
   // Editor
   "editor.tabSize": 2,
@@ -92,7 +100,8 @@
     "source.fixAll.eslint": true
   },
   "editor.tokenColorCustomizations": {
-    "[Default Light Modern][Moegi Light Vitesse]": { "comments": "#95a5a6" },
+    // "[Default Light Modern][Moegi Light Vitesse]": { "comments": "#95a5a6" },
+    "[Default Light Modern]": { "comments": "#218c74" },
     "[Evondev Dracula Darker Contrast]": { "comments": "#95a5a6" },
     "[GitHub Dark Classic][Atom One Dark]": { "comments": "#95a5a6" },
     "[Default Dark+]": { "comments": "#adb5ad" },
@@ -199,17 +208,17 @@
     { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
     { "before": ["z", "C"], "commands": ["editor.foldAll"] },
     { "before": ["z", "O"], "commands": ["editor.unfoldAll"] },
-    { "before": ["leader", "["], "after": ["[", "{"] },
-    { "before": ["leader", "]"], "after": ["]", "}"] },
-    { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] },
-    { "before": ["leader", "i", "w"], "after": ["V", "$", "%", "o"] },
+    { "before": ["leader", ";"], "commands": [":noh"] },
     { "before": ["leader", "o"], "commands": ["extension.toggleBool"] },
-    { "before": ["leader", "l"], "commands": ["workbench.action.toggleAuxiliaryBar"] },
     { "before": ["leader", "e"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+    { "before": ["leader", "l"], "commands": ["workbench.action.toggleAuxiliaryBar"] },
     { "before": ["leader", "s"], "commands": ["workbench.action.files.save"] },
     { "before": ["leader", "q"], "commands": ["workbench.action.closeActiveEditor"] },
     { "before": ["leader", "w"], "commands": ["workbench.action.files.saveWithoutFormatting"] },
-    { "before": ["leader", ";"], "commands": [":noh"] }
+    { "before": ["leader", "["], "after": ["[", "{"] },
+    { "before": ["leader", "]"], "after": ["]", "}"] },
+    { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] },
+    { "before": ["leader", "i", "w"], "after": ["V", "$", "%", "o"] }
     // { "before": ["s"], "commands": ["leap.find"] },
     // { "before": ["s"], "after": ["<space>", "<space>", "2", "s"] },
   ],
@@ -389,8 +398,9 @@
   // LeetCode
   "leetcode.endpoint": "leetcode-cn",
   "leetcode.hint.configWebviewMarkdown": false,
-  "leetcode.workspaceFolder": "/Users/feng/Codebase/workspace/leetcode",
+  "leetcode.workspaceFolder": "/Users/feng/codebase/workspace/leetcode",
   "leetcode.hint.commandShortcut": false,
   "leetcode.defaultLanguage": "typescript",
-  "leetcode.hint.commentDescription": false
+  "leetcode.hint.commentDescription": false,
+  "diffEditor.renderSideBySide": false
 }
