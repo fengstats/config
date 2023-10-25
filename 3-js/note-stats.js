@@ -31,10 +31,21 @@ function timeTransform(t, timePrefix = '：**', timeSuffix = '**', isTotalTime =
   }
   if (t === 0) return tempMode ? '（）' : '：'
   const h = Math.floor(t / 60)
-  // 不满 10 补 0
   const m = Math.floor(t % 60)
-  // 0 的情况就不输出了
-  return `${timePrefix}${h == 0 ? '' : h + 'h'}${m == 0 ? '' : `${m}`.padStart(2, '0') + 'min'}${timeSuffix}`
+  // 0 的情况返回空字符串
+  // 不满 10 补 0
+  // 小时不补 0（感觉不好看，不直观）
+  const hStr = h === 0 ? '' : h + 'h'
+  const mStr = m === 0 ? '' : String(m).padStart(2, '0') + 'min'
+
+  return timePrefix + hStr + mStr + timeSuffix
+}
+
+// 时间转换：分钟转换为 “00:00” 形式
+function minToTime(time) {
+  const h = String(Math.floor(time / 60)).padStart(2, '0')
+  const m = String(Math.floor(time % 60)).padStart(2, '0')
+  return h + ':' + m
 }
 
 ;(function () {
@@ -74,7 +85,7 @@ function timeTransform(t, timePrefix = '：**', timeSuffix = '**', isTotalTime =
     run(filePath)
   })
 
-  // 启动1
+  // 启动
   function run(filePath) {
     // 文件内容
     let text = fs.readFileSync(filePath, 'utf8')
@@ -99,7 +110,7 @@ function timeTransform(t, timePrefix = '：**', timeSuffix = '**', isTotalTime =
     IS_WRITE_FILE && saveFile(filePath, text)
 
     // 之前的数据就不打印了，没啥用捏
-    if (totalTime < 24 * 60) console.log(`${path.basename(filePath)} ⚡${timeTransform(totalTime, '', '')} `)
+    if (totalTime < 24 * 60) console.log(`${path.basename(filePath)} ⚡${minToTime(totalTime)} `)
   }
 
   // 录入数据
