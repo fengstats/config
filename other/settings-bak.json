@@ -1,4 +1,19 @@
 {
+  // leetcode problem
+  "leetcode-problem-rating.workspaceFolder": "/Users/feng/codebase/workspace/leetcode",
+  "leetcode-problem-rating.defaultLanguage": "typescript",
+  "leetcode-problem-rating.endpoint": "leetcode-cn",
+  "leetcode-problem-rating.hint.configWebviewMarkdown": false,
+  "leetcode-problem-rating.enableTimerBar": false,
+  "leetcode-problem-rating.editor.shortcuts": ["submit", "allcase", "test", "retest", "solution", "debug"],
+  "leetcode-problem-rating.filePath": {
+    "default": {
+      "folder": "",
+      "filename": "${id}.${cn_name}.${ext}"
+    }
+  },
+  "leetcode-problem-rating.showLocked": true,
+
   // Sundial
   // 通过 sundial 配置日出日落时间（自定义主题生效时间，不受到系统设定约束）
   "sundial.sunset": "18:30",
