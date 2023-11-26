@@ -1,10 +1,3 @@
-<p align="center"><b>Preview</b></p>
-
-<p align="center">
-<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Moegi-Light-Vitesse2.png">
-<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Github-Dark-Classic2.png">
-</p>
-
 ## 配置文件
 
 > zsh
@@ -43,3 +36,11 @@
 - [Comic Shanns Font](https://github.com/shannpersand/comic-shanns) - 很酷的字体。
 - [JetBrains Mono Font](https://github.com/JetBrains/JetBrainsMono) - 方方正正的，适合写代码。
 - [font freeze](https://mutsuntsai.github.io/fontfreeze/) - 可自定义字体细节，比如导入 Input Mono 试试。
+
+<br>
+<p align="center"><b>Preview</b></p>
+
+<p align="center">
+<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Moegi-Light-Vitesse2.png">
+<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Github-Dark-Classic2.png">
+</p>
