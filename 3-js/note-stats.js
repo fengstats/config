@@ -90,9 +90,8 @@ function minToTime(time) {
     // 文件内容
     let text = fs.readFileSync(filePath, 'utf8')
 
-    // 通过正则校验数据是否需要解析
-    // TODO: 貌似并不可行，万一解析的最后一次因为写错了时间超过了 24h，那么该文件就不会再被解析了
-    // const hour = parseInt((text.match(/\n> .*\*\*(\d+)h.*\*\*/) || [])[1] || '0')
+    // 通过正则校验提取旧日记的总时长
+    const oldTotalTimeList = text.match(/\n> 总时长：\*\*(\d+h)?(\d+min)?.*\*\*/) ?? []
 
     // 数据列表
     const dataList = []
@@ -106,18 +105,23 @@ function minToTime(time) {
     IS_INSERT_TEMPLATE && (text = insertRecordTemplate(dataList, text, insertTitle))
     // 替换文件中的内容
     dataList.length && (text = matchContentReplace(dataList, text))
-    // 将内容写入到「Record」 中
-    IS_WRITE_FILE && saveFile(filePath, text)
 
-    // 之前的数据就不打印了，没啥用捏
+    // 将内容写入到「 Record 」 中
+    // 优化：新总时长对比旧总时长，不一致时进行写入更新
+    const oldTotalTime = parseInt(oldTotalTimeList[1] || '0') * 60 + parseInt(oldTotalTimeList[2] || '0')
+    if (oldTotalTime !== totalTime && IS_WRITE_FILE) {
+      saveFile(filePath, text)
+    }
+
+    // 超过 24h 一律认为已经完成，就不打印啦~
     if (totalTime < 24 * 60) {
-      let printContentList = [path.basename(filePath), ' ⚡️', minToTime(totalTime), '\n']
+      let printContent = `${path.basename(filePath)} ⚡️ ${minToTime(totalTime)} \n`
       dataList.forEach(({ title, statsTime }, index) => {
-        if (title === '总时长') return
-        printContentList.push('\n', `${++index}. `, title, '：', timeTransform(statsTime, '', ''))
+        if (title !== '总时长') {
+          printContent += `\n ${++index}. ${title}：${timeTransform(statsTime, '', '')}`
+        }
       })
-      printContentList.push('\n')
-      console.log(printContentList.join(''))
+      console.log(printContent, '\n')
     }
   }
 
