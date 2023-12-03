@@ -110,7 +110,14 @@ function minToTime(time) {
     IS_WRITE_FILE && saveFile(filePath, text)
 
     // 之前的数据就不打印了，没啥用捏
-    if (totalTime < 24 * 60) console.log(`${path.basename(filePath)} ⚡${minToTime(totalTime)} `)
+    if (totalTime < 24 * 60) {
+      let printContentList = [path.basename(filePath), ' ⚡️', minToTime(totalTime), '\n']
+      dataList.forEach(({ title, statsTime }, index) => {
+        if (title === '总时长') return
+        printContentList.push('\n', `${++index}. `, title, '：', timeTransform(statsTime, '', ''))
+      })
+      console.log(printContentList.join(''))
+    }
   }
 
   // 录入数据
