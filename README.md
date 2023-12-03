@@ -16,7 +16,7 @@
 > 最近常用
 
 - Default Light Modern - 白天用，来源于 VS Code 自带。
-- [JetBrains Fleet Dark](https://marketplace.visualstudio.com/items?itemName=FranzGollhammer.jb-fleet-dark) - 我用的是 Fleet Ocean，这个主题对于 Fleet 算是还原度非常高了，蛮喜欢的。
+- [JetBrains Fleet Dark](https://marketplace.visualstudio.com/items?itemName=FranzGollhammer.jb-fleet-dark) - 我用的是 Fleet ~~Ocean~~ Dark（现在更喜欢这个哈哈哈），这个主题对于 Fleet 算是还原度非常高了，蛮喜欢的。
 
 > 其他推荐
 

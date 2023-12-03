@@ -116,6 +116,7 @@ function minToTime(time) {
         if (title === '总时长') return
         printContentList.push('\n', `${++index}. `, title, '：', timeTransform(statsTime, '', ''))
       })
+      printContentList.push('\n')
       console.log(printContentList.join(''))
     }
   }
