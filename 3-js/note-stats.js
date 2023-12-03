@@ -115,11 +115,18 @@ function minToTime(time) {
 
     // 超过 24h 一律认为已经完成，就不打印啦~
     if (totalTime < 24 * 60) {
-      let printContent = `${path.basename(filePath)} ⚡️ ${minToTime(totalTime)} \n`
-      dataList.forEach(({ title, statsTime }, index) => {
-        if (title !== '总时长') {
-          printContent += `\n ${++index}. ${title}：${timeTransform(statsTime, '', '')}`
+      // 去除 .md 的后缀名
+      let printContent = `${path.parse(filePath).name}`
+      let index = 1
+      dataList.forEach(({ title, statsTime }) => {
+        if (title === '睡眠') {
+          printContent += ` ⚡️ ${timeTransform(statsTime, '', '')} ⚡️ ${minToTime(totalTime)}\n`
+          return
         }
+
+        if (title === '总时长') return
+
+        printContent += `\n${index++}. ${title}：${timeTransform(statsTime, '', '')}`
       })
       console.log(printContent, '\n')
     }
