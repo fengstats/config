@@ -3,13 +3,16 @@ const path = require('path')
 
 // 匹配模式
 const modeMap = {
+  // 默认匹配，也就是所有标题都会匹配
   free: 'FREE',
+  // 自定义匹配，会过滤掉除了在 includeTitleList 中的其他标题
   custom: 'CUSTOM',
+  // 临时匹配，与默认匹配一样，只不过输出格式有点差别，可以在执行脚本时开启
   temp: 'TEMP',
 }
-// free: 默认，自由标题匹配，所有标题都会匹配
-// custom: 自定义标题匹配，会过滤掉除了 includeTitleList 中的其他标题
-// temp: 临时模式，暂时 todo
+// 括号映射
+const bracketMap = { '': '', '**': '**', '(': ')', '（': '）' }
+
 let matchMode = modeMap['free']
 // 固定插件标题
 const insertTitle = 'Record'
@@ -26,9 +29,9 @@ const isSaveFile = true
 const isRemoveTitle = false
 
 // 时间转换：分钟转换为 h+min/h/min，可选前后缀参数
-function minToTimeStr(t, timePrefix = '：**', timeSuffix = '**', isTotalTime = false) {
-  // TODO:
-  // if (t === 0) return tempMode ? '（）' : '：'
+function minToTimeStr(t, bracket = '**') {
+  // 没有值返回空字符串
+  if (t === 0) return ''
 
   const h = Math.floor(t / 60)
   const m = Math.floor(t % 60)
@@ -38,7 +41,7 @@ function minToTimeStr(t, timePrefix = '：**', timeSuffix = '**', isTotalTime = 
   const hStr = h === 0 ? '' : h + 'h'
   const mStr = m === 0 ? '' : String(m).padStart(2, '0') + 'min'
 
-  return timePrefix + hStr + mStr + timeSuffix
+  return bracket + hStr + mStr + bracketMap[bracket]
 }
 
 // 时间转换：分钟转换为 00:00 形式
@@ -53,8 +56,8 @@ function minToTime(time) {
   const inputPath = args[0]
   const filePathList = []
 
-  // 开启临时模式
-  if (args[1] === 'temp') matchMode = args[1]
+  // 选择匹配模式，如果有值说明匹配到了
+  if (modeMap[args[1]]) matchMode = modeMap[args[1]]
 
   // 异常处理
   if (!inputPath) {
@@ -92,11 +95,12 @@ function minToTime(time) {
     // 文件内容
     let text = fs.readFileSync(filePath, 'utf8')
 
-    // 通过正则校验提取旧日记的总时长
+    // 在处理前通过正则校验提取旧日记的总时长
     const oldTotalTimeList = text.match(/\n> 总时长：\*\*(\d+h)?(\d+min)?.*\*\*/) ?? []
 
     // 数据列表
     const dataList = []
+
     // 初始化
     initData()
 
@@ -104,35 +108,42 @@ function minToTime(time) {
     const totalTime = parseFileContent(dataList, text)
 
     // 插入模板
-    isInsertTemplate && (text = insertRecordTemplate(dataList, text, insertTitle))
-    // 替换文件中的内容
-    dataList.length && (text = matchContentReplace(dataList, text))
+    if (isInsertTemplate) text = insertRecordTemplate(dataList, text, insertTitle)
+
+    // 根据不同的正则，替换文件中的内容
+    if (dataList.length) text = matchContentReplace(dataList, text)
 
     // 将内容写入到『Record』中
-    // 优化：新总时长对比旧总时长，不一致时进行写入更新
     const oldTotalTime = parseInt(oldTotalTimeList[1] || '0') * 60 + parseInt(oldTotalTimeList[2] || '0')
-    if (oldTotalTime !== totalTime && isSaveFile) {
-      saveFile(filePath, text)
-    }
+    // 优化：新总时长对比旧总时长，不一致时进行写入更新
+    if (oldTotalTime !== totalTime && isSaveFile) saveFile(filePath, text)
 
     // 超过 24h 一律认为已经完成，就不打印啦~
-    if (totalTime < 24 * 60) {
-      // 去除 .md 的后缀名
-      let printContent = `${path.parse(filePath).name}`
+    if (totalTime >= 24 * 60) return
 
-      // 关于睡眠数据特殊处理……
-      const sleepData = dataList.find((record) => record.title === '睡眠')
-      if (sleepData) printContent += ` 💤 ${minToTimeStr(sleepData.statsTime, '', '')} ⏱ ${minToTime(totalTime)}\n`
-      else printContent += ` ⚡️ ${minToTime(totalTime)}\n`
-
-      let index = 1
-      dataList
-        .filter(({ title }) => !['睡眠', '总时长'].includes(title))
-        .forEach(({ title, statsTime }) => {
-          printContent += `\n${index++}. ${title}：${minToTimeStr(statsTime, '', '')}`
-        })
-      console.log(printContent, '\n')
+    // 开始打印！去除 .md 的后缀名
+    let printContent = `${path.parse(filePath).name}`
+    // 关于睡眠数据特殊处理
+    for (let item of dataList) {
+      if (item.title === '睡眠') {
+        printContent += ` 💤 ${minToTimeStr(item.statsTime, '')}`
+        break
+      }
     }
+    // 加上总时长
+    printContent += ` ⏱ ${minToTime(totalTime)}\n`
+
+    // 剩余标题数据
+    let index = 1
+    for (let item of dataList) {
+      const { title, statsTime } = item
+
+      // 不包含睡眠和总时长
+      if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
+      printContent += `\n${index++}. ${title}${minToTimeStr(statsTime, '（')}`
+    }
+
+    console.log(printContent, '\n')
   }
 
   // 录入数据
@@ -196,7 +207,7 @@ function minToTime(time) {
         sleepTitle,
         `- [x] ${sleepTitle}：${matchContent}`,
         matchContent + '.*',
-        `${matchContent} 💤 ${minToTimeStr(minuteTime, '**')}`,
+        `${matchContent} 💤 ${minToTimeStr(minuteTime)}`,
         minuteTime,
       )
     }
@@ -259,7 +270,7 @@ function minToTime(time) {
       //   matchTitle = `${title}（.*`
       // }
 
-      addData(dataList, title, insertContent, matchTitle, `${title}` + minToTimeStr(minuteTime), minuteTime, {
+      addData(dataList, title, insertContent, matchTitle, `${title}：${minToTimeStr(minuteTime)}`, minuteTime, {
         matchContentList,
       })
     }
@@ -276,14 +287,7 @@ function minToTime(time) {
       }
     })
 
-    addData(
-      dataList,
-      title,
-      `\n> ${title}：\n`,
-      title + '：.*',
-      title + minToTimeStr(totalTime, '：**', '**', true),
-      totalTime,
-    )
+    addData(dataList, title, `\n> ${title}：\n`, `${title}：.*`, `${title}：${minToTimeStr(totalTime)}`, totalTime)
     return totalTime
   }
 
