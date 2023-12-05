@@ -1,35 +1,35 @@
 const fs = require('fs')
 const path = require('path')
 
-// 临时模式
-let tempMode = false
 // 匹配模式
-// free: 默认，自由标题匹配
-// custom: 自定义标题匹配，需要配置 includeTitleList
-let MATCH_MODE = 'free'
+const modeMap = {
+  free: 'FREE',
+  custom: 'CUSTOM',
+  temp: 'TEMP',
+}
+// free: 默认，自由标题匹配，所有标题都会匹配
+// custom: 自定义标题匹配，会过滤掉除了 includeTitleList 中的其他标题
+// temp: 临时模式，暂时 todo
+let matchMode = modeMap['free']
 // 固定插件标题
 const insertTitle = 'Record'
 // 需要匹配的标题列表
-const includeTitleList = ['重要的事', '生活', '休闲']
+const includeTitleList = ['重要', '生活', '休闲']
 // 需要排除的目录或者文件
 const excludeFileList = ['.DS_Store']
-// 是否进行控制台打印调试
-const IS_PRINT_CONSOLE = true
-// 是否需要插入模板格式信息（用于匹配替换）
-let IS_INSERT_TEMPLATE = true
-// 是否写入文件
-const IS_WRITE_FILE = true
-// 是否删除未匹配到内容的标题
-const IS_REMOVE_TITLE = false
 
-// 时间转换：分钟转换为小时 + 分钟，可选前后缀参数
-function timeTransform(t, timePrefix = '：**', timeSuffix = '**', isTotalTime = false) {
-  // TODO: 临时处理
-  if (tempMode && !isTotalTime) {
-    timePrefix = '（**'
-    timeSuffix = '**）'
-  }
-  if (t === 0) return tempMode ? '（）' : '：'
+// 是否需要插入模板格式信息，用于匹配替换，默认开启
+let isInsertTemplate = true
+// 是否写入文件，默认开启
+const isSaveFile = true
+// 是否删除未匹配到内容的标题，默认关闭
+const isRemoveTitle = false
+
+// 时间转换：分钟转换为 h+min/h/min，可选前后缀参数
+function minToTimeStr(t, timePrefix = '：**', timeSuffix = '**', isTotalTime = false) {
+  // TODO:
+  // if (t === 0) return tempMode ? '（）' : '：'
+
   const h = Math.floor(t / 60)
   const m = Math.floor(t % 60)
   // 0 的情况返回空字符串
@@ -41,7 +41,7 @@ function timeTransform(t, timePrefix = '：**', timeSuffix = '**', isTotalTime =
   return timePrefix + hStr + mStr + timeSuffix
 }
 
-// 时间转换：分钟转换为 “00:00” 形式
+// 时间转换：分钟转换为 00:00 形式
 function minToTime(time) {
   const h = String(Math.floor(time / 60)).padStart(2, '0')
   const m = String(Math.floor(time % 60)).padStart(2, '0')
@@ -52,7 +52,9 @@ function minToTime(time) {
   const args = process.argv.slice(2)
   const inputPath = args[0]
   const filePathList = []
-  tempMode = args[1] === '1' ? true : false
+
+  // 开启临时模式
+  if (args[1] === 'temp') matchMode = args[1]
 
   // 异常处理
   if (!inputPath) {
@@ -102,14 +104,14 @@ function minToTime(time) {
     const totalTime = parseFileContent(dataList, text)
 
     // 插入模板
-    IS_INSERT_TEMPLATE && (text = insertRecordTemplate(dataList, text, insertTitle))
+    isInsertTemplate && (text = insertRecordTemplate(dataList, text, insertTitle))
     // 替换文件中的内容
     dataList.length && (text = matchContentReplace(dataList, text))
 
-    // 将内容写入到「 Record 」 中
+    // 将内容写入到『Record』中
     // 优化：新总时长对比旧总时长，不一致时进行写入更新
     const oldTotalTime = parseInt(oldTotalTimeList[1] || '0') * 60 + parseInt(oldTotalTimeList[2] || '0')
-    if (oldTotalTime !== totalTime && IS_WRITE_FILE) {
+    if (oldTotalTime !== totalTime && isSaveFile) {
       saveFile(filePath, text)
     }
 
@@ -117,17 +119,18 @@ function minToTime(time) {
     if (totalTime < 24 * 60) {
       // 去除 .md 的后缀名
       let printContent = `${path.parse(filePath).name}`
+
+      // 关于睡眠数据特殊处理……
+      const sleepData = dataList.find((record) => record.title === '睡眠')
+      if (sleepData) printContent += ` 💤 ${minToTimeStr(sleepData.statsTime, '', '')} ⏱ ${minToTime(totalTime)}\n`
+      else printContent += ` ⚡️ ${minToTime(totalTime)}\n`
+
       let index = 1
-      dataList.forEach(({ title, statsTime }) => {
-        if (title === '睡眠') {
-          printContent += ` ⚡️ ${timeTransform(statsTime, '', '')} ⚡️ ${minToTime(totalTime)}\n`
-          return
-        }
-
-        if (title === '总时长') return
-
-        printContent += `\n${index++}. ${title}：${timeTransform(statsTime, '', '')}`
-      })
+      dataList
+        .filter(({ title }) => !['睡眠', '总时长'].includes(title))
+        .forEach(({ title, statsTime }) => {
+          printContent += `\n${index++}. ${title}：${minToTimeStr(statsTime, '', '')}`
+        })
       console.log(printContent, '\n')
     }
   }
@@ -152,7 +155,7 @@ function minToTime(time) {
 
   // 数据初始化
   function initData() {
-    IS_INSERT_TEMPLATE = true
+    isInsertTemplate = true
   }
 
   // 解析文件内容，根据匹配正则录入数据
@@ -193,7 +196,7 @@ function minToTime(time) {
         sleepTitle,
         `- [x] ${sleepTitle}：${matchContent}`,
         matchContent + '.*',
-        `${matchContent} ⚡️ ${timeTransform(minuteTime, '**')}`,
+        `${matchContent} 💤 ${minToTimeStr(minuteTime, '**')}`,
         minuteTime,
       )
     }
@@ -205,28 +208,28 @@ function minToTime(time) {
     const contentTimeRegex = /- \[x\].*\*\*(.*)\*\*/g
     // NOTE: 后面的 \+? 为了兼容之前没有写具体时间的数据，如 1h+、25min+ 等等
     const timeRegex = /\*\*(\d+h)?(\d+min)?\+?\*\*/
-    let index = 0
+
+    let index = 1
     while ((match = contentRegex.exec(text)) !== null) {
       const title = match[1]
       const matchContent = match[2].trim()
       const matchContentList = matchContent.match(contentTimeRegex) || []
-      // 一些些额外处理
+
+      // 该文件中已有插入标题，无需自动插入
       if (title === insertTitle) {
-        // 不需要插入
-        IS_INSERT_TEMPLATE = false
-        continue
-      } else if (MATCH_MODE === 'custom' && !includeTitleList.includes(title)) {
-        // 不满足自定义匹配的标题
-        continue
-      } else if (!matchContent) {
-        // 没有内容的标题
-        IS_REMOVE_TITLE && addData(dataList, title, '', `\n## ${title}\n*`, '')
+        isInsertTemplate = false
         continue
       }
-      // } else if (!matchContentList?.length) {
-      //   // 没有匹配到时间的直接叉出去
-      //   continue
-      // }
+
+      // 过滤不满足 custom 模式内包含的标题
+      if (matchMode === modeMap['custom'] && !includeTitleList.includes(title)) continue
+
+      if (!matchContent) {
+        // 没有内容的标题
+        isRemoveTitle && addData(dataList, title, '', `\n## ${title}\n*`, '')
+        continue
+      }
+
       // 转换时间格式
       const minuteTime =
         matchContentList?.reduce((accumulator, content) => {
@@ -245,9 +248,18 @@ function minToTime(time) {
           return minuteTime + accumulator
         }, 0) || 0
       // TODO: 临时处理
-      const insertContent = tempMode ? `${++index}. ${title}（）` : `- [x] ${title}：`
-      const matchTitle = tempMode ? `${title}（.*` : `${title}：.*`
-      addData(dataList, title, insertContent, matchTitle, `${title}` + timeTransform(minuteTime), minuteTime, {
+
+      // 插入内容
+      let insertContent = `- [x] ${title}：`
+      // 匹配标题
+      let matchTitle = `${title}：.*`
+
+      // if (matchMode === modeMap['temp']) {
+      //   insertContent = `${index++}. ${title}（）`
+      //   matchTitle = `${title}（.*`
+      // }
+
+      addData(dataList, title, insertContent, matchTitle, `${title}` + minToTimeStr(minuteTime), minuteTime, {
         matchContentList,
       })
     }
@@ -255,23 +267,21 @@ function minToTime(time) {
 
   // 计算总时长录入
   function calculateTotalTimeAdd(dataList, title = '总时长') {
-    let totalTime = 0
-    dataList.forEach(({ statsTime }) => (totalTime += statsTime))
-    !tempMode &&
-      dataList.forEach((item) => {
-        if (item.statsTime !== 0) {
-          item.percentage = Math.round((item.statsTime / totalTime) * 100)
-          // NOTE: 这里百分比是四舍五入的，可能会存在总和不为 100 的情况
-          // item.result += `（<font color="#45465e">${item.percentage}%</font>）`
-          item.result += `（${item.percentage}%）`
-        }
-      })
+    const totalTime = dataList.reduce((prev, { statsTime }) => prev + statsTime, 0)
+    dataList.forEach((item) => {
+      if (item.statsTime !== 0) {
+        item.percentage = Math.round((item.statsTime / totalTime) * 100)
+        // TODO: 这里百分比是四舍五入的，可能会存在总和不为 100 的情况
+        item.result += `（${item.percentage}%）`
+      }
+    })
+
     addData(
       dataList,
       title,
       `\n> ${title}：\n`,
       title + '：.*',
-      title + timeTransform(totalTime, '：**', '**', true),
+      title + minToTimeStr(totalTime, '：**', '**', true),
       totalTime,
     )
     return totalTime
