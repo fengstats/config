@@ -14,15 +14,17 @@ const modeMap = {
 const bracketMap = { '': '', '**': '**', '(': ')', '（': '）' }
 
 let matchMode = modeMap['free']
+// 是否需要插入模板格式信息，用于匹配替换，默认开启
+let isInsertTemplate = true
+// 文件总时长
+let fileTotalTime = 0
+
 // 固定插件标题
 const insertTitle = 'Record'
 // 需要匹配的标题列表
 const includeTitleList = ['重要', '生活', '休闲']
 // 需要排除的目录或者文件
 const excludeFileList = ['.DS_Store']
-
-// 是否需要插入模板格式信息，用于匹配替换，默认开启
-let isInsertTemplate = true
 // 是否写入文件，默认开启
 const isSaveFile = true
 // 是否删除未匹配到内容的标题，默认关闭
@@ -90,60 +92,10 @@ function minToTime(time) {
     run(filePath)
   })
 
-  // 启动
-  function run(filePath) {
-    // 文件内容
-    let text = fs.readFileSync(filePath, 'utf8')
-
-    // 在处理前通过正则校验提取旧日记的总时长
-    const oldTotalTimeList = text.match(/\n> 总时长：\*\*(\d+h)?(\d+min)?.*\*\*/) ?? []
-
-    // 数据列表
-    const dataList = []
-
-    // 初始化
-    initData()
-
-    // 核心处理
-    const totalTime = parseFileContent(dataList, text)
-
-    // 插入模板
-    if (isInsertTemplate) text = insertRecordTemplate(dataList, text, insertTitle)
-
-    // 根据不同的正则，替换文件中的内容
-    if (dataList.length) text = matchContentReplace(dataList, text)
-
-    // 将内容写入到『Record』中
-    const oldTotalTime = parseInt(oldTotalTimeList[1] || '0') * 60 + parseInt(oldTotalTimeList[2] || '0')
-    // 优化：新总时长对比旧总时长，不一致时进行写入更新
-    if (oldTotalTime !== totalTime && isSaveFile) saveFile(filePath, text)
-
-    // 超过 24h 一律认为已经完成，就不打印啦~
-    if (totalTime >= 24 * 60) return
-
-    // 开始打印！去除 .md 的后缀名
-    let printContent = `${path.parse(filePath).name}`
-    // 关于睡眠数据特殊处理
-    for (let item of dataList) {
-      if (item.title === '睡眠') {
-        printContent += ` 💤 ${minToTimeStr(item.statsTime, '')}`
-        break
-      }
-    }
-    // 加上总时长
-    printContent += ` ⏱ ${minToTime(totalTime)}\n`
-
-    // 剩余标题数据
-    let index = 1
-    for (let item of dataList) {
-      const { title, statsTime } = item
-
-      // 不包含睡眠和总时长
-      if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
-      printContent += `\n${index++}. ${title}${minToTimeStr(statsTime, '（')}`
-    }
-
-    console.log(printContent, '\n')
+  // 数据初始化
+  function initData() {
+    isInsertTemplate = true
+    fileTotalTime = 0
   }
 
   // 录入数据
@@ -164,9 +116,59 @@ function minToTime(time) {
     })
   }
 
-  // 数据初始化
-  function initData() {
-    isInsertTemplate = true
+  // 启动
+  function run(filePath) {
+    // 文件内容
+    let text = fs.readFileSync(filePath, 'utf8')
+
+    // 在处理前通过正则校验提取旧日记的总时长
+    const oldTotalTimeList = text.match(/\n> 总时长：\*\*(\d+h)?(\d+min)?.*\*\*/) ?? []
+
+    // 数据列表
+    const dataList = []
+
+    // 初始化
+    initData()
+
+    // 核心处理
+    parseFileContent(dataList, text)
+
+    // 插入模板
+    if (isInsertTemplate) text = insertRecordTemplate(dataList, text, insertTitle)
+
+    // 根据不同的正则，替换文件中的内容
+    if (dataList.length) text = matchContentReplace(dataList, text)
+
+    // 将内容写入到『Record』中
+    const oldTotalTime = parseInt(oldTotalTimeList[1] || '0') * 60 + parseInt(oldTotalTimeList[2] || '0')
+    // 优化：新总时长对比旧总时长，不一致时进行写入更新
+    if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
+
+    // 超过 24h 一律认为已经完成，就不打印啦~
+    if (fileTotalTime >= 24 * 60) return
+
+    // 开始打印！去除 .md 的后缀名
+    let printContent = `${path.parse(filePath).name}`
+    // 关于睡眠数据特殊处理
+    for (let item of dataList) {
+      if (item.title === '睡眠') {
+        printContent += ` 💤 ${minToTimeStr(item.statsTime, '')}`
+        break
+      }
+    }
+    // 加上总时长
+    printContent += ` ⏱ ${minToTime(fileTotalTime)}\n`
+
+    // 剩余标题数据
+    let index = 1
+    for (let item of dataList) {
+      const { title, statsTime } = item
+      // 不包含睡眠和总时长
+      if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
+      printContent += `\n${index++}. ${title}${minToTimeStr(statsTime, '（')}`
+    }
+
+    console.log(printContent, '\n')
   }
 
   // 解析文件内容，根据匹配正则录入数据
@@ -174,14 +176,13 @@ function minToTime(time) {
     // 睡眠时长
     addSleepTimeData(dataList, text)
     // 内容时长
-    addTitleData(dataList, text)
+    addTitleTimeData(dataList, text)
     // 总时长
-    return calculateTotalTimeAdd(dataList)
+    addTotalTimeData(dataList, fileTotalTime)
   }
 
   // 根据匹配正则添加睡眠时长数据
-  function addSleepTimeData(dataList, text, match) {
-    const sleepTitle = '睡眠'
+  function addSleepTimeData(dataList, text, match, sleepTitle = '睡眠') {
     const sleepTimeRegex = /(\d{2}):(\d{2})-(\d{2}):(\d{2})/g
     while ((match = sleepTimeRegex.exec(text)) !== null) {
       // 开始与结束时间，默认当前时间
@@ -201,26 +202,28 @@ function minToTime(time) {
       }
       // 计算时间差
       const duration = end.getTime() - start.getTime()
-      const minuteTime = duration / 1000 / 60
+      const statsTime = duration / 1000 / 60
+      // 累加给文件总时长
+      fileTotalTime += statsTime
+      // 录入数据
       addData(
         dataList,
         sleepTitle,
         `- [x] ${sleepTitle}：${matchContent}`,
         matchContent + '.*',
-        `${matchContent} 💤 ${minToTimeStr(minuteTime)}`,
-        minuteTime,
+        `${matchContent} 💤 ${minToTimeStr(statsTime)}`,
+        statsTime,
       )
     }
   }
 
   // 根据匹配正则添加标题为主的内容数据时长
-  function addTitleData(dataList, text, match) {
+  function addTitleTimeData(dataList, text, match) {
     const contentRegex = /## (.+?)\n([\s\S]*?)(?=\n## |\n*$)/g
     const contentTimeRegex = /- \[x\].*\*\*(.*)\*\*/g
-    // NOTE: 后面的 \+? 为了兼容之前没有写具体时间的数据，如 1h+、25min+ 等等
+    // NOTE: 后面的 \+? 为了兼容旧笔记数据，如 1h+、25min+ 等等
     const timeRegex = /\*\*(\d+h)?(\d+min)?\+?\*\*/
 
-    let index = 1
     while ((match = contentRegex.exec(text)) !== null) {
       const title = match[1]
       const matchContent = match[2].trim()
@@ -233,62 +236,68 @@ function minToTime(time) {
       }
 
       // 过滤不满足 custom 模式内包含的标题
-      if (matchMode === modeMap['custom'] && !includeTitleList.includes(title)) continue
+      if (matchMode === modeMap['custom'] && !includeTitleList.includes(title)) {
+        continue
+      }
 
+      // 没有匹配到内容的标题
       if (!matchContent) {
-        // 没有内容的标题
+        // 顺便看看要不要删除
         isRemoveTitle && addData(dataList, title, '', `\n## ${title}\n*`, '')
         continue
       }
 
-      // 转换时间格式
-      const minuteTime =
-        matchContentList?.reduce((accumulator, content) => {
-          let minuteTime = 0
-          // 匹配小时与分钟
-          const matchTimeList = content.match(new RegExp(timeRegex, 'g')) || []
-          // console.log(matchTimeList)
-          // 兼容单任务出现多时间的内容
-          matchTimeList.forEach((timeContent) => {
-            const item = timeContent.match(timeRegex) || []
-            const hour = parseInt(item[1]) || 0
-            const minute = parseInt(item[2]) || 0
-            minuteTime += hour * 60 + minute
-          })
-          // 计算总分钟数
-          return minuteTime + accumulator
-        }, 0) || 0
-      // TODO: 临时处理
+      // OK，校验都结束了，那我们下面开始匹配时间数据并计算
 
       // 插入内容
       let insertContent = `- [x] ${title}：`
       // 匹配标题
       let matchTitle = `${title}：.*`
+      // 当前标题下的总时长
+      let statsTime = 0
+
+      for (let content of matchContentList) {
+        // 每个任务的统计时长
+        let taskMinTime = 0
+        const matchTimeList = content.match(new RegExp(timeRegex, 'g')) || []
+        // NOTE: 兼容单个任务内出现多个时长的情况
+        for (let taskContent of matchTimeList) {
+          const item = taskContent.match(timeRegex) || []
+          const hour = parseInt(item[1]) || 0
+          const minute = parseInt(item[2]) || 0
+          taskMinTime += hour * 60 + minute
+        }
+        // 累加到标题总时长
+        statsTime += taskMinTime
+      }
+
+      // 标题总时长累加到文件总时长上
+      fileTotalTime += statsTime
 
       // if (matchMode === modeMap['temp']) {
       //   insertContent = `${index++}. ${title}（）`
       //   matchTitle = `${title}（.*`
       // }
 
-      addData(dataList, title, insertContent, matchTitle, `${title}：${minToTimeStr(minuteTime)}`, minuteTime, {
+      // 添加数据，后续统一处理
+      addData(dataList, title, insertContent, matchTitle, `${title}：${minToTimeStr(statsTime)}`, statsTime, {
         matchContentList,
       })
     }
   }
 
-  // 计算总时长录入
-  function calculateTotalTimeAdd(dataList, title = '总时长') {
-    const totalTime = dataList.reduce((prev, { statsTime }) => prev + statsTime, 0)
+  // 录入总时长
+  function addTotalTimeData(dataList, totalTime, title = '总时长') {
+    // 根据总时长给原有标题时长添加百分比信息
     dataList.forEach((item) => {
       if (item.statsTime !== 0) {
         item.percentage = Math.round((item.statsTime / totalTime) * 100)
-        // TODO: 这里百分比是四舍五入的，可能会存在总和不为 100 的情况
+        // NOTE: 这里百分比是四舍五入的，可能会存在总和不为 100 的情况
         item.result += `（${item.percentage}%）`
       }
     })
 
     addData(dataList, title, `\n> ${title}：\n`, `${title}：.*`, `${title}：${minToTimeStr(totalTime)}`, totalTime)
-    return totalTime
   }
 
   // 根据扫描标题动态插入格式模板
