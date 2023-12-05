@@ -93,8 +93,9 @@ function minToTime(time) {
   })
 
   // 数据初始化
-  function initData() {
-    isInsertTemplate = true
+  function initData(isTmpMode) {
+    // 在临时模式下默认不插入
+    isInsertTemplate = !isTmpMode
     fileTotalTime = 0
   }
 
@@ -118,6 +119,9 @@ function minToTime(time) {
 
   // 启动
   function run(filePath) {
+    // 是否为临时模式
+    const isTmpMode = matchMode === modeMap['temp'] ? true : false
+
     // 文件内容
     let text = fs.readFileSync(filePath, 'utf8')
 
@@ -128,12 +132,12 @@ function minToTime(time) {
     const dataList = []
 
     // 初始化
-    initData()
+    initData(isTmpMode)
 
     // 核心处理
     parseFileContent(dataList, text)
 
-    // 插入模板
+    // 是否插入模板
     if (isInsertTemplate) text = insertRecordTemplate(dataList, text, insertTitle)
 
     // 根据不同的正则，替换文件中的内容
@@ -145,7 +149,7 @@ function minToTime(time) {
     if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
 
     // 超过 24h 一律认为已经完成，就不打印啦~
-    if (fileTotalTime >= 24 * 60) return
+    if (fileTotalTime >= 24 * 60 && !isTmpMode) return
 
     // 开始打印！去除 .md 的后缀名
     let printContent = `${path.parse(filePath).name}`
@@ -157,15 +161,16 @@ function minToTime(time) {
       }
     }
     // 加上总时长
-    printContent += ` ⏱ ${minToTime(fileTotalTime)}\n`
+    printContent += ` 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`
 
     // 剩余标题数据
     let index = 1
+    let bracket = ''
     for (let item of dataList) {
       const { title, statsTime } = item
       // 不包含睡眠和总时长
       if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
-      printContent += `\n${index++}. ${title}${minToTimeStr(statsTime, '（')}`
+      printContent += `\n${index++}. ${title} ${minToTimeStr(statsTime, bracket)}`
     }
 
     console.log(printContent, '\n')
