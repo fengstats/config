@@ -2,8 +2,8 @@
 
 > zsh
 
-- [vimrc](./1-zsh/.vimrc) - vim 配置文件。
-- [init.vim](./1-zsh/init.vim) - nvim 配置文件。
+- [vimrc](./1-zsh/.vimrc) - Vim 配置文件。
+- [init.vim](./1-zsh/init.vim) - Neovim 配置文件。
 - [zimrc](./1-zsh/.zimrc) - zimfw，一个相对于 oh-my-zsh 更轻量级且更快的 zsh 配置框架，需要小小折腾一下。
 
 > VS Code
@@ -13,7 +13,7 @@
 
 ## 主题
 
-<p align="center"><b>Preview</b></p>
+<p align="center"><b>主题预览</b></p>
 
 <p align="center">
 <img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Moegi-Light-Vitesse2.png">
@@ -23,7 +23,7 @@
 > 最近常用
 
 - Default Light Modern - 白天用，来源于 VS Code 自带。
-- [JetBrains Fleet Dark](https://marketplace.visualstudio.com/items?itemName=FranzGollhammer.jb-fleet-dark) - 我用的是 Fleet ~~Ocean~~ Dark（现在更喜欢这个哈哈哈），这个主题对于 Fleet 算是还原度非常高了，蛮喜欢的。
+- [JetBrains Fleet Dark](https://marketplace.visualstudio.com/items?itemName=FranzGollhammer.jb-fleet-dark) - 我用的是 Fleet ~~Ocean~~ Dark（现在更喜欢这个哈哈哈），感觉对于 Fleet 编辑器默认主题还原度算是非常高了 👍🏻。
 
 > 其他推荐
 
