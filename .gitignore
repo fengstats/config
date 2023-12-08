@@ -1,22 +1,4 @@
-# mine
 **/tmp
-*.swp
-
-# dependencies
-/node_modules
-**/node_modules
-
-# production
-/dist
-/build
-
-# vscode
-.history
-
-# mac
+dist
+build
 .DS_Store
-
-# misc
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
