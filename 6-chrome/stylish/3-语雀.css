@@ -1,0 +1,14 @@
+/* 笔记内容：中心区域 */
+.ne-paragraph-spacing-relax.ne-typography-classic,
+.ne-viewer.ne-paragraph-spacing-relax.ne-typography-classic .ne-viewer-body {
+  font-family: Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif,
+    Segoe UI;
+}
+
+/* 左侧目录 */
+.catalogTreeItem-module_CatalogItem_xkX7p
+  .catalogTreeItem-module_content_fLFbS
+  .catalogTreeItem-module_titleWrapper_sFyDt
+  .catalogTreeItem-module_title_snpKw {
+  font-family: Arial;
+}

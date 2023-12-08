@@ -1,0 +1,8 @@
+.main_width-limit {
+  max-width: 1080px;
+}
+
+pre,
+code {
+  font-family: 'Input Mono Freeze' !important;
+}

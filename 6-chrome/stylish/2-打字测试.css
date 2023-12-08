@@ -1,0 +1,52 @@
+/* 整个打字区域 */
+#content {
+  margin-top: 66px;
+  height: 720px !important;
+}
+
+/* 所有行 */
+#content .typing .text {
+  font-family: Input Mono Freeze !important;
+  height: 0.5em;
+  border: 0 !important;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 输入框 */
+#content .typing input {
+  height: 0;
+  font-family: Input Mono Freeze !important;
+  z-index: -999;
+}
+
+/* 正在输入的行 */
+#content div.typing_on,
+#content div.typing_on div {
+  background-color: #fff !important;
+}
+#content div.typing_on div > span {
+  position: relative;
+}
+#content div.typing_on .green:last-child:after,
+#content div.typing_on .red:last-child:after {
+  content: '';
+  position: absolute;
+  left: auto;
+  width: 0.6em;
+  height: 1.3em;
+  border-bottom: 0.15em solid #0984e3;
+  /* animation: sparkle 0.6s infinite; */
+}
+
+/* 一闪一闪的动画 */
+@keyframes sparkle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
