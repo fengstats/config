@@ -125,8 +125,14 @@ function minToTime(time) {
   function run(filePath) {
     // 文件内容
     let text = fs.readFileSync(filePath, 'utf8')
+
+    if (!text) {
+      console.log('这是一个空文件噢~')
+      return
+    }
+
     // 是否为临时模式
-    const isTmpMode = matchMode === modeMap['temp'] ? true : false
+    const isTmpMode = matchMode === modeMap['temp']
     // 在处理前通过正则校验提取旧日记的总时长
     const oldTotalTimeList = text.match(/\n> 总时长：\*\*(\d+h)?(\d+min)?.*\*\*/) ?? []
     const oldTotalTime = parseInt(oldTotalTimeList[1] || '0') * 60 + parseInt(oldTotalTimeList[2] || '0')
@@ -148,31 +154,31 @@ function minToTime(time) {
     if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
     // saveFile(filePath, text)
 
-    // 之总时长超过或等于 24h 一律认为已经完成，但是会存在最后一次超过或等于的情况
+    // 之总时长超过或等于 24h 一律认为已经完成，就不打印了，但是会存在最后一次超过或等于的情况
     // 这时候我们还是要打印的，所以两个总时长取一个较小的
-    if (Math.min(oldTotalTime, fileTotalTime) >= 24 * 60 && !isTmpMode) return
-
-    // 开始打印！去除 .md 的后缀名
-    let index = 1
-    let bracket = ''
-    let printContent = `${path.parse(filePath).name}`
-    // 关于睡眠数据特殊处理
-    for (let item of dataList) {
-      if (item.title === '睡眠') {
-        printContent += ` 💤 ${minToTimeStr(item.statsTime, '')}`
-        break
+    if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60 && !isTmpMode) {
+      // 开始打印！去除 .md 的后缀名
+      let index = 1
+      let bracket = ''
+      let printContent = `${path.parse(filePath).name}`
+      // 关于睡眠数据特殊处理
+      for (let item of dataList) {
+        if (item.title === '睡眠') {
+          printContent += ` 💤 ${minToTimeStr(item.statsTime, '')}`
+          break
+        }
       }
+      // 加上总时长
+      printContent += ` 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`
+      // 剩余标题数据
+      for (let item of dataList) {
+        const { title, statsTime } = item
+        // 不包含睡眠和总时长
+        if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
+        printContent += `\n${index++}. ${title} ${minToTimeStr(statsTime, bracket)}`
+      }
+      console.log(printContent, '\n')
     }
-    // 加上总时长
-    printContent += ` 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`
-    // 剩余标题数据
-    for (let item of dataList) {
-      const { title, statsTime } = item
-      // 不包含睡眠和总时长
-      if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
-      printContent += `\n${index++}. ${title} ${minToTimeStr(statsTime, bracket)}`
-    }
-    console.log(printContent, '\n')
   }
 
   // 解析文件内容，根据匹配正则录入数据
