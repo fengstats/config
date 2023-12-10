@@ -13,7 +13,7 @@
 
 ## 主题
 
-<p align="center"><b>主题预览</b></p>
+<p align="center"><b>预览</b></p>
 
 <p align="center">
 <img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Moegi-Light-Vitesse2.png">
@@ -27,11 +27,11 @@
 
 > 其他推荐
 
-- [Moegi Theme](https://github.com/moegi-design/vscode-theme) - Diu 大佬写的主题。
+- [Moegi Theme](https://marketplace.visualstudio.com/items?itemName=ddiu8081.moegi-theme) - Diu 大佬写的主题。
 - [Spacegray VSCode](https://marketplace.visualstudio.com/items?itemName=ionutvmi.spacegray-vscode) - 夜间主题平替。
 - [Github Dark Classic Theme](https://marketplace.visualstudio.com/items?itemName=BerriJ.github-vscode-theme-dark-classic) - Github 暗黑主题还是做的很舒服的。
-- [Evondev Dracula](https://github.com/evondev/evondev-dracula) - 夜间使用，对比度高，看代码清晰，适合比较极客的人。
-- [Vitesse Theme](https://github.com/antfu/vscode-theme-vitesse) - 托尼写的主题，红绿灯配色，整体感觉不错，看久了感觉有点暗，而且发现有些细节处理需要自己处理，比如选中背景不明显等。
+- [Evondev Dracula](https://marketplace.visualstudio.com/items?itemName=evondev.dracula-high-contrast) - 夜间使用，对比度高，看代码清晰，适合比较极客的人。
+- [Vitesse Theme](https://marketplace.visualstudio.com/items?itemName=antfu.theme-vitesse) - 托尼写的主题，红绿灯配色，整体感觉不错，看久了感觉有点暗，而且发现有些细节处理需要自己处理，比如选中背景不明显等。
 - [Panda Theme](https://marketplace.visualstudio.com/items?itemName=tinkertrain.theme-panda) - 粉青配色，用了较长的一段时间，可惜是很早以前的主题了，蛮长时间没有更新了，部分颜色细节适配的不是特别好，需要自己来魔改。
 
 ## 字体
