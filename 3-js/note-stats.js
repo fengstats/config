@@ -156,7 +156,7 @@ function minToTime(time) {
 
     // 之总时长超过或等于 24h 一律认为已经完成，就不打印了，但是会存在最后一次超过或等于的情况
     // 这时候我们还是要打印的，所以两个总时长取一个较小的
-    if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60 && !isTmpMode) {
+    if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60) {
       // 开始打印！去除 .md 的后缀名
       let index = 1
       let bracket = ''
