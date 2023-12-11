@@ -22,11 +22,12 @@
 
 > 最近常用
 
-- Default Light Modern - 白天用，来源于 VS Code 自带。
+- [GitHub Plus Theme](https://marketplace.visualstudio.com/items?itemName=thenikso.github-plus-theme) - 群友推荐，有 Github 内味了！
 - [JetBrains Fleet Dark](https://marketplace.visualstudio.com/items?itemName=FranzGollhammer.jb-fleet-dark) - 我用的是 Fleet ~~Ocean~~ Dark（现在更喜欢这个哈哈哈），感觉对于 Fleet 编辑器默认主题还原度算是非常高了 👍🏻。
 
 > 其他推荐
 
+- Default Light Modern - 白天用，来源于 VS Code 自带。
 - [Moegi Theme](https://marketplace.visualstudio.com/items?itemName=ddiu8081.moegi-theme) - Diu 大佬写的主题。
 - [Spacegray VSCode](https://marketplace.visualstudio.com/items?itemName=ionutvmi.spacegray-vscode) - 夜间主题平替。
 - [Github Dark Classic Theme](https://marketplace.visualstudio.com/items?itemName=BerriJ.github-vscode-theme-dark-classic) - Github 暗黑主题还是做的很舒服的。
