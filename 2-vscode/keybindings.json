@@ -155,6 +155,11 @@
   },
   // 在文件管理器中搜索
   {
+    "key": "f",
+    "command": "list.find",
+    "when": "listFocus && listSupportsFind && !inputFocus"
+  },
+  {
     "key": "/",
     "command": "list.find",
     "when": "listFocus && listSupportsFind && !inputFocus"

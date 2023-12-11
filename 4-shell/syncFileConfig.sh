@@ -19,16 +19,16 @@ vscodeSystemPath="${userPath}/Library/Application Support/Code/User"
 zshSystemPath="${userPath}/.config/zsh"
 
 # my config path
-configPath="${userPath}/codebase/config"
+configPath="${userPath}/codebase/personal/config"
 zshPath="${configPath}/1-zsh"
 vsocdePath="${configPath}/2-vscode"
-pathArr=(${vsocdePath} ${zshPath})
+pathArr=(${zshPath} ${vsocdePath})
 
 # 自动校验创建目录
 for item in "${pathArr[@]}"; do
   if [ ! -d "${item}" ]; then
     mkdir -p "${item}"
-    echo "${item} created successfully！"
+    echo "${item} 路径目录创建成功！"
   fi
 done
 
@@ -48,4 +48,4 @@ cat ${userPath}/.zimrc >${zshPath}/.zimrc
 # -f 参数代表强制覆盖，若想递归复制可以添加 -r 参数
 cp -f ${zshSystemPath}/* ${zshPath}/
 
-echo "配置文件同步 config 仓库完成~"
+echo "同步 config 配置文件完成！"

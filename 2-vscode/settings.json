@@ -1,8 +1,9 @@
 {
   // Basic
   "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
   "explorer.openEditors.visible": 20,
+  "explorer.confirmDelete": false,
+  "diffEditor.renderSideBySide": false,
   "files.eol": "\n",
   "files.autoSave": "off",
   "files.insertFinalNewline": true,
@@ -35,14 +36,13 @@
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
   "window.commandCenter": true,
-  "window.zoomLevel": 0.8,
+  "window.zoomLevel": 0.6,
   "fonted.font": "Arial",
   "breadcrumbs.enabled": false,
-  "workbench.iconTheme": "file-icons",
-  "workbench.colorTheme": "GitHub Dark Classic",
+  "workbench.colorTheme": "Fleet Dark",
+  "workbench.startupEditor": "none",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "icons-carbon",
-  "workbench.preferredLightColorTheme": "Default Light Modern",
-  "workbench.preferredDarkColorTheme": "GitHub Dark Classic",
   "workbench.list.smoothScrolling": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
   "workbench.editor.highlightModifiedTabs": true,
@@ -55,15 +55,24 @@
       "terminal.ansiBlue": "#8adcf1",
       "terminal.ansiRed": "#ff6b81",
       "terminal.ansiBrightRed": "#ff7675",
-      "statusBar.background": "#333"
+      // 终端命令提示颜色
+      "terminal.ansiBrightBlack": "#000000",
+      "statusBar.background": "#333333"
+    },
+    "[Fleet Ocean][Fleet Dark]": {
+      "terminal.ansiBlue": "#8adcf1",
+      "terminal.ansiBrightBlack": "#000000",
+      "statusBar.background": "#333333"
     }
   },
 
   // Sundial
-  "sundial.sunset": "18:00",
+  "workbench.preferredLightColorTheme": "GitHub Plus",
+  "workbench.preferredDarkColorTheme": "Fleet Dark",
+  "sundial.sunset": "17:00",
   "sundial.interval": 30,
   "sundial.daySettings": {
-    "workbench.iconTheme": "file-icons"
+    // "workbench.iconTheme": "file-icons"
   },
   "sundial.nightSettings": {},
 
@@ -73,8 +82,8 @@
   "editor.lineNumbers": "on",
   "editor.lineHeight": 1.5,
   "editor.linkedEditing": false,
-  // "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.fontFamily": "Input Mono Freeze, monospace",
+  // "editor.fontFamily": "JetBrains Mono, monospace",
   // "editor.fontFamily": "Monaco, monospace",
   // "editor.fontFamily": "Input Mono, monospace",
   "editor.minimap.enabled": false,
@@ -96,12 +105,13 @@
     "enabled": true
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll": false,
-    "source.fixAll.eslint": true
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "explicit"
   },
   "editor.tokenColorCustomizations": {
     // "[Default Light Modern][Moegi Light Vitesse]": { "comments": "#95a5a6" },
-    "[Default Light Modern]": { "comments": "#218c74" },
+    "[Fleet Dark][Fleet Ocean]": { "comments": "#a1a7a1df" },
+    "[Default Light Modern][Moegi Light]": { "comments": "#218c74" },
     "[Evondev Dracula Darker Contrast]": { "comments": "#95a5a6" },
     "[GitHub Dark Classic][Atom One Dark]": { "comments": "#95a5a6" },
     "[Default Dark+]": { "comments": "#adb5ad" },
@@ -109,7 +119,12 @@
     "textMateRules": [
       {
         "name": "Comment Italics",
-        "scope": ["comment", "punctuation.definition.comment"],
+        "scope": [
+          "comment",
+          "punctuation.definition.comment",
+          "comment.line.double-slash",
+          "comment.block.documentation"
+        ],
         "settings": { "fontStyle": "" }
       }
     ]
@@ -148,6 +163,9 @@
   "[javascript][jsonc][vue][typescript][html][css][less]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
 
   // Extensions
   "extensions.ignoreRecommendations": true,
@@ -163,7 +181,7 @@
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
   "vim.foldfix": true,
-  "vim.easymotion": true,
+  "vim.easymotion": false,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.duration": 100,
   "vim.highlightedyank.color": "#00000000",
@@ -176,6 +194,7 @@
   "vim.visualModeKeyBindingsNonRecursive": [
     { "before": ["\""], "after": ["S", "\""] },
     { "before": ["'"], "after": ["S", "'"] },
+    { "before": ["("], "after": ["S", ")", "e"] },
     { "before": ["p"], "after": ["p", "g", "v", "y"] },
     { "before": ["K"], "after": ["4", "k"] },
     { "before": ["J"], "after": ["4", "j"] },
@@ -186,17 +205,21 @@
     { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] }
     // { "before": ["backspace"], "after": ["\"", "_", "c"] }
   ],
+  "vim.normalModeKeyBindings": [
+    { "before": ["H"], "after": ["^"] },
+    { "before": ["L"], "after": ["g", "_"] }
+  ],
   "vim.normalModeKeyBindingsNonRecursive": [
     // 还原 f 的原生命令
-    { "before": ["f"], "after": ["\\"] },
+    // { "before": ["f"], "after": ["\\"] },
     // 将 fash.vim 查找键设置为 s
-    { "before": ["s"], "after": ["f"] },
+    // { "before": ["s"], "after": ["f"] },a
     { "before": ["j"], "after": ["g", "j"] },
     { "before": ["k"], "after": ["g", "k"] },
     { "before": ["J"], "after": ["5", "g", "j"] },
     { "before": ["K"], "after": ["5", "g", "k"] },
-    { "before": ["H"], "after": ["^"] },
-    { "before": ["L"], "after": ["g", "_"] },
+    // { "before": ["H"], "after": ["^"] },
+    // { "before": ["L"], "after": ["g", "_"] },
     { "before": ["U"], "after": ["<c-r>"] },
     { "before": ["n"], "after": ["n", "z", "z"] },
     { "before": ["N"], "after": ["N", "z", "z"] },
@@ -212,7 +235,9 @@
     { "before": ["leader", "o"], "commands": ["extension.toggleBool"] },
     { "before": ["leader", "e"], "commands": ["workbench.action.toggleSidebarVisibility"] },
     { "before": ["leader", "l"], "commands": ["workbench.action.toggleAuxiliaryBar"] },
-    { "before": ["leader", "s"], "commands": ["workbench.action.files.save"] },
+    // NOTE: 2023-11-17 决定这个快捷键，重新适应 Command+S
+    // 就是让自己少记一个快捷方式，因为其他平台可能会兼容 Command+S，但可能不会提供给你自定义 leader 键的方式
+    // { "before": ["leader", "s"], "commands": ["workbench.action.files.save"] },
     { "before": ["leader", "q"], "commands": ["workbench.action.closeActiveEditor"] },
     { "before": ["leader", "w"], "commands": ["workbench.action.files.saveWithoutFormatting"] },
     { "before": ["leader", "["], "after": ["[", "{"] },
@@ -268,36 +293,42 @@
       "highlightColor": "#A8C023",
       "scope": "file"
     },
-    "TODO": {
-      "isBold": false,
-      "iconColor": "blue",
-      "highlightColor": "#3ea8ff",
-      "scope": "workspace"
-    },
+    // BUG: bug
     "BUG": {
       "isBold": false,
       "iconColor": "red",
       "highlightColor": "#F44336",
       "scope": "workspace"
     },
+    // TODO: 代办
+    "TODO": {
+      "isBold": false,
+      "iconColor": "blue",
+      "highlightColor": "#3ea8ff",
+      "scope": "workspace"
+    },
+    // FIXME: 记得修复我！！！
     "FIXME": {
       "isBold": false,
       "iconColor": "red",
       "highlightColor": "#F44336",
       "scope": "workspace"
     },
+    // REVIEW: 需要审查
     "REVIEW": {
       "isBold": false,
       "iconColor": "orange",
       "highlightColor": "#FFB300",
       "scope": "workspace"
     },
+    // NOTE: 笔记
     "NOTE": {
       "isBold": false,
       "iconColor": "green",
       "highlightColor": "#2ecc71",
       "scope": "file"
     },
+    // DONE: 完成
     "DONE": {
       "isBold": false,
       "iconColor": "green",
@@ -324,6 +355,7 @@
     "asvetliakov",
     "autofetch",
     "bilibili",
+    "Callout",
     "Codegeex",
     "codeium",
     "colour",
@@ -338,14 +370,17 @@
     "incsearch",
     "juejin",
     "Kirbyson",
+    "lcpr",
     "leetcode",
     "Moegi",
+    "mysqld",
     "neovim",
     "nums",
     "nuxt",
     "nvim",
     "peachpuff",
     "powermode",
+    "Raycast",
     "rgba",
     "strs",
     "tencent",
@@ -397,10 +432,9 @@
 
   // LeetCode
   "leetcode.endpoint": "leetcode-cn",
-  "leetcode.hint.configWebviewMarkdown": false,
-  "leetcode.workspaceFolder": "/Users/feng/codebase/workspace/leetcode",
-  "leetcode.hint.commandShortcut": false,
   "leetcode.defaultLanguage": "typescript",
+  "leetcode.workspaceFolder": "/Users/feng/codebase/personal-pro/leetcode",
+  "leetcode.hint.commandShortcut": false,
   "leetcode.hint.commentDescription": false,
-  "diffEditor.renderSideBySide": false
+  "leetcode.hint.configWebviewMarkdown": false
 }
