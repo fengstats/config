@@ -1,15 +1,17 @@
 ## 配置
 
-> system
+> 系统
 
 - [vimrc](./1-system/.vimrc) - Vim 配置文件。
 - [nvim](./1-system/.nvim.vim) - Neovim 配置文件。
-- [zimrc](./1-system/.zimrc) - 一个比 oh-my-zsh 更轻量级且更快的 zsh 配置框架，只需小小的折腾一会，详情请见：[Zimfw](https://github.com/zimfw/zimfw)。
+- [zimrc](./1-system/.zimrc) - Zimfw 配置文件。
 
 > VS Code
 
 - [settings.json](./2-vscode/settings.json) - 系统配置文件。
 - [keybindings.json](./2-vscode/keybindings.json) - 键盘快捷键映射配置文件。
+
+一个比 oh-my-zsh 更轻量级更快的 zsh 配置框架：[Zimfw](https://github.com/zimfw/zimfw)。
 
 ## 主题
 
