@@ -1,0 +1,25 @@
+# 内置扩展
+zmodule environment
+zmodule input
+zmodule termtitle
+zmodule utility
+zmodule completion
+zmodule git-info
+zmodule duration-info
+zmodule prompt-pwd
+zmodule magicmace
+
+# 其他扩展
+zmodule romkatv/powerlevel10k
+zmodule zsh-users/zsh-completions
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-history-substring-search
+zmodule zdharma-continuum/fast-syntax-highlighting
+zmodule supercrabtree/k
+zmodule hlissner/zsh-autopair
+
+# oh-my-zsh 的扩展
+# clipboard 里面有个命令（copyclip）是 copypath 需要用的，所以必须先加载进来
+zmodule ohmyzsh/ohmyzsh --root lib --source clipboard.zsh
+zmodule ohmyzsh/ohmyzsh --root plugins/copypath
+zmodule ohmyzsh/ohmyzsh --root plugins/autojump

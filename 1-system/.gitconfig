@@ -1,0 +1,6 @@
+# This is Git's per-user configuration file.
+[user]
+	name = fengstats
+	email = feng2860984180@163.com
+[core]
+	ignorecase = false
