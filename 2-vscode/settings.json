@@ -3,6 +3,7 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 20,
   "explorer.confirmDelete": false,
+  "workbench.tree.enableStickyScroll": true,
   "diffEditor.renderSideBySide": false,
   "files.eol": "\n",
   "files.autoSave": "off",
@@ -36,12 +37,12 @@
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
   "window.commandCenter": true,
-  "window.zoomLevel": 0.6,
+  "window.zoomLevel": 0.65,
   "fonted.font": "Arial",
-  "breadcrumbs.enabled": false,
+  "workbench.activityBar.location": "top",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Fleet Dark",
   "workbench.startupEditor": "none",
-  "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.list.smoothScrolling": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
@@ -60,7 +61,7 @@
       "statusBar.background": "#333333"
     },
     "[Fleet Ocean][Fleet Dark]": {
-      "terminal.ansiBlue": "#8adcf1",
+      // "terminal.ansiBlue": "#0abde3",
       "terminal.ansiBrightBlack": "#000000",
       "statusBar.background": "#333333"
     }
@@ -68,7 +69,7 @@
 
   // Sundial
   "workbench.preferredLightColorTheme": "GitHub Plus",
-  "workbench.preferredDarkColorTheme": "Fleet Dark",
+  "workbench.preferredDarkColorTheme": "Fleet Dark Modern",
   "sundial.sunset": "17:00",
   "sundial.interval": 30,
   "sundial.daySettings": {
@@ -143,8 +144,11 @@
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.fontFamily": "Input Mono Freeze, Hack Nerd Font Mono, monospace",
+  "terminal.integrated.tabs.defaultColor": "terminal.ansiGreen",
+  "terminal.integrated.tabs.defaultIcon": "terminal-bash",
   "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
+    "FIG_NEW_SESSION": "1",
+    "NO_COLOR": null
   },
   // "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
@@ -153,8 +157,8 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
-  "prettier.printWidth": 120,
   "prettier.proseWrap": "preserve",
+  "prettier.printWidth": 120,
   "editor.formatOnSave": true,
   "formatFiles.excludedFolders": ["node_modules", ".vscode", ".git", "dist", ".chrome", "attachments"],
   "formatFiles.extensionsToInclude": ".md",
@@ -259,6 +263,7 @@
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
   "git.ignoreRebaseWarning": true,
+  "gitlens.graph.minimap.enabled": false,
 
   // Codeium
   "codeium.enableSearch": false,
@@ -387,6 +392,7 @@
     "timi",
     "utools",
     "vimrc",
+    "Vite",
     "Vitesse",
     "vscodevim",
     "wechat",
@@ -436,5 +442,6 @@
   "leetcode.workspaceFolder": "/Users/feng/codebase/personal-pro/leetcode",
   "leetcode.hint.commandShortcut": false,
   "leetcode.hint.commentDescription": false,
-  "leetcode.hint.configWebviewMarkdown": false
+  "leetcode.hint.configWebviewMarkdown": false,
+  "security.workspace.trust.untrustedFiles": "open"
 }
