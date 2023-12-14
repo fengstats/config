@@ -23,6 +23,17 @@ const excludeFileList = []
 const isSaveFile = true
 const isRemoveTitle = false
 
+function minToTimeStrChinese(t, bracket = '**') {
+  if (t === 0) return ''
+
+  const h = Math.floor(t / 60)
+  const m = Math.floor(t % 60)
+  const hStr = h === 0 ? '' : h + '时'
+  const mStr = m === 0 ? '' : String(m).padStart(2, '0') + '分'
+
+  return bracket + hStr + mStr + bracketMap[bracket]
+}
+
 function minToTimeStr(t, bracket = '**') {
   if (t === 0) return ''
 
@@ -108,12 +119,15 @@ function run(filePath) {
   // saveFile(filePath, text)
 
   if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60 && !isTmpMode) {
-    let index = 1
+    // let index = 1
+    // console.log(
+    //   `${path.parse(filePath).name} 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`,
+    // )
     let bracket = ''
     let printContent = `${path.parse(filePath).name}`
     for (let item of dataList) {
       if (item.title === '睡眠') {
-        printContent += ` 💤 ${minToTimeStr(item.statsTime, '')}`
+        printContent += ` 💤 ${minToTimeStrChinese(item.statsTime, '')}`
         break
       }
     }
@@ -121,7 +135,7 @@ function run(filePath) {
     for (let item of dataList) {
       const { title, statsTime } = item
       if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
-      printContent += `\n${index++}. ${title} ${minToTimeStr(statsTime, bracket)}`
+      printContent += `\n${title} ✨ ${minToTimeStrChinese(statsTime, bracket)}`
     }
     console.log(printContent, '\n')
   }
@@ -233,8 +247,14 @@ function matchContentReplace(dataList, text) {
   return text
 }
 
-function saveFile(filePath, text) {
-  fs.writeFileSync(filePath, text, 'utf8')
+function saveFile(filePath, data) {
+  fs.writeFile(filePath, data, (err) => {
+    if (err) {
+      console.error('❌ 文件更新失败', err)
+    } else {
+      console.log('✅ 文件更新成功')
+    }
+  })
 }
 
 setup(inputPath)
