@@ -3,8 +3,8 @@
 > system
 
 - [vimrc](./1-system/.vimrc) - Vim 配置文件。
-- [init.vim](./1-system/nvim.vim) - Neovim 配置文件。
-- [zimrc](./1-system/.zimrc) - [Zimfw](https://github.com/zimfw/zimfw)，一个比 oh-my-zsh 更轻量级且更快的 zsh 配置框架，只需小小的折腾一会。
+- [nvim](./1-system/.nvim.vim) - Neovim 配置文件。
+- [zimrc](./1-system/.zimrc) - 一个比 oh-my-zsh 更轻量级且更快的 zsh 配置框架，只需小小的折腾一会，详情请见：[Zimfw](https://github.com/zimfw/zimfw)。
 
 > VS Code
 
