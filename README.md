@@ -16,8 +16,9 @@
 <p align="center"><b>预览</b></p>
 
 <p align="center">
-<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Moegi-Light-Vitesse2.png">
-<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/Github-Dark-Classic2.png">
+<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/VSCode%20Github%20Plus.png">
+<img src="https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/VSCode%20JetBrains%20Fleet%20Dark.png">
+
 </p>
 
 > 最近常用
@@ -44,3 +45,10 @@
 - [Comic Shanns Font](https://github.com/shannpersand/comic-shanns) - 很酷的字体。
 - [JetBrains Mono Font](https://github.com/JetBrains/JetBrainsMono) - 方方正正的，适合写代码。
 - [font freeze](https://mutsuntsai.github.io/fontfreeze/) - 可自定义字体细节，比如导入 Input Mono 试试。
+
+## 其他主题预览
+
+![VSCode Meogi Vitesse Light.png](https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/VSCode%20Meogi%20Vitesse%20Light.png)
+![VSCode Meogi Vitesse Dark.png](https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/VSCode%20Meogi%20Vitesse%20Dark.png)
+![VSCode Github Classic Dark.png](https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/VSCode%20Github%20Classic%20Dark.png)
+![VSCode Evondev Dracula Darker.png](https://cdn.jsdelivr.net/gh/fengstats/blogcdn@main/2023/VSCode%20Evondev%20Dracula%20Darker.png)
