@@ -37,11 +37,11 @@
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
   "window.commandCenter": true,
-  "window.zoomLevel": 0.65,
+  "window.zoomLevel": 0.7,
   "fonted.font": "Arial",
   "workbench.activityBar.location": "top",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Fleet Dark",
+  "workbench.colorTheme": "GitHub Plus",
   "workbench.startupEditor": "none",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.list.smoothScrolling": true,
@@ -55,26 +55,25 @@
     "[Default Dark+][GitHub Dark Classic]": {
       "terminal.ansiBlue": "#8adcf1",
       "terminal.ansiRed": "#ff6b81",
-      "terminal.ansiBrightRed": "#ff7675",
-      // 终端命令提示颜色
-      "terminal.ansiBrightBlack": "#000000",
-      "statusBar.background": "#333333"
+      "terminal.ansiBrightRed": "#ff7675"
     },
-    "[Fleet Ocean][Fleet Dark]": {
-      // "terminal.ansiBlue": "#0abde3",
-      "terminal.ansiBrightBlack": "#000000",
-      "statusBar.background": "#333333"
-    }
+    // 底部控制栏
+    "statusBar.background": "#333333",
+    // 终端命令提示
+    "terminal.ansiBrightBlack": "#000000"
   },
 
   // Sundial
-  "workbench.preferredLightColorTheme": "GitHub Plus",
-  "workbench.preferredDarkColorTheme": "Fleet Dark Modern",
-  "sundial.sunset": "17:00",
-  "sundial.interval": 30,
+  "workbench.preferredLightColorTheme": "GitHub Plus", // 白天主题
+  "workbench.preferredDarkColorTheme": "Fleet Dark Modern", // 夜晚主题
+  "sundial.sunrise": "07:00", // 什么时候切换白天主题
+  "sundial.sunset": "17:00", // 什么时候切换夜晚主题
+  "sundial.interval": 30, // 多久检测一次是否切换，单位为分钟
+  // 白天主题其他配置，可以加入图标字体之类的……
   "sundial.daySettings": {
     // "workbench.iconTheme": "file-icons"
   },
+  // 同理，夜晚主题配置
   "sundial.nightSettings": {},
 
   // Editor
@@ -255,7 +254,7 @@
   // NeoVim
   // "vscode-neovim.revealCursorScrollLine": true,
   // "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/opt/neovim/bin/nvim",
-  // "vscode-neovim.neovimInitVimPaths.darwin": "/Users/feng/.config/zsh/init.vim",
+  // "vscode-neovim.neovimInitVimPaths.darwin": "/Users/feng/.vim/nvim.vim",
 
   // Git
   "git.autofetch": true,
@@ -366,6 +365,7 @@
     "colour",
     "douyin",
     "easymotion",
+    "Evondev",
     "feng",
     "filesize",
     "foldfix",
@@ -390,6 +390,7 @@
     "strs",
     "tencent",
     "timi",
+    "unocss",
     "utools",
     "vimrc",
     "Vite",
@@ -397,6 +398,7 @@
     "vscodevim",
     "wechat",
     "weibo",
+    "Windi",
     "yuque",
     "zhihu",
     "zimfw",
