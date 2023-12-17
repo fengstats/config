@@ -7,6 +7,7 @@ alias x='exit'
 alias c='clear'
 alias o='open .'
 alias yp='copypath'
+alias cz='czg'
 
 # 显示当前目录信息
 alias l='exa'
