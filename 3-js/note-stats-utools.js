@@ -125,12 +125,14 @@ function run(filePath) {
     // )
     let bracket = ''
     let printContent = `${path.parse(filePath).name}`
+    // 可能有多个睡眠数据
+    let sleepTime = 0
     for (let item of dataList) {
       if (item.title === '睡眠') {
-        printContent += ` 💤 ${minToTimeStrChinese(item.statsTime, '')}`
-        break
+        sleepTime += item.statsTime
       }
     }
+    printContent += ` 💤 ${minToTimeStrChinese(sleepTime, '')}`
     printContent += ` 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`
     for (let item of dataList) {
       const { title, statsTime } = item
