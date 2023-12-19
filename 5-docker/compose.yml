@@ -30,9 +30,14 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       # 时区
       TZ: Asia/Shanghai
+      
   srs:
     image: registry.cn-hangzhou.aliyuncs.com/ossrs/srs:5
     restart: always
+    environment:
+      # 在 srs 内部配置文件用得上，比如 rtc2rtmp.conf
+      # - CANDIDATE=$(ifconfig en6 inet | grep 'inet ' | awk '{print $2}') # TODO: 有点问题，有空再看
+      - CANDIDATE=192.168.1.2 # NOTE: 写死的 ip 可能会变，注意检查
     command: 
       ./objs/srs -c conf/rtc2rtmp.conf
     ports:
@@ -41,12 +46,15 @@ services:
       - 1985:1985
       - 8000:8000/udp
     volumes:
+      # NOTE: 这种方式你要确保本地有 conf 和 objs 以及内部配置文件信息
+      - ./srs/conf:/usr/local/srs/conf
+      - ./srs/objs:/usr/local/srs/objs
       # 这里直接 volume 名字即可
-      - srs_conf:/usr/local/srs/conf
-      - srs_objs:/usr/local/srs/objs
+      # - srs_conf:/usr/local/srs/conf
+      # - srs_objs:/usr/local/srs/objs
 
 # 在 docker run 命令使用 Docker 内的 Volumes 时 Dokcer 会自动创建好
 # 但在 compose 内不行，要先在顶层先定义 volumes 名称用于创建
-volumes:
-  srs_conf:
-  srs_objs:
+# volumes:
+#   srs_conf:
+#   srs_objs:
