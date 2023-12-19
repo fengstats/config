@@ -4,8 +4,14 @@ const path = require('path')
 // 改这里
 const year = '2023'
 const month = '12'
-const inputPath = `/Users/feng/codebase/personal/diary-note/${year}/${month}月`
+let inputPath = `/Users/feng/codebase/personal/diary-note/${year}/${month}月`
 
+const colorMap = {
+  重要: '#68ad80',
+  生活: '#5296d5',
+  休闲: '#e95548',
+  其他: '',
+}
 const modeMap = {
   free: 'FREE',
   custom: 'CUSTOM',
@@ -28,7 +34,7 @@ function minToTimeStrChinese(t, bracket = '**') {
 
   const h = Math.floor(t / 60)
   const m = Math.floor(t % 60)
-  const hStr = h === 0 ? '' : h + '时'
+  const hStr = h === 0 ? '' : String(h).padStart(2, '0') + '时'
   const mStr = m === 0 ? '' : String(m).padStart(2, '0') + '分'
 
   return bracket + hStr + mStr + bracketMap[bracket]
@@ -45,13 +51,19 @@ function minToTimeStr(t, bracket = '**') {
   return bracket + hStr + mStr + bracketMap[bracket]
 }
 
-function minToTime(time) {
+function minToTime(time, separator = ':') {
   const h = String(Math.floor(time / 60)).padStart(2, '0')
   const m = String(Math.floor(time % 60)).padStart(2, '0')
-  return h + ':' + m
+  return h + separator + m
 }
 
 function setup(inputPath) {
+  // 如果有值就按照临时模式匹配
+  const forceInputPath = process.argv.slice(2)[0]
+  if (forceInputPath) {
+    matchMode = modeMap['temp']
+    inputPath = forceInputPath
+  }
   const filePathList = []
 
   if (!inputPath) {
@@ -118,13 +130,13 @@ function run(filePath) {
   // 手动更新
   // saveFile(filePath, text)
 
-  if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60 && !isTmpMode) {
+  if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60) {
     // let index = 1
     // console.log(
     //   `${path.parse(filePath).name} 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`,
     // )
-    let bracket = ''
-    let printContent = `${path.parse(filePath).name}`
+    let title = path.parse(filePath).name
+    let content = ''
     // 可能有多个睡眠数据
     let sleepTime = 0
     for (let item of dataList) {
@@ -132,14 +144,27 @@ function run(filePath) {
         sleepTime += item.statsTime
       }
     }
-    printContent += ` 💤 ${minToTimeStrChinese(sleepTime, '')}`
-    printContent += ` 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`
+    if (sleepTime) title += ` 💤 ${minToTimeStr(sleepTime, '')}`
+    title += ` 🕛 ${minToTime(fileTotalTime)}`
+    // 临时模式将标题替换为总时长
+    if (isTmpMode) title = `总时长：<span style="color: ${colorMap['重要']}">${minToTimeStr(fileTotalTime, '')}</span>`
     for (let item of dataList) {
       const { title, statsTime } = item
       if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
-      printContent += `\n${title} ✨ ${minToTimeStrChinese(statsTime, bracket)}`
+      content += `<li>${title}<span style="color: ${colorMap[title]}; font-weight: 600;">（${minToTimeStr(
+        statsTime,
+        '',
+      )}）</span></li>`
     }
-    console.log(printContent, '\n')
+    const template = `
+    <div style="font-family: Input Mono Freeze;">
+      <h1 style="margin: 0; font-size: 15px; font-weight: 700;">${title}</h1>
+      <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2;">
+        ${content}
+      </ul>
+    </div>
+    `
+    console.log(template)
   }
 }
 
@@ -254,7 +279,7 @@ function saveFile(filePath, data) {
     if (err) {
       console.error('❌ 文件更新失败', err)
     } else {
-      console.log('✅ 文件更新成功')
+      // console.log('✅ 文件更新成功')
     }
   })
 }
