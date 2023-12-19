@@ -1,5 +1,6 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
+import clipboardy from 'clipboardy'
 
 // 改这里
 const year = '2023'
@@ -57,40 +58,6 @@ function minToTime(time, separator = ':') {
   return h + separator + m
 }
 
-function setup(inputPath) {
-  // 如果有值就按照临时模式匹配
-  const forceInputPath = process.argv.slice(2)[0]
-  if (forceInputPath) {
-    matchMode = modeMap['temp']
-    inputPath = forceInputPath
-  }
-  const filePathList = []
-
-  if (!inputPath) {
-    console.log('请先传入一个文件/文件夹')
-    return
-  } else if (!fs.existsSync(inputPath)) {
-    console.log('没有找到这个文件/文件夹~')
-    return
-  }
-
-  if (fs.statSync(inputPath).isFile()) {
-    run(inputPath)
-    return
-  }
-
-  const files = fs.readdirSync(inputPath)
-  for (let file of files) {
-    if (path.extname(file) !== '.md' || excludeFileList.includes(file)) continue
-    const filePath = path.join(inputPath, file)
-    if (fs.statSync(filePath).isFile()) filePathList.push(filePath)
-  }
-
-  filePathList.forEach((filePath) => {
-    run(filePath)
-  })
-}
-
 function initData(isTmpMode) {
   isInsertTemplate = !isTmpMode
   fileTotalTime = 0
@@ -105,67 +72,6 @@ function addData(dataList, title, insertContent, matchContent, result, statsTime
     statsTime,
     ...options,
   })
-}
-
-function run(filePath) {
-  let text = fs.readFileSync(filePath, 'utf8')
-
-  if (!text) {
-    console.log('这是一个空文件噢~')
-    return
-  }
-
-  const isTmpMode = matchMode === modeMap['temp']
-  const oldTotalTimeList = text.match(/\n> 总时长：\*\*(\d+h)?(\d+min)?.*\*\*/) ?? []
-  const oldTotalTime = parseInt(oldTotalTimeList[1] || '0') * 60 + parseInt(oldTotalTimeList[2] || '0')
-  const dataList = []
-
-  initData(isTmpMode)
-  parseFileContent(dataList, text)
-
-  if (isInsertTemplate) text = insertRecordTemplate(dataList, text, insertTitle)
-  if (dataList.length) text = matchContentReplace(dataList, text)
-
-  if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
-  // 手动更新
-  // saveFile(filePath, text)
-
-  if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60) {
-    // let index = 1
-    // console.log(
-    //   `${path.parse(filePath).name} 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`,
-    // )
-    let title = path.parse(filePath).name
-    let content = ''
-    // 可能有多个睡眠数据
-    let sleepTime = 0
-    for (let item of dataList) {
-      if (item.title === '睡眠') {
-        sleepTime += item.statsTime
-      }
-    }
-    if (sleepTime) title += ` 💤 ${minToTimeStr(sleepTime, '')}`
-    title += ` 🕛 ${minToTime(fileTotalTime)}`
-    // 临时模式将标题替换为总时长
-    if (isTmpMode) title = `总时长：<span style="color: ${colorMap['重要']}">${minToTimeStr(fileTotalTime, '')}</span>`
-    for (let item of dataList) {
-      const { title, statsTime } = item
-      if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
-      content += `<li>${title}<span style="color: ${colorMap[title]}; font-weight: 600;">（${minToTimeStr(
-        statsTime,
-        '',
-      )}）</span></li>`
-    }
-    const template = `
-    <div style="font-family: Input Mono Freeze;">
-      <h1 style="margin: 0; font-size: 15px; font-weight: 700;">${title}</h1>
-      <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2;">
-        ${content}
-      </ul>
-    </div>
-    `
-    console.log(template)
-  }
 }
 
 function parseFileContent(dataList, text) {
@@ -281,6 +187,107 @@ function saveFile(filePath, data) {
     } else {
       // console.log('✅ 文件更新成功')
     }
+  })
+}
+
+function run(filePath) {
+  let text = fs.readFileSync(filePath, 'utf8')
+
+  if (!text) {
+    console.log('这是一个空文件噢~')
+    return
+  }
+
+  const isTmpMode = matchMode === modeMap['temp']
+  const oldTotalTimeList = text.match(/\n> 总时长：\*\*(\d+h)?(\d+min)?.*\*\*/) ?? []
+  const oldTotalTime = parseInt(oldTotalTimeList[1] || '0') * 60 + parseInt(oldTotalTimeList[2] || '0')
+  const dataList = []
+
+  initData(isTmpMode)
+  parseFileContent(dataList, text)
+
+  if (isInsertTemplate) text = insertRecordTemplate(dataList, text, insertTitle)
+  if (dataList.length) text = matchContentReplace(dataList, text)
+
+  if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
+  // 手动更新
+  // saveFile(filePath, text)
+
+  if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60) {
+    if (fileTotalTime === 0) {
+      console.log('暂无时长可统计，请先添加二级标题 -> 任务列表 -> 花费时间')
+      return
+    }
+    // 将总时长写入到系统剪贴板中
+    clipboardy.write(minToTime(fileTotalTime))
+    // let index = 1
+    // console.log(
+    //   `${path.parse(filePath).name} 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`,
+    // )
+    let title = path.parse(filePath).name
+    let content = ''
+    // 可能有多个睡眠数据
+    let sleepTime = 0
+    for (let item of dataList) {
+      if (item.title === '睡眠') {
+        sleepTime += item.statsTime
+      }
+    }
+    if (sleepTime) title += ` 💤 ${minToTimeStr(sleepTime, '')}`
+    title += ` 🕛 ${minToTime(fileTotalTime)}`
+    // 临时模式将标题替换为总时长
+    if (isTmpMode) title = `总时长：<span style="color: ${colorMap['重要']}">${minToTimeStr(fileTotalTime, '')}</span>`
+    for (let item of dataList) {
+      const { title, statsTime } = item
+      if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
+      content += `<li>${title}<span style="color: ${colorMap[title]}; font-weight: 600;">（${minToTimeStr(
+        statsTime,
+        '',
+      )}）</span></li>`
+    }
+    const template = `
+    <div style="font-family: Input Mono Freeze;">
+      <h1 style="margin: 0; font-size: 15px; font-weight: 700;">${title}</h1>
+      <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2;">
+        ${content}
+      </ul>
+    </div>
+    `
+    console.log(template)
+  }
+}
+
+function setup(inputPath) {
+  // 如果有值就按照临时模式匹配
+  const forceInputPath = process.argv.slice(2)[0]
+  if (forceInputPath) {
+    matchMode = modeMap['temp']
+    inputPath = forceInputPath
+  }
+  const filePathList = []
+
+  if (!inputPath) {
+    console.log('请先传入一个文件/文件夹')
+    return
+  } else if (!fs.existsSync(inputPath)) {
+    console.log('没有找到这个文件/文件夹~')
+    return
+  }
+
+  if (fs.statSync(inputPath).isFile()) {
+    run(inputPath)
+    return
+  }
+
+  const files = fs.readdirSync(inputPath)
+  for (let file of files) {
+    if (path.extname(file) !== '.md' || excludeFileList.includes(file)) continue
+    const filePath = path.join(inputPath, file)
+    if (fs.statSync(filePath).isFile()) filePathList.push(filePath)
+  }
+
+  filePathList.forEach((filePath) => {
+    run(filePath)
   })
 }
 

@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "clipboardy": "^4.0.0"
+  }
+}
