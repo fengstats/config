@@ -7,6 +7,10 @@ const year = '2023'
 const month = '12'
 let inputPath = `/Users/feng/codebase/personal/diary-note/${year}/${month}月`
 
+const typeMap = {
+  title: 'title',
+  quote: 'quote',
+}
 const colorMap = {
   重要: '#68ad80',
   生活: '#5296d5',
@@ -24,33 +28,11 @@ let matchMode = modeMap['free']
 let isInsertTemplate = true
 let fileTotalTime = 0
 
-const insertTitle = 'Record'
+const recordTitle = 'Record'
 const includeTitleList = ['重要', '生活', '休闲']
 const excludeFileList = []
 const isSaveFile = true
 const isRemoveTitle = false
-
-function minToTimeStrChinese(t, bracket = '**') {
-  if (t === 0) return ''
-
-  const h = Math.floor(t / 60)
-  const m = Math.floor(t % 60)
-  const hStr = h === 0 ? '' : String(h).padStart(2, '0') + '时'
-  const mStr = m === 0 ? '' : String(m).padStart(2, '0') + '分'
-
-  return bracket + hStr + mStr + bracketMap[bracket]
-}
-
-function minToTimeStr(t, bracket = '**') {
-  if (t === 0) return ''
-
-  const h = Math.floor(t / 60)
-  const m = Math.floor(t % 60)
-  const hStr = h === 0 ? '' : h + 'h'
-  const mStr = m === 0 ? '' : String(m).padStart(2, '0') + 'min'
-
-  return bracket + hStr + mStr + bracketMap[bracket]
-}
 
 function minToTime(time, separator = ':') {
   const h = String(Math.floor(time / 60)).padStart(2, '0')
@@ -58,29 +40,51 @@ function minToTime(time, separator = ':') {
   return h + separator + m
 }
 
+function minToTimeStr(t, bracket = '**') {
+  if (t === 0) return ''
+  const h = Math.floor(t / 60)
+  const m = Math.floor(t % 60)
+  const hStr = h === 0 ? '' : h + 'h'
+  const mStr = m === 0 ? '' : String(m).padStart(2, '0') + 'min'
+  return bracket + hStr + mStr + bracketMap[bracket]
+}
+
+function minToTimeStrChinese(t, bracket = '**') {
+  if (t === 0) return ''
+  const h = Math.floor(t / 60)
+  const m = Math.floor(t % 60)
+  const hStr = h === 0 ? '' : String(h).padStart(2, '0') + '时'
+  const mStr = m === 0 ? '' : String(m).padStart(2, '0') + '分'
+  return bracket + hStr + mStr + bracketMap[bracket]
+}
+
 function initData(isTmpMode) {
   isInsertTemplate = !isTmpMode
   fileTotalTime = 0
 }
 
-function addData(dataList, title, insertContent, matchContent, result, statsTime = 0, options = {}) {
-  dataList.push({
-    title,
-    insertContent,
-    matchContent,
-    result,
-    statsTime,
-    ...options,
-  })
+function addData(dataList, type, data) {
+  const id = dataList.length + 1
+  const { title = '', matchRegex = '', result = '' } = data
+  // 公有参数
+  const item = { id, type, title, matchRegex, result }
+  switch (type) {
+    case typeMap['title']:
+      const { insert = '', statsTime = 0, matchList = [] } = data
+      item.insert = insert
+      item.statsTime = statsTime
+      item.matchList = matchList
+      break
+    case typeMap['quote']:
+      // ...
+      break
+    default:
+      break
+  }
+  dataList.push(item)
 }
 
-function parseFileContent(dataList, text) {
-  addSleepTimeData(dataList, text)
-  addTitleTimeData(dataList, text)
-  addTotalTimeData(dataList, fileTotalTime)
-}
-
-function addSleepTimeData(dataList, text, match, sleepTitle = '睡眠') {
+function addSleepTimeData(dataList, text, match, title = '睡眠') {
   const sleepTimeRegex = /(\d{2}):(\d{2})-(\d{2}):(\d{2})/g
   while ((match = sleepTimeRegex.exec(text)) !== null) {
     const start = new Date()
@@ -98,14 +102,13 @@ function addSleepTimeData(dataList, text, match, sleepTitle = '睡眠') {
     const duration = end.getTime() - start.getTime()
     const statsTime = duration / 1000 / 60
     fileTotalTime += statsTime
-    addData(
-      dataList,
-      sleepTitle,
-      `- [x] ${sleepTitle}：${matchContent}`,
-      matchContent + '.*',
-      `${matchContent} 💤 ${minToTimeStr(statsTime)}`,
+    addData(dataList, typeMap['title'], {
+      title,
+      insert: `- [x] ${title}：${matchContent}`,
+      matchRegex: `${matchContent}.*`,
       statsTime,
-    )
+      result: `${matchContent} 💤 ${minToTimeStr(statsTime)}`,
+    })
   }
 }
 
@@ -119,7 +122,7 @@ function addTitleTimeData(dataList, text, match) {
     const matchContent = match[2].trim()
     const matchContentList = matchContent.match(contentTimeRegex) || []
 
-    if (title === insertTitle) {
+    if (title === recordTitle) {
       isInsertTemplate = false
       continue
     }
@@ -127,17 +130,22 @@ function addTitleTimeData(dataList, text, match) {
       continue
     }
     if (!matchContent) {
-      isRemoveTitle && addData(dataList, title, '', `\n## ${title}\n*`, '')
+      isRemoveTitle &&
+        addData(dataList, typeMap['title'], {
+          title,
+          matchRegex: `\n## ${title}\n*`,
+          result: '',
+        })
       continue
     }
 
-    let insertContent = `- [x] ${title}：`
-    let matchTitle = `${title}：.*`
+    const insert = `- [x] ${title}：`
+    const matchRegex = `${title}：.*`
     let statsTime = 0
-    for (let content of matchContentList) {
+    for (const content of matchContentList) {
       let taskMinTime = 0
       const matchTimeList = content.match(new RegExp(timeRegex, 'g')) || []
-      for (let taskContent of matchTimeList) {
+      for (const taskContent of matchTimeList) {
         const item = taskContent.match(timeRegex) || []
         const hour = parseInt(item[1]) || 0
         const minute = parseInt(item[2]) || 0
@@ -146,13 +154,18 @@ function addTitleTimeData(dataList, text, match) {
       statsTime += taskMinTime
     }
     fileTotalTime += statsTime
-    addData(dataList, title, insertContent, matchTitle, `${title}：${minToTimeStr(statsTime)}`, statsTime, {
-      matchContentList,
+    addData(dataList, typeMap['title'], {
+      title,
+      insert,
+      matchRegex,
+      statsTime,
+      result: `${title}：${minToTimeStr(statsTime)}`,
+      matchList: matchContentList,
     })
   }
 }
 
-function addTotalTimeData(dataList, totalTime, title = '总时长') {
+function addTotalTimeData(dataList, title = '总时长') {
   // dataList.forEach((item) => {
   //   if (item.statsTime !== 0) {
   //     item.percentage = Math.round((item.statsTime / totalTime) * 100)
@@ -160,24 +173,35 @@ function addTotalTimeData(dataList, totalTime, title = '总时长') {
   //   }
   // })
 
-  addData(dataList, title, `\n> ${title}：\n`, `${title}：.*`, `${title}：${minToTimeStr(totalTime)}`, totalTime)
+  addData(dataList, typeMap['quote'], {
+    title,
+    insert: `\n> ${title}：\n`,
+    matchRegex: `${title}：.*`,
+    result: `${title}：${minToTimeStr(fileTotalTime)}`,
+  })
 }
 
 function insertRecordTemplate(dataList, text, title) {
   let insertTemplate = `## ${title}\n\n`
-  dataList.forEach(({ insertContent }) => {
-    if (insertContent) {
-      insertTemplate += insertContent + '\n'
-    }
-  })
+  for (const { insert } of dataList) {
+    if (insert) insertTemplate += insert + '\n'
+  }
   return insertTemplate + text
 }
 
 function matchContentReplace(dataList, text) {
-  dataList.forEach(({ matchContent: match, result }) => {
-    text = text.replace(new RegExp(match), result)
-  })
+  for (const { matchRegex, result } of dataList) {
+    if (matchRegex === '') continue
+    const regex = new RegExp(matchRegex)
+    text = text.replace(regex, result)
+  }
   return text
+}
+
+function parseFileContent(dataList, text) {
+  addSleepTimeData(dataList, text)
+  addTitleTimeData(dataList, text)
+  addTotalTimeData(dataList)
 }
 
 function saveFile(filePath, data) {
@@ -206,12 +230,14 @@ function run(filePath) {
   initData(isTmpMode)
   parseFileContent(dataList, text)
 
-  if (isInsertTemplate) text = insertRecordTemplate(dataList, text, insertTitle)
+  if (isInsertTemplate) text = insertRecordTemplate(dataList, text, recordTitle)
   if (dataList.length) text = matchContentReplace(dataList, text)
 
   if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
   // 手动更新
   // saveFile(filePath, text)
+
+  // console.log(dataList)
 
   if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60) {
     if (fileTotalTime === 0) {
@@ -237,8 +263,7 @@ function run(filePath) {
     title += ` 🕛 ${minToTime(fileTotalTime)}`
     // 临时模式将标题替换为总时长
     if (isTmpMode) title = `总时长：<span style="color: ${colorMap['重要']}">${minToTimeStr(fileTotalTime, '')}</span>`
-    for (let item of dataList) {
-      const { title, statsTime } = item
+    for (const { title, statsTime } of dataList) {
       if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
       content += `<li>${title}<span style="color: ${colorMap[title]}; font-weight: 600;">（${minToTimeStr(
         statsTime,
@@ -280,7 +305,7 @@ function setup(inputPath) {
   }
 
   const files = fs.readdirSync(inputPath)
-  for (let file of files) {
+  for (const file of files) {
     if (path.extname(file) !== '.md' || excludeFileList.includes(file)) continue
     const filePath = path.join(inputPath, file)
     if (fs.statSync(filePath).isFile()) filePathList.push(filePath)
