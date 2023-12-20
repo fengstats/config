@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import clipboardy from 'clipboardy'
+import NP from 'number-precision'
 
-// 改这里
 const year = '2023'
 const month = '12'
 let inputPath = `/Users/feng/codebase/personal/diary-note/${year}/${month}月`
@@ -10,6 +10,7 @@ let inputPath = `/Users/feng/codebase/personal/diary-note/${year}/${month}月`
 const typeMap = {
   title: 'title',
   quote: 'quote',
+  money: 'money',
 }
 const colorMap = {
   重要: '#68ad80',
@@ -27,6 +28,8 @@ const bracketMap = { '': '', '**': '**', '(': ')', '（': '）' }
 let matchMode = modeMap['free']
 let isInsertTemplate = true
 let fileTotalTime = 0
+// 月支出
+let monthSpend = 0
 
 const recordTitle = 'Record'
 const includeTitleList = ['重要', '生活', '休闲']
@@ -138,6 +141,8 @@ function addTitleTimeData(dataList, text, match) {
         })
       continue
     }
+    // TODO: 自动计算支出小记
+    if (title === '生活') addMoneyData(dataList, matchContent)
 
     const insert = `- [x] ${title}：`
     const matchRegex = `${title}：.*`
@@ -179,6 +184,38 @@ function addTotalTimeData(dataList, title = '总时长') {
     matchRegex: `${title}：.*`,
     result: `${title}：${minToTimeStr(fileTotalTime)}`,
   })
+}
+
+// 支出小记
+function addMoneyData(dataList, text, title = '支出小记') {
+  // NOTE: \\s\\S 这里是因为字符串形式需要转移
+  // /> 支出小记：.*\n([\s\S]*?)(?=\n{2}|$)'
+  const regex = new RegExp(`> ${title}：.*\n([\\s\\S]*?)(?=\n{2}|$)`)
+  const moneyRegex = /-.*（(.*?) 元.*）/g
+
+  const match = regex.exec(text)
+  if (match) {
+    const matchContent = match[1]
+    const moneyList = []
+    let matchMoney
+    while ((matchMoney = moneyRegex.exec(matchContent)) !== null) {
+      moneyList.push(matchMoney[1])
+    }
+    let result = `${title}：`
+    if (moneyList.length) {
+      const spend = NP.plus(...moneyList)
+      monthSpend = NP.plus(spend, monthSpend)
+      result += `${moneyList.join('+')}（${spend} 元）`
+    } else {
+      result += '0 元'
+    }
+    addData(dataList, typeMap['money'], {
+      title,
+      matchRegex: `${title}：.*`,
+      result,
+      moneyList,
+    })
+  }
 }
 
 function insertRecordTemplate(dataList, text, title) {
@@ -233,11 +270,9 @@ function run(filePath) {
   if (isInsertTemplate) text = insertRecordTemplate(dataList, text, recordTitle)
   if (dataList.length) text = matchContentReplace(dataList, text)
 
-  if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
+  // if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
   // 手动更新
-  // saveFile(filePath, text)
-
-  // console.log(dataList)
+  saveFile(filePath, text)
 
   if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60) {
     if (fileTotalTime === 0) {
@@ -246,26 +281,20 @@ function run(filePath) {
     }
     // 将总时长写入到系统剪贴板中
     clipboardy.write(minToTime(fileTotalTime))
-    // let index = 1
-    // console.log(
-    //   `${path.parse(filePath).name} 🕛 ${isTmpMode ? minToTimeStr(fileTotalTime, '') : minToTime(fileTotalTime)}\n`,
-    // )
     let title = path.parse(filePath).name
     let content = ''
     // 可能有多个睡眠数据
     let sleepTime = 0
-    for (let item of dataList) {
-      if (item.title === '睡眠') {
-        sleepTime += item.statsTime
-      }
+    for (const { title, statsTime } of dataList) {
+      if (title === '睡眠') sleepTime += statsTime
     }
     if (sleepTime) title += ` 💤 ${minToTimeStr(sleepTime, '')}`
     title += ` 🕛 ${minToTime(fileTotalTime)}`
     // 临时模式将标题替换为总时长
     if (isTmpMode) title = `总时长：<span style="color: ${colorMap['重要']}">${minToTimeStr(fileTotalTime, '')}</span>`
-    for (const { title, statsTime } of dataList) {
-      if (['睡眠', '总时长'].includes(title) || statsTime === 0) continue
-      content += `<li>${title}<span style="color: ${colorMap[title]}; font-weight: 600;">（${minToTimeStr(
+    for (const { type, title, statsTime } of dataList) {
+      if (type !== typeMap['title'] || title === '睡眠' || statsTime === 0) continue
+      content += `<li>${title}<span style="color: ${colorMap[title]}; font-weight: 700;">（${minToTimeStr(
         statsTime,
         '',
       )}）</span></li>`
@@ -314,6 +343,10 @@ function setup(inputPath) {
   filePathList.forEach((filePath) => {
     run(filePath)
   })
+
+  console.log(
+    `提醒：${month} 月已经花了 <span style="color: ${colorMap['生活']};font-size: 16px; font-weight: 700;">${monthSpend}</span> 元了嗷老弟~ `,
+  )
 }
 
 setup(inputPath)

@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "clipboardy": "^4.0.0"
+    "clipboardy": "^4.0.0",
+    "number-precision": "^1.6.0"
   }
 }
