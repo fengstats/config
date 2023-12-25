@@ -13,10 +13,12 @@ const typeMap = {
   money: 'money',
 }
 const colorMap = {
-  重要: '#68ad80',
+  // 重要: '#65B741',
+  // 休闲: '#e95548',
+  重要: '#3eb370',
   生活: '#5296d5',
-  休闲: '#e95548',
-  其他: '',
+  休闲: '#ff4757',
+  其他: '#7f8c8d',
 }
 const modeMap = {
   free: 'FREE',
@@ -141,8 +143,11 @@ function addTitleTimeData(dataList, text, match) {
         })
       continue
     }
-    // TODO: 自动计算支出小记
-    if (title === '生活') addMoneyData(dataList, matchContent)
+    // 自动计算
+    if (title === '生活') {
+      addMoneyData(dataList, matchContent, '支出小记')
+      addMoneyData(dataList, matchContent, '收入小记')
+    }
 
     const insert = `- [x] ${title}：`
     const matchRegex = `${title}：.*`
@@ -187,7 +192,7 @@ function addTotalTimeData(dataList, title = '总时长') {
 }
 
 // 支出小记
-function addMoneyData(dataList, text, title = '支出小记') {
+function addMoneyData(dataList, text, title) {
   // NOTE: \\s\\S 这里是因为字符串形式需要转移
   // /> 支出小记：.*\n([\s\S]*?)(?=\n{2}|$)'
   const regex = new RegExp(`> ${title}：.*\n([\\s\\S]*?)(?=\n{2}|$)`)
@@ -270,17 +275,19 @@ function run(filePath) {
   if (isInsertTemplate) text = insertRecordTemplate(dataList, text, recordTitle)
   if (dataList.length) text = matchContentReplace(dataList, text)
 
-  // if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
+  if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
   // 手动更新
-  saveFile(filePath, text)
+  // saveFile(filePath, text)
 
   if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60) {
     if (fileTotalTime === 0) {
-      console.log('暂无时长可统计，请先添加二级标题 -> 任务列表 -> 花费时间')
+      console.log(`
+      <div style="margin: 0 0 12px;">
+        暂无时长可统计~ 可先添加二级标题 -> 任务列表 -> 在尾部追加花费时间
+      </div>
+      `)
       return
     }
-    // 将总时长写入到系统剪贴板中
-    clipboardy.write(minToTime(fileTotalTime))
     let title = path.parse(filePath).name
     let content = ''
     // 可能有多个睡眠数据
@@ -291,7 +298,13 @@ function run(filePath) {
     if (sleepTime) title += ` 💤 ${minToTimeStr(sleepTime, '')}`
     title += ` 🕛 ${minToTime(fileTotalTime)}`
     // 临时模式将标题替换为总时长
-    if (isTmpMode) title = `总时长：<span style="color: ${colorMap['重要']}">${minToTimeStr(fileTotalTime, '')}</span>`
+    // 将总时长写入到系统剪贴板中
+    if (isTmpMode) {
+      title = `总时长：<span style="color: ${colorMap['重要']}">${minToTimeStr(fileTotalTime, '')}</span>`
+      clipboardy.write(minToTimeStr(fileTotalTime, ''))
+    } else {
+      clipboardy.write(minToTime(fileTotalTime))
+    }
     for (const { type, title, statsTime } of dataList) {
       if (type !== typeMap['title'] || title === '睡眠' || statsTime === 0) continue
       content += `<li>${title}<span style="color: ${colorMap[title]}; font-weight: 700;">（${minToTimeStr(
@@ -345,7 +358,9 @@ function setup(inputPath) {
   })
 
   console.log(
-    `提醒：${month} 月已经花了 <span style="color: ${colorMap['生活']};font-size: 16px; font-weight: 700;">${monthSpend}</span> 元了嗷老弟~ `,
+    `<div style="font-family: Input Mono Freeze">
+      ${month}月已经花了 <span style="color: ${colorMap['生活']};font-size: 16px; font-weight: 700;">${monthSpend}</span> 元了嗷老弟 🥲
+    </div>`,
   )
 }
 
