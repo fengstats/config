@@ -39,4 +39,4 @@ cp -f ${zshPath}/* ${systemPath}/
 grep -v "secret" "${vscodeSystemPath}/settings.json" >${vsocdePath}/settings.json
 cat "${vscodeSystemPath}/keybindings.json" >${vsocdePath}/keybindings.json
 
-echo "同步 config 配置文件完成！"
+echo "✅ 同步 config 配置文件完成！"

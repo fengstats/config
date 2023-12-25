@@ -1,9 +1,10 @@
 {
   // Basic
+  "fonted.font": "Arial",
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 20,
   "explorer.confirmDelete": false,
-  "workbench.tree.enableStickyScroll": true,
+  "security.workspace.trust.untrustedFiles": "prompt",
   "diffEditor.renderSideBySide": false,
   "files.eol": "\n",
   "files.autoSave": "off",
@@ -11,7 +12,8 @@
   "files.simpleDialog.enable": false,
   "files.associations": {
     ".zimrc": "shellscript",
-    "*.json": "jsonc"
+    "*.json": "jsonc",
+    "*.conf": "plaintext"
   },
   "search.smartCase": true,
   "search.exclude": {
@@ -37,11 +39,11 @@
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
   "window.commandCenter": true,
-  "window.zoomLevel": 0.7,
-  "fonted.font": "Arial",
+  "window.zoomLevel": 0.4,
+  "workbench.tree.enableStickyScroll": true,
   "workbench.activityBar.location": "top",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "GitHub Plus",
+  "workbench.iconTheme": "vscode-great-icons",
+  "workbench.colorTheme": "Panda Moe",
   "workbench.startupEditor": "none",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.list.smoothScrolling": true,
@@ -51,21 +53,54 @@
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.editor.limit.enabled": true,
   "workbench.colorCustomizations": {
+    // 终端命令提示
+    "terminal.ansiBrightBlack": "#000000",
     // "editor.lineHighlightBackground": "#ffffff00",
+    // 底部控制栏
+    // "statusBar.background": "#333333",
     "[Default Dark+][GitHub Dark Classic]": {
       "terminal.ansiBlue": "#8adcf1",
       "terminal.ansiRed": "#ff6b81",
       "terminal.ansiBrightRed": "#ff7675"
     },
-    // 底部控制栏
-    "statusBar.background": "#333333",
-    // 终端命令提示
-    "terminal.ansiBrightBlack": "#000000"
+    "[Panda Syntax][Panda Moe]": {
+      "badge.background": "#aaaaaa",
+      "badge.foreground": "#000000",
+      "quickInput.background": "#202020bf",
+      "widget.shadow": "#0000008f",
+      "titleBar.border": "#aaaaaa2f",
+      "list.activeSelectionBackground": "#71edd11f",
+      "list.focusBackground": "#00000000",
+      "list.inactiveSelectionBackground": "#aaaaaa2f",
+      "tab.border": "#aaaaaa2f",
+      "contrastBorder": "#0000008f",
+      "tab.activeBorder": "#71edd1df",
+      "textCodeBlock.background": "#aaaaaa4f",
+      "editor.selectionHighlightBorder": "#71edd14f",
+      "editor.selectionHighlightBackground": "#aaaaaa2f",
+      "editor.wordHighlightBorder": "#71edd15f",
+      "editor.wordHighlightBackground": "#aaaaaa2f",
+      "editorCursor.background": "#ffffff",
+      "editorLineNumber.activeForeground": "#71edd1",
+      "editorGroupHeader.tabsBorder": "#aaaaaa4f",
+      "editorWidget.foreground": "#cccccc",
+      "editorWidget.background": "#202020ef",
+      "editorSuggestWidget.selectedForeground": "#ffffff",
+      "editorSuggestWidget.selectedBackground": "#0a3d62",
+      "editorHoverWidget.background": "#202020ef",
+      "scrollbarSlider.activeBackground": "#aaaaaa2f",
+      "scrollbarSlider.background": "#aaaaaa2f",
+      "scrollbarSlider.hoverBackground": "#aaaaaa2f",
+      "terminal.ansiBlue": "#8adcf1",
+      "terminal.ansiRed": "#ff6b81",
+      "terminal.ansiBrightRed": "#ff7675"
+      // "editor.lineHighlightBackground": "#71edd11f",
+    }
   },
 
   // Sundial
   "workbench.preferredLightColorTheme": "GitHub Plus", // 白天主题
-  "workbench.preferredDarkColorTheme": "Fleet Dark Modern", // 夜晚主题
+  "workbench.preferredDarkColorTheme": "Default Dark+", // 夜晚主题
   "sundial.sunrise": "07:00", // 什么时候切换白天主题
   "sundial.sunset": "17:00", // 什么时候切换夜晚主题
   "sundial.interval": 30, // 多久检测一次是否切换，单位为分钟
@@ -109,13 +144,13 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.tokenColorCustomizations": {
-    // "[Default Light Modern][Moegi Light Vitesse]": { "comments": "#95a5a6" },
     "[Fleet Dark][Fleet Ocean]": { "comments": "#a1a7a1df" },
     "[Default Light Modern][Moegi Light]": { "comments": "#218c74" },
     "[Evondev Dracula Darker Contrast]": { "comments": "#95a5a6" },
     "[GitHub Dark Classic][Atom One Dark]": { "comments": "#95a5a6" },
     "[Default Dark+]": { "comments": "#adb5ad" },
     "[Moegi Dark Vitesse]": { "comments": "#a1a7a1" },
+    // "[Default Light Modern][Moegi Light Vitesse]": { "comments": "#95a5a6" },
     "textMateRules": [
       {
         "name": "Comment Italics",
@@ -208,21 +243,13 @@
     { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] }
     // { "before": ["backspace"], "after": ["\"", "_", "c"] }
   ],
-  "vim.normalModeKeyBindings": [
-    { "before": ["H"], "after": ["^"] },
-    { "before": ["L"], "after": ["g", "_"] }
-  ],
   "vim.normalModeKeyBindingsNonRecursive": [
-    // 还原 f 的原生命令
-    // { "before": ["f"], "after": ["\\"] },
-    // 将 fash.vim 查找键设置为 s
-    // { "before": ["s"], "after": ["f"] },a
     { "before": ["j"], "after": ["g", "j"] },
     { "before": ["k"], "after": ["g", "k"] },
     { "before": ["J"], "after": ["5", "g", "j"] },
     { "before": ["K"], "after": ["5", "g", "k"] },
-    // { "before": ["H"], "after": ["^"] },
-    // { "before": ["L"], "after": ["g", "_"] },
+    { "before": ["H"], "after": ["^"] },
+    { "before": ["L"], "after": ["g", "_"] },
     { "before": ["U"], "after": ["<c-r>"] },
     { "before": ["n"], "after": ["n", "z", "z"] },
     { "before": ["N"], "after": ["N", "z", "z"] },
@@ -238,16 +265,22 @@
     { "before": ["leader", "o"], "commands": ["extension.toggleBool"] },
     { "before": ["leader", "e"], "commands": ["workbench.action.toggleSidebarVisibility"] },
     { "before": ["leader", "l"], "commands": ["workbench.action.toggleAuxiliaryBar"] },
-    // NOTE: 2023-11-17 决定这个快捷键，重新适应 Command+S
-    // 就是让自己少记一个快捷方式，因为其他平台可能会兼容 Command+S，但可能不会提供给你自定义 leader 键的方式
-    // { "before": ["leader", "s"], "commands": ["workbench.action.files.save"] },
     { "before": ["leader", "q"], "commands": ["workbench.action.closeActiveEditor"] },
     { "before": ["leader", "w"], "commands": ["workbench.action.files.saveWithoutFormatting"] },
     { "before": ["leader", "["], "after": ["[", "{"] },
     { "before": ["leader", "]"], "after": ["]", "}"] },
     { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] },
     { "before": ["leader", "i", "w"], "after": ["V", "$", "%", "o"] }
+    // NOTE: 2023-11-17 决定这个快捷键，重新适应 Command+S
+    // 就是让自己少记一个快捷方式，因为其他平台可能会兼容 Command+S，但可能不会提供给你自定义 leader 键的方式
+    // { "before": ["leader", "s"], "commands": ["workbench.action.files.save"] },
+    // 设置原生 f 命令
+    // { "before": ["f"], "after": ["\\"] },
+    // 设置 fash.vim 查找键
+    // { "before": ["s"], "after": ["f"] },
+    // 设置 leap 扩展查找键
     // { "before": ["s"], "commands": ["leap.find"] },
+    // 设置 easymotion 查找键
     // { "before": ["s"], "after": ["<space>", "<space>", "2", "s"] },
   ],
 
@@ -264,7 +297,8 @@
   "git.ignoreRebaseWarning": true,
   "gitlens.graph.minimap.enabled": false,
 
-  // Codeium
+  // Codegeex / Codeium
+  "Codegeex.Privacy": true,
   "codeium.enableSearch": false,
   "codeium.enableCodeLens": false,
   "codeium.enableConfig": {
@@ -358,8 +392,10 @@
   "cSpell.userWords": [
     "asvetliakov",
     "autofetch",
+    "axios",
     "bilibili",
     "Callout",
+    "clipboardy",
     "Codegeex",
     "codeium",
     "colour",
@@ -367,7 +403,9 @@
     "easymotion",
     "Evondev",
     "feng",
+    "fengstats",
     "filesize",
+    "flvjs",
     "foldfix",
     "Grammarly",
     "highlightedyank",
@@ -388,14 +426,17 @@
     "Raycast",
     "rgba",
     "strs",
+    "tabao",
     "tencent",
     "timi",
     "unocss",
+    "unplugin",
     "utools",
     "vimrc",
     "Vite",
     "Vitesse",
     "vscodevim",
+    "webrtc",
     "wechat",
     "weibo",
     "Windi",
@@ -444,6 +485,5 @@
   "leetcode.workspaceFolder": "/Users/feng/codebase/personal-pro/leetcode",
   "leetcode.hint.commandShortcut": false,
   "leetcode.hint.commentDescription": false,
-  "leetcode.hint.configWebviewMarkdown": false,
-  "security.workspace.trust.untrustedFiles": "open"
+  "leetcode.hint.configWebviewMarkdown": false
 }
