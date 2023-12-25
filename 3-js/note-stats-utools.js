@@ -7,14 +7,17 @@ const year = '2023'
 const month = '12'
 let inputPath = `/Users/feng/codebase/personal/diary-note/${year}/${month}月`
 
+const isRemoveTitle = false
+const recordTitle = 'Record'
+const includeTitleList = ['重要', '生活', '休闲']
+const excludeFileList = []
+const bracketMap = { '': '', '**': '**', '(': ')', '（': '）' }
 const typeMap = {
   title: 'title',
   quote: 'quote',
   money: 'money',
 }
 const colorMap = {
-  // 重要: '#65B741',
-  // 休闲: '#e95548',
   重要: '#3eb370',
   生活: '#5296d5',
   休闲: '#ff4757',
@@ -25,19 +28,27 @@ const modeMap = {
   custom: 'CUSTOM',
   temp: 'TEMP',
 }
-const bracketMap = { '': '', '**': '**', '(': ')', '（': '）' }
+const style = {
+  fontFamily: 'font-family: Input Mono Freeze',
+  fontWeight: 'font-weight: 700',
+  fontSize: 'font-size: 16px',
+}
 
 let matchMode = modeMap['free']
+let isSaveFile = true
 let isInsertTemplate = true
-let fileTotalTime = 0
 // 月支出
 let monthSpend = 0
+// 单文件总时长
+let fileTotalTime = 0
 
-const recordTitle = 'Record'
-const includeTitleList = ['重要', '生活', '休闲']
-const excludeFileList = []
-const isSaveFile = true
-const isRemoveTitle = false
+function printTip(tip) {
+  console.log(`
+  <div style="margin: 0 0 12px; ${style.fontFamily};">
+    ${tip}
+  </div>
+  `)
+}
 
 function minToTime(time, separator = ':') {
   const h = String(Math.floor(time / 60)).padStart(2, '0')
@@ -54,17 +65,7 @@ function minToTimeStr(t, bracket = '**') {
   return bracket + hStr + mStr + bracketMap[bracket]
 }
 
-function minToTimeStrChinese(t, bracket = '**') {
-  if (t === 0) return ''
-  const h = Math.floor(t / 60)
-  const m = Math.floor(t % 60)
-  const hStr = h === 0 ? '' : String(h).padStart(2, '0') + '时'
-  const mStr = m === 0 ? '' : String(m).padStart(2, '0') + '分'
-  return bracket + hStr + mStr + bracketMap[bracket]
-}
-
-function initData(isTmpMode) {
-  isInsertTemplate = !isTmpMode
+function initData() {
   fileTotalTime = 0
 }
 
@@ -191,7 +192,6 @@ function addTotalTimeData(dataList, title = '总时长') {
   })
 }
 
-// 支出小记
 function addMoneyData(dataList, text, title) {
   // NOTE: \\s\\S 这里是因为字符串形式需要转移
   // /> 支出小记：.*\n([\s\S]*?)(?=\n{2}|$)'
@@ -258,69 +258,69 @@ function saveFile(filePath, data) {
 
 function run(filePath) {
   let text = fs.readFileSync(filePath, 'utf8')
-
   if (!text) {
-    console.log('这是一个空文件噢~')
+    printTip('这是一个空文件噢~')
     return
   }
 
-  const isTmpMode = matchMode === modeMap['temp']
   const oldTotalTimeList = text.match(/\n> 总时长：\*\*(\d+h)?(\d+min)?.*\*\*/) ?? []
   const oldTotalTime = parseInt(oldTotalTimeList[1] || '0') * 60 + parseInt(oldTotalTimeList[2] || '0')
   const dataList = []
-
-  initData(isTmpMode)
+  initData()
   parseFileContent(dataList, text)
 
   if (isInsertTemplate) text = insertRecordTemplate(dataList, text, recordTitle)
   if (dataList.length) text = matchContentReplace(dataList, text)
-
   if (oldTotalTime !== fileTotalTime && isSaveFile) saveFile(filePath, text)
   // 手动更新
   // saveFile(filePath, text)
 
   if (Math.min(oldTotalTime, fileTotalTime) < 24 * 60) {
-    if (fileTotalTime === 0) {
-      console.log(`
-      <div style="margin: 0 0 12px;">
-        暂无时长可统计~ 可先添加二级标题 -> 任务列表 -> 在尾部追加花费时间
-      </div>
-      `)
-      return
-    }
     let title = path.parse(filePath).name
     let content = ''
+    if (fileTotalTime === 0) {
+      printTip(`${title}：暂无时长可统计，可先添加二级标题 ➡️ 任务列表 ➡️ 尾部追加时间`)
+      return
+    }
+
     // 可能有多个睡眠数据
     let sleepTime = 0
     for (const { title, statsTime } of dataList) {
       if (title === '睡眠') sleepTime += statsTime
     }
-    if (sleepTime) title += ` 💤 ${minToTimeStr(sleepTime, '')}`
+    sleepTime && (title += ` 💤 ${minToTimeStr(sleepTime, '')}`)
     title += ` 🕛 ${minToTime(fileTotalTime)}`
-    // 临时模式将标题替换为总时长
-    // 将总时长写入到系统剪贴板中
-    if (isTmpMode) {
+
+    // 临时模式将标题替换为总时长，将总时长写入到系统剪贴板中
+    if (matchMode === modeMap['temp']) {
       title = `总时长：<span style="color: ${colorMap['重要']}">${minToTimeStr(fileTotalTime, '')}</span>`
       clipboardy.write(minToTimeStr(fileTotalTime, ''))
     } else {
       clipboardy.write(minToTime(fileTotalTime))
     }
     for (const { type, title, statsTime } of dataList) {
+      // 过略
       if (type !== typeMap['title'] || title === '睡眠' || statsTime === 0) continue
-      content += `<li>${title}<span style="color: ${colorMap[title]}; font-weight: 700;">（${minToTimeStr(
-        statsTime,
-        '',
-      )}）</span></li>`
+      // 加入输出模板中
+      content += `
+      <li>
+        ${title}
+        <span style="color: ${colorMap[title]};
+        ${style.fontWeight};">${minToTimeStr(statsTime, '')}
+        </span>
+      </li>`
     }
-    const template = `
-    <div style="font-family: Input Mono Freeze;">
-      <h1 style="margin: 0; font-size: 15px; font-weight: 700;">${title}</h1>
+
+    // 输出
+    const html = `
+    <div style="${style.fontFamily}">
+      <h1 style="margin: 0; ${style.fontSize}; ${style.fontWeight};">${title}</h1>
       <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2;">
         ${content}
       </ul>
     </div>
     `
-    console.log(template)
+    console.log(html)
   }
 }
 
@@ -330,38 +330,40 @@ function setup(inputPath) {
   if (forceInputPath) {
     matchMode = modeMap['temp']
     inputPath = forceInputPath
+    // 不需要插入标题和保存
+    isInsertTemplate = false
+    isSaveFile = false
   }
-  const filePathList = []
-
   if (!inputPath) {
-    console.log('请先传入一个文件/文件夹')
-    return
-  } else if (!fs.existsSync(inputPath)) {
-    console.log('没有找到这个文件/文件夹~')
+    printTip('请先传入一个文件/文件夹')
     return
   }
-
+  if (!fs.existsSync(inputPath)) {
+    printTip('没有找到这个文件/文件夹~')
+    return
+  }
   if (fs.statSync(inputPath).isFile()) {
     run(inputPath)
     return
   }
 
+  // 执行
   const files = fs.readdirSync(inputPath)
   for (const file of files) {
     if (path.extname(file) !== '.md' || excludeFileList.includes(file)) continue
     const filePath = path.join(inputPath, file)
-    if (fs.statSync(filePath).isFile()) filePathList.push(filePath)
+    if (fs.statSync(filePath).isFile()) {
+      run(filePath)
+    }
   }
 
-  filePathList.forEach((filePath) => {
-    run(filePath)
-  })
-
-  console.log(
-    `<div style="font-family: Input Mono Freeze">
-      ${month}月已经花了 <span style="color: ${colorMap['生活']};font-size: 16px; font-weight: 700;">${monthSpend}</span> 元了嗷老弟 🥲
-    </div>`,
-  )
+  // 月消费
+  const html = `
+  <div style="${style.fontFamily}">
+    这个月已经花了 <span style="color: ${colorMap['生活']}; ${style.fontSize}; 
+    ${style.fontWeight};">${monthSpend}</span> 元了嗷老弟 🥲
+  </div>`
+  console.log(html)
 }
 
 setup(inputPath)
