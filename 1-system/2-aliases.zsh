@@ -9,6 +9,13 @@ alias o='open .'
 alias yp='copypath'
 alias cz='czg'
 
+# Git
+alias gs='git status'
+alias gad='git add .'
+alias gcm="git commit -m"
+alias gpull='git pull'
+alias gpush='git push'
+
 # 显示当前目录信息
 alias l='exa'
 alias ll='exa -1'
