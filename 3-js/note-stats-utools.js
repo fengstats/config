@@ -29,7 +29,8 @@ const modeMap = {
   temp: 'TEMP',
 }
 const style = {
-  fontFamily: 'font-family: Input Mono Freeze',
+  // fontFamily: 'font-family: Input Mono Freeze',
+  fontFamily: 'font-family: Comic Sans MS',
   fontWeight: 'font-weight: 700',
   fontSize: 'font-size: 16px',
 }
@@ -306,7 +307,7 @@ function run(filePath) {
       <li>
         ${title}
         <span style="color: ${colorMap[title]};
-        ${style.fontWeight};">${minToTimeStr(statsTime, '')}
+        ${style.fontWeight};">（${minToTimeStr(statsTime, '')}）
         </span>
       </li>`
     }

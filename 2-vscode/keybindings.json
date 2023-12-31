@@ -236,6 +236,14 @@
   },
 
   // Editor
+  // Codeium 的 Command 面板
+  // TODO: 找了一圈没看到怎么用键盘快捷方式 cancel 掉这个 command，ESC 直接切 Vim 的 normal 模式了
+  // 先鼠标点掉吧……
+  {
+    "key": "alt+i",
+    "command": "codeium.openCodeiumCommand",
+    "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
+  },
   // 替换当前行和上/下行
   {
     "key": "alt+k",
@@ -504,14 +512,15 @@
   {
     "key": "cmd+5",
     "command": "-workbench.action.focusFifthEditorGroup"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-codeium.openCodeiumCommand",
+    "when": "codeium.commandEnabled && editorTextFocus && !inlineSuggestionsVisible"
+  },
+  {
+    "key": "alt+escape",
+    "command": "-editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
   }
-  // {
-  //   "key": "ctrl+w",
-  //   "command": "-workbench.action.switchWindow"
-  // },
-  // {
-  //   "key": "ctrl+w",
-  //   "command": "-expand_region",
-  //   "when": "editorTextFocus"
-  // }
 ]
