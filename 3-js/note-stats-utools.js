@@ -147,7 +147,7 @@ function addTitleTimeData(dataList, text, match) {
     }
     // 自动计算
     if (title === '生活') {
-      addMoneyData(dataList, matchContent, '支出小记')
+      monthSpend = NP.plus(addMoneyData(dataList, matchContent, '支出小记'), monthSpend)
       addMoneyData(dataList, matchContent, '收入小记')
     }
 
@@ -199,6 +199,7 @@ function addMoneyData(dataList, text, title) {
   const regex = new RegExp(`> ${title}：.*\n([\\s\\S]*?)(?=\n{2}|$)`)
   const moneyRegex = /-.*（(.*?) 元.*）/g
 
+  let money = 0
   const match = regex.exec(text)
   if (match) {
     const matchContent = match[1]
@@ -210,7 +211,7 @@ function addMoneyData(dataList, text, title) {
     let result = `${title}：`
     if (moneyList.length) {
       const spend = NP.plus(...moneyList)
-      monthSpend = NP.plus(spend, monthSpend)
+      money = NP.plus(spend, money)
       result += `${moneyList.join('+')}（${spend} 元）`
     } else {
       result += '0 元'
@@ -222,6 +223,7 @@ function addMoneyData(dataList, text, title) {
       moneyList,
     })
   }
+  return money
 }
 
 function insertRecordTemplate(dataList, text, title) {
