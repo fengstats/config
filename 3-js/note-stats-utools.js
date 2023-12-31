@@ -3,8 +3,8 @@ import path from 'path'
 import clipboardy from 'clipboardy'
 import NP from 'number-precision'
 
-const year = '2023'
-const month = '12'
+const year = '2024'
+const month = '01'
 let inputPath = `/Users/feng/codebase/personal/diary-note/${year}/${month}月`
 
 const isRemoveTitle = false
@@ -40,6 +40,7 @@ let isSaveFile = true
 let isInsertTemplate = true
 // 月支出
 let monthSpend = 0
+let monthEarn = 0
 // 单文件总时长
 let fileTotalTime = 0
 
@@ -148,7 +149,7 @@ function addTitleTimeData(dataList, text, match) {
     // 自动计算
     if (title === '生活') {
       monthSpend = NP.plus(addMoneyData(dataList, matchContent, '支出小记'), monthSpend)
-      addMoneyData(dataList, matchContent, '收入小记')
+      monthEarn = NP.plus(addMoneyData(dataList, matchContent, '收入小记'), monthEarn)
     }
 
     const insert = `- [x] ${title}：`
@@ -361,12 +362,18 @@ function setup(inputPath) {
   }
 
   // 月消费
-  const html = `
+  const spendHtml = `
   <div style="${style.fontFamily}">
-    这个月已经花了 <span style="color: ${colorMap['生活']}; ${style.fontSize}; 
+    这个月花了 <span style="color: ${colorMap['生活']}; ${style.fontSize}; 
     ${style.fontWeight};">${monthSpend}</span> 元了嗷老弟 🥲
   </div>`
-  console.log(html)
+  const earnHtml = `
+  <div style="${style.fontFamily}">
+    这个月赚了 <span style="color: ${colorMap['重要']}; ${style.fontSize}; 
+    ${style.fontWeight};">${monthEarn}</span> 元了！💕
+  </div>`
+  console.log(spendHtml)
+  console.log(earnHtml)
 }
 
 setup(inputPath)
