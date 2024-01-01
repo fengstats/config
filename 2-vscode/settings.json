@@ -53,7 +53,6 @@
   "workbench.tree.enableStickyScroll": true,
   "workbench.tree.renderIndentGuides": "always",
   "workbench.sideBar.location": "right",
-  "workbench.activityBar.location": "top",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Default Dark+",
   "workbench.startupEditor": "none",
@@ -233,6 +232,10 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
+
+  // JS/TS 关闭验证，用用 quick-lint-js 看看
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
 
   // CSS
   "css.lint.duplicateProperties": "warning",
@@ -515,7 +518,6 @@
   "commentTranslate.hover.enabled": true,
   "commentTranslate.hover.variable": true,
   "commentTranslate.multiLineMerge": true,
-  "commentTranslate.hover.concise": false,
   "commentTranslate.hover.content": false,
   "commentTranslate.maxTranslationLength": 1000,
   "commentTranslate.targetLanguage": "zh-CN",
@@ -533,7 +535,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "//": "Last update at 2023/12/29 17:36:31",
+    "//": "Last update at 2024/1/1 23:15:20",
     "*.asax": "$(capture).*.cs, $(capture).*.vb",
     "*.ascx": "$(capture).*.cs, $(capture).*.vb",
     "*.ashx": "$(capture).*.cs, $(capture).*.vb",
@@ -614,7 +616,6 @@
   },
 
   // Extensions
-  "js/ts.implicitProjectConfig.checkJs": true,
   "fnMap.registrationCode": "flm7F9uEfVXhX8rtQpZ3kGRm9UE/Bb5Nj2t/q5msz4tQqR7WrbFDnhdtuCOUQ7DFYLSKCqh7oNqylVWdoXsiNpZo112c1KWI7U8Y+hehQmYpQbdaylIdyBbVb+gvhJ3x774vaJ7327UzyoqBlC54x+HQREYOJsdUbWKSdQ67/0sFtZL+6aumQEDJObPqQDuxQHQbT1pAjz15FnsEGADsThjgAg+toQ8TJtFx0f5cU4E+twFRpIS1O4td8OpwJDxm0OcEMfFRHsw3JzmrxxNITTRPv3lHiWr9CBMYYm0HBL61je7veCMrwDoRv9jgoTJYy1Ds7JKkqVEKK8pKe8Ez9Q==",
   "extensions.ignoreRecommendations": true,
   "extensions.experimental.affinity": {
