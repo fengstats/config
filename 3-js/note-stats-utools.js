@@ -32,7 +32,7 @@ const style = {
   // fontFamily: 'font-family: Input Mono Freeze',
   fontFamily: 'font-family: Comic Sans MS',
   fontWeight: 'font-weight: 700',
-  fontSize: 'font-size: 16px',
+  fontSize: 'font-size: 15.5px',
 }
 
 let matchMode = modeMap['free']
@@ -303,22 +303,22 @@ function run(filePath) {
       clipboardy.write(minToTime(fileTotalTime))
     }
     for (const { type, title, statsTime } of dataList) {
-      // 过略
+      // 过滤
       if (type !== typeMap['title'] || title === '睡眠' || statsTime === 0) continue
       // 加入输出模板中
       content += `
-      <li>
-        ${title}
-        <span style="color: ${colorMap[title]};
-        ${style.fontWeight};">（${minToTimeStr(statsTime, '')}）
-        </span>
+      <li style="display: flex; align-items: center; margin-left: -10px;">
+        <div style="margin-right: 8px;">ꔷ</div>
+        <div>${title}</div>
+        <div style="color: ${colorMap[title]};${style.fontSize};${style.fontWeight};">
+        （${minToTimeStr(statsTime, '')}）</div>
       </li>`
     }
 
     // 输出
     const html = `
     <div style="${style.fontFamily}">
-      <h1 style="margin: 0; ${style.fontSize}; ${style.fontWeight};">${title}</h1>
+      <h1 style="margin: 0; font-size: 16px; ${style.fontWeight};">${title}</h1>
       <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2;">
         ${content}
       </ul>
@@ -368,7 +368,7 @@ function setup(inputPath) {
     ${style.fontWeight};">${monthSpend}</span> 元了嗷老弟 🥲
   </div>`
   const earnHtml = `
-  <div style="${style.fontFamily}">
+  <div style="${style.fontFamily}; margin-top: 4px;">
     这个月赚了 <span style="color: ${colorMap['重要']}; ${style.fontSize}; 
     ${style.fontWeight};">${monthEarn}</span> 元了！💕
   </div>`
