@@ -4,3 +4,4 @@
 	email = feng2860984180@163.com
 [core]
 	ignorecase = false
+	quotepath = false
