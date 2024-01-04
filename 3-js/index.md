@@ -1,50 +1,13 @@
-- could
-- chemist
-- stockholm
-- statistic
-- geneva
-- during
-- experience
-- infinite
-- insufficient
-- fresh
-- precedence
-- athens
-
 > 1
 
-- secret
-- exercise
-- negotiation
-- hurt
-- electric
-- palindrome
-- enumerate
-- bombay
-- berlin
-- seoul
-- scotland
+- Austria
+- athens
+- directory
+- experience
 
 > 2
 
-- sour
-- truncate
+- age
+- name
+- sex
 
-> 3
-
-- nose
-- Australian
-- signaling
-- measles
-
-> 4
-
-- algorithm
-- transceiver
-- track
-- medicine
-
-> 5
-
-- soccer
-- hand
