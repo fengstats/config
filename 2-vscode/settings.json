@@ -50,11 +50,12 @@
   "window.density.editorTabHeight": "compact",
   "breadcrumbs.icons": false,
   "workbench.tree.indent": 10,
+  "workbench.activityBar.location": "top",
   "workbench.tree.enableStickyScroll": true,
   "workbench.tree.renderIndentGuides": "always",
   "workbench.sideBar.location": "right",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "Default Light Modern",
   "workbench.startupEditor": "none",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.list.smoothScrolling": true,
@@ -234,8 +235,11 @@
   },
 
   // JS/TS 关闭验证，用用 quick-lint-js 看看
-  "typescript.validate.enable": false,
+  "typescript.validate.enable": true,
   "javascript.validate.enable": false,
+
+  // DEBUG
+  "debug.javascript.autoAttachFilter": "smart",
 
   // CSS
   "css.lint.duplicateProperties": "warning",
@@ -345,10 +349,10 @@
   // Codeium
   "codeium.enableSearch": false,
   "codeium.enableCodeLens": false,
+  "codeium.enableExplainProblem": false,
   "codeium.enableConfig": {
     "*": true,
     "plaintext": false,
-    "jsonc": false,
     "markdown": true
   },
 
@@ -366,6 +370,20 @@
     "rgba(255,127,255,0.4)",
     "rgba(79,236,236,0.4)"
   ],
+
+  // Background
+  "background.customImages": ["file:///Users/feng/Pictures/2-wallpaper/2024/noise.png"],
+  "background.style": {
+    "position": "fixed",
+    "left": 0,
+    "inset": 0,
+    "content": "",
+    "background-size": "182px",
+    "background-repeat": "repeat",
+    "opacity": 0.038,
+    "z-index": 999
+  },
+  "background.enabled": true,
 
   // Comment Anchors
   "commentAnchors.tags.anchors": {
