@@ -54,9 +54,10 @@
 - [Comic Shanns Font](https://github.com/shannpersand/comic-shanns) - 很酷的字体。
 - [IBM Plex Mono](https://github.com/IBM/plex)
 
-> 字体自定义细节网站
+> 字体工具网站
 
 - [FontFreeze](https://mutsuntsai.github.io/fontfreeze/) - 冻结字体的变体功能生成 ttf，可以导入 Input Mono 试试。
+- [Ligaturizer](https://github.com/ToxicFrog/Ligaturizer/) - 把连字添加到其他不支持连字的字体内。
 
 ## 其他主题预览
 

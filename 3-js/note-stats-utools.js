@@ -30,7 +30,8 @@ const modeMap = {
 }
 const style = {
   // fontFamily: 'font-family: Input Mono Freeze',
-  fontFamily: 'font-family: Comic Sans MS',
+  // fontFamily: 'font-family: Comic Sans MS',
+  fontFamily: 'font-family: Maple UI',
   fontWeight: 'font-weight: 700',
   fontSize: 'font-size: 15.5px',
 }
@@ -318,7 +319,7 @@ function run(filePath) {
     // 输出
     const html = `
     <div style="${style.fontFamily}">
-      <h1 style="margin: 0; font-size: 16px; ${style.fontWeight};">${title}</h1>
+      <h1 style="margin: 0; font-size: 17px; ${style.fontWeight};">${title}</h1>
       <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2;">
         ${content}
       </ul>
@@ -368,7 +369,7 @@ function setup(inputPath) {
     ${style.fontWeight};">${monthSpend}</span> 元了嗷老弟 🥲
   </div>`
   const earnHtml = `
-  <div style="${style.fontFamily}; margin-top: 4px;">
+  <div style="${style.fontFamily}; margin-top: 6px;">
     这个月赚了 <span style="color: ${colorMap['重要']}; ${style.fontSize}; 
     ${style.fontWeight};">${monthEarn}</span> 元了！💕
   </div>`
