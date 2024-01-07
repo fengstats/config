@@ -76,6 +76,10 @@
     // "editor.lineHighlightBackground": "#ffffff00",
     // 底部控制栏
     // "statusBar.background": "#333333",
+    "[Maple Dark]": {
+      "editorCursor.background": "#ffffff",
+      "editor.selectionHighlightBackground": "#8adcf14f"
+    },
     "[Default Dark+][GitHub Dark Classic]": {
       "terminal.ansiBlue": "#8adcf1",
       "terminal.ansiRed": "#ff6b81",
@@ -173,13 +177,43 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.tokenColorCustomizations": {
-    "[Fleet Dark][Fleet Ocean]": { "comments": "#a1a7a1df" },
+    "[Fleet Dark][Fleet Ocean][Maple Dark]": { "comments": "#a1a7a1df" },
     "[Default Light Modern][Moegi Light]": { "comments": "#218c74" },
     "[Evondev Dracula Darker Contrast]": { "comments": "#95a5a6" },
     "[GitHub Dark Classic][Atom One Dark]": { "comments": "#95a5a6" },
     "[Default Dark+]": { "comments": "#adb5ad" },
     "[Moegi Dark Vitesse]": { "comments": "#a1a7a1" },
+    "[Maple Dark]": {
+      "textMateRules": [
+        // 重置斜体关键字
+        {
+          "scope": [
+            // import/export/for/if/for/while/continue/break/switch/return
+            "keyword.control",
+            // function/let/const
+            "storage.type",
+            // async/await
+            "storage.modifier",
+            // this
+            "variable.language.this"
+            // 下面这个 scope 选择器貌似没起作用
+            // "keyword.function"
+          ],
+          "settings": {
+            "fontStyle": ""
+          }
+        },
+        // 去除无效值的删除线
+        {
+          "scope": "invalid",
+          "settings": {
+            "fontStyle": ""
+          }
+        }
+      ]
+    },
     // "[Default Light Modern][Moegi Light Vitesse]": { "comments": "#95a5a6" },
+
     "textMateRules": [
       {
         "name": "Comment Italics",
