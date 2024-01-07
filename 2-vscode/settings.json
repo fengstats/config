@@ -45,7 +45,7 @@
   // Window
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
-  "window.zoomLevel": 0.5,
+  "window.zoomLevel": 0.6,
   "window.commandCenter": false,
   "window.density.editorTabHeight": "compact",
   "breadcrumbs.icons": false,
@@ -54,8 +54,8 @@
   "workbench.tree.enableStickyScroll": true,
   "workbench.tree.renderIndentGuides": "always",
   "workbench.sideBar.location": "right",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Default Light Modern",
+  "workbench.iconTheme": "catppuccin-frappe",
+  "workbench.colorTheme": "Maple Dark",
   "workbench.startupEditor": "none",
   "workbench.productIconTheme": "icons-carbon",
   "workbench.list.smoothScrolling": true,
@@ -117,8 +117,8 @@
   },
 
   // Sundial
-  "workbench.preferredLightColorTheme": "GitHub Plus",
-  "workbench.preferredDarkColorTheme": "Default Dark+",
+  "workbench.preferredLightColorTheme": "Default Light Modern",
+  "workbench.preferredDarkColorTheme": "Maple Dark",
   "sundial.sunrise": "07:00",
   "sundial.sunset": "17:00",
   "sundial.interval": 30,
@@ -126,13 +126,13 @@
   "sundial.nightSettings": {},
 
   // Editor
-  "fonted.font": "Arial",
+  "fonted.font": "Maple UI",
   "editor.tabSize": 2,
   "editor.fontSize": 13,
   "editor.lineNumbers": "on",
   "editor.lineHeight": 1.45,
   "editor.linkedEditing": false,
-  "editor.fontFamily": "Input Mono Freeze, monospace",
+  "editor.fontFamily": "Maple Mono SC NF Freeze, monospace",
   "editor.cursorSurroundingLines": 5,
   "editor.accessibilitySupport": "off",
   "editor.renderLineHighlight": "all",
@@ -184,8 +184,8 @@
       {
         "name": "Comment Italics",
         "scope": [
-          "comment",
-          "punctuation.definition.comment",
+          // "comment",
+          // "punctuation.definition.comment",
           "comment.line.double-slash",
           "comment.block.documentation"
         ],
@@ -193,9 +193,9 @@
       }
     ]
   },
-  // "editor.fontFamily": "JetBrains Mono, monospace",
   // "editor.fontFamily": "Monaco, monospace",
-  // "editor.fontFamily": "Input Mono, monospace",
+  // "editor.fontFamily": "JetBrains Mono, monospace",
+  // "editor.fontFamily": "Input Mono Freeze, monospace",
 
   // Terminal
   "terminal.external.osxExec": "iTerm",
@@ -205,7 +205,7 @@
   "terminal.integrated.confirmOnKill": "never",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.fontFamily": "Input Mono Freeze, Hack Nerd Font Mono, monospace",
+  "terminal.integrated.fontFamily": "Maple Mono SC NF Freeze, monospace",
   "terminal.integrated.tabs.defaultColor": "terminal.ansiGreen",
   "terminal.integrated.tabs.defaultIcon": "terminal-bash",
   "terminal.integrated.smoothScrolling": true,
@@ -213,6 +213,7 @@
     "FIG_NEW_SESSION": "1",
     "NO_COLOR": null
   },
+  // "terminal.integrated.fontFamily": "Input Mono Freeze, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "Monaco, Hack Nerd Font Mono, monospace",
   // "terminal.integrated.fontFamily": "JetBrains Mono, Hack Nerd Font Mono,monospace",
 
@@ -372,18 +373,26 @@
   ],
 
   // Background
-  "background.customImages": ["file:///Users/feng/Pictures/2-wallpaper/2024/noise.png"],
-  "background.style": {
-    "position": "fixed",
-    "left": 0,
-    "inset": 0,
-    "content": "",
-    "background-size": "182px",
-    "background-repeat": "repeat",
-    "opacity": 0.038,
-    "z-index": 999
-  },
   "background.enabled": true,
+  // NOTE: 因为 fullscreen 里面的参数不能设置 repeat，所以用 JS 生成了一张 1920x1080 的图解决
+  "background.fullscreen": {
+    "images": ["file:///Users/feng/Pictures/2-wallpaper/other/noise-black@1920.png"],
+    "opacity": 0.93,
+    "size": "cover",
+    "position": "center",
+    "interval": 0
+  },
+  // TODO: 本来一张小图就解决了，但是出现打开多个 Tab 标签页时会出现背景重叠，导致透明度提高
+  // "background.customImages": ["file:///Users/feng/Pictures/2-wallpaper/2024/noise.png"],
+  // "background.style": {
+  //   "position": "fixed",
+  //   "left": 0,
+  //   "right": 0,
+  //   "content": "",
+  //   "background-size": "182px",
+  //   "background-repeat": "repeat",
+  //   "opacity": 0.038,
+  // },
 
   // Comment Anchors
   "commentAnchors.tags.anchors": {
@@ -452,12 +461,14 @@
   // Code Spell Checker
   "cSpell.enableFiletypes": ["vimrc"],
   "cSpell.userWords": [
+    "antfu",
     "astro",
     "asvetliakov",
     "autofetch",
     "axios",
     "bilibili",
     "Callout",
+    "catppuccin",
     "clipboardy",
     "Codegeex",
     "codeium",
@@ -468,18 +479,22 @@
     "easymotion",
     "esno",
     "Evondev",
+    "excalidraw",
     "feng",
     "fengstats",
     "filesize",
+    "Fira",
     "flvjs",
     "foldfix",
     "fonted",
+    "fullscreen",
     "Gitee",
     "Grammarly",
     "highlightedyank",
     "hlsearch",
     "IINA",
     "incsearch",
+    "Innei",
     "juejin",
     "karabiner",
     "Keka",
@@ -491,6 +506,7 @@
     "MBTI",
     "Moegi",
     "mysqld",
+    "Navicat",
     "neovim",
     "nums",
     "nuxt",
@@ -498,12 +514,17 @@
     "peachpuff",
     "picgo",
     "powermode",
+    "PTSD",
     "Raycast",
     "rgba",
+    "Rubick",
+    "Shanns",
     "Shikiji",
     "Snipaste",
+    "Sonoma",
     "streamurl",
     "strs",
+    "SVIP",
     "tabao",
     "Taze",
     "tencent",
@@ -524,7 +545,8 @@
     "zhihu",
     "zimfw",
     "zimrc",
-    "zmodule"
+    "zmodule",
+    "Zolplay"
   ],
 
   // ErrorLens
@@ -553,7 +575,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "//": "Last update at 2024/1/1 23:15:20",
+    "//": "Last update at 2024/1/4 23:37:16",
     "*.asax": "$(capture).*.cs, $(capture).*.vb",
     "*.ascx": "$(capture).*.cs, $(capture).*.vb",
     "*.ashx": "$(capture).*.cs, $(capture).*.vb",
@@ -635,6 +657,7 @@
 
   // Extensions
   "fnMap.registrationCode": "flm7F9uEfVXhX8rtQpZ3kGRm9UE/Bb5Nj2t/q5msz4tQqR7WrbFDnhdtuCOUQ7DFYLSKCqh7oNqylVWdoXsiNpZo112c1KWI7U8Y+hehQmYpQbdaylIdyBbVb+gvhJ3x774vaJ7327UzyoqBlC54x+HQREYOJsdUbWKSdQ67/0sFtZL+6aumQEDJObPqQDuxQHQbT1pAjz15FnsEGADsThjgAg+toQ8TJtFx0f5cU4E+twFRpIS1O4td8OpwJDxm0OcEMfFRHsw3JzmrxxNITTRPv3lHiWr9CBMYYm0HBL61je7veCMrwDoRv9jgoTJYy1Ds7JKkqVEKK8pKe8Ez9Q==",
+  "timeline.pageOnScroll": true,
   "extensions.ignoreRecommendations": true,
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1,
