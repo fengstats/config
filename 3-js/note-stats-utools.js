@@ -18,8 +18,9 @@ const typeMap = {
   money: 'money',
 }
 const colorMap = {
+  睡眠: '#4e99de',
   重要: '#3eb370',
-  生活: '#5296d5',
+  生活: '#4e99de',
   休闲: '#ff4757',
   其他: '#7f8c8d',
 }
@@ -33,7 +34,8 @@ const style = {
   // fontFamily: 'font-family: Comic Sans MS',
   fontFamily: 'font-family: Maple UI',
   fontWeight: 'font-weight: 700',
-  fontSize: 'font-size: 15.5px',
+  fontSize: 'font-size: 16px',
+  autoCenter: 'width: fit-content; margin: 0 auto;',
 }
 
 let matchMode = modeMap['free']
@@ -44,6 +46,58 @@ let monthSpend = 0
 let monthEarn = 0
 // 单文件总时长
 let fileTotalTime = 0
+
+function generateMoneyHtml(title, money, text, emoji) {
+  return `
+  <div style="${style.fontFamily}; ${style.autoCenter}; margin-bottom: 8px">
+    这个月${text}
+    <span style="
+      display: inline-block;
+      width: 75px;
+      text-align: center;
+      color: ${colorMap[title]};
+      ${style.fontSize}; 
+      ${style.fontWeight};"
+    >${money}</span> 元了 ${emoji}
+  </div>`
+}
+
+// 生成单个任务 HTML 模板
+function generateTaskItemHtml(title, statsTime) {
+  // <div style="margin-right: 8px;">ꔷ</div>
+  const progressHeight = `height: 12px`
+  const progressRadius = `border-radius: 6px`
+  const color = colorMap[title]
+  return `
+  <li style="
+    ${style.fontSize};
+    display: flex;
+    align-items: center;
+    margin-left: -10px"
+  >
+    <div>${title}</div>
+    <div style="
+      ${progressHeight};
+      ${progressRadius};
+      flex-grow: 1;
+      margin: 0 10px;
+      background-color: #ecf0f1;"
+    >
+      <div style="
+        ${progressHeight};
+        ${progressRadius};
+        width: ${(100 * statsTime) / fileTotalTime}%;
+        background-color: ${color};"
+      ></div>
+    </div>
+    <div style="
+      flex: 0.15;
+      color: ${color};
+      ${style.fontWeight};"
+    >（${minToTimeStr(statsTime, '')}）
+    </div>
+  </li>`
+}
 
 function printTip(tip) {
   console.log(`
@@ -293,8 +347,12 @@ function run(filePath) {
     for (const { title, statsTime } of dataList) {
       if (title === '睡眠') sleepTime += statsTime
     }
-    sleepTime && (title += ` 💤 ${minToTimeStr(sleepTime, '')}`)
-    title += ` 🕛 ${minToTime(fileTotalTime)}`
+    if (sleepTime) {
+      // title += ` 💤 ${minToTimeStr(sleepTime, '')}`
+      content += generateTaskItemHtml('睡眠', sleepTime)
+    }
+    title += `<span style="display: inline-block; margin:0 10px;">🕛</span>`
+    title += `${minToTime(fileTotalTime)}`
 
     // 临时模式将标题替换为总时长，将总时长写入到系统剪贴板中
     if (matchMode === modeMap['temp']) {
@@ -307,19 +365,13 @@ function run(filePath) {
       // 过滤
       if (type !== typeMap['title'] || title === '睡眠' || statsTime === 0) continue
       // 加入输出模板中
-      content += `
-      <li style="display: flex; align-items: center; margin-left: -10px;">
-        <div style="margin-right: 8px;">ꔷ</div>
-        <div>${title}</div>
-        <div style="color: ${colorMap[title]};${style.fontSize};${style.fontWeight};">
-        （${minToTimeStr(statsTime, '')}）</div>
-      </li>`
+      content += generateTaskItemHtml(title, statsTime)
     }
 
     // 输出
     const html = `
     <div style="${style.fontFamily}">
-      <h1 style="margin: 0; font-size: 17px; ${style.fontWeight};">${title}</h1>
+      <h1 style="display: flex; justify-content: center; margin-left: -10px; font-size: 18px; ${style.fontWeight};">${title}</h1>
       <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2;">
         ${content}
       </ul>
@@ -362,19 +414,8 @@ function setup(inputPath) {
     }
   }
 
-  // 月消费
-  const spendHtml = `
-  <div style="${style.fontFamily}">
-    这个月花了 <span style="color: ${colorMap['生活']}; ${style.fontSize}; 
-    ${style.fontWeight};">${monthSpend}</span> 元了嗷老弟 🥲
-  </div>`
-  const earnHtml = `
-  <div style="${style.fontFamily}; margin-top: 6px;">
-    这个月赚了 <span style="color: ${colorMap['重要']}; ${style.fontSize}; 
-    ${style.fontWeight};">${monthEarn}</span> 元了！💕
-  </div>`
-  console.log(spendHtml)
-  console.log(earnHtml)
+  console.log(generateMoneyHtml('生活', monthSpend, '花了', '💢'))
+  console.log(generateMoneyHtml('重要', monthEarn, '赚了', '🎉'))
 }
 
 setup(inputPath)
