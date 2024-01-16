@@ -18,7 +18,8 @@ const typeMap = {
   money: 'money',
 }
 const colorMap = {
-  睡眠: '#4e99de',
+  出行: '#3eb370',
+  睡眠: '#7f8c8d',
   重要: '#3eb370',
   生活: '#4e99de',
   休闲: '#ff4757',
@@ -43,6 +44,7 @@ let isSaveFile = true
 let isInsertTemplate = true
 // 月支出
 let monthSpend = 0
+// 月收入
 let monthEarn = 0
 // 单文件总时长
 let fileTotalTime = 0
@@ -67,7 +69,7 @@ function generateTaskItemHtml(title, statsTime) {
   // <div style="margin-right: 8px;">ꔷ</div>
   const progressHeight = `height: 12px`
   const progressRadius = `border-radius: 6px`
-  const color = colorMap[title]
+  const color = colorMap[title] || colorMap['生活']
   return `
   <li style="
     ${style.fontSize};
@@ -91,17 +93,17 @@ function generateTaskItemHtml(title, statsTime) {
       ></div>
     </div>
     <div style="
-      flex: 0.15;
+      flex: 0.12;
       color: ${color};
       ${style.fontWeight};"
-    >（${minToTimeStr(statsTime, '')}）
+    >${minToTimeStr(statsTime, '')}
     </div>
   </li>`
 }
 
 function printTip(tip) {
   console.log(`
-  <div style="margin: 0 0 12px; ${style.fontFamily};">
+  <div style="width: fit-content; margin: 0 auto; ${style.fontFamily}; ${style.fontSize}; ">
     ${tip}
   </div>
   `)
@@ -205,6 +207,7 @@ function addTitleTimeData(dataList, text, match) {
     if (title === '生活') {
       monthSpend = NP.plus(addMoneyData(dataList, matchContent, '支出小记'), monthSpend)
       monthEarn = NP.plus(addMoneyData(dataList, matchContent, '收入小记'), monthEarn)
+      addMoneyData(dataList, matchContent, '人情世故')
     }
 
     const insert = `- [x] ${title}：`
@@ -338,7 +341,7 @@ function run(filePath) {
     let title = path.parse(filePath).name
     let content = ''
     if (fileTotalTime === 0) {
-      printTip(`${title}：暂无时长可统计，可先添加二级标题 ➡️ 任务列表 ➡️ 尾部追加时间`)
+      printTip(`${title}：暂无时长可统计，可先添加二级标题 → 任务列表 → 尾部追加时间`)
       return
     }
 
@@ -414,8 +417,8 @@ function setup(inputPath) {
     }
   }
 
-  console.log(generateMoneyHtml('生活', monthSpend, '花了', '💢'))
-  console.log(generateMoneyHtml('重要', monthEarn, '赚了', '🎉'))
+  // console.log(generateMoneyHtml('生活', monthSpend, '花了', '💢'))
+  // console.log(generateMoneyHtml('重要', monthEarn, '赚了', '🎉'))
 }
 
 setup(inputPath)
