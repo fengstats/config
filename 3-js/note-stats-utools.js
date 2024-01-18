@@ -33,7 +33,8 @@ const modeMap = {
 const style = {
   // fontFamily: 'font-family: Input Mono Freeze',
   // fontFamily: 'font-family: Comic Sans MS',
-  fontFamily: 'font-family: Maple UI',
+  // fontFamily: 'font-family: Maple UI',
+  fontFamily: '',
   fontWeight: 'font-weight: 700',
   fontSize: 'font-size: 16px',
   autoCenter: 'width: fit-content; margin: 0 auto;',
@@ -62,6 +63,18 @@ function generateMoneyHtml(title, money, text, emoji) {
       ${style.fontWeight};"
     >${money}</span> 元了 ${emoji}
   </div>`
+}
+
+// 生成任务模板
+function generateTaskHtml(title, content) {
+  return `
+  <div style="${style.fontFamily}">
+    <h1 style="display: flex; justify-content: center; margin-left: -10px; font-size: 18px; ${style.fontWeight};">${title}</h1>
+    <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2; text-align: center">
+      ${content}
+    </ul>
+  </div>
+  `
 }
 
 // 生成单个任务 HTML 模板
@@ -341,7 +354,8 @@ function run(filePath) {
     let title = path.parse(filePath).name
     let content = ''
     if (fileTotalTime === 0) {
-      printTip(`${title}：暂无时长可统计，可先添加二级标题 → 任务列表 → 尾部追加时间`)
+      // printTip(`${title}：`)
+      console.log(generateTaskHtml(title, '暂无时长可统计，可先添加二级标题 → 任务列表 → 尾部追加时间'))
       return
     }
 
@@ -372,15 +386,7 @@ function run(filePath) {
     }
 
     // 输出
-    const html = `
-    <div style="${style.fontFamily}">
-      <h1 style="display: flex; justify-content: center; margin-left: -10px; font-size: 18px; ${style.fontWeight};">${title}</h1>
-      <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2;">
-        ${content}
-      </ul>
-    </div>
-    `
-    console.log(html)
+    console.log(generateTaskHtml(title, content))
   }
 }
 
@@ -417,8 +423,8 @@ function setup(inputPath) {
     }
   }
 
-  // console.log(generateMoneyHtml('生活', monthSpend, '花了', '💢'))
-  // console.log(generateMoneyHtml('重要', monthEarn, '赚了', '🎉'))
+  console.log(generateMoneyHtml('重要', monthEarn, '赚了', '🎉'))
+  console.log(generateMoneyHtml('生活', monthSpend, '花了', '💢'))
 }
 
 setup(inputPath)
