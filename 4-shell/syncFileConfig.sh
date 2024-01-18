@@ -39,4 +39,4 @@ cp -f ${zshPath}/* ${systemPath}/
 grep -v -e "secret" -e "baidu.comate.license" "${vscodeSystemPath}/settings.json" >${vsocdePath}/settings.json
 cat "${vscodeSystemPath}/keybindings.json" >${vsocdePath}/keybindings.json
 
-echo "<span style='font-family: Maple UI'>✅ 同步 config 配置文件完成！</span>"
+echo "<span style='font-family: Maple UI; font-size: 16px'>✅ 同步 config 配置文件完成！</span>"
