@@ -46,11 +46,10 @@
   // Window
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
-  "window.zoomLevel": 0.6,
+  "window.zoomLevel": 0.4,
   "window.commandCenter": false,
   "window.density.editorTabHeight": "compact",
   "breadcrumbs.icons": false,
-  "workbench.activityBar.location": "top",
   "workbench.tree.indent": 10,
   "workbench.tree.enableStickyScroll": true,
   "workbench.tree.renderIndentGuides": "always",
@@ -92,9 +91,17 @@
   "workbench.preferredDarkColorTheme": "Maple Dark",
   "sundial.sunrise": "07:00",
   "sundial.sunset": "17:00",
-  "sundial.interval": 30,
-  "sundial.daySettings": {},
-  "sundial.nightSettings": {},
+  "sundial.interval": 20,
+  "sundial.daySettings": {
+    "animations.CursorAnimationOptions": {
+      "Color": "#0000008f"
+    }
+  },
+  "sundial.nightSettings": {
+    "animations.CursorAnimationOptions": {
+      "Color": "#ffffff8f"
+    }
+  },
 
   // Editor
   "fonted.font": "Arial",
@@ -103,7 +110,8 @@
   "editor.lineNumbers": "on",
   "editor.lineHeight": 1.45,
   "editor.linkedEditing": false,
-  "editor.fontFamily": "JetBrains Mono, monospace",
+  // "editor.fontFamily": "JetBrains Mono, monospace",
+  "editor.fontFamily": "Input Mono Freeze, monospace",
   "editor.cursorSurroundingLines": 5,
   "editor.accessibilitySupport": "off",
   "editor.renderLineHighlight": "all",
@@ -117,7 +125,7 @@
   "editor.hover.hidingDelay": 0,
   "editor.padding.top": 2,
   "editor.smoothScrolling": true,
-  // TODO: 滚动超出顶部作用域块时是否显示嵌套作用域
+  // TODO: 粘滞滚动：是否显示嵌套作用域
   "editor.stickyScroll.enabled": false,
   "editor.stickyScroll.scrollWithEditor": false,
   "editor.scrollbar.ignoreHorizontalScrollbarInContentHeight": true,
@@ -180,21 +188,16 @@
         }
       ]
     },
+    // 一般的斜体矫正
     "textMateRules": [
       {
         "name": "Comment Italics",
-        "scope": [
-          // "comment",
-          // "punctuation.definition.comment",
-          "comment.line.double-slash",
-          "comment.block.documentation"
-        ],
+        "scope": ["comment.line.double-slash", "comment.block.documentation"],
         "settings": { "fontStyle": "" }
       }
     ]
   },
   // "editor.fontFamily": "Monaco, monospace",
-  // "editor.fontFamily": "Input Mono Freeze, monospace",
   // "editor.fontFamily": "Maple Mono SC NF Freeze, monospace",
 
   // Terminal
@@ -308,11 +311,14 @@
     { "before": ["K"], "after": ["4", "k"] },
     { "before": ["H"], "after": ["^"] },
     { "before": ["L"], "after": ["g", "_"] },
-    { "before": ["g", "h"], "commands": ["editor.action.showHover"] },
-    { "before": ["leader", "i", "w"], "after": ["V", "$", "%", "o"] },
-    { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] }
+    { "before": ["g", "h"], "commands": ["editor.action.showHover"] }
+    // { "before": ["leader", "i", "w"], "after": ["V", "$", "%", "o"] },
+    // { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    // NOTE: 会覆盖原生的 Ctrl+D 命令，修复 Ctrl+D/U 在顶部代码折叠后失效 + 遇到折叠代码自动展开的问题
+    { "before": ["<C-d>"], "after": ["2", "2", "g", "j", "z", "z"] },
+    { "before": ["<C-u>"], "after": ["2", "2", "g", "k", "z", "z"] },
     { "before": ["f"], "after": ["\\"] },
     { "before": [";"], "after": ["f"] },
     { "before": ["="], "after": ["<C-a>"] },
@@ -343,8 +349,9 @@
     { "before": ["leader", "w"], "commands": ["workbench.action.files.saveWithoutFormatting"] },
     { "before": ["leader", "["], "after": ["[", "{"] },
     { "before": ["leader", "]"], "after": ["]", "}"] },
-    { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] },
-    { "before": ["leader", "i", "w"], "after": ["V", "$", "%", "o"] }
+    { "before": ["leader", "i", "w"], "after": ["V", "$", "%", "o"] },
+    { "before": ["leader", "i", "y"], "after": ["V", "$", "%", "o", "y"] },
+    { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "o", "d"] }
   ],
 
   // Git
@@ -399,29 +406,27 @@
   "animations.Tabs": "None",
   "animations.Command-Palette": "None",
   "animations.Focus-Dimming-Mode": "None",
+  "animations.Auto-Install": false,
   "animations.Smooth-Mode": false,
   "animations.Custom-CSS": false,
-  "animations.Auto-Install": false,
   "animations.Durations": {
     "Command-Palette": 200,
     "Scrolling": 200
   },
   "animations.CursorAnimationOptions": {
-    "Color": "#ffffff8f",
-    "CursorStyle": "block",
-    "TrailLength": 8
+    "Color": "#ffffff8f"
   },
 
   // APC Customize UI
+  // "apc.electron": {
+  //   "opacity": 0.98
+  // },
   "apc.imports": [
     "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.1/dist/updateHandler.js"
   ],
   "apc.activityBar": {
     "hideSettings": true,
-    "size": 20
-  },
-  "apc.electron": {
-    "opacity": 0.98
+    "size": 45
   },
   "apc.stylesheet": {
     "body": {
@@ -449,7 +454,7 @@
     },
     "TODO": {
       "isBold": false,
-      "iconColor": "blue",
+      "iconColor": "red",
       "highlightColor": "#3ea8ff",
       "scope": "workspace"
     },
@@ -537,6 +542,7 @@
     "leetcode",
     "Logi",
     "macwk",
+    "matchit",
     "MBTI",
     "Moegi",
     "mysqld",
@@ -609,7 +615,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "//": "Last update at 2024/1/14 15:31:05",
+    "//": "Last update at 2024/1/17 17:00:41",
     "*.asax": "$(capture).*.cs, $(capture).*.vb",
     "*.ascx": "$(capture).*.cs, $(capture).*.vb",
     "*.ashx": "$(capture).*.cs, $(capture).*.vb",

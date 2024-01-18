@@ -11,7 +11,7 @@
     "command": "undo_expand_region",
     "when": "editorTextFocus && editorHasSelection && vim.mode == 'Visual'"
   },
-  // 通过 matchit 插件替换原生 % 功能，匹配范围更精确且支持匹配 html 标签
+  // 通过 matchit 插件代替原生 % 功能，匹配范围更精确且支持匹配 html 标签
   {
     "key": "s",
     "command": "extension.matchitJumpItems",
