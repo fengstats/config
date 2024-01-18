@@ -11,6 +11,48 @@
     "command": "undo_expand_region",
     "when": "editorTextFocus && editorHasSelection && vim.mode == 'Visual'"
   },
+  // 通过 matchit 插件替换原生 % 功能，匹配范围更精确且支持匹配 html 标签
+  {
+    "key": "s",
+    "command": "extension.matchitJumpItems",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  // 在 Vim INSERT 模式下的 Ctrl+d/u 滚动半屏
+  {
+    "key": "ctrl+d",
+    "command": "cursorMove",
+    "when": "editorTextFocus && vim.mode == 'Insert'",
+    "args": {
+      "to": "down",
+      "by": "line",
+      "value": 22,
+      "revealCursor": true
+    }
+  },
+  {
+    "key": "ctrl+u",
+    "command": "cursorMove",
+    "when": "editorTextFocus && vim.mode == 'Insert'",
+    "args": {
+      "to": "up",
+      "by": "line",
+      "value": 22,
+      "revealCursor": true
+    }
+  },
+  // 与上面的指令效果差不多，不过是由另外的参数控制的：
+  // editorScroll 和 halfPage
+  // {
+  //   "key": "ctrl+d",
+  //   "when": "editorTextFocus && vim.mode == 'Insert'",
+  //   "command": "editorScroll",
+  //   "args": {
+  //     "to": "down",
+  //     "value": 1,
+  //     "by": "halfPage",
+  //     "revealCursor": true
+  //   }
+  // },
 
   // Basic
   {
@@ -48,11 +90,6 @@
     "key": "enter",
     "command": "search.action.replace",
     "when": "matchFocus && replaceActive && searchViewletVisible"
-  },
-  // Run Code
-  {
-    "key": "cmd+alt+n",
-    "command": "code-runner.run"
   },
   // 切换左右 panel
   {
@@ -121,6 +158,11 @@
     "command": "workbench.action.debug.continue",
     "when": "debugState == 'stopped'"
   },
+  // Run Code
+  // {
+  //   "key": "cmd+alt+n",
+  //   "command": "code-runner.run"
+  // },
   // 切换随机背景图（暂时不用了，影响写代码速度）
   // {
   //   "key": "shift+cmd+7",
@@ -132,7 +174,7 @@
   //   "command": "hideSuggestWidget",
   //   "when": "suggestWidgetVisible && textInputFocus"
   // },
-  // vsc 调用 vim 指令方式
+  // VSC 调用 Vim 指令
   // {
   //   "key": "cmd+shift+h",
   //   "command": "vim.remap",
