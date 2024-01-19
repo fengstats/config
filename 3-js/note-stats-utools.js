@@ -17,13 +17,14 @@ const typeMap = {
   quote: 'quote',
   money: 'money',
 }
+// 生活: '',
 const colorMap = {
-  出行: '#3eb370',
-  睡眠: '#7f8c8d',
-  重要: '#3eb370',
-  生活: '#4e99de',
-  休闲: '#ff4757',
-  其他: '#7f8c8d',
+  重要: ['#3eb370', '#44c47b'],
+  出行: ['#24D32D', '#3eb370'],
+  睡眠: ['#91c5b9', '#91c5b9'],
+  生活: ['#4e99de', '#1f99ed'],
+  休闲: ['#f09665', '#FC8D2A'],
+  其他: ['#a5b1c2', '#a5b1c2'],
 }
 const modeMap = {
   free: 'FREE',
@@ -52,13 +53,13 @@ let fileTotalTime = 0
 
 function generateMoneyHtml(title, money, text, emoji) {
   return `
-  <div style="${style.fontFamily}; ${style.autoCenter}; margin-bottom: 8px">
+  <div style="${style.fontFamily}; ${style.autoCenter}; margin-bottom: 8px;">
     这个月${text}
     <span style="
       display: inline-block;
       width: 75px;
       text-align: center;
-      color: ${colorMap[title]};
+      color: ${colorMap[title][1]};
       ${style.fontSize}; 
       ${style.fontWeight};"
     >${money}</span> 元了 ${emoji}
@@ -66,10 +67,10 @@ function generateMoneyHtml(title, money, text, emoji) {
 }
 
 // 生成任务模板
-function generateTaskHtml(title, content) {
+function generateTaskHtml(title, content = '') {
   return `
   <div style="${style.fontFamily}">
-    <h1 style="display: flex; justify-content: center; margin-left: -10px; font-size: 18px; ${style.fontWeight};">${title}</h1>
+    <h1 style="display: flex; align-items: center; justify-content: center; font-size: 18px; font-family: Arial; ${style.fontWeight};">${title}</h1>
     <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2; text-align: center">
       ${content}
     </ul>
@@ -80,46 +81,83 @@ function generateTaskHtml(title, content) {
 // 生成单个任务 HTML 模板
 function generateTaskItemHtml(title, statsTime) {
   // <div style="margin-right: 8px;">ꔷ</div>
-  const progressHeight = `height: 12px`
-  const progressRadius = `border-radius: 6px`
-  const color = colorMap[title] || colorMap['生活']
+  const progressHeight = `height: 18px`
+  const progressRadius = `border-radius: 9px`
+  const [color1, color2] = colorMap[title] || colorMap['生活']
+  const percentage = Math.round((100 * statsTime) / fileTotalTime)
+  // 单独处理百分比小于 10% 的进度小球大小和位置
+  const circleBoxSize = percentage >= 10 ? 40 : 34
+  const circleBoxTop = percentage >= 10 ? 0.88 : 0.64 // 大往上，小往下
+  const circleTextTop = percentage >= 10 ? 0.32 : 0.06 // 大往下，小往上
+  const titleFlex = matchMode === modeMap['temp'] ? 0.3 : 0.06
+  const isMinPercentage = percentage >= 4
   return `
-  <li style="
-    ${style.fontSize};
-    display: flex;
-    align-items: center;
-    margin-left: -10px"
+  <li class="task-item" style="
+      ${style.fontSize};
+      display: flex;
+      align-items: center;
+      margin-left: -10px
+    "
   >
-    <div>${title}</div>
-    <div style="
-      ${progressHeight};
-      ${progressRadius};
-      flex-grow: 1;
-      margin: 0 10px;
-      background-color: #ecf0f1;"
-    >
-      <div style="
+    <div class="title" style="
+        flex: ${titleFlex};
+        color: ${color2};
+        ${style.fontWeight};
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      "
+    >${title}</div>
+    <div class="progress" style="
         ${progressHeight};
         ${progressRadius};
-        width: ${(100 * statsTime) / fileTotalTime}%;
-        background-color: ${color};"
-      ></div>
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        flex-grow: 1;
+        margin: 0 6px;
+        background: linear-gradient(to right, #ecf0f1 80%, transparent 100%);
+        ${!isMinPercentage ? 'overflow: hidden' : ''}
+      "
+    >
+      <div class="progress-bar" style="
+          position: relative;
+          ${progressHeight};
+          ${progressRadius};
+          width: ${percentage}%;
+        background: linear-gradient(to right, ${color1}, ${color2});
+        "
+      >
+        ${
+          isMinPercentage
+            ? `<div class="progress-percentage" style="
+            position: absolute;
+            height: ${circleBoxSize}px;
+            width: ${circleBoxSize}px;
+            top: -${circleBoxTop}em;
+            right: -0.2em;
+            padding-top: ${circleTextTop}em;
+            border-radius: 50%;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: ${color2};
+            border: 2px solid #ffffff;
+            box-sizing: border-box;
+          "
+          >${percentage}%</div>
+        `
+            : ''
+        }
+      </div>
     </div>
-    <div style="
-      flex: 0.12;
-      color: ${color};
-      ${style.fontWeight};"
-    >${minToTimeStr(statsTime, '')}
-    </div>
+    <div class="time" style="
+        flex: 0.15;
+        text-align: left;
+        color: ${color2};
+        ${style.fontWeight};
+      "
+    >${minToTimeStr(statsTime, '')}</div>
   </li>`
-}
-
-function printTip(tip) {
-  console.log(`
-  <div style="width: fit-content; margin: 0 auto; ${style.fontFamily}; ${style.fontSize}; ">
-    ${tip}
-  </div>
-  `)
 }
 
 function minToTime(time, separator = ':') {
@@ -250,13 +288,6 @@ function addTitleTimeData(dataList, text, match) {
 }
 
 function addTotalTimeData(dataList, title = '总时长') {
-  // dataList.forEach((item) => {
-  //   if (item.statsTime !== 0) {
-  //     item.percentage = Math.round((item.statsTime / totalTime) * 100)
-  //     item.result += `（${item.percentage}%）`
-  //   }
-  // })
-
   addData(dataList, typeMap['quote'], {
     title,
     insert: `\n> ${title}：\n`,
@@ -334,7 +365,7 @@ function saveFile(filePath, data) {
 function run(filePath) {
   let text = fs.readFileSync(filePath, 'utf8')
   if (!text) {
-    printTip('这是一个空文件噢~')
+    generateTaskHtml('这是一个空文件嗷~')
     return
   }
 
@@ -359,21 +390,12 @@ function run(filePath) {
       return
     }
 
-    // 可能有多个睡眠数据
-    let sleepTime = 0
-    for (const { title, statsTime } of dataList) {
-      if (title === '睡眠') sleepTime += statsTime
-    }
-    if (sleepTime) {
-      // title += ` 💤 ${minToTimeStr(sleepTime, '')}`
-      content += generateTaskItemHtml('睡眠', sleepTime)
-    }
-    title += `<span style="display: inline-block; margin:0 10px;">🕛</span>`
+    title += `<div style="margin: 0 10px;">🕛</div>`
     title += `${minToTime(fileTotalTime)}`
 
     // 临时模式将标题替换为总时长，将总时长写入到系统剪贴板中
     if (matchMode === modeMap['temp']) {
-      title = `总时长：<span style="color: ${colorMap['重要']}">${minToTimeStr(fileTotalTime, '')}</span>`
+      title = `总时长：<span style="color: ${colorMap['重要'][1]}">${minToTimeStr(fileTotalTime, '')}</span>`
       clipboardy.write(minToTimeStr(fileTotalTime, ''))
     } else {
       clipboardy.write(minToTime(fileTotalTime))
@@ -383,6 +405,16 @@ function run(filePath) {
       if (type !== typeMap['title'] || title === '睡眠' || statsTime === 0) continue
       // 加入输出模板中
       content += generateTaskItemHtml(title, statsTime)
+    }
+
+    // 添加睡眠时间，注意可能有多个睡眠数据
+    let sleepTime = 0
+    for (const { title, statsTime } of dataList) {
+      if (title === '睡眠') sleepTime += statsTime
+    }
+    if (sleepTime) {
+      // title += ` 💤 ${minToTimeStr(sleepTime, '')}`
+      content += generateTaskItemHtml('睡眠', sleepTime)
     }
 
     // 输出
@@ -401,11 +433,11 @@ function setup(inputPath) {
     isSaveFile = false
   }
   if (!inputPath) {
-    printTip('请先传入一个文件/文件夹')
+    generateTaskHtml('请先传入一个文件/文件夹')
     return
   }
   if (!fs.existsSync(inputPath)) {
-    printTip('没有找到这个文件/文件夹~')
+    generateTaskHtml('没有找到这个文件/文件夹~')
     return
   }
   if (fs.statSync(inputPath).isFile()) {
