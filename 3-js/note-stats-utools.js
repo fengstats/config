@@ -101,21 +101,21 @@ function generateTaskItemHtml(title, statsTime) {
   const circleBoxSize = percentage >= 10 ? 40 : 34
   const circleBoxTop = percentage >= 10 ? 0.88 : 0.64 // 大往上，小往下
   const circleTextTop = percentage >= 10 ? 0.32 : 0.06 // 大往下，小往上
-  const titleFlex = matchMode === modeMap['temp'] ? 0.3 : 0.06
+  const titleFlex = matchMode === modeMap['temp'] ? 0.3 : 0.08
   const isMinPercentage = percentage >= 2
   return `
   <li class="task-item" style="
       ${style.fontSize};
       display: flex;
       align-items: center;
-      margin-left: -10px
+      margin: 0.25rem 0;
+      margin-left: -12px;
     "
   >
     <div class="title" style="
         flex: ${titleFlex};
         color: ${color2};
         ${style.fontWeight};
-        text-align: left;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -129,7 +129,7 @@ function generateTaskItemHtml(title, statsTime) {
         flex-grow: 1;
         margin: 0 6px;
         background: linear-gradient(to right, #ecf0f1 80%, transparent 100%);
-        ${!isMinPercentage ? 'overflow: hidden' : ''}
+        ${!isMinPercentage ? 'overflow: hidden;' : ''}
       "
     >
       <div class="progress-bar" style="
@@ -147,7 +147,7 @@ function generateTaskItemHtml(title, statsTime) {
             height: ${circleBoxSize}px;
             width: ${circleBoxSize}px;
             top: -${circleBoxTop}em;
-            right: -1.4em;
+            right: -1.5em;
             padding-top: ${circleTextTop}em;
             border-radius: 50%;
             font-size: 14px;
@@ -164,7 +164,6 @@ function generateTaskItemHtml(title, statsTime) {
     </div>
     <div style="
         flex: 0.14;
-        text-align: right;
         color: ${color2};
         ${style.fontWeight}
     "
