@@ -20,10 +20,11 @@ const typeMap = {
 // 生活: '',
 const colorMap = {
   重要: ['#3eb370', '#44c47b'],
-  出行: ['#24D32D', '#3eb370'],
+  出行: ['#3eb370', '#44c47b'],
   睡眠: ['#91c5b9', '#91c5b9'],
   生活: ['#4e99de', '#1f99ed'],
-  休闲: ['#f09665', '#FC8D2A'],
+  // 休闲: ["#f09665", "#FC8D2A"],
+  休闲: ['#ff6b81', '#ff4757'],
   其他: ['#a5b1c2', '#a5b1c2'],
 }
 const modeMap = {
@@ -70,10 +71,21 @@ function generateMoneyHtml(title, money, text, emoji) {
 function generateTaskHtml(title, content = '') {
   return `
   <div style="${style.fontFamily}">
-    <h1 style="display: flex; align-items: center; justify-content: center; font-size: 18px; font-family: Arial; ${style.fontWeight};">${title}</h1>
-    <ul style="padding: 0; margin: 12px 0; padding-left: 12px;line-height: 2; text-align: center">
-      ${content}
-    </ul>
+    <h1 style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      ${style.fontWeight};
+    "
+    >${title}</h1>
+    <ul style="
+      padding: 0; 
+      margin: 12px 0;
+      padding-left: 12px;
+      line-height: 2; 
+      text-align: center;
+    ">${content}</ul>
   </div>
   `
 }
@@ -90,7 +102,7 @@ function generateTaskItemHtml(title, statsTime) {
   const circleBoxTop = percentage >= 10 ? 0.88 : 0.64 // 大往上，小往下
   const circleTextTop = percentage >= 10 ? 0.32 : 0.06 // 大往下，小往上
   const titleFlex = matchMode === modeMap['temp'] ? 0.3 : 0.06
-  const isMinPercentage = percentage >= 4
+  const isMinPercentage = percentage >= 2
   return `
   <li class="task-item" style="
       ${style.fontSize};
@@ -135,7 +147,7 @@ function generateTaskItemHtml(title, statsTime) {
             height: ${circleBoxSize}px;
             width: ${circleBoxSize}px;
             top: -${circleBoxTop}em;
-            right: -0.2em;
+            right: -1.4em;
             padding-top: ${circleTextTop}em;
             border-radius: 50%;
             font-size: 14px;
@@ -150,12 +162,12 @@ function generateTaskItemHtml(title, statsTime) {
         }
       </div>
     </div>
-    <div class="time" style="
-        flex: 0.15;
-        text-align: left;
+    <div style="
+        flex: 0.14;
+        text-align: right;
         color: ${color2};
-        ${style.fontWeight};
-      "
+        ${style.fontWeight}
+    "
     >${minToTimeStr(statsTime, '')}</div>
   </li>`
 }
