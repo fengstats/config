@@ -4,7 +4,7 @@ vscodeSystemPath="${userPath}/Library/Application Support/Code/User"
 zshPath="${userPath}/.config/zsh"
 
 # my config path
-configPath="${userPath}/codebase/personal/config"
+configPath="${userPath}/codebase/config"
 systemPath="${configPath}/1-system"
 vsocdePath="${configPath}/2-vscode"
 pathArr=(${systemPath} ${vsocdePath})
@@ -39,4 +39,4 @@ cp -f ${zshPath}/* ${systemPath}/
 grep -v -e "secret" -e "baidu.comate.license" "${vscodeSystemPath}/settings.json" >${vsocdePath}/settings.json
 cat "${vscodeSystemPath}/keybindings.json" >${vsocdePath}/keybindings.json
 
-echo "<span style='font-family: Maple UI; font-size: 16px'>✅ 同步 config 配置文件完成！</span>"
+echo "<div style='font-family: Maple UI; font-size: 16px'>✅ 同步 config 配置文件完成！</div>"
