@@ -7,11 +7,12 @@
   "security.workspace.trust.untrustedFiles": "prompt",
   "files.eol": "\n",
   "files.autoSave": "off",
+  // 是否在尾部插入一个新行
   "files.insertFinalNewline": true,
   "files.simpleDialog.enable": false,
   "files.associations": {
     ".zimrc": "shellscript",
-    "*.json": "jsonc",
+    // "*.json": "jsonc",
     "*.conf": "plaintext"
   },
 
@@ -48,7 +49,7 @@
   "window.newWindowDimensions": "offset",
   "window.zoomLevel": 0.4,
   "window.commandCenter": false,
-  "window.density.editorTabHeight": "compact",
+  "window.confirmBeforeClose": "keyboardOnly",
   "breadcrumbs.icons": false,
   "workbench.tree.indent": 10,
   "workbench.tree.enableStickyScroll": true,
@@ -92,16 +93,16 @@
   "sundial.sunrise": "07:00",
   "sundial.sunset": "17:00",
   "sundial.interval": 20,
-  "sundial.daySettings": {
-    "animations.CursorAnimationOptions": {
-      "Color": "#0000008f"
-    }
-  },
-  "sundial.nightSettings": {
-    "animations.CursorAnimationOptions": {
-      "Color": "#ffffff8f"
-    }
-  },
+  // "sundial.daySettings": {
+  //   "animations.CursorAnimationOptions": {
+  //     "Color": "#0000008f"
+  //   }
+  // },
+  // "sundial.nightSettings": {
+  //   "animations.CursorAnimationOptions": {
+  //     "Color": "#ffffff8f"
+  //   }
+  // },
 
   // Editor
   "fonted.font": "Arial",
@@ -226,8 +227,15 @@
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "prettier.proseWrap": "preserve",
-  "prettier.printWidth": 120,
-  "formatFiles.excludedFolders": ["node_modules", ".vscode", ".git", "dist", ".chrome", "attachments"],
+  "prettier.printWidth": 100,
+  "formatFiles.excludedFolders": [
+    "node_modules",
+    ".vscode",
+    ".git",
+    "dist",
+    ".chrome",
+    "attachments"
+  ],
   "formatFiles.extensionsToInclude": ".md",
   "[json]": { "editor.defaultFormatter": "vscode.json-language-features" },
   "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
@@ -235,7 +243,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -243,18 +251,22 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
+  "[handlebars]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   // JS/TS 关闭验证，用用 quick-lint-js 看看
   "typescript.validate.enable": true,
   "javascript.validate.enable": false,
 
   // DEBUG
-  "debug.javascript.autoAttachFilter": "smart",
+  "debug.javascript.autoAttachFilter": "onlyWithFlag",
 
   // CSS
   "css.lint.duplicateProperties": "warning",
   "less.lint.duplicateProperties": "warning",
   "scss.lint.duplicateProperties": "warning",
+  "tailwindMagic.variantGroup": true,
 
   // Auto Close Tag
   "auto-close-tag.disableOnLanguage": ["php", "ts"],
@@ -291,6 +303,14 @@
   "vim.highlightedyank.color": "#00000000",
   "vim.highlightedyank.textColor": "white",
   "vim.flash.enable": true,
+  // Vimium-C
+  // "vim.flash.labels": "sadjklewcmpgho",
+  // mini.jump2d
+  // "vim.flash.labels": "abcdefghijklmnopqrstuvwxyz",
+  // hop.nvim
+  "vim.flash.labels": "etovxqpdygfblzhckisuran",
+  "vim.flash.marker.nextMatchBackgroundColor": "#fdff6c",
+  "vim.flash.marker.backgroundColor": "#3eb370",
   "vim.operatorPendingModeKeyBindings": [
     { "before": ["H"], "after": ["^"] },
     { "before": ["L"], "after": ["g", "_"] }
@@ -299,7 +319,7 @@
     // 还原原生的 f 命令
     // 设置 fash.nvim 查找键
     { "before": ["f"], "after": ["\\"] },
-    { "before": [";"], "after": ["f"] },
+    { "before": ["s"], "after": ["f"] },
     { "before": ["`"], "after": ["S", "`", "e"] },
     { "before": ["\""], "after": ["S", "\"", "e"] },
     { "before": ["'"], "after": ["S", "'", "e"] },
@@ -311,14 +331,16 @@
     { "before": ["K"], "after": ["4", "k"] },
     { "before": ["H"], "after": ["^"] },
     { "before": ["L"], "after": ["g", "_"] },
-    { "before": ["g", "h"], "commands": ["editor.action.showHover"] }
-    // { "before": ["leader", "i", "w"], "after": ["V", "$", "%", "o"] },
-    // { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] }
+    { "before": ["g", "h"], "commands": ["editor.action.showHover"] },
+    { "before": ["leader", "i", "w"], "after": ["V", "$", "%", "o"] },
+    { "before": ["leader", "d", "f"], "after": ["V", "$", "%", "d"] }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     // NOTE: 会覆盖原生的 Ctrl+D 命令，修复 Ctrl+D/U 在顶部代码折叠后失效 + 遇到折叠代码自动展开的问题
     { "before": ["<C-d>"], "after": ["2", "2", "g", "j", "z", "z"] },
     { "before": ["<C-u>"], "after": ["2", "2", "g", "k", "z", "z"] },
+    // 通过 matchit 插件代替原生 % 功能，匹配范围更精确且支持匹配 html 标签
+    { "before": ["s"], "commands": ["extension.matchitJumpItems"] },
     { "before": ["f"], "after": ["\\"] },
     { "before": [";"], "after": ["f"] },
     { "before": ["="], "after": ["<C-a>"] },
@@ -355,21 +377,23 @@
   ],
 
   // Git
-  "diffEditor.renderSideBySide": false,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
   "git.ignoreRebaseWarning": true,
   "git.autoStash": true,
-  "gitlens.plusFeatures.enabled": false,
-  "gitlens.graph.minimap.enabled": false,
-  "githubPullRequests.pullBranch": "never",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.hideUnchangedRegions.enabled": true,
   "scm.showActionButton": false,
   "scm.showInputActionButton": false,
   "scm.diffDecorationsGutterPattern": {
     "modified": false
   },
+  // GitLens
+  "gitlens.plusFeatures.enabled": false,
+  "gitlens.graph.minimap.enabled": false,
+  "githubPullRequests.pullBranch": "never",
 
   // Codeium
   "codeium.enableSearch": false,
@@ -396,8 +420,29 @@
     "rgba(79,236,236,0.4)"
   ],
 
+  // APC Customize UI
+  // "apc.electron": {
+  //   "opacity": 0.98
+  // },
+  "apc.imports": [
+    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.1/dist/updateHandler.js"
+  ],
+  "apc.activityBar": {
+    "hideSettings": true,
+    "size": 45
+  },
+  "apc.stylesheet": {
+    "body": {
+      // NOTE: 取代 background 插件设置，更好用更简单
+      "background-size": "180px",
+      "background-repeat": "repeat",
+      "background-image": "url(/Users/feng/Pictures/2-wallpaper/other/noise.png)",
+      "opacity": 0.96
+    }
+  },
+
   // Animations
-  "animations.Enabled": true,
+  "animations.Enabled": false,
   "animations.CursorAnimation": true,
   "animations.Scrolling": "Fade",
   "animations.Install-Method": "Apc Customize UI++",
@@ -415,27 +460,6 @@
   },
   "animations.CursorAnimationOptions": {
     "Color": "#ffffff8f"
-  },
-
-  // APC Customize UI
-  // "apc.electron": {
-  //   "opacity": 0.98
-  // },
-  "apc.imports": [
-    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.1/dist/updateHandler.js"
-  ],
-  "apc.activityBar": {
-    "hideSettings": true,
-    "size": 45
-  },
-  "apc.stylesheet": {
-    "body": {
-      // NOTE: 取代 background 插件设置，更好用更简单
-      "background-size": "182px",
-      "background-repeat": "repeat",
-      "background-image": "url(/Users/feng/Pictures/2-wallpaper/other/noise.png)",
-      "opacity": 0.96
-    }
   },
 
   // Comment Anchors
@@ -531,6 +555,7 @@
     "Grammarly",
     "highlightedyank",
     "hlsearch",
+    "iconfont",
     "IINA",
     "incsearch",
     "Innei",
@@ -553,6 +578,7 @@
     "nvim",
     "peachpuff",
     "picgo",
+    "pinia",
     "powermode",
     "PTSD",
     "Raycast",
@@ -572,6 +598,7 @@
     "unocss",
     "unplugin",
     "utools",
+    "Vimium",
     "vimrc",
     "Vite",
     "Vitesse",
@@ -606,7 +633,7 @@
   // LeetCode
   "leetcode.endpoint": "leetcode-cn",
   "leetcode.defaultLanguage": "typescript",
-  "leetcode.workspaceFolder": "/Users/feng/codebase/personal-pro/leetcode",
+  "leetcode.workspaceFolder": "/Users/feng/codebase/public/leetcode",
   "leetcode.hint.commandShortcut": false,
   "leetcode.hint.commentDescription": false,
   "leetcode.hint.configWebviewMarkdown": false,
@@ -615,7 +642,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "//": "Last update at 2024/1/17 17:00:41",
+    "//": "Last update at 2024/1/26 23:09:00",
     "*.asax": "$(capture).*.cs, $(capture).*.vb",
     "*.ascx": "$(capture).*.cs, $(capture).*.vb",
     "*.ashx": "$(capture).*.cs, $(capture).*.vb",
