@@ -1,5 +1,7 @@
-const fs = require('fs')
-const path = require('path')
+// 初始版本，请移步：https://github.com/fengstats/diary-duration-stats
+
+import fs from 'fs'
+import path from 'path'
 
 // 匹配模式
 const modeMap = {

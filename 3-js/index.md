@@ -10,4 +10,3 @@
 - age
 - name
 - sex
-

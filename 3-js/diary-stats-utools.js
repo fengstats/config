@@ -1,3 +1,6 @@
+// 首先感谢你点开了这个文件，其次我劝你别看了，这代码写的跟屎一样 🙏
+// 建议移步：https://github.com/fengstats/diary-duration-stats 可能会好点
+
 import fs from 'fs'
 import path from 'path'
 import clipboardy from 'clipboardy'
@@ -5,7 +8,7 @@ import NP from 'number-precision'
 
 const year = '2024'
 const month = '01'
-let inputPath = `/Users/feng/codebase/personal/diary-note/${year}/${month}月`
+let inputPath = `/Users/feng/codebase/private/diary/${year}/${month}月`
 
 const isRemoveTitle = false
 const recordTitle = 'Record'
