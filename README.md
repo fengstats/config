@@ -10,8 +10,7 @@
 > 系统
 
 - [nvim](./1-system/.nvim.vim) | [vimrc](./1-system/.vimrc) | [zimrc](./1-system/.zimrc) | [zshrc](./1-system/main.zsh)
-
-> 推荐一个比 oh-my-zsh 更轻量级更快的 zsh 配置框架：[Zimfw](https://github.com/zimfw/zimfw)
+- [Zimfw](https://github.com/zimfw/zimfw) 一个比 oh-my-zsh 更轻量级更快的 zsh 配置框架
 
 <h2 align="center">主题</h2>
 
@@ -22,21 +21,21 @@
 
 > 其他
 
-- [GitHub Plus Theme](https://marketplace.visualstudio.com/items?itemName=thenikso.github-plus-theme) - 浅色，群友推荐。
-- [JetBrains Fleet Dark](https://marketplace.visualstudio.com/items?itemName=FranzGollhammer.jb-fleet-dark) - 深色，Fleet Dark，对于 Fleet 编辑器主题还原度非常高了 👍🏻
-- [Moegi Theme](https://marketplace.visualstudio.com/items?itemName=ddiu8081.moegi-theme) - 深浅皆用，Diu 大佬写的主题。
 - [Spacegray VSCode](https://marketplace.visualstudio.com/items?itemName=ionutvmi.spacegray-vscode) - 深色平替。
+- [GitHub Plus Theme](https://marketplace.visualstudio.com/items?itemName=thenikso.github-plus-theme) - 浅色，群友推荐。
+- [Moegi Theme](https://marketplace.visualstudio.com/items?itemName=ddiu8081.moegi-theme) - 深浅皆用，Diu 大佬写的主题。
 - [Github Dark Classic Theme](https://marketplace.visualstudio.com/items?itemName=BerriJ.github-vscode-theme-dark-classic) - 深色，GitHub 主题还是很舒服的。
-- [Evondev Dracula](https://marketplace.visualstudio.com/items?itemName=evondev.dracula-high-contrast) - 深色，对比度高，定位和写代码更清晰，能给人一种极客的感觉。
-- [Vitesse Theme](https://marketplace.visualstudio.com/items?itemName=antfu.theme-vitesse) - 深浅皆用，托尼！红绿灯配色，整体很不错，但是看久了感觉有点暗，发现有些细节处理得需要自己处理下（比如选中背景不明显）。
-- [Panda Theme](https://marketplace.visualstudio.com/items?itemName=tinkertrain.theme-panda) - 深色，粉青配色用了很长的一段时间，可惜已经很久没有更新了，一些颜色细节适配的不是特别好。
+- [JetBrains Fleet Dark](https://marketplace.visualstudio.com/items?itemName=FranzGollhammer.jb-fleet-dark) - 深色，Fleet Dark，对于 Fleet 编辑器主题还原度非常高了 👍🏻
+- [Evondev Dracula](https://marketplace.visualstudio.com/items?itemName=evondev.dracula-high-contrast) - 深色，对比度高，定位和写代码更清晰，能给人一种极客的感觉 ⚡
+- [Vitesse Theme](https://marketplace.visualstudio.com/items?itemName=antfu.theme-vitesse) - 深浅皆用，托尼写的！整体配色扁平，但是看久了感觉有点暗，部分细节需要自己处理下。
+- [Panda Theme](https://marketplace.visualstudio.com/items?itemName=tinkertrain.theme-panda) - 深色，也是扁平的粉青配色，但是已经很久没有更新了，有些颜色细节适配的不是特别好。
 
 <h2 align="center">字体</h2>
 
 > 常用
 
-- [Maple Font](https://github.com/subframe7536/maple-font) - 带连字和控制台图标的圆角等宽字体。
 - [Input Mono](https://input.djr.com/) - 托尼推荐！用了好久了。
+- [Maple Font](https://github.com/subframe7536/maple-font) - 带连字和控制台图标的圆角等宽字体。
 - [JetBrains Mono Font](https://github.com/JetBrains/JetBrainsMono) - 方方正正的，很适合写代码。
 
 > 其他
