@@ -34,6 +34,7 @@
 
 > 常用
 
+- [Liga SFMono Nerd Font](https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized) - zx 哥推荐，看起来不错，体验中...
 - [Input Mono](https://input.djr.com/) - 托尼推荐！用了好久了。
 - [Maple Font](https://github.com/subframe7536/maple-font) - 带连字和控制台图标的圆角等宽字体。
 - [JetBrains Mono Font](https://github.com/JetBrains/JetBrainsMono) - 方方正正的，很适合写代码。
