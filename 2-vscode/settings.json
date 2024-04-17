@@ -47,31 +47,32 @@
 
   // Sundial
   "workbench.preferredLightColorTheme": "Default Light Modern",
-  "workbench.preferredDarkColorTheme": "Maple Dark",
-  "workbench.colorTheme": "Maple Dark",
+  "workbench.preferredDarkColorTheme": "GitHub Dark Classic",
+  "workbench.colorTheme": "GitHub Dark Classic",
   "sundial.sunrise": "07:00",
   "sundial.sunset": "17:00",
   "sundial.interval": 20,
-  // "sundial.daySettings": {
-  //   "animations.CursorAnimationOptions": {
-  //     "Color": "#0000008f"
-  //   }
-  // },
-  // "sundial.nightSettings": {
-  //   "animations.CursorAnimationOptions": {
-  //     "Color": "#ffffff8f"
-  //   }
-  // },
+  "sundial.daySettings": {
+    "animations.CursorAnimationOptions": {
+      "Color": "#0000008f"
+    }
+  },
+  "sundial.nightSettings": {
+    "animations.CursorAnimationOptions": {
+      "Color": "#ffffff8f"
+    }
+  },
 
   // Window
   "window.dialogStyle": "custom",
   "window.newWindowDimensions": "offset",
-  "window.zoomLevel": 0.8,
+  "window.zoomLevel": 0.6,
   "window.commandCenter": false,
   "window.confirmBeforeClose": "keyboardOnly",
   "workbench.tree.indent": 10,
   "workbench.tree.enableStickyScroll": true,
   "workbench.tree.renderIndentGuides": "always",
+  "workbench.sideBar.location": "right",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
   "workbench.productIconTheme": "icons-carbon",
@@ -111,7 +112,11 @@
   "editor.lineNumbers": "on",
   "editor.lineHeight": 1.45,
   "editor.linkedEditing": false,
-  "editor.fontFamily": "Liga SFMono Nerd Font, monospace",
+  "editor.fontFamily": "Input Mono, monospace",
+  // "editor.fontFamily": "Maple Mono SC NF, monospace",
+  // "editor.fontFamily": "JetBrains Mono, monospace",
+  // "editor.fontFamily": "Monaco, monospace",
+  // "editor.fontFamily": "Liga SFMono Nerd Font, monospace",
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'ss12', 'ss13'",
   "editor.cursorSurroundingLines": 5,
   "editor.accessibilitySupport": "off",
@@ -212,10 +217,6 @@
       }
     ]
   },
-  // "editor.fontFamily": "Maple Mono SC NF, monospace",
-  // "editor.fontFamily": "JetBrains Mono, monospace",
-  // "editor.fontFamily": "Monaco, monospace",
-  // "editor.fontFamily": "Input Mono, monospace",
 
   // Terminal
   "terminal.external.osxExec": "iTerm",
@@ -226,6 +227,7 @@
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.fontFamily": "Maple Mono SC NF Freeze, JetBrains Mono, Monaco, Input Mono Freeze, Hack Nerd Font Mono, monospace",
+  "terminal.integrated.tabs.location": "left",
   "terminal.integrated.tabs.defaultColor": "terminal.ansiGreen",
   "terminal.integrated.tabs.defaultIcon": "terminal-bash",
   "terminal.integrated.smoothScrolling": true,
@@ -261,9 +263,6 @@
   },
   "[handlebars]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
 
   // JS/TS 关闭验证，用用 quick-lint-js 看看
@@ -376,8 +375,8 @@
     { "before": ["z", "O"], "commands": ["editor.unfoldAll"] },
     { "before": ["leader", ";"], "commands": [":noh"] },
     { "before": ["leader", "o"], "commands": ["extension.toggleBool"] },
-    { "before": ["leader", "e"], "commands": ["workbench.action.toggleSidebarVisibility"] },
-    { "before": ["leader", "l"], "commands": ["workbench.action.toggleAuxiliaryBar"] },
+    { "before": ["leader", "l"], "commands": ["workbench.action.toggleSidebarVisibility"] },
+    { "before": ["leader", "e"], "commands": ["workbench.action.toggleAuxiliaryBar"] },
     { "before": ["leader", "q"], "commands": ["workbench.action.closeActiveEditor"] },
     { "before": ["leader", "w"], "commands": ["workbench.action.files.saveWithoutFormatting"] },
     { "before": ["leader", "["], "after": ["[", "{"] },
@@ -425,16 +424,17 @@
     "rgba(255,127,255,0.4)",
     "rgba(79,236,236,0.4)"
   ],
+
   // APC Customize UI
   // "apc.electron": {
   //   "opacity": 0.98
   // },
   "apc.imports": [
-    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.1/dist/updateHandler.js"
+    "file:///Users/feng/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.2/dist/updateHandler.js"
   ],
   "apc.activityBar": {
-    "hideSettings": true,
-    "size": 45
+    // "hideSettings": true,
+    "size": 40
   },
   "apc.stylesheet": {
     "body": {
@@ -442,7 +442,7 @@
       "background-size": "180px",
       "background-repeat": "repeat",
       "background-image": "url(/Users/feng/Pictures/2-wallpaper/other/noise.png)",
-      "opacity": 0.96
+      "opacity": 0.98
     }
   },
 
@@ -657,7 +657,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "//": "Last update at 4/8/2024, 2:52:51 PM",
+    "//": "Last update at 4/14/2024, 6:33:42 PM",
     "*.asax": "$(capture).*.cs, $(capture).*.vb",
     "*.ascx": "$(capture).*.cs, $(capture).*.vb",
     "*.ashx": "$(capture).*.cs, $(capture).*.vb",
@@ -665,15 +665,15 @@
     "*.axaml": "$(capture).axaml.cs",
     "*.bloc.dart": "$(capture).event.dart, $(capture).state.dart",
     "*.c": "$(capture).h",
-    "*.cc": "$(capture).hpp, $(capture).h, $(capture).hxx",
+    "*.cc": "$(capture).hpp, $(capture).h, $(capture).hxx, $(capture).hh",
     "*.cjs": "$(capture).cjs.map, $(capture).*.cjs, $(capture)_*.cjs",
     "*.component.ts": "$(capture).component.html, $(capture).component.spec.ts, $(capture).component.css, $(capture).component.scss, $(capture).component.sass, $(capture).component.less",
-    "*.cpp": "$(capture).hpp, $(capture).h, $(capture).hxx",
+    "*.cpp": "$(capture).hpp, $(capture).h, $(capture).hxx, $(capture).hh",
     "*.cs": "$(capture).*.cs",
     "*.cshtml": "$(capture).cshtml.cs",
     "*.csproj": "*.config, *proj.user, appsettings.*, bundleconfig.json",
     "*.css": "$(capture).css.map, $(capture).*.css",
-    "*.cxx": "$(capture).hpp, $(capture).h, $(capture).hxx",
+    "*.cxx": "$(capture).hpp, $(capture).h, $(capture).hxx, $(capture).hh",
     "*.dart": "$(capture).freezed.dart, $(capture).g.dart",
     "*.ex": "$(capture).html.eex, $(capture).html.heex, $(capture).html.leex",
     "*.fs": "$(capture).fs.js, $(capture).fs.js.map, $(capture).fs.jsx, $(capture).fs.ts, $(capture).fs.tsx, $(capture).fs.rs, $(capture).fs.php, $(capture).fs.dart",
