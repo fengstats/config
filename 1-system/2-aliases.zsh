@@ -1,5 +1,8 @@
 # 配置别名命令
 
+alias sshroot='ssh root@fenglive.icu'
+alias so='source ~/.zshrc && exec zsh'
+
 # 系统
 alias ra='ranger'
 alias q='exit'

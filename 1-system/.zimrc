@@ -17,6 +17,7 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule zdharma-continuum/fast-syntax-highlighting
 zmodule supercrabtree/k
 zmodule hlissner/zsh-autopair
+zmodule jeffreytse/zsh-vi-mode
 
 # oh-my-zsh 的扩展
 # clipboard 里面有个命令（copyclip）是 copypath 需要用的，所以必须先加载进来

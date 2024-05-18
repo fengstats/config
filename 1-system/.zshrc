@@ -90,3 +90,6 @@ esac
 
 # 加载我的 zsh 配置
 source ~/.config/zsh/main.zsh
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off

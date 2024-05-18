@@ -337,6 +337,12 @@
   // },
 
   // Terminal
+  // 关闭当前终端
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
   // 创建终端（根据当前编辑区聚焦文件的位置）
   {
     "key": "ctrl+`",
