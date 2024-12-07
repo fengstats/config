@@ -34,6 +34,12 @@
       "revealCursor": true
     }
   },
+  // Copilot 编辑器内联聊天
+  {
+    "key": "cmd+l",
+    "command": "inlineChat.startWithCurrentLine",
+    "when": "editorFocus && github.copilot.chat.editor.enableLineTrigger && inlineChatHasProvider && !editorReadonly && !inlineChatVisible"
+  },
   // 与上面的指令效果差不多，不过是由另外的参数控制的：
   // editorScroll 和 halfPage
   // {
@@ -49,11 +55,11 @@
   // },
 
   // Basic
-  {
-    "key": "cmd+l",
-    "command": "markdown.extension.checkTaskList",
-    "when": "editorTextFocus && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
-  },
+  // {
+  //   "key": "cmd+l",
+  //   "command": "markdown.extension.checkTaskList",
+  //   "when": "editorTextFocus && editorLangId =~ /^markdown$|^rmd$|^quarto$/"
+  // },
   // 选择最近的文件工作区
   {
     "key": "cmd+r",
@@ -337,10 +343,10 @@
   // },
 
   // Terminal
-  // 关闭当前终端
   {
     "key": "cmd+w",
     "command": "workbench.action.terminal.kill",
+    // "args": ["workbench.action.terminal.kill", "workbench.action.terminal.focus"],
     "when": "terminalFocus"
   },
   // 创建终端（根据当前编辑区聚焦文件的位置）
@@ -569,5 +575,20 @@
     "key": "cmd+e",
     "command": "-editor.action.toggleScreenReaderAccessibilityMode",
     "when": "accessibilityHelpIsShown"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-inlineChat.startWithCurrentLine",
+    "when": "editorFocus && github.copilot.chat.editor.enableLineTrigger && inlineChatHasProvider && !editorReadonly && !inlineChatVisible"
+  },
+  {
+    "key": "cmd+l",
+    "command": "inlineChat.start",
+    "when": "editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-inlineChat.start",
+    "when": "editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly"
   }
 ]

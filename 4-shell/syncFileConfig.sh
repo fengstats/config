@@ -4,7 +4,7 @@ vscodeSystemPath="${userPath}/Library/Application Support/Code/User"
 zshPath="${userPath}/.config/zsh"
 
 # my config path
-configPath="${userPath}/codebase/config"
+configPath="${userPath}/codebase/utils/config"
 systemPath="${configPath}/1-system"
 vsocdePath="${configPath}/2-vscode"
 pathArr=(${systemPath} ${vsocdePath})

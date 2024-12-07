@@ -15,7 +15,7 @@ request.interceptors.response.use(
   },
 )
 
-let count = 970 
+let count = 100
 
 async function sendReq() {
   // 三个变量需要控制
@@ -25,7 +25,7 @@ async function sendReq() {
   // roomid 房间号
 
   const msg = count--
-  const roomid = '32380080'
+  const roomid = '24337535'
   const csrf = 'd9869c210ec46e4a22c7b49e7b6c8bef'
 
   const res = await request({
@@ -54,7 +54,6 @@ async function sendReq() {
   }
 }
 
-
 function getRandomNum(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min
   console.log(num)
@@ -65,4 +64,4 @@ sendReq()
 
 setInterval(() => {
   sendReq()
-}, 20000)
+}, 22000)
